@@ -1,0 +1,124 @@
+{
+  "_comment": "Buffett.skill Moat Scorecard — JSON input template. Fill in values and run scripts/buffett_scorecard.py",
+  "company": "",
+  "ticker": "",
+  "market": "US | HK | A-share | Japan | Europe",
+  "analysis_date": "",
+
+  "moat": {
+    "primary_source": "brand | network_effects | switching_costs | cost_advantage | regulatory | none",
+    "secondary_sources": [],
+    "width": "wide | narrow | uncertain | none",
+    "durability": "widening | stable | narrowing | uncertain",
+    "pricing_power_score": {
+      "_comment": "1 = no pricing power, 5 = strong durable pricing power",
+      "value": null,
+      "evidence": "",
+      "source_strength": "strong | medium | weak"
+    },
+    "gross_margin_vs_peers": {
+      "_comment": "Percentage points above or below industry average. Positive = above average.",
+      "value_pp": null,
+      "years_of_data": null,
+      "source": ""
+    },
+    "switching_cost_score": {
+      "_comment": "1 = easy to switch, 5 = very high switching cost",
+      "value": null,
+      "evidence": "",
+      "source_strength": "strong | medium | weak"
+    },
+    "network_density_score": {
+      "_comment": "1 = no network effect, 5 = strong reinforcing network. Leave null if not applicable.",
+      "value": null,
+      "evidence": "",
+      "source_strength": "strong | medium | weak"
+    },
+    "moat_threat": {
+      "primary_threat": "",
+      "timeline": "0-3 years | 3-7 years | 7+ years | unclear",
+      "severity": "low | medium | high"
+    }
+  },
+
+  "financial_quality": {
+    "roe_5yr_avg": {
+      "_comment": "5-year average ROE in percent",
+      "value_pct": null,
+      "leverage_adjusted": null,
+      "_note": "Run Du Pont: ROE = net_margin × asset_turnover × equity_multiplier"
+    },
+    "roic_latest": {
+      "value_pct": null,
+      "wacc_estimate_pct": null,
+      "spread_pp": null
+    },
+    "owner_earnings": {
+      "net_income": null,
+      "dna": null,
+      "maintenance_capex": null,
+      "owner_earnings": null,
+      "currency": "USD | HKD | CNY | JPY | EUR"
+    },
+    "fcf_conversion": {
+      "_comment": "FCF / Net income ratio. Target ≥ 0.8 over time.",
+      "value": null,
+      "years_of_data": null
+    },
+    "balance_sheet": {
+      "net_debt_ebitda": null,
+      "interest_coverage": null,
+      "off_balance_sheet_notes": ""
+    },
+    "capital_allocation": {
+      "buyback_quality": "below_intrinsic | at_market | above_intrinsic | no_buyback",
+      "acquisition_history": "value_creating | neutral | value_destroying | none",
+      "insider_ownership_pct": null,
+      "retained_earnings_test": {
+        "_comment": "For every $1 retained over 5 years, how much market cap was added?",
+        "ratio": null,
+        "period_years": null
+      }
+    }
+  },
+
+  "valuation": {
+    "method_dcf": {
+      "normalized_owner_earnings": null,
+      "growth_rate_pct": null,
+      "terminal_growth_pct": null,
+      "discount_rate_pct": 10,
+      "intrinsic_value_per_share": null,
+      "margin_of_safety_pct": null,
+      "buy_below_price": null
+    },
+    "method_historical_multiple": {
+      "metric": "PE | PFCF | EVEBIT | PB",
+      "historical_range_low": null,
+      "historical_range_high": null,
+      "current_multiple": null,
+      "implied_fair_value_at_mid": null
+    },
+    "current_price": null,
+    "currency": "USD | HKD | CNY | JPY | EUR",
+    "value_summary": "cheap | fair | expensive | uncertain"
+  },
+
+  "evidence_summary": {
+    "moat_evidence_strength": "strong | medium | weak",
+    "financial_evidence_strength": "strong | medium | weak",
+    "main_missing_proof": "",
+    "primary_sources_used": [],
+    "red_flags": []
+  },
+
+  "risk_and_failure_conditions": {
+    "primary_failure_condition": "",
+    "downgrade_triggers": [],
+    "geopolitical_exposure": "low | medium | high",
+    "regulatory_risk": "low | medium | high"
+  },
+
+  "priority": "top | high | medium | low | pass",
+  "notes": ""
+}

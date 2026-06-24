@@ -1,0 +1,115 @@
+{
+  "_comment": "Cathie.skill Innovation Scorecard — JSON input template. Fill in values and run scripts/cathie_scorecard.py",
+  "company": "",
+  "ticker": "",
+  "market": "US | HK | A-share | Global",
+  "analysis_date": "",
+  "technology_platform": "AI | Autonomous Mobility | Robotics | Energy Storage | Genomics | Other",
+
+  "scurve_position": {
+    "current_penetration_pct": null,
+    "phase": "innovation | early_adopters | crossing_chasm | early_majority | late_majority | saturation",
+    "chasm_crossed": null,
+    "penetration_trend": "accelerating | linear | plateauing",
+    "penetration_source": "",
+    "penetration_source_strength": "strong | medium | weak",
+    "next_phase_trigger": "",
+    "next_phase_timeline": ""
+  },
+
+  "cost_curve": {
+    "current_cost_per_unit": null,
+    "cost_unit": "",
+    "learning_rate_pct": null,
+    "learning_rate_source": "",
+    "learning_rate_strength": "strong | medium | weak",
+    "cumulative_production": null,
+    "production_unit": "",
+    "thresholds": [
+      {
+        "cost_level": null,
+        "use_case_unlocked": "",
+        "estimated_year_bear": null,
+        "estimated_year_base": null,
+        "estimated_year_bull": null
+      }
+    ],
+    "materials_constraint_risk": "low | medium | high",
+    "materials_constraint_notes": "",
+    "leapfrog_technology_risk": "low | medium | high",
+    "leapfrog_technology_notes": ""
+  },
+
+  "tam_at_convergence": {
+    "addressable_population": null,
+    "addressable_unit": "",
+    "scenarios": {
+      "bear": {
+        "penetration_pct": null,
+        "revenue_per_unit": null,
+        "tam_total": null,
+        "probability_weight": 0.25
+      },
+      "base": {
+        "penetration_pct": null,
+        "revenue_per_unit": null,
+        "tam_total": null,
+        "probability_weight": 0.50
+      },
+      "bull": {
+        "penetration_pct": null,
+        "revenue_per_unit": null,
+        "tam_total": null,
+        "probability_weight": 0.25
+      }
+    },
+    "probability_weighted_tam": null,
+    "currency": "USD | CNY | HKD",
+    "key_assumption": ""
+  },
+
+  "company_position": {
+    "innovation_layer": "owns_cost_curve | platform_at_convergence | first_mover_use_case | exposed_without_advantage | disrupted_incumbent",
+    "learning_rate_vs_peers": "fastest | above_average | average | below_average | unknown",
+    "market_share_scenarios": {
+      "bear_pct": null,
+      "base_pct": null,
+      "bull_pct": null
+    },
+    "capital_to_fcf_positive": null,
+    "capital_unit": "USD_M | CNY_M | already_positive",
+    "platform_convergence_exposure": []
+  },
+
+  "valuation": {
+    "five_year_value_base": null,
+    "discount_rate_pct": 10,
+    "implied_current_fair_value": null,
+    "current_market_cap": null,
+    "implied_upside_pct": null,
+    "reverse_dcf_implied_growth_pct": null,
+    "reverse_dcf_assessment": "conservative | reasonable | aggressive",
+    "currency": "USD | CNY | HKD"
+  },
+
+  "evidence_summary": {
+    "scurve_evidence_strength": "strong | medium | weak",
+    "cost_curve_evidence_strength": "strong | medium | weak",
+    "tam_evidence_strength": "strong | medium | weak",
+    "main_missing_proof": "",
+    "primary_sources_used": [],
+    "red_flags": []
+  },
+
+  "risk": {
+    "primary_failure_condition": "",
+    "adoption_stall_scenarios": [],
+    "capital_risk": "low | medium | high",
+    "regulatory_risk": "low | medium | high",
+    "technology_leapfrog_risk": "low | medium | high",
+    "government_policy_dependency": "low | medium | high"
+  },
+
+  "priority": "top | high | medium | low | pass",
+  "notes": ""
+}

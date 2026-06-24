@@ -1,0 +1,121 @@
+{
+  "scorecard_version": "1.0",
+  "framework": "Raoul Pal Global Liquidity Index (Public Approximation)",
+  "disclaimer": "This scorecard models Raoul Pal's publicly stated GLI framework using public central bank data. It does NOT replicate the proprietary GMI model.",
+  "assessment_date": "YYYY-MM-DD",
+  "analyst_notes": "",
+
+  "central_banks": {
+    "federal_reserve": {
+      "stance": "QE | Pause | QT",
+      "balance_sheet_trend": "expanding | flat | contracting",
+      "signal": "bullish | neutral | bearish",
+      "us_m2_yoy_pct": 0,
+      "m2_trend": "accelerating | stable | decelerating",
+      "source": "FRED WALCL, M2SL",
+      "data_freshness": "YYYY-MM-DD"
+    },
+    "european_central_bank": {
+      "stance": "expanding | pausing | tightening",
+      "balance_sheet_trend": "expanding | flat | contracting",
+      "signal": "bullish | neutral | bearish",
+      "eurozone_m2_yoy_pct": 0,
+      "source": "ECB SDW",
+      "data_freshness": "YYYY-MM-DD"
+    },
+    "bank_of_japan": {
+      "stance": "YCC maintained | YCC adjusted | tightening",
+      "ycc_risk": "low | medium | high",
+      "yen_carry_trade_status": "active | unwinding risk | unwinding",
+      "usdjpy": 0,
+      "signal": "bullish | neutral | bearish | carry unwind risk",
+      "source": "BOJ Statistics",
+      "data_freshness": "YYYY-MM-DD"
+    },
+    "pboc_china": {
+      "stance": "easing | neutral | tightening",
+      "rr_rate_cuts": false,
+      "china_m2_yoy_pct": 0,
+      "signal": "bullish | neutral | bearish",
+      "source": "PBOC Statistics",
+      "data_freshness": "YYYY-MM-DD"
+    }
+  },
+
+  "global_m2_usd": {
+    "approximate_trend": "rising | flat | falling",
+    "yoy_change_pct": 0,
+    "primary_driver": "USD strength / CB easing / CB tightening",
+    "confidence": "low | medium | high",
+    "note": "Public approximation; GMI uses proprietary weighting"
+  },
+
+  "credit_impulse": {
+    "us_credit_impulse": "positive rising | positive falling | negative | bottoming",
+    "china_credit_impulse": "positive rising | positive falling | negative | bottoming",
+    "global_direction": "positive rising | positive falling | negative | bottoming",
+    "leading_indicator_for_assets": "bullish in 6-12m | neutral | bearish in 6-12m",
+    "source": "BIS credit data, FRED",
+    "data_freshness": "YYYY-MM-DD"
+  },
+
+  "gli_composite": {
+    "cb_bullish_count": 0,
+    "cb_total_assessed": 4,
+    "gli_phase": "expansion | peak | contraction | trough",
+    "phase_confidence": "high | medium | low",
+    "primary_driver": "",
+    "gmi_approximation_disclaimer": true
+  },
+
+  "demographic_debt_context": {
+    "long_cycle_phase": "early monetization | mid monetization | late-stage forced debasement",
+    "cb_tightening_sustainability": "sustainable | limited | unlikely",
+    "structural_debasement_bias": "intact | uncertain | challenged",
+    "primary_demographic_risk": ""
+  },
+
+  "narrative_window": {
+    "dominant_narrative": "macro beta | technology adoption | regulatory event",
+    "cross_asset_correlation": "high (macro) | medium | low (fundamentals)",
+    "btc_narrative": "liquidity beta | digital gold | technology S-curve",
+    "most_applicable_skill": "raoul-skill | buffett-skill | cathie-skill | arthur-skill"
+  },
+
+  "dxy": {
+    "current_level": 0,
+    "trend": "rising (bearish for EM and crypto) | falling (bullish)",
+    "signal_for_risk_assets": "bearish | neutral | bullish"
+  },
+
+  "cross_asset_allocation": {
+    "btc_tactical": "strongly overweight | overweight | neutral | underweight | minimal",
+    "btc_structural": "core position — [maintain]",
+    "eth": "overweight | neutral | underweight",
+    "gold": "overweight | neutral | underweight",
+    "growth_equities": "overweight | neutral | underweight",
+    "long_duration_bonds": "overweight | neutral | underweight",
+    "usd": "overweight | neutral | underweight",
+    "em_equities": "overweight | neutral | underweight"
+  },
+
+  "cycle_reversal_conditions": [
+    "Reversal 1: [Specific condition that would change GLI phase]",
+    "Reversal 2: [Specific condition that would change the narrative]",
+    "Reversal 3: [BOJ-specific carry unwind scenario]"
+  ],
+
+  "gmi_data_gaps": {
+    "what_gmi_would_add": "",
+    "specific_price_targets_available": false,
+    "specific_timing_signals_available": false
+  },
+
+  "next_checkpoints": [
+    {
+      "event": "",
+      "date": "YYYY-MM-DD",
+      "action_if_triggered": ""
+    }
+  ]
+}

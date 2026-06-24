@@ -1,0 +1,113 @@
+{
+  "scorecard_version": "1.0",
+  "framework": "Arthur Hayes USD Liquidity + Crypto Positioning",
+  "assessment_date": "YYYY-MM-DD",
+  "analyst_notes": "",
+
+  "usd_liquidity": {
+    "fed_balance_sheet": {
+      "current_mode": "QE | Taper | Pause | QT",
+      "4_week_change_bn": 0,
+      "signal": "bullish | neutral | bearish",
+      "source": "federalreserve.gov/releases/h41/",
+      "data_freshness": "YYYY-MM-DD"
+    },
+    "tga_balance": {
+      "current_level_bn": 0,
+      "4_week_change_bn": 0,
+      "trend": "drawdown (bullish) | rebuilding (bearish) | stable",
+      "signal": "bullish | neutral | bearish",
+      "source": "fiscaldata.treasury.gov",
+      "data_freshness": "YYYY-MM-DD"
+    },
+    "reverse_repo_rrp": {
+      "current_level_bn": 0,
+      "4_week_change_bn": 0,
+      "trend": "declining (bullish) | rising (bearish) | stable",
+      "approaching_zero": false,
+      "signal": "bullish | neutral | bearish",
+      "source": "newyorkfed.org/markets",
+      "data_freshness": "YYYY-MM-DD"
+    },
+    "net_liquidity_score": {
+      "bullish_count": 0,
+      "out_of": 3,
+      "net_direction": "strongly positive | positive | neutral | negative | strongly negative",
+      "primary_driver": ""
+    }
+  },
+
+  "dxy": {
+    "current_level": 0,
+    "4_week_trend": "rising (bearish for crypto) | falling (bullish for crypto)",
+    "signal": "bullish | neutral | bearish"
+  },
+
+  "funding_rates": {
+    "btc_perp": {
+      "current_annualized_pct": 0,
+      "12m_historical_percentile": "",
+      "signal": "extreme longs | elevated longs | balanced | short bias | extreme shorts",
+      "source": "Coinglass / Glassnode",
+      "data_freshness": "YYYY-MM-DD"
+    },
+    "eth_perp": {
+      "current_annualized_pct": 0,
+      "signal": "extreme longs | elevated longs | balanced | short bias | extreme shorts"
+    },
+    "open_interest_trend": "rising | falling | stable",
+    "price_oi_configuration": "new longs | short squeeze | long liquidation | short buildup",
+    "cme_basis": {
+      "premium_discount_pct": 0,
+      "institutional_signal": "bullish | neutral | bearish"
+    }
+  },
+
+  "onchain_leverage": {
+    "stablecoin_borrow_rate_annualized_pct": 0,
+    "stablecoin_borrow_signal": "low (<5%) | normal (5-8%) | elevated (8-15%) | high (>15%)",
+    "btc_nearest_liquidation_wall_usd": 0,
+    "btc_current_price_usd": 0,
+    "liquidation_wall_distance_pct": 0,
+    "liquidation_risk": "safe (>15%) | elevated (5-15%) | dangerous (<5%)",
+    "aave_health_factor_1_5_pct_of_tvl": 0,
+    "exchange_leverage_ratio": 0,
+    "leverage_ratio_signal": "low (<0.15) | moderate (0.15-0.25) | high (>0.25)",
+    "stablecoin_peg_status": "all at par | minor stress | significant depeg",
+    "composite_leverage_risk": "low | moderate | high | dangerous",
+    "source": "DefiLlama / CryptoQuant / Glassnode",
+    "data_freshness": "YYYY-MM-DD"
+  },
+
+  "macro_events": {
+    "next_fomc": {
+      "date": "YYYY-MM-DD",
+      "expected_decision": "hold | 25bp cut | 50bp cut | 25bp hike",
+      "market_implied_probability": "",
+      "risk_to_crypto": "low | medium | high"
+    },
+    "next_qra": {
+      "date": "YYYY-MM-DD",
+      "expected_issuance_bn": 0,
+      "risk_to_crypto": "low | medium | high"
+    },
+    "debt_ceiling_status": "suspended | active | X-date approaching",
+    "upcoming_regulatory": {
+      "event": "",
+      "date": "YYYY-MM-DD",
+      "risk": "low | medium | high"
+    }
+  },
+
+  "composite_assessment": {
+    "risk_posture": "accumulate aggressively | add gradually | hold | reduce leverage | defensive",
+    "primary_supporting_condition": "",
+    "primary_risk_condition": "",
+    "downgrade_signals": [
+      "Signal 1: [observable condition with specific threshold]",
+      "Signal 2: [observable condition with specific threshold]"
+    ],
+    "next_checkpoint_date": "YYYY-MM-DD",
+    "next_checkpoint_data": ""
+  }
+}
