@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>长鑫存储 · 产业链深度研究 2026</title>
+<style>
+:root{--bg:#f6f8fa;--sf:#fff;--sf2:#f0f2f5;--bd:#d0d7de;--bd2:#e8ebef;--tx:#1f2328;--mu:#57606a;--mu2:#8c959f;--ac:#0969da;--gn:#1a7f37;--ye:#9a6700;--re:#cf222e;--pu:#8250df;--ac-l:#dbeafe;--gn-l:#dcfce7;--ye-l:#fef9c3;--re-l:#fee2e2;--pu-l:#f5f3ff;}
+*{box-sizing:border-box;margin:0;padding:0;}html,body{overflow-x:clip;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);font-size:14px;line-height:1.65;}
+.wm{position:fixed;inset:0;pointer-events:none;z-index:9999;}.wm svg{width:100%;height:100%;}
+.topbar{position:sticky;top:0;z-index:100;background:var(--sf);border-bottom:1px solid var(--bd);padding:0 16px;transform:translateZ(0);}
+.tbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:50px;}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;}
+.lb{background:linear-gradient(135deg,#1e40af,#3b82f6);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:5px;}
+.tabs-w{position:sticky;top:50px;z-index:90;background:var(--sf);border-bottom:1px solid var(--bd);transform:translateZ(0);}
+.tabs{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;padding:0 16px;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;padding:0 13px;height:40px;display:flex;align-items:center;font-size:12px;font-weight:500;color:var(--mu);border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;text-decoration:none;transition:color .15s;}
+.tab.active,.tab:hover{color:var(--ac);}.tab.active{border-bottom-color:var(--ac);}
+.main{max-width:1100px;margin:0 auto;padding:20px 16px 60px;}
+.hero{background:linear-gradient(135deg,#0f172a,#1e3a8a,#1e40af);border-radius:14px;padding:28px 24px;margin-bottom:20px;color:#fff;overflow:hidden;position:relative;}
+.hero::after{content:"";position:absolute;top:-50px;right:-50px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;}
+.hero-eye{display:inline-flex;background:rgba(255,255,255,.12);border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600;margin-bottom:12px;}
+.hero-t{font-size:24px;font-weight:800;line-height:1.2;margin-bottom:6px;}
+.hero-sub{font-size:12px;opacity:.8;margin-bottom:18px;line-height:1.6;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+.hero-tag{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:3px 10px;font-size:11px;font-weight:600;}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.hstat{background:rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;}
+.hv{font-size:18px;font-weight:800;line-height:1;margin-bottom:2px;}.hl{font-size:10px;opacity:.75;}
+.sec{margin-bottom:24px;}
+.st{font-size:15px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.st::before{content:"";display:block;width:3px;height:15px;background:var(--ac);border-radius:2px;flex-shrink:0;}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:14px;}
+.ct{font-size:10px;font-weight:700;color:var(--mu2);letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.sc-diagram{display:flex;flex-direction:column;}
+.sc-layer{border-radius:10px;padding:12px;margin-bottom:4px;}
+.sc-lbl{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;}
+.sc-items{display:flex;flex-wrap:wrap;gap:6px;}
+.sc-item{font-size:11px;font-weight:600;padding:3px 10px;border-radius:14px;}
+.sc-arr{text-align:center;font-size:13px;color:var(--mu2);padding:3px 0;}
+.ly0{background:#fef9c3;border:1px solid #fde047;}.ly0 .sc-lbl{color:#713f12;}.ly0 .sc-item{background:#fffde0;border:1px solid #fde047;color:#713f12;}
+.ly1{background:#dbeafe;border:1px solid #93c5fd;}.ly1 .sc-lbl{color:#1e40af;}.ly1 .sc-item{background:#eff6ff;border:1px solid #93c5fd;color:#1e40af;}
+.ly2{background:#dcfce7;border:1px solid #86efac;}.ly2 .sc-lbl{color:#14532d;}.ly2 .sc-item{background:#f0fdf4;border:1px solid #86efac;color:#14532d;}
+.ly3{background:linear-gradient(135deg,#f0fdf4,#dbeafe);border:2px solid #1e40af;}.ly3 .sc-lbl{color:#1e40af;}.ly3 .sc-item{background:#fff;border:1.5px solid #3b82f6;color:#1e40af;font-weight:700;}
+.ly4{background:#f5f3ff;border:1px solid #c4b5fd;}.ly4 .sc-lbl{color:#4c1d95;}.ly4 .sc-item{background:#faf5ff;border:1px solid #c4b5fd;color:#4c1d95;}
+.ly5{background:#fff7ed;border:1px solid #fdba74;}.ly5 .sc-lbl{color:#7c2d12;}.ly5 .sc-item{background:#fff7ed;border:1px solid #fdba74;color:#7c2d12;}
+.bn-list{display:flex;flex-direction:column;gap:10px;}
+.bn{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;border-left-width:4px;}
+.bn-r{border-left-color:#dc2626;}.bn-o{border-left-color:#d97706;}.bn-b{border-left-color:#2563eb;}
+.bnh{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;}
+.bnr{width:22px;height:22px;border-radius:50%;font-size:10px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cr{background:#dc2626;}.or{background:#d97706;}.bl{background:#2563eb;}
+.bnt{font-size:13px;font-weight:700;flex:1;}
+.bnbg{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;flex-shrink:0;}
+.bgr{background:#fee2e2;color:#dc2626;}.bgo{background:#fef3c7;color:#d97706;}.bgb{background:#dbeafe;color:#2563eb;}
+.bnb{font-size:12px;color:var(--mu);line-height:1.6;}
+.bne{font-size:11px;color:var(--mu2);margin-top:5px;padding-top:5px;border-top:1px solid var(--bd2);}
+.et{width:100%;border-collapse:collapse;font-size:12px;}
+.et th{background:var(--sf2);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;color:var(--mu2);letter-spacing:.4px;border-bottom:1px solid var(--bd);}
+.et td{padding:7px 10px;border-bottom:1px solid var(--bd2);vertical-align:top;line-height:1.5;}
+.et tr:last-child td{border-bottom:none;}.et tr:hover td{background:var(--sf2);}
+.it{width:100%;border-collapse:collapse;}
+.it tr{border-bottom:1px solid var(--bd2);}.it tr:last-child{border-bottom:none;}
+.it td{padding:7px 10px;font-size:12px;}.it td:first-child{color:var(--mu);width:38%;font-weight:500;}
+.tg{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;white-space:nowrap;}
+.tgn{background:var(--gn-l);color:var(--gn);}.tre{background:var(--re-l);color:var(--re);}.tye{background:var(--ye-l);color:var(--ye);}.tac{background:var(--ac-l);color:var(--ac);}
+.rmat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.rmc{border-radius:10px;padding:12px;}.rmt{font-size:11px;font-weight:800;margin-bottom:6px;}
+.rmd{font-size:11px;color:var(--mu);line-height:1.55;}.rmd div{margin-bottom:3px;}
+.bc{display:flex;flex-direction:column;gap:7px;}
+.br{display:flex;align-items:center;gap:8px;}
+.brl{font-size:11px;color:var(--mu);width:36px;flex-shrink:0;}
+.brt{flex:1;height:16px;background:var(--sf2);border-radius:3px;overflow:hidden;}
+.brf{height:100%;border-radius:3px;}
+.brv{font-size:11px;font-weight:600;width:44px;flex-shrink:0;}
+.drow{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.dd{width:8px;height:8px;border-radius:50%;flex-shrink:0;}.dl{font-size:11px;flex:1;}
+.dw{width:90px;height:6px;background:var(--sf2);border-radius:3px;overflow:hidden;flex-shrink:0;}
+.db{height:100%;border-radius:3px;}.dp{font-size:11px;font-weight:700;width:30px;text-align:right;flex-shrink:0;}
+.src{display:inline-flex;background:var(--sf2);border:1px solid var(--bd);border-radius:8px;padding:1px 6px;font-size:10px;color:var(--mu2);}
+.sdiv{height:1px;background:var(--bd);margin:20px 0;}
+.footer{text-align:center;font-size:10px;color:var(--mu2);padding:20px 16px;border-top:1px solid var(--bd);line-height:1.8;}
+
+.gloss-panel{width:100%;position:static;max-height:none;}.gloss-hd{border-radius:10px;}.gloss-body{border-radius:10px;border-top:1px solid var(--bd);margin-top:2px;}}
+
+
+/* Inline contextual tips */
+.sc-item.has-tip{cursor:pointer;position:relative;}
+.sc-item.has-tip:hover{opacity:.85;}
+.tip-icon{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(0,0,0,.12);font-size:9px;font-weight:800;margin-left:4px;vertical-align:middle;flex-shrink:0;line-height:1;}
+.sc-item.has-tip.active .tip-icon{background:rgba(0,0,0,.25);}
+.tip-zone{overflow:hidden;transition:max-height .25s ease,opacity .2s ease;max-height:0;opacity:0;}
+.tip-zone.open{max-height:500px;opacity:1;}
+.tip-card{display:none;margin-top:6px;background:rgba(255,255,255,.92);border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:8px 10px;font-size:11px;line-height:1.65;color:#1f2328;backdrop-filter:none;}
+.tip-card.vis{display:block;}
+.tip-card-term{font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px;opacity:.65;}
+.tip-card strong{font-weight:700;}
+.tip-card em{font-style:normal;display:inline-block;background:rgba(0,0,0,.06);border-radius:5px;padding:1px 5px;font-size:10px;margin-top:3px;}
+.tip-close{float:right;cursor:pointer;font-size:13px;opacity:.4;line-height:1;padding:0 2px;}
+.tip-close:hover{opacity:.8;}
+
+@media(min-width:640px){.hero-t{font-size:30px;}.hero-stats{grid-template-columns:repeat(4,1fr);}.hv{font-size:22px;}}
+@media(max-width:639px){.g2,.g3,.rmat{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wm" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"><defs><pattern id="wm" x="0" y="0" width="220" height="160" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><text x="10" y="60" font-family="-apple-system,sans-serif" font-size="17" font-weight="600" fill="#888" fill-opacity="0.08" letter-spacing="3">reese</text><text x="110" y="130" font-family="-apple-system,sans-serif" font-size="17" font-weight="600" fill="#888" fill-opacity="0.08" letter-spacing="3">reese</text></pattern></defs><rect width="100%" height="100%" fill="url(#wm)"/></svg></div>
+<header class="topbar"><div class="tbi"><div class="logo"><span class="lb">CXMT</span>长鑫存储 · 产业链深度研究</div><span style="font-size:11px;color:var(--mu2);">联网多维取证 · 2026年6月</span></div></header>
+<div class="tabs-w"><nav class="tabs" id="tabs">
+<a class="tab active" href="#chain">产业链层级</a>
+<a class="tab" href="#bn">卡点分析</a>
+<a class="tab" href="#inq">问询函</a>
+<a class="tab" href="#fin">财务质量</a>
+<a class="tab" href="#tdr">招投标</a>
+<a class="tab" href="#env">环评</a>
+<a class="tab" href="#pat">专利</a>
+<a class="tab" href="#crt">客户认证</a>
+<a class="tab" href="#risk">风险矩阵</a>
+</nav></div>
+<div class="main">
+
+<div class="hero">
+<div class="hero-eye">&#128300; 产业链深度研究 · 多维度联网取证</div>
+<div class="hero-t">长鑫存储（CXMT）<br>全产业链穿透分析</div>
+<div class="hero-sub">取证维度：招股书 · 上交所问询函 · 招投标公告 · 环评公示 · 专利数据库 · 客户认证动态 · 财务质量穿透</div>
+<div class="hero-tags">
+<span class="hero-tag">&#128308; HBM封装最卡（差距3-4年）</span>
+<span class="hero-tag">&#9888; 设备库存临界点</span>
+<span class="hero-tag">&#9889; 超级周期业绩爆发</span>
+<span class="hero-tag">&#127822; 苹果游说进行中</span>
+<span class="hero-tag">&#9878; 关联交易急速扩张</span>
+</div>
+<div class="hero-stats">
+<div class="hstat"><div class="hv">6,972</div><div class="hl">专利总量（2025年底）</div></div>
+<div class="hstat"><div class="hv">50-60亿$</div><div class="hl">2026年设备采购需求</div></div>
+<div class="hstat"><div class="hv">57亿元</div><div class="hl">兆易创新关联交易2026E</div></div>
+<div class="hstat"><div class="hv">18-24月</div><div class="hl">苹果供应链认证周期</div></div>
+</div>
+</div>
+
+<div class="sec" id="chain">
+<div class="st">产业链层级图</div>
+<div class="card">
+<div class="ct">CXMT全产业链 · 从上游到下游 · 位置与卡点标注</div>
+<div class="sc-diagram">
+<div class="sc-layer ly0"><div class="sc-lbl">&#9888; L0 · 最上游制裁卡点 — 禁运/受限设备（最高风险层）</div><div class="sc-items">
+<div class="sc-item has-tip" onclick="showTip(this,'l0-euv')">&#128308; EUV光刻机 ASML NXE — 全面禁运<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l0-duv')">&#128992; 高端DUV NXT:1980+ — 部分受限，已囤货<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l0-bis')">&#128308; 应用材料高端刻蚀/沉积 — BIS禁运<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l0-lam')">&#128308; Lam Research刻蚀机 — BIS禁运<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l0-kla')">&#128308; KLA高端量检测 — 禁运<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l0-hbm-eq')">&#128308; HBM先进封装设备 — 2024年12月新规<span class="tip-icon">i</span></div>
+</div>
+<div class="tip-zone" id="tz-l0">
+<div class="tip-card" id="tc-l0-euv"><span class="tip-close" onclick="closeTip('l0','l0-euv')">&#10005;</span><div class="tip-card-term">EUV 光刻机</div><strong>极紫外光刻（Extreme Ultraviolet）</strong>，波长仅13.5nm，是目前精度最高的光刻技术，用于7nm以下逻辑芯片及最先进存储芯片。全球<strong>只有ASML</strong>能制造，单台约1.5亿美元，对中国全面禁运。<em>存储芯片用EUV层数远少于逻辑芯片，长鑫当前16nm暂不依赖EUV，但17nm以下迭代后将成硬约束</em></div>
+<div class="tip-card" id="tc-l0-duv"><span class="tip-close" onclick="closeTip('l0','l0-duv')">&#10005;</span><div class="tip-card-term">DUV 光刻机</div><strong>深紫外光刻（Deep Ultraviolet）</strong>，波长193nm，通过"多重曝光"技术（1步拆3-4步）实现更精细制程。NXT:1980i 是长鑫当前可采购的最高端型号，满足15-16nm工艺需求。更高端型号已受出口管制，且全部需要从ASML进口。<em>多重曝光：原本1步的光刻，拆成多步叠加实现更精细图案</em></div>
+<div class="tip-card" id="tc-l0-bis"><span class="tip-close" onclick="closeTip('l0','l0-bis')">&#10005;</span><div class="tip-card-term">BIS 禁令 &amp; 刻蚀/沉积设备</div><strong>BIS（Bureau of Industry and Security）</strong>是美国商务部下设机构，通过"实体清单"限制高端技术出口。应用材料（AMAT）和泛林（Lam）合计占全球DRAM刻蚀+薄膜沉积设备市场60%+，均已对中国禁运。<strong>刻蚀机</strong>：用等离子体精确去除硅片材料，刻出电路图案，占DRAM设备价值量约40%。<em>长鑫只能靠历史囤货维持，预估2026-2027年部分机型库存见底</em></div>
+<div class="tip-card" id="tc-l0-lam"><span class="tip-close" onclick="closeTip('l0','l0-lam')">&#10005;</span><div class="tip-card-term">Lam Research（泛林集团）</div>美国半导体设备巨头，全球刻蚀和薄膜沉积设备第一大供应商，2022年起纳入BIS对华出口管制范围。与应用材料（AMAT）合计占DRAM刻蚀/沉积设备市场约60%。<strong>刻蚀机工作原理</strong>：用活性气体等离子体轰击硅片表面，精确"雕刻"出纳米级电路图案。<em>国产替代：中微公司（CCP刻蚀）、北方华创（ICP刻蚀）正在追赶</em></div>
+<div class="tip-card" id="tc-l0-kla"><span class="tip-close" onclick="closeTip('l0','l0-kla')">&#10005;</span><div class="tip-card-term">KLA 量检测设备</div>KLA是全球最大半导体<strong>量测与检测设备</strong>商，市占约50%。量检测设备用于检测每步工艺后的图案精度、薄膜厚度、缺陷密度，是保证良率的"质量关卡"。没有高精度量检测，制程迭代几乎不可能。KLA高端机型已被BIS禁运，是国产化难度最高的品类之一。<em>缺少量检测 = 做饭时没有温度计和秤，凭感觉很难保证一致性</em></div>
+<div class="tip-card" id="tc-l0-hbm-eq"><span class="tip-close" onclick="closeTip('l0','l0-hbm-eq')">&#10005;</span><div class="tip-card-term">HBM先进封装设备</div><strong>HBM（高带宽内存）</strong>需要特殊的先进封装工艺：先用<strong>TSV（硅通孔）</strong>在每颗DRAM芯片上打竖向通孔，再将多颗芯片垂直堆叠。核心设备包括TSV深孔刻蚀机、晶圆减薄机、混合键合设备。2024年12月BIS新规将这些设备全部纳入出口管制，直接打击长鑫HBM量产计划。<em>TSV类比：在多层楼之间打竖向电梯井，让各层直接互通</em></div>
+</div></div>
+<div class="sc-arr">&#8597; 国产替代：整体40-50% / 当前G4产线不足20% / 新平台目标超40%</div>
+<div class="sc-layer ly1"><div class="sc-lbl">&#128309; L1 · 国产设备层（受益扩产浪潮）</div><div class="sc-items">
+<div class="sc-item has-tip" onclick="showTip(this,'l1-bhc')">北方华创 刻蚀/PVD/CVD — 30-45%份额<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l1-zmgs')">中微公司 深孔刻蚀/HBM刻蚀<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l1-tj')">拓荆科技 PECVD/ALD/SACVD<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l1-cmp')">华海清科 CMP — 市占60%+<span class="tip-icon">i</span></div>
+<div class="sc-item">盛美上海 清洗设备</div>
+<div class="sc-item">精智达 测试设备 — 13.11亿大单</div>
+<div class="sc-item">正帆科技 GDS气体输送</div>
+</div>
+<div class="tip-zone" id="tz-l1">
+<div class="tip-card" id="tc-l1-bhc"><span class="tip-close" onclick="closeTip('l1','l1-bhc')">&#10005;</span><div class="tip-card-term">北方华创 · PVD / CVD</div>A股半导体设备龙头，覆盖刻蚀、薄膜沉积（PVD/CVD）、清洗、热处理全品类，是长鑫第一大设备供应商（约30-45%份额）。<strong>PVD（物理气相沉积）</strong>：靶材溅射在硅片表面镀金属薄膜，用于布线层。<strong>CVD（化学气相沉积）</strong>：通过化学反应将气态材料沉积成薄膜，最常用的镀膜方式，占薄膜设备约75%。<em>两者合计占DRAM产线设备价值量约25%</em></div>
+<div class="tip-card" id="tc-l1-zmgs"><span class="tip-close" onclick="closeTip('l1','l1-zmgs')">&#10005;</span><div class="tip-card-term">中微公司 · 深孔刻蚀</div><strong>深孔刻蚀（HAR Etch）</strong>：High Aspect Ratio，在极小面积内刻出很深的孔，深宽比可达90:1甚至更高——如同在一根铅笔横截面积大小的地方钻出80层楼深的孔。这是HBM的TSV和DRAM存储单元制造的核心难点。中微目前90:1机型良率仍在提升中，是国产替代最重要的突破口之一。<em>中微存储业务占自身营收约60%，深度绑定长鑫产线</em></div>
+<div class="tip-card" id="tc-l1-tj"><span class="tip-close" onclick="closeTip('l1','l1-tj')">&#10005;</span><div class="tip-card-term">拓荆科技 · ALD</div><strong>ALD（原子层沉积，Atomic Layer Deposition）</strong>：每次仅沉积1个原子层的超精密薄膜工艺，精度最高，用于高K介质层等关键薄膜。<strong>PECVD</strong>：等离子体增强CVD，常温下也能沉积，效率高。<strong>SACVD</strong>：亚常压CVD，填充能力强，用于间隙填充。拓荆科技国产薄膜沉积设备主力，存储订单占其营收80%+，与长鑫深度绑定。<em>ALD类比：用刷子每次只刷一个原子厚度的油漆，做到原子级均匀</em></div>
+<div class="tip-card" id="tc-l1-cmp"><span class="tip-close" onclick="closeTip('l1','l1-cmp')">&#10005;</span><div class="tip-card-term">华海清科 · CMP</div><strong>CMP（化学机械平坦化，Chemical Mechanical Planarization）</strong>：用含磨粒的化学液体（抛光液）配合抛光垫，将晶圆表面精确磨平，确保每层薄膜均匀，是多层结构制造不可或缺的工序。华海清科是国产CMP设备龙头，市占60%+，已深度进入长鑫产线。<em>类比：用砂纸把蛋糕表面磨平，再涂下一层奶油，才能层层精准叠加</em></div>
+</div></div>
+<div class="sc-arr">&#8595;</div>
+<div class="sc-layer ly2"><div class="sc-lbl">&#128994; L2 · 材料层（国产化较高，ArF光刻胶仍是短板）</div><div class="sc-items">
+<div class="sc-item">沪硅产业 12英寸硅片</div>
+<div class="sc-item has-tip" onclick="showTip(this,'l2-krf')">彤程新材 KrF光刻胶（部分国产）<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" style="background:#fef9c3;border-color:#fde047;color:#713f12;" onclick="showTip(this,'l2-arf')">&#9888; ArF光刻胶 — 仍依赖日本进口<span class="tip-icon" style="background:rgba(113,63,18,.2);">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l2-qj')">雅克科技 高K前驱体 — 市占60%+<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l2-cmpsl')">安集科技 CMP抛光液 — 17nm国产独家<span class="tip-icon">i</span></div>
+<div class="sc-item">广钢气体 大宗气体 — 15年长协</div>
+<div class="sc-item">江丰电子 高纯靶材</div>
+<div class="sc-item">鼎龙股份 CMP抛光垫</div>
+</div>
+<div class="tip-zone" id="tz-l2">
+<div class="tip-card" id="tc-l2-krf"><span class="tip-close" onclick="closeTip('l2','l2-krf')">&#10005;</span><div class="tip-card-term">KrF光刻胶</div>用于<strong>248nm KrF准分子激光器</strong>光刻工艺的特种化学品，主要用于28nm以上制程（如DRAM外围电路）。彤程新材是国产第一，已实现批量供货。相对更先进的ArF光刻胶，KrF工艺对光刻胶的要求略低，国产化进展更顺利。<em>光刻胶是"光敏涂料"，涂在硅片上经光照曝光、显影，保留或去除特定区域</em></div>
+<div class="tip-card" id="tc-l2-arf"><span class="tip-close" onclick="closeTip('l2','l2-arf')">&#10005;</span><div class="tip-card-term">ArF光刻胶（最大材料短板）</div>用于<strong>193nm ArF准分子激光器</strong>光刻工艺，主要用于16-28nm先进制程。全球市场由日本<strong>JSR、TOK（东京应化）、信越化学</strong>垄断，合计市占90%+。国产ArF光刻胶目前仍无法完全替代，是长鑫材料层最大短板。日本2023年起已对部分光刻胶实施出口管制审查，供应存在不确定性。<em>为何难国产：要求极高纯度（ppb级杂质）、极窄线宽分辨率、极低缺陷率，合成工艺极复杂</em></div>
+<div class="tip-card" id="tc-l2-qj"><span class="tip-close" onclick="closeTip('l2','l2-qj')">&#10005;</span><div class="tip-card-term">雅克科技 · 高K前驱体</div><strong>高K前驱体（High-K Precursor）</strong>：用于ALD工艺沉积高介电常数（High-K）绝缘层的化学原料，是DRAM存储单元"电容"绝缘层的核心材料。雅克科技在17nm DDR5/HBM关键工艺中，国产市占60%+，长鑫采购占比15-20%，已成为关键材料国产化的里程碑。<em>高K材料使电容层可以做得更薄（存储密度更高）同时漏电更少</em></div>
+<div class="tip-card" id="tc-l2-cmpsl"><span class="tip-close" onclick="closeTip('l2','l2-cmpsl')">&#10005;</span><div class="tip-card-term">安集科技 · CMP抛光液</div><strong>CMP抛光液（Slurry）</strong>：含纳米级磨粒的化学液体，配合抛光垫共同作用实现晶圆平坦化，不同工艺层需要不同配方的抛光液。安集科技在长鑫17nm DRAM节点实现<strong>国产独家供应</strong>，是供应链本土化的重要突破，长鑫订单占安集营收约35%。<em>抛光液配方就像专属"药水"，针对不同材料（铜/钨/氧化硅）需要完全不同的化学配方</em></div>
+</div></div>
+<div class="sc-arr">&#8595;</div>
+<div class="sc-layer ly3"><div class="sc-lbl">&#11088; L3 · 长鑫存储（IDM链主 · 本报告核心主体）</div><div class="sc-items">
+<div class="sc-item has-tip" onclick="showTip(this,'l3-idm')">DRAM设计<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l3-fab')">晶圆制造（合肥Fab1+2 · 北京Fab3）<span class="tip-icon">i</span></div>
+<div class="sc-item">封装测试</div>
+<div class="sc-item">模组设计</div>
+<div class="sc-item has-tip" style="background:#fef9c3;border-color:#fde047;color:#713f12;" onclick="showTip(this,'l3-hbm')">&#9888; HBM封装（与通富微电合作，尚未成熟）<span class="tip-icon" style="background:rgba(113,63,18,.2);">i</span></div>
+</div>
+<div class="tip-zone" id="tz-l3">
+<div class="tip-card" id="tc-l3-idm"><span class="tip-close" onclick="closeTip('l3','l3-idm')">&#10005;</span><div class="tip-card-term">IDM 模式 &amp; DRAM设计</div><strong>IDM（Integrated Device Manufacturer，一体化设备制造商）</strong>：自己设计+自己制造+自己封测的全流程模式，与"Fabless（只设计）"和"Foundry（只代工）"相对。长鑫采用IDM模式，自主研发DRAM存储阵列、外围电路、I/O接口等全部设计，产品线覆盖DDR4/DDR5、LPDDR4X/LPDDR5X及HBM。<em>优势：设计和制造深度协同优化；劣势：资本开支极重</em></div>
+<div class="tip-card" id="tc-l3-fab"><span class="tip-close" onclick="closeTip('l3','l3-fab')">&#10005;</span><div class="tip-card-term">晶圆厂（Fab）</div><strong>Fab（Fabrication Plant）</strong>：晶圆制造工厂，在洁净度极高（Class 1）的无尘室内完成硅片从裸片到芯片的数百道工序。长鑫拥有3座12英寸Fab：合肥Fab1（一期）、合肥Fab2（新桥/二期）、北京Fab3（亦庄）。每座月产能约8-10万片，2026年三厂合计目标28-30万片/月，全球DRAM产能占比约15%。<em>建一座12英寸Fab造价约100-200亿元人民币，扩产周期2-3年</em></div>
+<div class="tip-card" id="tc-l3-hbm"><span class="tip-close" onclick="closeTip('l3','l3-hbm')">&#10005;</span><div class="tip-card-term">HBM（高带宽内存）</div><strong>High Bandwidth Memory</strong>：将多层DRAM芯片通过TSV（硅通孔）垂直堆叠，带宽是普通DDR5的10倍以上，是AI加速卡（H100、华为昇腾）的核心内存。三巨头已量产HBM3E/HBM4，长鑫HBM2e仍在验证，HBM3预计<strong>2027年量产</strong>，差距约3-4年。<em>HBM单GB价格约为DDR5的5-8倍，是存储市场利润最丰厚的产品</em></div>
+</div></div>
+<div class="sc-arr">&#8595;</div>
+<div class="sc-layer ly4"><div class="sc-lbl">L4 · 封测合作 / 模组生态</div><div class="sc-items">
+<div class="sc-item has-tip" onclick="showTip(this,'l4-hbm')">通富微电 HBM封装（TC-NCF验证中）<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'l4-gj')">兆易创新 DRAM代工（2026年57亿关联采购）<span class="tip-icon">i</span></div>
+<div class="sc-item">国内模组厂商</div>
+</div>
+<div class="tip-zone" id="tz-l4">
+<div class="tip-card" id="tc-l4-hbm"><span class="tip-close" onclick="closeTip('l4','l4-hbm')">&#10005;</span><div class="tip-card-term">通富微电 · TC-NCF封装</div><strong>TC-NCF（Thermal Compression with Non-Conductive Film）</strong>：一种HBM堆叠封装工艺，通过加热加压将芯片层层粘合，同时填充非导电胶膜防止短路。通富微电是国内最大封测企业之一，正与长鑫合作验证HBM封装。其能力与三星内封差距较大，是HBM量产的后端瓶颈。<em>HBM封装良率极低（约25%估算），每堆叠8层DRAM，任意一层不良即整体报废</em></div>
+<div class="tip-card" id="tc-l4-gj"><span class="tip-close" onclick="closeTip('l4','l4-gj')">&#10005;</span><div class="tip-card-term">兆易创新关联交易</div>兆易创新（603986）是国内NOR Flash龙头，同时布局利基型DRAM，向长鑫委托代工。<strong>关联交易</strong>：董事长朱一明同时任两家公司董事长，兆易向长鑫的采购额从2023年7.64亿暴增至2026年预计57.11亿元（4年增长6.5倍）。此关联交易的定价独立性已被上交所列为第二轮问询的重点质疑。<em>关联交易风险：采购价格是否公允？是否存在利益输送？</em></div>
+</div></div>
+<div class="sc-arr">&#8595;</div>
+<div class="sc-layer ly5"><div class="sc-lbl">L5 · 下游客户（按认证程度排序）</div><div class="sc-items">
+<div class="sc-item">&#9989; 阿里云/字节/腾讯 — 大规模量产</div>
+<div class="sc-item">&#9989; 小米/OPPO/vivo/传音 — 批量供货</div>
+<div class="sc-item has-tip" onclick="showTip(this,'l5-hw')">&#9989; 华为 — 战略合作HBM<span class="tip-icon">i</span></div>
+<div class="sc-item">&#9989; 联想 — DDR5模组</div>
+<div class="sc-item">&#128260; HP/Dell/ASUS — 认证进行中</div>
+<div class="sc-item has-tip" onclick="showTip(this,'l5-aec')">&#128260; AEC-Q100车规 — 认证进行中<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" style="background:#fef9c3;border-color:#fde047;color:#713f12;" onclick="showTip(this,'l5-apple')">&#128260; 苹果 — 游说美国政府中（18-24月认证）<span class="tip-icon" style="background:rgba(113,63,18,.2);">i</span></div>
+<div class="sc-item has-tip" style="background:#fee2e2;border-color:#fca5a5;color:#991b1b;" onclick="showTip(this,'l5-intel')">&#10060; 英特尔/AMD服务器级 — 未认证<span class="tip-icon" style="background:rgba(153,27,27,.2);">i</span></div>
+</div>
+<div class="tip-zone" id="tz-l5">
+<div class="tip-card" id="tc-l5-hw"><span class="tip-close" onclick="closeTip('l5','l5-hw')">&#10005;</span><div class="tip-card-term">华为 · HBM战略合作</div>华为昇腾AI芯片（如910B/910C）需要大量HBM，因SK海力士等已停止供货，华为已与长鑫签订<strong>HBM长期战略采购协议</strong>，成为长鑫HBM的核心客户。长鑫HBM当前产能约5kwpm（月5000片晶圆），远低于华为需求，是最大供需缺口。<em>中国AI算力国产化的关键环节：华为芯片 × 长鑫HBM</em></div>
+<div class="tip-card" id="tc-l5-aec"><span class="tip-close" onclick="closeTip('l5','l5-aec')">&#10005;</span><div class="tip-card-term">AEC-Q100（车规认证）</div><strong>Automotive Electronics Council Q100</strong>，汽车半导体的行业可靠性标准，是进入车规供应链的必要条件。要求芯片在-40℃到150℃极端温度、振动、湿度等恶劣环境下稳定运行。认证周期通常<strong>12-18个月</strong>，费用高昂。完成认证后，长鑫可供货汽车主控芯片（如英伟达Orin、华为MDC）周边存储。<em>车规芯片的零缺陷率要求远高于消费级，一颗芯片问题可能导致召回</em></div>
+<div class="tip-card" id="tc-l5-apple"><span class="tip-close" onclick="closeTip('l5','l5-apple')">&#10005;</span><div class="tip-card-term">苹果采购长鑫 · 三大障碍</div>苹果正游说美国政府希望采购长鑫DRAM以缓解存储成本压力。但面临三大障碍：①<strong>政治</strong>：长鑫在美国国防部<strong>1260H"军事企业"名单</strong>，随时可能升级为实体清单；②<strong>技术</strong>：长鑫LPDDR5X与苹果零缺陷率/超低功耗要求之间仍有"一代工程距离"；③<strong>认证</strong>：即使白宫批准，样片到量产进入iPhone最快<strong>2027-2028年</strong>。分析师郭明錤指出，苹果真正目的是"对冲断供风险"而非降价。<em>美光已与苹果签含保证金条款的220亿美元长协，苹果要调整供应链面临违约成本</em></div>
+<div class="tip-card" id="tc-l5-intel"><span class="tip-close" onclick="closeTip('l5','l5-intel')">&#10005;</span><div class="tip-card-term">英特尔/AMD服务器级未认证</div><strong>DDR5 RDIMM</strong>（服务器内存）对信号完整性、热管理、可靠性要求极高，且需通过Intel/AMD官方QVL（合格供应商名单）认证。长鑫当前技术水平和政治环境双重制约，距进入Intel/AMD服务器级认证体系仍有较大差距。这限制了长鑫进入欧美数据中心市场。<em>当前长鑫服务器DRAM主要供给中国云厂商（阿里/字节/腾讯），以国内市场为主</em></div>
+</div></div>
+</div>
+</div>
+<div style="height:10px;"></div>
+<div class="g3">
+<div class="card" style="border-left:4px solid #dc2626;"><div class="ct">上游控制权</div><div style="font-size:12px;color:var(--mu);line-height:1.65;">三大核心工序设备（光刻/刻蚀/沉积）全球前三名供应商均受BIS出口管制，长鑫只能依赖<strong style="color:var(--tx)">历史囤积库存</strong>，预估2026-2027年部分关键机型库存见底。</div></div>
+<div class="card" style="border-left:4px solid #059669;"><div class="ct">国产替代进展</div><div style="font-size:12px;color:var(--mu);line-height:1.65;">整体产线国产设备<strong>40-50%</strong>（含历代）；当前G4产线<strong style="color:var(--re)">不足20%</strong>；新平台目标<strong style="color:var(--gn)">超40%</strong>。</div></div>
+<div class="card" style="border-left:4px solid #d97706;"><div class="ct">下游议价能力</div><div style="font-size:12px;color:var(--mu);line-height:1.65;">超级周期下议价权强。<strong>客户集中度风险高</strong>，核心客户均为国内企业，全球顶级客户（苹果/Intel服务器）认证仍缺失。</div></div>
+</div>
+</div>
+</div>
+<div class="sdiv"></div>
+
+<div class="sec" id="inq">
+<div class="st">问询函 / 公告取证</div>
+<div class="card"><div class="ct">上交所三轮问询核心关注点（原始文件可查）</div>
+<div style="overflow-x:auto;"><table class="et">
+<thead><tr><th>轮次</th><th>时间</th><th>核心问题</th><th>监管关注</th><th>状态</th></tr></thead>
+<tbody>
+<tr><td><strong>第一轮问询</strong><br/><span style="font-size:10px;color:var(--mu2)">上证审阅〔2025〕2号</span></td><td>2025-11-05</td><td>控制权认定：无实控人架构合规性；清辉集电合伙人一致行动关系；合肥国资能否实质控制发行人</td><td><span class="tg tye">控制权</span></td><td><span class="tg tgn">已回复</span></td></tr>
+<tr><td><strong>第二轮问询</strong><br/><span style="font-size:10px;color:var(--mu2)">上证审阅〔2025〕3号</span></td><td>2025-11-19</td><td>关联交易定价公允性：兆易创新采购暴增57亿是否构成利益输送；朱一明双重任职独立性</td><td><span class="tg tye">关联交易</span></td><td><span class="tg tgn">已回复</span></td></tr>
+<tr><td><strong>审核中心意见落实函</strong></td><td>2026-05-18</td><td>要求充分披露"业绩不可持续风险"：AI需求变化、行业周期波动、2026年H1业绩大幅增长不可持续</td><td><span class="tg tre">可持续性</span></td><td><span class="tg tgn">过会前落实</span></td></tr>
+<tr><td><strong>证监会注册批复</strong></td><td>2026-06-12</td><td>同意注册，严格按招股书实施发行，12个月有效期内</td><td>—</td><td><span class="tg tgn">&#9989; 注册生效</span></td></tr>
+</tbody></table></div>
+</div>
+<div style="height:10px;"></div>
+<div class="card" style="border-left:4px solid var(--ye);"><div class="ct">问询函披露的关键结构性风险</div>
+<div style="font-size:12px;color:var(--mu);line-height:1.8;">
+<div style="margin-bottom:8px;">&#128204; <strong style="color:var(--tx)">少数股东权益差异</strong>：合并净利润330亿（Q1'26）vs 归母净利润248亿，差额82亿（约25%）归属少数股东。原因：长鑫科技对子公司持股不足100%，实际经济权益低于合并口径。监管要求充分披露此勾稽关系。</div>
+<div style="margin-bottom:8px;">&#128204; <strong style="color:var(--tx)">关联交易急速扩张</strong>：兆易创新关联采购从2023年7.64亿升至2026年预计57.11亿（4年增长6.5倍），朱一明双重任职，独立性被重点质疑。</div>
+<div>&#128204; <strong style="color:var(--tx)">IPO前夕减持</strong>：朱一明在过会前减持套现超20亿元，引发市场关注。</div>
+</div>
+</div>
+</div>
+<div class="sdiv"></div>
+
+<div class="sec" id="fin">
+<div class="st">财务质量深度分析</div>
+<div class="g2">
+<div class="card"><div class="ct">少数股东权益结构拆解</div>
+<div style="overflow-x:auto;"><table class="et">
+<thead><tr><th>指标</th><th style="text-align:right">Q1 2026</th><th style="text-align:right">2025全年</th></tr></thead>
+<tbody>
+<tr><td>合并净利润</td><td style="text-align:right;font-weight:700;color:var(--gn)">330.12亿元</td><td style="text-align:right;color:var(--gn)">约225亿元</td></tr>
+<tr><td>归母净利润</td><td style="text-align:right;font-weight:700">247.62亿元</td><td style="text-align:right">18.75亿元</td></tr>
+<tr><td>少数股东损益</td><td style="text-align:right;color:var(--ye);font-weight:700">约82.5亿元</td><td style="text-align:right;color:var(--mu)">约206亿（历史亏损期）</td></tr>
+<tr><td>归母/合并比率</td><td style="text-align:right;font-weight:700;color:var(--ac)">75%</td><td style="text-align:right">约8%</td></tr>
+<tr><td>扣非净利润</td><td style="text-align:right">263.41亿元</td><td style="text-align:right">—</td></tr>
+<tr><td>2026E H1归母净利</td><td colspan="2" style="text-align:right;font-weight:700;color:var(--gn)">500-570亿元（同比+2244%至+2544%）</td></tr>
+</tbody></table></div>
+<div style="font-size:11px;color:var(--mu2);margin-top:6px;">&#9888; 2025全年合并盈利约225亿，归母仅18.75亿（8%），历史亏损由子公司承担；Q1'26结构改善（75%归母），但超级周期可持续性是最大不确定性</div>
+</div>
+<div class="card"><div class="ct">兆易创新关联采购扩张</div>
+<div class="bc" style="margin-top:4px;">
+<div class="br"><div class="brl">2023</div><div class="brt"><div class="brf" style="width:13%;background:#94a3b8;"></div></div><div class="brv">7.64亿</div></div>
+<div class="br"><div class="brl">2024</div><div class="brt"><div class="brf" style="width:15%;background:#64748b;"></div></div><div class="brv">约9亿</div></div>
+<div class="br"><div class="brl">2025</div><div class="brt"><div class="brf" style="width:21%;background:#3b82f6;"></div></div><div class="brv">11.82亿</div></div>
+<div class="br"><div class="brl" style="font-weight:700;color:var(--re)">2026E</div><div class="brt"><div class="brf" style="width:100%;background:linear-gradient(90deg,#dc2626,#ef4444);"></div></div><div class="brv" style="color:var(--re);font-weight:700">57.11亿</div></div>
+</div>
+<div style="font-size:11px;color:var(--mu2);margin-top:8px;">4年增长6.5倍；2026年同比+383%；上交所第二轮问询重点。朱一明同时任两公司董事长。</div>
+</div>
+</div>
+<div style="height:10px;"></div>
+<div class="card"><div class="ct">财务质量综合评分</div>
+<div style="overflow-x:auto;"><table class="et">
+<thead><tr><th>维度</th><th>评级</th><th>核心依据</th><th>主要隐患</th></tr></thead>
+<tbody>
+<tr><td>营收含金量</td><td><span class="tg tgn">优</span></td><td>Q1经营现金流与利润同步，收现比正常</td><td>价格高度依赖超级周期供需失衡</td></tr>
+<tr><td>利润结构</td><td><span class="tg tye">中等</span></td><td>扣非263亿 vs 归母247亿，非经常损益正常</td><td>25%少数股东差额；子公司结构复杂</td></tr>
+<tr><td>关联交易</td><td><span class="tg tre">风险</span></td><td>兆易创新2026年57亿，4年增长6.5倍</td><td>朱一明双职；独立性存疑；监管重点问询</td></tr>
+<tr><td>成本竞争力</td><td><span class="tg tre">弱</span></td><td>毛利率37.8%(2025)逼近三巨头</td><td>DDR5单比特成本高于三巨头30%+，依赖涨价</td></tr>
+<tr><td>折旧压力</td><td><span class="tg tye">关注</span></td><td>现有设备折旧基本消化，当前EBITDA极高</td><td>2027-2028新设备投产后折旧压力重回</td></tr>
+</tbody></table></div>
+</div>
+</div>
+<div class="sdiv"></div>
+
+<div class="sec" id="tdr">
+<div class="st">招投标取证</div>
+<div class="g2">
+<div class="card"><div class="ct">2026年核心招标事件记录</div>
+<div style="overflow-x:auto;"><table class="et">
+<thead><tr><th>项目</th><th>时间</th><th>金额</th><th>来源</th></tr></thead>
+<tbody>
+<tr><td>新一轮扩产设备招标（5-6万片/月）</td><td>2026年Q2</td><td>50-60亿美元/年</td><td><span class="src">36氪/经观报</span></td></tr>
+<tr><td>精智达存储测试设备大单</td><td>2026年</td><td>13.11亿元</td><td><span class="src">新浪财经</span></td></tr>
+<tr><td>IPO募投设备购置安装费</td><td>2026-2028</td><td>220.66亿元</td><td><span class="src">招股书募投</span></td></tr>
+<tr><td>广钢气体15年长期供气协议</td><td>已签</td><td>占气体采购40-45%</td><td><span class="src">新浪财经</span></td></tr>
+</tbody></table></div>
+</div>
+<div class="card"><div class="ct">设备价值量分布（DRAM产线）</div>
+<div style="margin-top:4px;">
+<div class="drow"><div class="dd" style="background:#dc2626;"></div><div class="dl">刻蚀设备</div><div class="dw"><div class="db" style="width:40%;background:#dc2626;"></div></div><div class="dp">40%</div></div>
+<div class="drow"><div class="dd" style="background:#3b82f6;"></div><div class="dl">薄膜沉积</div><div class="dw"><div class="db" style="width:25%;background:#3b82f6;"></div></div><div class="dp">25%</div></div>
+<div class="drow"><div class="dd" style="background:#7c3aed;"></div><div class="dl">光刻设备</div><div class="dw"><div class="db" style="width:22%;background:#7c3aed;"></div></div><div class="dp">22%</div></div>
+<div class="drow"><div class="dd" style="background:#059669;"></div><div class="dl">量检测</div><div class="dw"><div class="db" style="width:13%;background:#059669;"></div></div><div class="dp">13%</div></div>
+</div>
+<div style="font-size:11px;color:var(--mu2);margin-top:6px;">刻蚀+沉积合计65%均受BIS限制；北方华创拿下约45%刻蚀/薄膜新增订单</div>
+</div>
+</div>
+</div>
+<div class="sdiv"></div>
+
+<div class="sec" id="env">
+<div class="st">环评 / 能评取证</div>
+<div class="card"><div class="ct">已公示/在审的环评项目</div>
+<div style="overflow-x:auto;"><table class="et">
+<thead><tr><th>项目名称</th><th>主体</th><th>地点</th><th>类别</th><th>状态</th><th>时间</th></tr></thead>
+<tbody>
+<tr><td>DRAM存储器技术升级暨产能扩充项目</td><td>长鑫集电（北京）</td><td>北京亦庄</td><td>环评报告表</td><td><span class="tg tgn">已公示</span></td><td>2025年9月</td></tr>
+<tr><td>量产线技术升级改造（IPO募投）</td><td>长鑫存储（合肥）</td><td>合肥</td><td>环评+能评（预期）</td><td><span class="tg tye">进行中</span></td><td>2026年</td></tr>
+<tr><td>DRAM存储器技术升级（IPO募投）</td><td>长鑫存储（合肥）</td><td>合肥</td><td>能评</td><td><span class="tg tye">进行中</span></td><td>2026年</td></tr>
+</tbody></table></div>
+<div style="font-size:11px;color:var(--mu2);margin-top:6px;">来源：ceedi.com.cn · 合肥市生态环境局。合肥国资主导，政府主动推进审批，无重大障碍迹象。废水（含HF/有机溶剂）和废气处理标准持续趋严，需持续资本投入。</div>
+</div>
+</div>
+<div class="sdiv"></div>
+
+<div class="sec" id="pat">
+<div class="st">专利图谱取证</div>
+<div class="g2">
+<div class="card"><div class="ct">专利数量与质量指标</div>
+<table class="it">
+<tr><td>专利总量</td><td><strong>6,972件</strong>（截至2025年底）</td></tr>
+<tr><td>国内专利</td><td>3,929件（含发明专利3,165件）</td></tr>
+<tr><td>境外专利</td><td>3,043件</td></tr>
+<tr><td>2023年PCT公开量</td><td>全球第22位</td></tr>
+<tr><td>2024年美国专利授权</td><td>731项，全球第42位（中国第4）</td></tr>
+<tr><td>核心技术收入占比</td><td>连续三年约100%（IDM全产业链）</td></tr>
+</table>
+</div>
+<div class="card"><div class="ct">技术起源与风险</div>
+<div style="font-size:12px;color:var(--mu);line-height:1.7;">
+<div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--bd2)"><strong style="color:var(--tx)">起点：奇梦达遗产（2019年）</strong><br/>通过Polaris Innovations购入/许可约7000项奇梦达DRAM底层专利；获取2.8TB技术文档；继承BWL架构，从46nm推进至10nm级。</div>
+<div style="margin-bottom:8px;"><strong style="color:var(--tx)">演进：自主迭代超6000项新专利</strong><br/>覆盖17nm制程、DDR5、LPDDR5X等。<strong>人才才是真正壁垒</strong>，文档只是启动。</div>
+<div><span class="tg tre">风险</span> 奇梦达专利逐步到期 · NPE对下游客户"专利敲打" · EAR合规出口审查持续</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sdiv"></div>
+
+<div class="sec" id="crt">
+<div class="st">客户认证状态</div>
+<div class="card"><div class="ct">各类客户认证进度矩阵（含证据来源）</div>
+<div style="overflow-x:auto;"><table class="et">
+<thead><tr><th>客户/市场</th><th>认证状态</th><th>产品</th><th>关键制约</th><th>来源</th></tr></thead>
+<tbody>
+<tr><td><strong>阿里云/字节/腾讯</strong></td><td><span class="tg tgn">&#9989; 批量量产</span></td><td>DDR4/DDR5服务器</td><td>无，国产化率已超30%</td><td><span class="src">招股书</span></td></tr>
+<tr><td><strong>小米/OPPO/vivo/传音</strong></td><td><span class="tg tgn">&#9989; 批量量产</span></td><td>LPDDR5/5X移动端</td><td>无，进入旗舰供应链</td><td><span class="src">招股书</span></td></tr>
+<tr><td><strong>华为</strong></td><td><span class="tg tgn">&#9989; 战略合作</span></td><td>DDR5 + HBM长单</td><td>HBM供货量受限（良率低）</td><td><span class="src">SemiAnalysis</span></td></tr>
+<tr><td><strong>联想</strong></td><td><span class="tg tgn">&#9989; 供货中</span></td><td>DDR5模组</td><td>无</td><td><span class="src">招股书</span></td></tr>
+<tr><td><strong>HP/Dell/ASUS</strong></td><td><span class="tg tye">&#128260; 认证中</span></td><td>DDR5/LPDDR5X</td><td>品控标准；供应链合规</td><td><span class="src">东方财富/凤凰网</span></td></tr>
+<tr><td><strong>AEC-Q100车规</strong></td><td><span class="tg tye">&#128260; 认证中</span></td><td>LPDDR5/DDR4车规版</td><td>AEC-Q100认证周期12-18月</td><td><span class="src">凤凰网</span></td></tr>
+<tr><td><strong>苹果</strong></td><td><span class="tg tre">&#128260; 政治游说中</span></td><td>LPDDR5X（Mac/iPad）</td><td>①1260H清单随时升级实体清单 ②"一代工程距离" ③认证周期18-24月 ④美光锁定协议</td><td><span class="src">FT · 郭明錤</span></td></tr>
+<tr><td><strong>英特尔/AMD服务器级</strong></td><td><span class="tg tre">&#10060; 未启动</span></td><td>DDR5 RDIMM服务器级</td><td>技术规格差距；政治障碍</td><td><span class="src">SemiAnalysis</span></td></tr>
+</tbody></table></div>
+</div>
+</div>
+<div class="sdiv"></div>
+
+<div class="sec" id="risk">
+<div class="st">综合风险矩阵</div>
+<div class="rmat">
+<div class="rmc" style="background:#fee2e2;border:1px solid #fca5a5;"><div class="rmt" style="color:#dc2626;">&#128308; 极高风险（近期）</div><div class="rmd"><div>• 美系设备库存耗尽时序不确定</div><div>• HBM量产工艺良率不达标</div><div>• 实体清单风险悬而未决</div><div>• 苹果游说触发政治反弹</div></div></div>
+<div class="rmc" style="background:#fef3c7;border:1px solid #fcd34d;"><div class="rmt" style="color:#d97706;">&#128992; 高风险（中期）</div><div class="rmd"><div>• 2028年存储周期反转</div><div>• DDR5单比特成本高于三巨头30%+</div><div>• 兆易创新关联交易独立性</div><div>• 全球顶级客户认证缺失</div><div>• 朱一明IPO前夕减持信号</div></div></div>
+<div class="rmc" style="background:#dbeafe;border:1px solid #93c5fd;"><div class="rmt" style="color:#2563eb;">&#128309; 中等风险（长期）</div><div class="rmd"><div>• NPE专利诉讼对下游客户</div><div>• ArF光刻胶依赖日本进口</div><div>• 奇梦达专利逐步到期</div><div>• 少数股东权益结构复杂</div></div></div>
+<div class="rmc" style="background:#dcfce7;border:1px solid #86efac;"><div class="rmt" style="color:#059669;">&#128994; 正面催化（近期）</div><div class="rmd"><div>• AI超级周期预计持续至2027年</div><div>• HBM禁运推动国内需求</div><div>• 科创板IPO流动性溢价</div></div></div>
+<div class="rmc" style="background:#f0fdf4;border:1px solid #86efac;"><div class="rmt" style="color:#059669;">&#128994; 正面催化（中期）</div><div class="rmd"><div>• 新平台国产化率目标40%</div><div>• 17nm工艺良率提升降本</div><div>• 苹果游说成功则估值重估</div><div>• 2026年底产能有望超越美光</div></div></div>
+<div class="rmc" style="background:#faf5ff;border:1px solid #c4b5fd;"><div class="rmt" style="color:#8250df;">&#128995; 结构性机遇（战略）</div><div class="rmd"><div>• 链主效应带动国产产业链成熟</div><div>• 全球DRAM格局深层重塑</div><div>• HBM突破后价值链跃升</div></div></div>
+</div>
+<div style="height:12px;"></div>
+<div class="card" style="background:linear-gradient(135deg,#eff6ff,#f0fdf4);border-color:#bfdbfe;"><div class="ct">排序理由与核心判断</div>
+<div style="font-size:12px;color:var(--tx);line-height:1.8;">
+<p style="margin-bottom:8px;"><strong>卡点排序依据</strong>：综合&#9312;技术成熟度差距 &#9313;设备/材料可替代性 &#9314;时间紧迫性 &#9315;对业绩和市值的直接冲击，四维度加权排序。</p>
+<p style="margin-bottom:8px;"><strong>HBM排第一</strong>：差距最大（3-4年）、战略价值最高（AI价值链顶端）、设备新被禁、工艺复杂，是从"全球第四"到"真正挑战三巨头"的决定性战役。</p>
+<p style="margin-bottom:8px;"><strong>光刻机排第二</strong>：EUV无解，DUV库存有时限，是技术路线升级的硬约束，窗口正在收窄，但当前16nm尚可维持。</p>
+<p style="margin-bottom:8px;"><strong>刻蚀/沉积排第三</strong>：体量最大（65%设备投入），国产替代进度与扩产速度存在错配，量产连续性风险最集中。</p>
+<p style="color:var(--mu2);font-size:11px;">&#9888; 本报告仅供研究参考，不构成任何投资建议。数据截至2026年6月联网查询时间。</p>
+</div>
+</div>
+</div>
+
+</div>
+<div class="footer">
+长鑫存储（CXMT）产业链深度研究 · 联网多维取证版<br/>
+取证来源：上交所问询函原文 · 招股说明书（2026年5月17日版） · 新浪财经 · 经济观察报 · 36氪 · SemiAnalysis · 凤凰网 · 英国《金融时报》 · ceedi.com.cn · 郭明錤天风国际<br/>
+2026年6月 · 仅供研究参考，不构成投资建议
+</div>
+<script>
+
+
+// Tip show/hide
+var activeTips = {};
+function showTip(itemEl, tipId) {
+  var layer = tipId.split('-').slice(0,1).join('-');  // e.g. "l0"
+  // But tipId is like "l0-euv", layer key = "l0"
+  var layerKey = tipId.match(/^(l\d+)/)[1];
+  var zone = document.getElementById('tz-' + layerKey);
+  var card = document.getElementById('tc-' + tipId);
+  if (!zone || !card) return;
+  // If same tip already open, close it
+  if (activeTips[layerKey] === tipId && card.classList.contains('vis')) {
+    card.classList.remove('vis');
+    itemEl.classList.remove('active');
+    activeTips[layerKey] = null;
+    if (!zone.querySelector('.tip-card.vis')) zone.classList.remove('open');
+    return;
+  }
+  // Hide previous active tip in same layer
+  if (activeTips[layerKey]) {
+    var prev = document.getElementById('tc-' + activeTips[layerKey]);
+    if (prev) prev.classList.remove('vis');
+    var prevItems = zone.closest('.sc-layer').querySelectorAll('.sc-item.has-tip.active');
+    prevItems.forEach(function(i){i.classList.remove('active');});
+  }
+  // Show new tip
+  card.classList.add('vis');
+  zone.classList.add('open');
+  itemEl.classList.add('active');
+  activeTips[layerKey] = tipId;
+  // Scroll tip into view
+  setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'nearest'});}, 50);
+}
+function closeTip(layerKey, tipId) {
+  var zone = document.getElementById('tz-' + layerKey);
+  var card = document.getElementById('tc-' + tipId);
+  if (card) card.classList.remove('vis');
+  if (zone) {
+    var stillOpen = zone.querySelector('.tip-card.vis');
+    if (!stillOpen) zone.classList.remove('open');
+  }
+  activeTips[layerKey] = null;
+  var layer = zone ? zone.closest('.sc-layer') : null;
+  if (layer) {
+    layer.querySelectorAll('.sc-item.has-tip.active').forEach(function(i){i.classList.remove('active');});
+  }
+}
+(function(){var tabs=document.querySelectorAll(".tab"),nav=document.getElementById("tabs");var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var id=e.target.id;tabs.forEach(function(t){t.classList.remove("active");});var at=document.querySelector(".tab[href=\"#"+id+"\"]");if(at){at.classList.add("active");requestAnimationFrame(function(){var tr=at.getBoundingClientRect(),nr=nav.getBoundingClientRect();nav.scrollLeft+=tr.left-nr.left-(nr.width/2)+(tr.width/2);});}}});},{rootMargin:"-20% 0px -60% 0px"});
+document.querySelectorAll(".sec").forEach(function(s){io.observe(s);});
+tabs.forEach(function(t){t.addEventListener("click",function(e){e.preventDefault();var tgt=document.querySelector(t.getAttribute("href"));if(tgt)tgt.scrollIntoView({behavior:"smooth"});});});
+})();
+</script>
+</body>
+</html>
