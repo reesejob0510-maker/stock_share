@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>BlackBerry (BB) Deep Research · reese</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#f6f8fa;--sf:#fff;--sf2:#f0f4fa;--bd:#d0d7de;--bd2:#e4e9f0;--tx:#1f2328;--mu:#57606a;--mu2:#8c959f;--ac:#0969da;--gn:#1a7f37;--ye:#9a6700;--re:#cf222e;}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;}
+a{color:var(--ac);}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid var(--bd);transform:translateZ(0);}
+.topbar-inner{max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:50px;}
+.logo{font-size:13px;font-weight:700;}
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{white-space:nowrap;padding:0 13px;height:50px;display:flex;align-items:center;font-size:12px;font-weight:500;color:var(--mu);border-bottom:2px solid transparent;cursor:pointer;}
+.tab:hover,.tab.active{color:var(--ac);border-bottom-color:var(--ac);}
+.main{max-width:1040px;margin:0 auto;padding:0 20px 80px;}
+.hero{background:linear-gradient(135deg,#0a0f1e 0%,#0d2137 55%,#0a1a30 100%);color:#fff;border-radius:0 0 16px 16px;padding:40px 28px 32px;margin-bottom:28px;position:relative;overflow:hidden;}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;}
+.hero-badge{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:3px 10px;color:rgba(255,255,255,.7);}
+.hero-verdict{background:rgba(59,130,246,.2);border:1px solid rgba(96,165,250,.4);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#93c5fd;}
+.hero-t{font-size:30px;font-weight:800;line-height:1.2;margin-bottom:8px;}
+.hero-t em{font-style:normal;color:#60a5fa;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.6);max-width:600px;line-height:1.6;margin-bottom:20px;}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap;}
+.hs{border-left:2px solid rgba(255,255,255,.2);padding-left:12px;}
+.hs-v{font-size:22px;font-weight:800;color:#fff;line-height:1;}
+.hs-l{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;}
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px;}
+.htag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:12px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.12);}
+.htag.gn{background:rgba(26,127,55,.2);border-color:rgba(74,222,128,.3);color:#4ade80;}
+.htag.ye{background:rgba(154,103,0,.2);border-color:rgba(250,204,21,.3);color:#fde047;}
+.htag.red{background:rgba(207,34,46,.2);border-color:rgba(207,34,46,.4);color:#fca5a5;}
+.sec{margin-bottom:32px;}
+.sec-t{font-size:18px;font-weight:700;border-left:3px solid var(--ac);padding-left:10px;margin-bottom:16px;}
+.sdiv{height:1px;background:var(--bd2);margin:28px 0;}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:18px;}
+.ct{font-size:12px;font-weight:700;color:var(--mu);margin-bottom:12px;letter-spacing:.4px;text-transform:uppercase;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:680px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+.stat-block{text-align:center;padding:14px 10px;}
+.stat-v{font-size:26px;font-weight:800;}
+.stat-v.gn{color:var(--gn);}.stat-v.re{color:var(--re);}.stat-v.ac{color:var(--ac);}.stat-v.ye{color:var(--ye);}
+.stat-l{font-size:11px;color:var(--mu);margin-top:4px;}
+.stat-d{font-size:11px;color:var(--mu2);margin-top:2px;}
+.sc-diagram{display:flex;flex-direction:column;gap:6px;}
+.sc-layer{border-radius:8px;border:1px solid var(--bd);overflow:hidden;}
+.sc-lbl{font-size:11px;font-weight:700;padding:5px 10px;letter-spacing:.4px;}
+.sc-items{display:flex;flex-wrap:wrap;gap:5px;padding:8px 10px;}
+.sc-item{font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid;}
+.ly0{border-color:#fca5a5;}.ly0 .sc-lbl{background:#fee2e2;color:#991b1b;}.ly0 .sc-item{background:#fff5f5;border-color:#fca5a5;color:#9f1239;}
+.ly-s{border-color:#bfdbfe;}.ly-s .sc-lbl{background:#eff6ff;color:#1d4ed8;font-weight:800;}.ly-s .sc-item{background:#eff6ff;border-color:#bfdbfe;color:#1e40af;}
+.ly2{border-color:#d1fae5;}.ly2 .sc-lbl{background:#d1fae5;color:#065f46;}.ly2 .sc-item{background:#f0fdf4;border-color:#86efac;color:#166534;}
+.ly3{border-color:#fef9c3;}.ly3 .sc-lbl{background:#fef9c3;color:#713f12;}.ly3 .sc-item{background:#fffbeb;border-color:#fde68a;color:#92400e;}
+.ly4{border-color:#e5e7eb;}.ly4 .sc-lbl{background:#f9fafb;color:#374151;}.ly4 .sc-item{background:#f9fafb;border-color:#e5e7eb;color:#374151;}
+.sc-arr{text-align:center;font-size:14px;color:var(--mu2);padding:2px 0;}
+.sc-hi{background:#fef9c3 !important;border-color:#fde047 !important;color:#713f12 !important;}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;}
+.tbl th{background:var(--sf2);font-weight:700;padding:8px 10px;text-align:left;border-bottom:2px solid var(--bd);font-size:11px;color:var(--mu);}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--bd2);vertical-align:top;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl .hl td{background:#eff6ff;}
+.sb{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.sb-l{font-size:12px;width:165px;flex-shrink:0;color:var(--mu);}
+.sb-t{flex:1;height:6px;background:var(--bd2);border-radius:3px;overflow:hidden;}
+.sb-f{height:100%;border-radius:3px;}
+.sb-v{font-size:12px;font-weight:700;width:34px;text-align:right;}
+.hbox{border-radius:10px;padding:16px 18px;margin-bottom:12px;}
+.hbox-t{font-size:13px;font-weight:700;margin-bottom:8px;}
+.hbox p{font-size:12px;color:var(--mu);line-height:1.7;}
+.ri{padding:12px;border-radius:8px;border-left:4px solid;margin-bottom:8px;}
+.ri-h{background:#fff1f2;border-color:var(--re);}
+.ri-m{background:#fef9c3;border-color:var(--ye);}
+.ri-l{background:#f0fdf4;border-color:var(--gn);}
+.ri-t{font-size:13px;font-weight:700;margin-bottom:4px;}
+.ri-s{font-size:12px;color:var(--mu);line-height:1.55;}
+.verdict{background:linear-gradient(135deg,#0a0f1e,#0d2137);color:#fff;border-radius:12px;padding:22px 24px;}
+.verdict-t{font-size:16px;font-weight:800;margin-bottom:10px;color:#60a5fa;}
+.verdict-body{font-size:13px;line-height:1.7;color:rgba(255,255,255,.85);}
+.vn{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);}
+.vn-t{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;}
+.vc{font-size:12px;color:rgba(255,255,255,.75);display:flex;gap:8px;margin-bottom:5px;}
+.vc::before{content:'→';color:#60a5fa;flex-shrink:0;}
+.wm{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
+@media(max-width:639px){html,body{overflow-x:clip;}.hero-t{font-size:22px;}.main{padding:0 12px 60px;}.hero{padding:28px 16px 22px;border-radius:0;}}
+</style>
+</head>
+<body>
+<div class="wm" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="wm" x="0" y="0" width="220" height="160" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><text x="10" y="60" font-family="-apple-system,sans-serif" font-size="18" font-weight="600" fill="#888" fill-opacity="0.13" letter-spacing="3">reese</text><text x="110" y="130" font-family="-apple-system,sans-serif" font-size="18" font-weight="600" fill="#888" fill-opacity="0.13" letter-spacing="3">reese</text></pattern></defs><rect width="100%" height="100%" fill="url(#wm)"/></svg></div>
+<div class="topbar"><div class="topbar-inner"><div class="logo">reese Research</div><nav class="tabs" id="tabs"><a class="tab" href="#chain">Value Chain</a><a class="tab" href="#filings">SEC Filings</a><a class="tab" href="#fin">Financials</a><a class="tab" href="#cmp">Competition</a><a class="tab" href="#underpriced">Underpriced</a><a class="tab" href="#risk">Risks</a><a class="tab" href="#verdict">Verdict</a></nav></div></div>
+<div class="main">
+<div class="hero">
+<div class="hero-top"><span class="hero-badge">&#128300; Deep Research · SEC + Transcripts + Chain</span><span class="hero-verdict">&#9679; Asymmetric Setup · Two Engines Inflecting</span></div>
+<div class="hero-t">BlackBerry (BB · NYSE/TSX)<br><em>Physical AI Safety OS · Digital Sovereignty</em></div>
+<div class="hero-sub">Pure software since 2023 · Waterloo, Ontario. QNX is the safety-certified RTOS in 275M+ vehicles and NVIDIA's chosen OS for physical AI. Secure Communications is the only BSI + FedRAMP-High sovereign comms platform — returning to growth for the first time in 6 years.</div>
+<div class="hero-stats">
+<div class="hs"><div class="hs-v">$153M</div><div class="hs-l">Q1 FY27 Revenue · +26% YoY</div></div>
+<div class="hs"><div class="hs-v">$950M</div><div class="hs-l">QNX Royalty Backlog · growing</div></div>
+<div class="hs"><div class="hs-v">$232M</div><div class="hs-l">Net Cash · Zero Near-Term Distress</div></div>
+<div class="hs"><div class="hs-v">86%</div><div class="hs-l">QNX Gross Margin Q1 FY27</div></div>
+</div>
+<div class="hero-tags">
+<span class="htag gn">&#9989; First positive Q1 operating cash flow in 9 years</span>
+<span class="htag gn">&#9989; NVIDIA IGX Thor — QNX chosen as physical AI safety OS</span>
+<span class="htag gn">&#9989; SecComm +24% Q1 FY27 · first growth in 6 years · 94% DBNRR</span>
+<span class="htag ye">&#9888; 12% customer concentration · 1 undisclosed client</span>
+<span class="htag ye">&#9888; $200M convertible due Nov 2029</span>
+<span class="htag red">&#10060; +174% in 2026 · 45x FY27E EV/EBITDA · must execute to justify</span>
+</div>
+</div>
+
+<div class="sec" id="chain">
+<div class="sec-t">Value Chain Map · Why QNX is structurally irreplaceable</div>
+<div class="card">
+<div class="ct">Physical AI Software Infrastructure Stack — BB's Position</div>
+<div class="sc-diagram">
+<div class="sc-layer ly0"><div class="sc-lbl">L0 · Regulatory Moat — 3-8 years to certify per market, cannot be bypassed</div><div class="sc-items"><div class="sc-item sc-hi">&#127775; ISO 26262 ASIL-D · IEC 61508 SIL4 · IEC 62304 Class C — highest achievable safety certifications</div><div class="sc-item sc-hi">&#127775; BSI Germany — only non-German product cleared for classified communications</div><div class="sc-item sc-hi">&#127775; FedRAMP High (AtHoc) — 80% of US federal agencies rely on it · recently recertified</div><div class="sc-item">ABI Research #1 RTOS for Robotics Functional Safety · April 2026</div></div></div>
+<div class="sc-arr">&#8595; Once an OEM's system is certified on QNX, removal requires re-certifying the entire platform — 3-5 years, $100M+</div>
+<div class="sc-layer ly-s"><div class="sc-lbl">&#11088; L1 · BlackBerry — Two Structurally Durable Assets</div><div class="sc-items"><div class="sc-item">&#127775; QNX RTOS — deterministic microkernel OS, 275M vehicles</div><div class="sc-item">&#127775; QNX Hypervisor 8.0 — AI + safety workloads on one chip simultaneously</div><div class="sc-item">&#127775; SecuSUITE — NATO-grade encrypted voice/text, BSI certified</div><div class="sc-item">&#127775; AtHoc — critical event mgmt, FedRAMP High, 80% US federal</div><div class="sc-item">BlackBerry UEM · Certicom cryptography · Patent licensing</div></div></div>
+<div class="sc-arr">&#8595; QNX earns royalties per unit shipped (not seat-based) · SecComm ARR renews annually · both compound automatically</div>
+<div class="sc-layer ly2"><div class="sc-lbl">L2 · Silicon Partners — BB is their required safety certification layer</div><div class="sc-items"><div class="sc-item">&#127775; NVIDIA IGX Thor — QNX as safety OS, integrated with Halos safety stack</div><div class="sc-item">Qualcomm Snapdragon Automotive · AMD embedded AI · Axera (Q4 FY26 design win)</div></div></div>
+<div class="sc-arr">&#8595;</div>
+<div class="sc-layer ly3"><div class="sc-lbl">L3 · OEM / Enterprise Customers</div><div class="sc-items"><div class="sc-item">BMW · Mercedes · VW Group · BYD · Leapmotor D19 (automotive)</div><div class="sc-item">Agility Robotics · Figure AI · Apptronik (humanoid / physical AI)</div><div class="sc-item">Germany Bundesbank · US IRS · Canada DND (through 2033) (SecComm)</div></div></div>
+<div class="sc-arr">&#8595;</div>
+<div class="sc-layer ly4"><div class="sc-lbl">L4 · End Applications</div><div class="sc-items"><div class="sc-item">Software-defined vehicles · ADAS · autonomous driving</div><div class="sc-item">Humanoid robots · factory automation · surgical systems</div><div class="sc-item">Sovereign government communications · defense · critical infrastructure</div></div></div>
+</div>
+</div>
+<div style="height:12px;"></div>
+<div class="g2">
+<div class="card"><div class="ct">QNX — the compounding royalty engine</div><p style="font-size:12px;line-height:1.75;color:var(--mu);">QNX operates at the <strong>kernel layer</strong>. Once an OEM builds its platform around QNX's microkernel and hypervisor, replacement means re-certifying the entire system — a 3-5 year, $100M+ process. The royalty model (per unit shipped, not seats) means revenue compounds with production volume automatically. Every vehicle shipped on a QNX-based platform generates a royalty for that model's entire lifecycle. In FY26, <strong>BB added more to the backlog than it recognized in the P&L</strong> — the pipeline is compounding, not decelerating. Physical AI backlog starts at $0 today — the same model that built $950M in automotive.</p></div>
+<div class="card"><div class="ct">SecComm — niche-monopoly priced as legacy</div><p style="font-size:12px;line-height:1.75;color:var(--mu);">After selling Cylance, the remaining SecComm portfolio is a <strong>sovereign comms niche-monopoly</strong>: SecuSUITE is the only non-German product with BSI certification; AtHoc is the only CEM platform with FedRAMP High. Governments physically cannot switch from a platform certified to these levels. Digital sovereignty — governments mandating domestic-hosted, foreign-proof communications — is a new geopolitical imperative. New wins Q1 FY27: US IRS, Germany Bundesbank, Canada DND (through 2033). <strong>94% DBNRR. First return to growth in 6 years.</strong></p></div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<div class="sec" id="filings">
+<div class="sec-t">SEC Filings Intelligence · 10-K + 8-K + Earnings Transcripts</div>
+<div class="hbox" style="background:#eff6ff;border:1px solid #bfdbfe;"><div class="hbox-t" style="color:#1d4ed8;">&#128196; 10-K FY2025 — CIK 1070235 · Filed Apr 2, 2025 · Accession 0001070235-25-000068</div><p>Revenue $534.9M · GAAP gross margin 74% · QNX $236M (+10%, 84% GM) · SecComm $272.6M (66% GM) · Licensing $26.3M. Top customer declined from 27% to <strong>14% of revenue</strong> — structural diversification in progress. Americas 46.5%, EMEA 35.3%, Other 18.2%. R&D $108.8M. Cylance sold to Arctic Wolf for $160M cash + equity — strategic, not distress. Cash at year-end $266.7M.</p></div>
+<div class="hbox" style="background:#f0fdf4;border:1px solid #86efac;"><div class="hbox-t" style="color:#166534;">&#128196; 8-K Q4 FY2026 — Filed June 2, 2026 (Most Recent Annual)</div><p>FY26 total $549.1M (+2.6%). QNX $268M (+14%), Q4 record $78.7M (+20%). Royalty backlog <strong>$950M</strong> — added &gt;2x annual royalty recognition. SecComm ARR $218M (+$10M YoY), DBNRR 94%. Cash $432.4M, net cash <strong>$232.4M</strong>, $200M convertible (3%, Nov 2029). Buybacks: 15.5M shares ($60M) since May 2025. CEO: <em>"We are no longer a company in transition. We are a growth company."</em></p></div>
+<div class="hbox" style="background:#fef9c3;border:1px solid #fde68a;"><div class="hbox-t" style="color:#713f12;">&#128196; 8-K Q1 FY2027 — Filed June 26, 2026 (Most Recent Quarter)</div><p>Total $152.9M (+26%) · QNX $72.3M (+26%, 86% GM, 27% EBITDA margin) · SecComm $73.6M (+24%) · Licensing $7.0M. Adj EBITDA $36.3M. GAAP net income $8.5M. OCF $4.6M — <strong>first positive fiscal Q1 operating cash flow in 9 years.</strong> Both segments simultaneously Rule of 40 for the first time. FY27 guidance raised: revenue $594-621M, adj EBITDA $119-139M, OCF ~$100M. Customer concentration: 1 customer = 12% (FY26 10-K).</p></div>
+<div class="g2">
+<div class="card"><div class="ct">Customer Concentration — SEC Disclosure</div><table class="tbl"><thead><tr><th>Year</th><th>Top Customer %</th><th>Signal</th></tr></thead><tbody><tr><td>FY2024</td><td>27%</td><td>&#128308; High risk</td></tr><tr><td>FY2025</td><td>14%</td><td>&#128992; Improving</td></tr><tr class="hl"><td><strong>FY2026</strong></td><td><strong>12%</strong></td><td>&#128994; Structural diversification</td></tr></tbody></table><p style="font-size:11px;color:var(--mu);margin-top:8px;">Identity undisclosed per SEC requirements. Trend is unambiguously improving — from dangerous single-client dependency toward diversification. Likely a large sovereign government contract.</p></div>
+<div class="card"><div class="ct">Critical Transcript Signals</div><div style="font-size:12px;line-height:1.7;color:var(--mu);"><div style="margin-bottom:8px;">&#9642; <em>"We added significantly more into the backlog than we recognized in the P&L this year"</em> — the royalty pipeline is compounding, not decelerating</div><div style="margin-bottom:8px;">&#9642; <em>"The royalty engine is just getting started"</em> — physical AI backlog contribution is near zero today; management implies very early innings</div><div style="margin-bottom:8px;">&#9642; Buybacks + "tuck-in M&A" optionality — no dilutive issuance planned</div><div>&#9642; Stifel initiated Buy/$12 PT, called BB "a mission-critical software layer in the physical AI stack" and "dominant partner to silicon leaders NVIDIA, Qualcomm, AMD"</div></div></div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<div class="sec" id="fin">
+<div class="sec-t">Financial Quality Deep-Dive</div>
+<div class="g4" style="margin-bottom:12px;">
+<div class="card"><div class="stat-block"><div class="stat-v gn">$153M</div><div class="stat-l">Q1 FY27 Revenue</div><div class="stat-d">+26% YoY · Beat guidance top-end</div></div></div>
+<div class="card"><div class="stat-block"><div class="stat-v gn">$36.3M</div><div class="stat-l">Q1 FY27 Adj EBITDA</div><div class="stat-d">23.7% margin · +52% QNX EBITDA</div></div></div>
+<div class="card"><div class="stat-block"><div class="stat-v gn">86%</div><div class="stat-l">QNX Gross Margin</div><div class="stat-d">+5pp YoY · SaaS-grade quality</div></div></div>
+<div class="card"><div class="stat-block"><div class="stat-v ac">$4.6M</div><div class="stat-l">Q1 FY27 OCF</div><div class="stat-d">First positive Q1 OCF in 9 years</div></div></div>
+</div>
+<div class="g2" style="margin-bottom:12px;">
+<div class="card"><div class="ct">Revenue Reconstruction — Removing Cylance Distortion</div><table class="tbl"><thead><tr><th>Period</th><th>Total</th><th>QNX</th><th>SecComm</th><th>Note</th></tr></thead><tbody><tr><td>FY2024</td><td>$759M</td><td>$215M</td><td>$284M</td><td>Includes ~$160M Cylance</td></tr><tr><td>FY2025</td><td>$535M</td><td>$236M</td><td>$273M</td><td>Cylance sold Q4</td></tr><tr><td>FY2026</td><td>$549M</td><td>$268M</td><td>~$239M</td><td>Clean post-Cylance base</td></tr><tr class="hl"><td><strong>FY2027E</strong></td><td><strong>$594–621M</strong></td><td><strong>$295–312M</strong></td><td><strong>$270–280M</strong></td><td>+8–13% guided growth</td></tr></tbody></table><p style="font-size:11px;color:var(--mu2);margin-top:6px;">Like-for-like (ex-Cylance): FY24 to FY26 grew ~18%. The "28% revenue decline" investors cite is purely the Cylance divestiture — which <em>improved</em> margins since Cylance was 66% GM vs QNX's 86% GM.</p></div>
+<div class="card"><div class="ct">Margin and Retention Dashboard</div>
+<div class="sb"><div class="sb-l">QNX Gross Margin (Q1)</div><div class="sb-t"><div class="sb-f" style="width:86%;background:var(--gn);"></div></div><div class="sb-v" style="color:var(--gn);">86%</div></div>
+<div class="sb"><div class="sb-l">SecComm Gross Margin</div><div class="sb-t"><div class="sb-f" style="width:66%;background:var(--ye);"></div></div><div class="sb-v" style="color:var(--ye);">66%</div></div>
+<div class="sb"><div class="sb-l">SecComm ARR DBNRR</div><div class="sb-t"><div class="sb-f" style="width:94%;background:var(--gn);"></div></div><div class="sb-v" style="color:var(--gn);">94%</div></div>
+<div class="sb"><div class="sb-l">Company Adj EBITDA Mgn</div><div class="sb-t"><div class="sb-f" style="width:24%;background:var(--ac);"></div></div><div class="sb-v" style="color:var(--ac);">24%</div></div>
+<div class="sb"><div class="sb-l">FY27E OCF Target</div><div class="sb-t"><div class="sb-f" style="width:62%;background:var(--ac);"></div></div><div class="sb-v" style="color:var(--ac);">$100M</div></div>
+<p style="font-size:11px;color:var(--mu);margin-top:8px;">94% DBNRR is Veeva Systems / ServiceNow tier for a B2G software product. Government clients certified to BSI + FedRAMP High physically cannot switch without years of re-certification.</p></div>
+</div>
+<div class="card"><div class="ct">Financing Risk Assessment</div><div class="g3">
+<div><p style="font-size:13px;font-weight:700;color:var(--gn);margin-bottom:5px;">&#9989; No Near-Term Distress</p><p style="font-size:12px;color:var(--mu);line-height:1.65;">$432.4M cash and investments. $200M convertible note (3% coupon, Nov 2029). Net cash $232.4M. At $100M guided FY27 OCF, the company can retire at maturity without equity issuance. No covenant concerns flagged in any filing.</p></div>
+<div><p style="font-size:13px;font-weight:700;color:var(--ye);margin-bottom:5px;">&#9888; Convertible Note Watch</p><p style="font-size:12px;color:var(--mu);line-height:1.65;">$200M due Nov 2029. If stock continues rising, conversion becomes dilutive. Management has not disclosed refinancing plans. Not existential — worth tracking quarterly management commentary for any pre-emptive action.</p></div>
+<div><p style="font-size:13px;font-weight:700;color:var(--gn);margin-bottom:5px;">&#9989; Buybacks = Confidence Signal</p><p style="font-size:12px;color:var(--mu);line-height:1.65;">$60M in buybacks (15.5M shares) since May 2025 signals management's conviction in OCF trajectory. Companies don't repurchase stock when worried about liquidity. This is the strongest possible financing confidence signal.</p></div>
+</div></div>
+</div>
+
+<div class="sdiv"></div>
+
+<div class="sec" id="cmp">
+<div class="sec-t">Competitive Landscape</div>
+<div class="card" style="margin-bottom:12px;"><div class="ct">QNX vs RTOS Peers — ABI Research Robotics Functional Safety Ranking (April 2026)</div><table class="tbl"><thead><tr><th>Vendor</th><th>Key Strength</th><th>Automotive Scale</th><th>Physical AI Position</th><th>Ownership</th></tr></thead><tbody><tr class="hl"><td><strong>QNX (BlackBerry) &#11088;</strong></td><td>Microkernel + hypervisor, 275M vehicles, NVIDIA partner</td><td>Dominant · #1</td><td>NVIDIA IGX Thor safety OS · chosen</td><td>Public (BB)</td></tr><tr><td>Wind River VxWorks</td><td>High implementation score, VxWorks installed base</td><td>Strong</td><td>Competing, no NVIDIA deal</td><td>Aptiv (private)</td></tr><tr><td>Green Hills INTEGRITY</td><td>High-assurance, security-first architecture</td><td>Moderate</td><td>Competing</td><td>Private</td></tr><tr><td>SYSGO PikeOS</td><td>Separation kernel, European embedded</td><td>Limited</td><td>Early stage</td><td>Private</td></tr><tr><td>ROS 2 (open source)</td><td>Developer ecosystem, free to use</td><td>Not safety-certified</td><td>Dev only — not production-deployable</td><td>Open source</td></tr></tbody></table></div>
+<div class="g2">
+<div class="card"><div class="ct">SecComm — Not Competing with CrowdStrike</div><p style="font-size:12px;line-height:1.7;color:var(--mu);">After selling Cylance, BlackBerry is <strong>entirely out of the endpoint/XDR market</strong>. The remaining SecComm portfolio is in a different, smaller, far less crowded niche:<br><br>&#9642; <strong>SecuSUITE</strong>: No competitor holds simultaneous BSI + NATO approval. CrowdStrike or Palo Alto Networks don't offer this and cannot — it requires decades of classified environment certification in foreign governments.<br><br>&#9642; <strong>AtHoc</strong>: FedRAMP High, only CEM platform recently recertified at this level. No comparable alternative for the federal buyer.<br><br>TAM is ~$2-3B, not $50B. But competitive density is minimal and switching costs are existential for government clients.</p></div>
+<div class="card"><div class="ct">Five-Dimension Score</div>
+<div class="sb"><div class="sb-l">QNX safety cert moat</div><div class="sb-t"><div class="sb-f" style="width:92%;background:var(--gn);"></div></div><div class="sb-v" style="color:var(--gn);">9.2</div></div>
+<div class="sb"><div class="sb-l">Revenue visibility (backlog)</div><div class="sb-t"><div class="sb-f" style="width:88%;background:var(--gn);"></div></div><div class="sb-v" style="color:var(--gn);">8.8</div></div>
+<div class="sb"><div class="sb-l">SecComm niche position</div><div class="sb-t"><div class="sb-f" style="width:80%;background:var(--gn);"></div></div><div class="sb-v" style="color:var(--gn);">8.0</div></div>
+<div class="sb"><div class="sb-l">Physical AI optionality</div><div class="sb-t"><div class="sb-f" style="width:72%;background:var(--ye);"></div></div><div class="sb-v" style="color:var(--ye);">7.2</div></div>
+<div class="sb"><div class="sb-l">Valuation (price paid today)</div><div class="sb-t"><div class="sb-f" style="width:35%;background:var(--re);"></div></div><div class="sb-v" style="color:var(--re);">3.5</div></div>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<div class="sec" id="underpriced">
+<div class="sec-t">What the Market Is Underpricing · 4 Non-Consensus Findings</div>
+<div class="hbox" style="background:#f0fdf4;border:1px solid #86efac;"><div class="hbox-t" style="color:#166534;">&#127775; #1 — The $950M royalty backlog is an off-balance-sheet forward revenue stream priced at zero</div><p>The royalty backlog doesn't appear on the balance sheet. It represents <strong>contractually committed future royalties</strong> from signed automotive and embedded design wins. In FY26, BB added more than 2x its annual royalty P&L recognition to the backlog — the pipeline is growing faster than current revenue. This is structurally identical to a SaaS company where ARR grows 100% but only 50% is recognized in-year. Pricing BB solely on FY27E EV/EBITDA significantly understates the value of embedded forward commitments. The physical AI backlog starts at <strong>$0 today</strong> — the same royalty model that took 15 years to reach $950M in automotive is now being seeded in a faster-adopting market.</p></div>
+<div class="hbox" style="background:#eff6ff;border:1px solid #bfdbfe;"><div class="hbox-t" style="color:#1d4ed8;">&#127775; #2 — SecComm's 94% DBNRR is niche-monopoly SaaS quality being priced as legacy commodity</div><p>The Street called SecComm "declining legacy" for 6 years. Post-Cylance, the remaining portfolio generates <strong>94% dollar-based net retention</strong> — Veeva Systems tier for a B2G software product. Government clients cannot switch from BSI + FedRAMP High certified platforms; the switching cost is effectively infinite. Digital sovereignty — governments mandating domestic-hosted, foreign-surveillance-proof communications — is a new geopolitical imperative that didn't exist 3 years ago. New wins Q1 FY27: US IRS, Germany Bundesbank, Canada DND through 2033. <strong>First full-year growth in 6 years starts now.</strong> This re-rating is in its early stages.</p></div>
+<div class="hbox" style="background:#fdf4ff;border:1px solid #e9d5ff;"><div class="hbox-t" style="color:#6b21a8;">&#127775; #3 — NVIDIA partnership gives QNX access to millions of CUDA developers as a distribution flywheel</div><p>QNX was selected as NVIDIA's safety OS for IGX Thor, integrated with NVIDIA Halos safety stack. This creates a structural distribution advantage no competitor has: every NVIDIA IGX developer deploying into a safety-critical application is now directed to a QNX-certified baseline. NVIDIA's ecosystem numbers in the millions. When NVIDIA blesses a software configuration, it appears in reference designs, integrator stacks, and OEM BOM decisions. Wind River, Green Hills, and SYSGO have no equivalent silicon partner relationship at this scale. <strong>Royalties from NVIDIA-ecosystem design wins will begin appearing in backlog in FY27-28 — none are yet disclosed.</strong></p></div>
+<div class="hbox" style="background:#fff7ed;border:1px solid #fed7aa;"><div class="hbox-t" style="color:#9a3412;">&#127775; #4 — The 28% revenue decline from FY24 is entirely the Cylance divestiture — not business deterioration</div><p>FY24 revenue: $759M. FY26: $549M. Many investors cite this 28% decline as evidence of deterioration. But <strong>Cylance contributed approximately $160M to FY24 revenue at 66% gross margin</strong> — it was sold strategically to Arctic Wolf for $160M. Stripping Cylance from FY24, the like-for-like business grew ~18% from FY24 to FY26. QNX alone grew from $215M to $268M (+25%). The gross margin profile improved because the lowest-margin asset was divested. Investors anchoring on $759M→$549M are measuring the wrong thing. The right metrics: QNX growth rate + SecComm DBNRR — both are accelerating.</p></div>
+</div>
+
+<div class="sdiv"></div>
+
+<div class="sec" id="risk">
+<div class="sec-t">Risk Matrix · What would make this thesis wrong</div>
+<div class="ri ri-h"><div class="ri-t">&#128308; High: Valuation leaves zero margin for error</div><div class="ri-s">At $11.40 and $7.4B market cap, BB trades at ~45x FY27E EV/EBITDA ($119-139M guided). This requires sustained 20%+ revenue growth and expanding margins through FY28-29. Stock is up 174% in 2026 — much of the re-rating has happened. Any miss on QNX backlog conversion or SecComm growth deceleration will be punished severely.</div></div>
+<div class="ri ri-h"><div class="ri-t">&#128308; High: Automotive production cycle delays royalty recognition</div><div class="ri-s">QNX royalties are recognized on unit shipment, not at design win signature. Automaker production cuts (tariff disruption, EV stall, demand slowdown) delay royalty recognition even with a growing backlog. IHS Markit global vehicle production forecasts are the key leading indicator. Backlog provides buffer; it doesn't prevent quarterly misses.</div></div>
+<div class="ri ri-m"><div class="ri-t">&#128992; Medium: Customer concentration still above comfort zone</div><div class="ri-s">1 customer = 12% of FY26 revenue (down from 27% in FY24). Likely a major government SecComm contract. Non-renewal or scope reduction creates a multi-quarter revenue air pocket. Industry comfort is typically below 10% per customer — BB is not yet there.</div></div>
+<div class="ri ri-m"><div class="ri-t">&#128992; Medium: $200M convertible due November 2029</div><div class="ri-s">3% coupon. $232M net cash and $100M guided FY27 OCF make self-funded maturity feasible. But if the stock rises significantly, conversion becomes dilutive. No specific refinancing plan disclosed by management. Not existential — requires quarterly monitoring.</div></div>
+<div class="ri ri-m"><div class="ri-t">&#128992; Medium: Physical AI timeline is speculative</div><div class="ri-s">GEM is only 20% of QNX revenue today. If humanoid robot adoption takes 5+ years to scale to meaningful royalty volume, the bull case ($10-15) collapses to base case ($6-8). The NVIDIA partnership validates the position — it does not guarantee the timeline.</div></div>
+<div class="ri ri-l"><div class="ri-t">&#128994; Low: RTOS competition from Wind River or open source</div><div class="ri-s">Wind River VxWorks is the primary credible competitor. ROS 2 is developer-popular but lacks production safety certs. The 15+ year certification history and 275M vehicle installed base create massive switching costs in automotive. Risk is higher in new physical AI markets where QNX incumbency is less entrenched than in automotive.</div></div>
+</div>
+
+<div class="sdiv"></div>
+
+<div class="sec" id="verdict">
+<div class="sec-t">Research Verdict</div>
+<div class="verdict">
+<div class="verdict-t">&#128202; Two Inflection Points Simultaneously · Not Cheap · But the Thesis is Clear</div>
+<div class="verdict-body">
+BlackBerry is one of the most complete software turnarounds in recent memory. The company exited hardware, divested Cylance strategically (not from distress), and is now generating positive operating cash flow. Both segments simultaneously achieved Rule of 40 in Q1 FY27 for the first time ever.<br><br>
+<strong>The non-obvious case</strong>: the market is simultaneously undervaluing two compounding mechanisms — (1) the QNX royalty backlog growing faster than P&L recognition, creating an invisible forward revenue stream not captured by any current-year multiple, and (2) SecComm's 94% DBNRR niche-monopoly quality being re-rated from "legacy" to "digital sovereignty infrastructure." These compound independently. Physical AI provides a free option on a third loop starting at zero today.<br><br>
+<strong>The honest price reality</strong>: The stock has already re-rated from $3.12 to $11.40. At ~45x FY27E EV/EBITDA, you're not buying cheap. The physical AI narrative must materialize in backlog figures by FY28-29 to justify current prices. Entry price and position sizing matter enormously at these multiples — the easy money has been made. What remains is execution.
+</div>
+<div class="vn">
+<div class="vn-t">Quarterly Verification Checklist</div>
+<div class="vc">QNX royalty backlog — must keep adding at &gt;1x annual P&L recognition to sustain thesis</div>
+<div class="vc">Physical AI / GEM % of QNX revenue — watch for crossing 25% from 20% today</div>
+<div class="vc">SecComm ARR DBNRR — must stay ≥93% to confirm government client stickiness</div>
+<div class="vc">IHS global vehicle production forecast — QNX royalties lag production by 6-12 months</div>
+<div class="vc">New NVIDIA IGX design wins citing QNX — validates physical AI funnel building in backlog</div>
+<div class="vc">$200M convertible — any refinancing or buyback announcement from management</div>
+<div class="vc">Q2 FY27 results (Sept 2026) — second consecutive dual Rule of 40 confirmation</div>
+</div>
+</div>
+<p style="margin-top:16px;font-size:11px;color:var(--mu2);text-align:center;line-height:1.7;">Evidence base: SEC 10-K FY2025 (CIK 1070235 · 0001070235-25-000068), 8-K Q4 FY2026, 8-K Q1 FY2027, Q4 FY26 earnings transcript (Motley Fool), investor slides (MarketScreener), Canada.ca SecuSUITE contract (Mar 2026), ABI Research RTOS ranking (Apr 2026), Stifel/CIBC/RBC analyst notes, Yahoo Finance price data June 29 2026.<br>For research purposes only. Not investment advice.</p>
+</div>
+</div>
+
+</div>
+<script>
+(function(){var tabs=document.querySelectorAll(".tab");var secs=Array.from(document.querySelectorAll(".sec[id]"));var nav=document.getElementById("tabs");function setActive(id){tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("href")==="#"+id);});var at=document.querySelector(".tab.active");if(at&&nav)nav.scrollLeft=at.offsetLeft-nav.offsetWidth/2+at.offsetWidth/2;}var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:"-40% 0px -55% 0px"});secs.forEach(function(s){obs.observe(s);});tabs.forEach(function(t){t.addEventListener("click",function(e){e.preventDefault();var el=document.getElementById(t.getAttribute("href").replace("#",""));if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:"smooth"});});});})();
+</script>
+</body>
+</html>
