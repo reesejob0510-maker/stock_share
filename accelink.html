@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>光迅科技（002281）深度研究 · Serenity</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f6f8fa;--sf:#fff;--sf2:#f0f4fa;--bd:#d0d7de;--bd2:#e4e9f0;
+  --tx:#1f2328;--mu:#57606a;--mu2:#8c959f;
+  --ac:#0969da;--gn:#1a7f37;--ye:#9a6700;--re:#cf222e;--pu:#8250df;--or:#bc4c00;
+}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;}
+a{color:var(--ac);text-decoration:none;}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid var(--bd);transform:translateZ(0);}
+.topbar-inner{max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:50px;}
+.logo{font-size:13px;font-weight:700;color:var(--tx);display:flex;align-items:center;gap:6px;}
+.logo span{color:var(--ac);}
+.tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{white-space:nowrap;padding:0 13px;height:50px;display:flex;align-items:center;font-size:12px;font-weight:500;color:var(--mu);border-bottom:2px solid transparent;cursor:pointer;transition:color .15s;}
+.tab:hover,.tab.active{color:var(--ac);border-bottom-color:var(--ac);}
+.main{max-width:1040px;margin:0 auto;padding:0 20px 80px;}
+.hero{background:linear-gradient(135deg,#0a0f1e 0%,#0d2247 60%,#0f3460 100%);color:#fff;border-radius:0 0 16px 16px;padding:40px 28px 32px;margin-bottom:28px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(96,165,250,.15) 0%,transparent 70%);pointer-events:none;}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:3px 10px;color:rgba(255,255,255,.7);}
+.hero-verdict{background:rgba(26,127,55,.25);border:1px solid rgba(74,222,128,.3);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#4ade80;}
+.hero-t{font-size:30px;font-weight:800;line-height:1.2;margin-bottom:8px;}
+.hero-t em{font-style:normal;color:#60a5fa;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.6);max-width:580px;line-height:1.6;margin-bottom:20px;}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap;}
+.hs{border-left:2px solid rgba(255,255,255,.2);padding-left:12px;}
+.hs-v{font-size:22px;font-weight:800;color:#fff;line-height:1;}
+.hs-l{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;}
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px;}
+.htag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:12px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.12);}
+.htag.red{background:rgba(207,34,46,.2);border-color:rgba(207,34,46,.4);color:#fca5a5;}
+.htag.gn{background:rgba(26,127,55,.2);border-color:rgba(74,222,128,.3);color:#4ade80;}
+.htag.ye{background:rgba(154,103,0,.2);border-color:rgba(250,204,21,.3);color:#fde047;}
+.sec{margin-bottom:32px;}
+.sec-t{font-size:18px;font-weight:700;border-left:3px solid var(--ac);padding-left:10px;margin-bottom:16px;}
+.sdiv{height:1px;background:var(--bd2);margin:28px 0;}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:18px;}
+.ct{font-size:13px;font-weight:700;color:var(--mu);margin-bottom:12px;letter-spacing:.3px;}
+.card+.card{margin-top:12px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:680px){.g2,.g3{grid-template-columns:1fr;}}
+.stat-block{text-align:center;padding:14px 10px;}
+.stat-v{font-size:26px;font-weight:800;color:var(--tx);}
+.stat-v.gn{color:var(--gn);}
+.stat-v.re{color:var(--re);}
+.stat-v.ac{color:var(--ac);}
+.stat-l{font-size:11px;color:var(--mu);margin-top:4px;}
+.stat-d{font-size:12px;color:var(--mu2);margin-top:2px;}
+.sc-diagram{display:flex;flex-direction:column;gap:6px;}
+.sc-layer{border-radius:8px;border:1px solid var(--bd);overflow:hidden;}
+.sc-lbl{font-size:11px;font-weight:700;padding:5px 10px;letter-spacing:.4px;}
+.sc-items{display:flex;flex-wrap:wrap;gap:5px;padding:8px 10px;}
+.sc-item{font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid;line-height:1.4;}
+.ly0{border-color:#fca5a5;}.ly0 .sc-lbl{background:#fee2e2;color:#991b1b;}
+.ly0 .sc-item{background:#fff5f5;border-color:#fca5a5;color:#9f1239;}
+.ly3-star{border-color:#7c3aed;}.ly3-star .sc-lbl{background:#f5f3ff;color:#5b21b6;font-weight:800;}
+.ly3-star .sc-item{background:#f5f3ff;border-color:#c4b5fd;color:#4c1d95;}
+.ly2{border-color:#d1fae5;}.ly2 .sc-lbl{background:#d1fae5;color:#065f46;}
+.ly2 .sc-item{background:#f0fdf4;border-color:#86efac;color:#166534;}
+.ly1{border-color:#bfdbfe;}.ly1 .sc-lbl{background:#eff6ff;color:#1d4ed8;}
+.ly1 .sc-item{background:#eff6ff;border-color:#bfdbfe;color:#1e40af;}
+.ly4{border-color:#e5e7eb;}.ly4 .sc-lbl{background:#f9fafb;color:#374151;}
+.ly4 .sc-item{background:#f9fafb;border-color:#e5e7eb;color:#374151;}
+.sc-arr{text-align:center;font-size:14px;color:var(--mu2);line-height:1;padding:2px 0;}
+.sc-highlight{background:#fef9c3 !important;border-color:#fde047 !important;color:#713f12 !important;}
+.sc-caution{background:#fff0f3 !important;border-color:#fca5a5 !important;color:#9f1239 !important;}
+.cmp-table{width:100%;border-collapse:collapse;font-size:12px;}
+.cmp-table th{background:var(--sf2);font-weight:700;padding:8px 10px;text-align:left;border-bottom:2px solid var(--bd);font-size:11px;color:var(--mu);}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid var(--bd2);vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table tr.hl td{background:#f0f9ff;}
+.star-r{color:var(--ye);}
+.ev-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd2);}
+.ev-item:last-child{border-bottom:none;}
+.ev-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.ev-dot.s{background:var(--gn);}.ev-dot.m{background:var(--ye);}.ev-dot.w{background:var(--re);}
+.ev-content{flex:1;}
+.ev-title{font-size:13px;font-weight:600;margin-bottom:2px;}
+.ev-sub{font-size:12px;color:var(--mu);line-height:1.55;}
+.ev-src{font-size:10px;font-weight:600;padding:1px 6px;border-radius:8px;display:inline-block;margin-top:4px;}
+.ev-src.s{background:#dafbe1;color:#1a7f37;}.ev-src.m{background:#fef9c3;color:#9a6700;}.ev-src.w{background:#ffebe9;color:#cf222e;}
+.risk-item{padding:12px;border-radius:8px;border-left:4px solid;margin-bottom:8px;}
+.risk-h{background:#fff1f2;border-color:var(--re);}
+.risk-m{background:#fef9c3;border-color:var(--ye);}
+.risk-l{background:#f0fdf4;border-color:var(--gn);}
+.risk-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.risk-sub{font-size:12px;color:var(--mu);line-height:1.55;}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.score-label{font-size:12px;width:130px;flex-shrink:0;color:var(--mu);}
+.score-track{flex:1;height:6px;background:var(--bd2);border-radius:3px;overflow:hidden;}
+.score-fill{height:100%;border-radius:3px;}
+.score-val{font-size:12px;font-weight:700;width:30px;text-align:right;}
+.verdict{background:linear-gradient(135deg,#0a3069,#0d2247);color:#fff;border-radius:12px;padding:22px 24px;}
+.verdict-t{font-size:16px;font-weight:800;margin-bottom:10px;color:#60a5fa;}
+.verdict-body{font-size:13px;line-height:1.7;color:rgba(255,255,255,.85);}
+.verdict-next{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);}
+.verdict-next-t{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px;}
+.verdict-checks{display:flex;flex-direction:column;gap:5px;}
+.vc{font-size:12px;color:rgba(255,255,255,.75);display:flex;gap:8px;align-items:flex-start;}
+.vc::before{content:'&#8594;';color:#60a5fa;flex-shrink:0;}
+.watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
+@media(max-width:639px){html,body{overflow-x:clip;}.hero-t{font-size:22px;}.hero-stats{gap:14px;}.hs-v{font-size:18px;}.main{padding:0 12px 60px;}.hero{padding:28px 16px 22px;border-radius:0;}}
+</style>
+</head>
+<body>
+<div class="watermark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="wm" x="0" y="0" width="220" height="160" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><text x="10" y="60" font-family="-apple-system,sans-serif" font-size="18" font-weight="600" fill="#888" fill-opacity="0.13" letter-spacing="3">reese</text><text x="110" y="130" font-family="-apple-system,sans-serif" font-size="18" font-weight="600" fill="#888" fill-opacity="0.13" letter-spacing="3">reese</text></pattern></defs><rect width="100%" height="100%" fill="url(#wm)"/></svg></div>
+
+<div class="topbar">
+<div class="topbar-inner">
+<div class="logo">&#128202; <span>Serenity</span> Research</div>
+<nav class="tabs" id="tabs">
+<a class="tab" href="#chain">产业链</a>
+<a class="tab" href="#fin">财务</a>
+<a class="tab" href="#moat">护城河</a>
+<a class="tab" href="#cmp">竞争</a>
+<a class="tab" href="#catalyst">催化剂</a>
+<a class="tab" href="#risk">风险</a>
+<a class="tab" href="#verdict">结论</a>
+</nav>
+</div>
+</div>
+
+<div class="main">
+
+<div class="hero">
+<div class="hero-top">
+<span class="hero-badge">&#128300; Serenity · 产业链卡点穿透</span>
+<span class="hero-verdict">&#9679; 优先研究名单</span>
+</div>
+<div class="hero-t">光迅科技（002281）<br><em>国内唯一全链路 IDM · 光芯片护城河</em></div>
+<div class="hero-sub">武汉 · 中国信科集团（央企）· 光电子器件/模块/子系统。全球六大光模块厂之一，唯一 100G EML 光芯片量产自给，数通模块+电信+星网三轮驱动。</div>
+<div class="hero-stats">
+<div class="hs"><div class="hs-v">119亿</div><div class="hs-l">2025年营收 +44%</div></div>
+<div class="hs"><div class="hs-v">9.46亿</div><div class="hs-l">2025年归母净利润 +43%</div></div>
+<div class="hs"><div class="hs-v">70%+</div><div class="hs-l">光芯片自给率（行业最高）</div></div>
+<div class="hs"><div class="hs-v">3.2T</div><div class="hs-l">NPO 模块全球首发+CSP验证</div></div>
+</div>
+<div class="hero-tags">
+<span class="htag gn">&#9989; 光芯片IDM唯一性</span>
+<span class="htag gn">&#9989; 3.2T NPO全球首发已CSP验证</span>
+<span class="htag ye">&#9888; 短期弹性弱于中际旭创</span>
+<span class="htag ye">&#9888; 华为~30%收入集中度风险</span>
+<span class="htag red">&#10060; 海外业务仅18-28%</span>
+<span class="htag">&#127775; 星间激光通信国内唯一量产</span>
+</div>
+</div>
+
+<!-- ── 产业链 ── -->
+<div class="sec" id="chain">
+<div class="sec-t">产业链层级图 · 光迅所在位置与卡点</div>
+<div class="card">
+<div class="ct">AI 算力光互连全链 · 从芯片到应用 · 光迅实控层高亮</div>
+<div class="sc-diagram">
+
+<div class="sc-layer ly0">
+<div class="sc-lbl">&#9888; L0 · 上游卡脖子层（光迅已部分自解）</div>
+<div class="sc-items">
+<div class="sc-item sc-caution">InP/GaAs 衬底晶圆 — 全球仅住友/AXT等少数厂</div>
+<div class="sc-item sc-caution">高端 EML 激光芯片 — 国内&lt;5%自给，光迅已量产</div>
+<div class="sc-item sc-caution">硅光 PIC 晶圆代工 — 仍依赖 TSMC/GlobalFoundries</div>
+<div class="sc-item sc-caution">高端 VCSEL 芯片 — 国内仍弱</div>
+</div>
+</div>
+
+<div class="sc-arr">&#8595; 光迅核心护城河：国内唯一 IDM，芯片→器件→模块→子系统全自产</div>
+
+<div class="sc-layer ly3-star">
+<div class="sc-lbl">&#11088; L1 · 光迅科技 IDM 核心层（本报告主体）</div>
+<div class="sc-items">
+<div class="sc-item">&#127775; 100G EML 芯片自研量产（国内唯一）</div>
+<div class="sc-item">&#127775; 硅光 PIC — 3.2T NPO 全球首发</div>
+<div class="sc-item">光探测器（PD/APD）</div>
+<div class="sc-item">光调制器（EAM/MZM）</div>
+<div class="sc-item">WDM 器件 / EDFA 放大器</div>
+<div class="sc-item">800G/1.6T/3.2T 数通光模块</div>
+<div class="sc-item">CPO 光引擎 / NPO 完整系统</div>
+<div class="sc-item sc-highlight">&#9888; 星间激光通信模块 — 国内唯一量产</div>
+</div>
+</div>
+
+<div class="sc-arr">&#8595;</div>
+
+<div class="sc-layer ly2">
+<div class="sc-lbl">&#128309; L2 · 直接下游 · 设备商</div>
+<div class="sc-items">
+<div class="sc-item">华为（路由器/交换机/昇腾AI服务器）</div>
+<div class="sc-item">中兴 / 烽火（光传输设备）</div>
+<div class="sc-item">Cisco / Nokia（海外设备商）</div>
+</div>
+</div>
+
+<div class="sc-arr">&#8595;</div>
+
+<div class="sc-layer ly1">
+<div class="sc-lbl">&#128994; L3 · AI 算力 / 云基础设施客户</div>
+<div class="sc-items">
+<div class="sc-item">字节跳动（2025H1超25亿订单，份额35-40%）</div>
+<div class="sc-item">阿里云 / 腾讯云 / 百度AI</div>
+<div class="sc-item">华为昇腾910C/9100 — 独家800G供应</div>
+<div class="sc-item">Google / Microsoft / Meta（开拓中）</div>
+</div>
+</div>
+
+<div class="sc-arr">&#8595;</div>
+
+<div class="sc-layer ly4">
+<div class="sc-lbl">L4 · 终端应用</div>
+<div class="sc-items">
+<div class="sc-item">AI大模型训练/推理集群</div>
+<div class="sc-item">千帆/鸿鹄低轨卫星组网</div>
+<div class="sc-item">5G/6G骨干传输网</div>
+<div class="sc-item">万兆光网（F5G接入）</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div style="height:12px;"></div>
+<div class="g3">
+<div class="card">
+<div class="ct">&#128308; 真正的卡点</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);"><strong style="color:var(--re);">高端 EML 光芯片</strong>是光模块价值链最难自制的环节，全球90%+依赖日本住友/三菱。光迅是国内极少数实现100G EML量产的企业，自给率70%+，不受卡脖子。工艺壁垒极高（InP外延+超高频电气设计），模仿周期5年+。</p>
+</div>
+<div class="card">
+<div class="ct">&#127775; 产业链位置判断</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">光迅<strong style="color:var(--ac);">控制了稀缺度最高的层级——光芯片</strong>，同时向下延伸至器件、模块、子系统，是行业唯一IDM闭环。BOM成本比纯封装厂低20-30%，毛利率高5-8个百分点，供应链安全边际显著领先同行。</p>
+</div>
+<div class="card">
+<div class="ct">&#9728; 星网 · 隐藏增量</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">光迅是国内<strong style="color:var(--pu);">唯一量产星间激光通信模块</strong>厂商。千帆（1.3万颗目标）+ 鸿鹄等低轨卫星计划加速推进，组网高峰2026-2028年，当前估值中几乎未定价。</p>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 财务 ── -->
+<div class="sec" id="fin">
+<div class="sec-t">财务质量穿透</div>
+<div class="g2">
+<div class="card">
+<div class="ct">核心财务指标</div>
+<div class="g2" style="gap:8px;">
+<div class="stat-block"><div class="stat-v gn">119亿</div><div class="stat-l">2025 营收</div><div class="stat-d">+44.2% YoY</div></div>
+<div class="stat-block"><div class="stat-v gn">9.46亿</div><div class="stat-l">2025 归母净利</div><div class="stat-d">+43.1% YoY</div></div>
+<div class="stat-block"><div class="stat-v gn">27.73亿</div><div class="stat-l">2026Q1 营收</div><div class="stat-d">+24.8% YoY</div></div>
+<div class="stat-block"><div class="stat-v gn">2.4亿</div><div class="stat-l">2026Q1 净利润</div><div class="stat-d">+59.8% YoY</div></div>
+</div>
+</div>
+<div class="card">
+<div class="ct">盈利质量信号</div>
+<div style="font-size:12px;line-height:1.75;color:var(--mu);">
+<div style="display:flex;gap:8px;margin-bottom:7px;"><span style="color:var(--gn);font-weight:700;flex-shrink:0;">&#9650;</span><span><strong>经营现金流转正</strong>：2026Q1 +1.96亿（vs 去年同期 -1.13亿），由负转正意义重大</span></div>
+<div style="display:flex;gap:8px;margin-bottom:7px;"><span style="color:var(--gn);font-weight:700;flex-shrink:0;">&#9650;</span><span><strong>预付款暴增</strong>：2025Q4 ~1亿 → 2026Q1 3亿+，主动锁定上游物料，订单能见度强</span></div>
+<div style="display:flex;gap:8px;margin-bottom:7px;"><span style="color:var(--gn);font-weight:700;flex-shrink:0;">&#9650;</span><span><strong>毛利率改善</strong>：折旧加速背景下，毛利率环比仍提升~1.4%，净利率同步+1.4%</span></div>
+<div style="display:flex;gap:8px;"><span style="color:var(--ye);font-weight:700;flex-shrink:0;">&#9654;</span><span><strong>定增摊薄</strong>：34.85亿定增已落地，新增2089万股（~2.6%稀释），可控</span></div>
+</div>
+</div>
+</div>
+<div style="height:12px;"></div>
+<div class="g3">
+<div class="card">
+<div class="ct">机构净利润预测</div>
+<div class="stat-block"><div class="stat-v ac">18.7亿</div><div class="stat-l">2026E 归母净利润</div><div class="stat-d">国泰海通 · +98% YoY</div></div>
+<div class="stat-block"><div class="stat-v ac">37.8亿</div><div class="stat-l">2027E 归母净利润</div><div class="stat-d">+102% YoY（芯片自给率提升释放）</div></div>
+</div>
+<div class="card">
+<div class="ct">定增项目投向</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">募资 <strong>34.85亿元</strong>（发行价167.55元，溢价底价42.85%）<br>&#128308; 算力光连接+传输产能：20.83亿<br>&#128308; 高速光互联+新兴光电子研发：6.17亿<br>&#128308; 补充流动资金：8亿</p>
+</div>
+<div class="card">
+<div class="ct">收入结构（2025）</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">&#128308; 数通光模块（数据中心）：~71%<br>&#128308; 电信传输类：~19%<br>&#128308; 接入类（PON等）：~10%<br><br><strong>趋势</strong>：数通占比持续提升（2024年约62%→2025年71%），AI算力需求拉动</p>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 护城河 ── -->
+<div class="sec" id="moat">
+<div class="sec-t">护城河分析 · IDM 模式为何难以复制</div>
+<div class="card" style="margin-bottom:12px;">
+<div class="ct">Serenity 视角：光迅到底卡住了什么</div>
+<p style="font-size:13px;line-height:1.75;color:var(--mu);">光模块行业的真正稀缺不在封装（门槛偏低，已有价格战），而在<strong style="color:var(--re);">光芯片</strong>。光芯片（EML/DFB/VCSEL 激光芯片、MZM调制器、PD探测器）占高速模块BOM成本约40-50%，技术壁垒最深。</p>
+<br>
+<p style="font-size:13px;line-height:1.75;color:var(--mu);">光迅选择了最难走的路：<strong>IDM 垂直整合</strong>，从 InP/GaAs 外延、芯片制造，到器件封装、模块集成、子系统交付，全链路自研自产。这使光迅：</p>
+<ul style="margin:8px 0 0 18px;display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--mu);">
+<li>BOM成本比纯封装厂低 20-30%（自产芯片摊薄固定成本）</li>
+<li>毛利率比外购芯片厂高 5-8 个百分点</li>
+<li>不受芯片供应商涨价/断供风险（中际旭创EML芯片仍外购）</li>
+<li>在出口管制升级背景下具有不可替代的国产安全价值</li>
+</ul>
+</div>
+
+<div style="margin-bottom:12px;">
+<div style="font-size:13px;font-weight:700;color:var(--mu);margin-bottom:10px;">Serenity 五维评分</div>
+<div class="score-bar"><div class="score-label">产业链卡点控制</div><div class="score-track"><div class="score-fill" style="width:92%;background:var(--gn);"></div></div><div class="score-val" style="color:var(--gn);">9.2</div></div>
+<div class="score-bar"><div class="score-label">证据质量</div><div class="score-track"><div class="score-fill" style="width:85%;background:var(--gn);"></div></div><div class="score-val" style="color:var(--gn);">8.5</div></div>
+<div class="score-bar"><div class="score-label">短期业绩弹性</div><div class="score-track"><div class="score-fill" style="width:60%;background:var(--ye);"></div></div><div class="score-val" style="color:var(--ye);">6.0</div></div>
+<div class="score-bar"><div class="score-label">客户集中度风险</div><div class="score-track"><div class="score-fill" style="width:65%;background:var(--ye);"></div></div><div class="score-val" style="color:var(--ye);">6.5</div></div>
+<div class="score-bar"><div class="score-label">全球化能力</div><div class="score-track"><div class="score-fill" style="width:45%;background:var(--re);"></div></div><div class="score-val" style="color:var(--re);">4.5</div></div>
+</div>
+
+<div class="g2">
+<div class="card">
+<div class="ct">&#9989; 强力证据链</div>
+<div class="ev-item"><div class="ev-dot s"></div><div class="ev-content"><div class="ev-title">100G EML 芯片量产（国内唯一）</div><div class="ev-sub">自研EML自给率70%+，国内行业整体&lt;5%，稀缺性极强；降低BOM 20-30%</div><span class="ev-src s">强证据 · 年报/互动易</span></div></div>
+<div class="ev-item"><div class="ev-dot s"></div><div class="ev-content"><div class="ev-title">3.2T NPO 全球首发+头部CSP验证</div><div class="ev-sub">2026年3月OFC发布，4月互动易确认已在国内头部CSP完成全系验证，业界首家，领先约6个月</div><span class="ev-src s">强证据 · 互动易+新闻</span></div></div>
+<div class="ev-item"><div class="ev-dot s"></div><div class="ev-content"><div class="ev-title">华为昇腾液冷服务器800G独家供应</div><div class="ev-sub">华为910C/9100液冷服务器采用光迅独家800G光模块，绑定国内AI芯片核心客户</div><span class="ev-src s">强证据 · 行业调研</span></div></div>
+<div class="ev-item"><div class="ev-dot s"></div><div class="ev-content"><div class="ev-title">字节跳动2025H1超25亿订单</div><div class="ev-sub">国内市场份额约35-40%，定增获配机构锁定期内，订单能见度强</div><span class="ev-src m">中等证据 · 机构研报</span></div></div>
+</div>
+<div class="card">
+<div class="ct">&#9888; 待验证项</div>
+<div class="ev-item"><div class="ev-dot m"></div><div class="ev-content"><div class="ev-title">1.6T CPO 批量量产节奏</div><div class="ev-sub">英伟达认证+小批量出货已确认，但规模量产及单价水平尚未披露，需季报跟踪</div><span class="ev-src m">待验证 · 季报</span></div></div>
+<div class="ev-item"><div class="ev-dot m"></div><div class="ev-content"><div class="ev-title">星网订单规模</div><div class="ev-sub">千帆/鸿鹄卫星采购光迅星间激光模块，具体金额和交付时间表尚未公开披露</div><span class="ev-src m">待验证 · 公告</span></div></div>
+<div class="ev-item"><div class="ev-dot w"></div><div class="ev-content"><div class="ev-title">芯珂技术资产注入预期</div><div class="ev-sub">坊间预期2027年NOEIC等高端光芯片资产注入，尚无正式公告，不确定性大</div><span class="ev-src w">弱证据 · 市场传言</span></div></div>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 竞争格局 ── -->
+<div class="sec" id="cmp">
+<div class="sec-t">竞争格局 · 四强横向对比</div>
+<div class="card">
+<table class="cmp-table">
+<thead><tr>
+<th>维度</th>
+<th>中际旭创</th>
+<th>新易盛</th>
+<th>华工科技</th>
+<th style="background:#eff6ff;color:#1d4ed8;">光迅科技 &#11088;</th>
+</tr></thead>
+<tbody>
+<tr><td>技术代际</td><td>1.6T 量产（硅光）</td><td>800G 主力/LPO路线</td><td>6.4T NPO 首发</td><td class="hl">3.2T NPO 全球首发+CSP验证</td></tr>
+<tr><td>光芯片自给率</td><td>40%（硅光自研）</td><td>最弱（外购为主）</td><td>~50%（全平台）</td><td class="hl"><strong>70%+（IDM，最强）</strong></td></tr>
+<tr><td>IDM模式</td><td>否（部分硅光）</td><td>否</td><td>部分</td><td class="hl"><strong>是（唯一全链路）</strong></td></tr>
+<tr><td>海外收入占比</td><td>80%+</td><td>90%+</td><td>较低</td><td class="hl">18-28%（弱项）</td></tr>
+<tr><td>主要客户</td><td>英伟达/谷歌/Meta</td><td>Meta/亚马逊</td><td>国内云厂</td><td class="hl">华为/字节/阿里/腾讯</td></tr>
+<tr><td>2026E净利润</td><td>~267亿元</td><td>~157亿元</td><td>—</td><td class="hl">~18.7亿元</td></tr>
+<tr><td>安全边际</td><td class="star-r">★★★</td><td class="star-r">★★</td><td class="star-r">★★★</td><td class="hl star-r"><strong>★★★★★</strong></td></tr>
+<tr><td>短期业绩弹性</td><td class="star-r"><strong>★★★★★</strong></td><td class="star-r">★★★★</td><td class="star-r">★★★</td><td class="hl star-r">★★★</td></tr>
+<tr><td>Serenity定位</td><td>确定性首选</td><td>LPO高景气</td><td>技术天花板高</td><td class="hl"><strong>安全配置型</strong></td></tr>
+</tbody>
+</table>
+<p style="font-size:11px;color:var(--mu2);margin-top:10px;">数据来源：年报、机构研报综合。2026E为机构预测值。</p>
+</div>
+<div style="height:12px;"></div>
+<div class="card">
+<div class="ct">Serenity 判断：光迅的差异化价值（非共识）</div>
+<p style="font-size:13px;line-height:1.75;color:var(--mu);">市场通常把光迅归为"安全配置型，弹性偏弱"，但<strong style="color:var(--ac);">有两个市场可能没看清的地方</strong>：</p>
+<br>
+<p style="font-size:13px;line-height:1.75;color:var(--mu);">&#10102; <strong>技术代际领先被低估</strong>：3.2T NPO全球首发且率先完成CSP系统验证，实际技术时间点早于中际旭创（中际3.2T尚在开发中）。2027年3.2T进入放量期，光迅先发优势将体现在订单上。</p>
+<br>
+<p style="font-size:13px;line-height:1.75;color:var(--mu);">&#10103; <strong>星间激光通信是隐藏催化剂</strong>：国内唯一量产商，千帆/鸿鹄低轨卫星组网高峰在2026-2028年，这是估值中完全没有体现的增量。</p>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 催化剂 ── -->
+<div class="sec" id="catalyst">
+<div class="sec-t">接下来可能让市场重新定价的事情</div>
+<div class="g2">
+<div>
+<div class="risk-item" style="background:#f0fdf4;border-color:var(--gn);">
+<div class="risk-title" style="color:var(--gn);">&#9654; 近期（0-6个月）</div>
+<div class="risk-sub">
+&#9679; <strong>1.6T 规模订单确认</strong>：国内云厂2026年下半年批量部署，订单金额是重要跟踪指标<br>
+&#9679; <strong>星网激光模块交付量披露</strong>：千帆卫星组网密集发射，若季报中出现星网收入新科目，预期差极大<br>
+&#9679; <strong>芯珂技术整合进展</strong>：控股股东变更完成后，专业化运营决策效率提升信号
+</div>
+</div>
+<div class="risk-item" style="background:#eff6ff;border-color:var(--ac);margin-top:8px;">
+<div class="risk-title" style="color:var(--ac);">&#9654; 中期（6-18个月）</div>
+<div class="risk-sub">
+&#9679; <strong>3.2T NPO 放量商用</strong>：率先验证→订单落地→营收贡献，预期2027年规模化<br>
+&#9679; <strong>EML 芯片自给率突破85-90%</strong>：毛利率可再提2-3个百分点<br>
+&#9679; <strong>海外头部客户突破</strong>：Cisco 1.6T已验证，Meta/Google开拓中，若公布重要海外订单，估值逻辑发生质变
+</div>
+</div>
+</div>
+<div>
+<div class="risk-item" style="background:#f5f3ff;border-color:var(--pu);margin-top:0;">
+<div class="risk-title" style="color:var(--pu);">&#9654; 长期（18个月+）</div>
+<div class="risk-sub">
+&#9679; <strong>CPO 进入规模商用</strong>：LightCounting 预测2029年后CPO大规模部署，光迅CPO布局最深，长期卡位<br>
+&#9679; <strong>芯珂平台资产注入</strong>：2027年NOEIC等InP晶圆厂资产注入预期，光芯片能力大幅跃升<br>
+&#9679; <strong>6G/星地融合组网</strong>：芯珂技术定位6G+卫星互联网核心平台，光迅作为核心执行载体
+</div>
+</div>
+<div class="card" style="margin-top:8px;">
+<div class="ct">定增机构隐含信号</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">2026年6月定增：发行价 <strong>167.55元</strong>，较底价溢价 <strong>42.85%</strong>，8家机构参与认购。实控人中国信科以13.3亿获配并锁定18个月。溢价幅度强烈反映机构对中期价值的认可。</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 风险 ── -->
+<div class="sec" id="risk">
+<div class="sec-t">风险矩阵 · 什么情况说明这个判断错了</div>
+<div class="risk-item risk-h">
+<div class="risk-title">&#128308; 高风险：短期业绩弹性不及预期</div>
+<div class="risk-sub">光迅70%收入来自国内市场，海外仅18-28%。若2026年1.6T订单放量中中际旭创拿走大部分份额，光迅增速相对平缓。机构预测光迅2026E净利润18.7亿 vs 中际旭创267亿，规模差距决定短期资本市场吸引力有限。</div>
+</div>
+<div class="risk-item risk-h">
+<div class="risk-title">&#128308; 高风险：华为客户集中度（~30%营收）</div>
+<div class="risk-sub">若华为加速自研光芯片/光模块（海思光子），外采减少将对光迅营收产生重大冲击。华为本身的出口限制也会传导至光迅国际化路径。</div>
+</div>
+<div class="risk-item risk-m">
+<div class="risk-title">&#128992; 中风险：光模块行业价格战加剧</div>
+<div class="risk-sub">800G光模块正快速商品化，ASP下滑压力明显。若行业价格下滑速度超过光迅成本优化速度，毛利率改善不及预期。</div>
+</div>
+<div class="risk-item risk-m">
+<div class="risk-title">&#128992; 中风险：硅光PIC代工仍依赖外部Fab</div>
+<div class="risk-sub">3.2T产品基于硅光PIC，但晶圆代工仍依赖TSMC等外部Fab。若出口管制扩展至硅光代工，将影响产品推进节奏。</div>
+</div>
+<div class="risk-item risk-l">
+<div class="risk-title">&#128994; 低风险：芯珂资产注入节奏不确定</div>
+<div class="risk-sub">市场对芯珂平台整合+NOEIC资产注入有一定预期，若推进慢于预期（或因监管/估值分歧搁置），相关预期溢价会消退。</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 结论 ── -->
+<div class="sec" id="verdict">
+<div class="sec-t">研究结论</div>
+<div class="verdict">
+<div class="verdict-t">&#128202; Serenity 优先研究名单 · 安全边际最高 · 技术代际被低估</div>
+<div class="verdict-body">
+光迅科技是光通信行业<strong>安全边际最强的标的</strong>，市场通常把它归为"弹性偏弱的配置仓"，这个判断在2026-2027年可能需要修正。<br><br>
+<strong>核心逻辑</strong>：光迅控制了光模块价值链上真正的稀缺层——光芯片（EML/硅光PIC）。当同行在争抢封装和交付效率时，光迅在打造不可复制的芯片壁垒。IDM模式目前使毛利率领先同类约5-8个百分点，随着自给率从70%继续爬升，盈利弹性将在2026-2027年加速释放。<br><br>
+<strong>市场可能没看清的地方</strong>：① 3.2T NPO技术代际实际领先中际旭创（首发+率先CSP验证），2027年放量时先发红利会反映到订单；② 星间激光通信垄断地位在当前估值中几乎未定价；③ 芯珂技术平台带来的长期战略重塑（6G+低轨卫星核心执行载体）。<br><br>
+<strong>最大反方理由</strong>：海外收入只有18-28%，全球AI资本开支的弹性被中际旭创和新易盛拿走；华为依赖度过高（~30%）。短期来看，光迅不是业绩弹性最大的选择，但在供应链安全成为核心命题的背景下，它是最不会"出事"的选择，也是国产化主题中基本面最扎实的标的。
+</div>
+<div class="verdict-next">
+<div class="verdict-next-t">核心验证动作</div>
+<div class="verdict-checks">
+<div class="vc">2026Q2/Q3季报：1.6T模块营收贡献占比、预付款变化方向</div>
+<div class="vc">星网收入：若季报中出现星网收入新科目，预期差极大</div>
+<div class="vc">3.2T NPO订单：头部CSP验证完成后首批订单金额披露</div>
+<div class="vc">EML芯片自给率：从70%到80%+的节点，毛利率改善会加速</div>
+<div class="vc">芯珂技术整合：是否有资产注入正式公告（NOEIC InP晶圆厂）</div>
+<div class="vc">海外客户：Cisco/Meta/Google采购放量信号（突破国内依赖的关键证据）</div>
+</div>
+</div>
+</div>
+<p style="margin-top:16px;font-size:11px;color:var(--mu2);text-align:center;line-height:1.7;">本报告由 Serenity Skill 框架生成 · 取证维度：年报/季报 · 互动易 · OFC公告 · 机构研报 · LightCounting行业数据<br>仅供研究参考，不构成投资建议。交易决策由投资者自行负责。</p>
+</div>
+
+</div>
+</div>
+
+<script>
+(function(){
+  var tabs=document.querySelectorAll(".tab");
+  var secs=Array.from(document.querySelectorAll(".sec[id]"));
+  var nav=document.getElementById("tabs");
+  function setActive(id){
+    tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("href")==="#"+id);});
+    var at=document.querySelector(".tab.active");
+    if(at&&nav){var l=at.offsetLeft-nav.offsetWidth/2+at.offsetWidth/2;nav.scrollLeft=l;}
+  }
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});
+  },{rootMargin:"-40% 0px -55% 0px"});
+  secs.forEach(function(s){obs.observe(s);});
+  tabs.forEach(function(t){
+    t.addEventListener("click",function(e){
+      e.preventDefault();
+      var id=t.getAttribute("href").replace("#","");
+      var el=document.getElementById(id);
+      if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:"smooth"});}
+    });
+  });
+})();
+</script>
+</body>
+</html>
