@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>巨化股份（600160）深度研究 · Serenity</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#f6f8fa;--sf:#fff;--sf2:#f0f4fa;--bd:#d0d7de;--bd2:#e4e9f0;--tx:#1f2328;--mu:#57606a;--mu2:#8c959f;--ac:#0969da;--gn:#1a7f37;--ye:#9a6700;--re:#cf222e;--pu:#8250df;--or:#bc4c00;}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;}
+a{color:var(--ac);text-decoration:none;}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid var(--bd);transform:translateZ(0);}
+.topbar-inner{max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:50px;}
+.logo{font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;}
+.logo span{color:var(--ac);}
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{white-space:nowrap;padding:0 13px;height:50px;display:flex;align-items:center;font-size:12px;font-weight:500;color:var(--mu);border-bottom:2px solid transparent;cursor:pointer;transition:color .15s;}
+.tab:hover,.tab.active{color:var(--ac);border-bottom-color:var(--ac);}
+.main{max-width:1040px;margin:0 auto;padding:0 20px 80px;}
+.hero{background:linear-gradient(135deg,#0c1a0a 0%,#1a3d14 60%,#0f3028 100%);color:#fff;border-radius:0 0 16px 16px;padding:40px 28px 32px;margin-bottom:28px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(74,222,128,.12) 0%,transparent 70%);pointer-events:none;}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:3px 10px;color:rgba(255,255,255,.7);}
+.hero-verdict{background:rgba(26,127,55,.3);border:1px solid rgba(74,222,128,.4);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:#4ade80;}
+.hero-t{font-size:30px;font-weight:800;line-height:1.2;margin-bottom:8px;}
+.hero-t em{font-style:normal;color:#86efac;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.6);max-width:580px;line-height:1.6;margin-bottom:20px;}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap;}
+.hs{border-left:2px solid rgba(255,255,255,.2);padding-left:12px;}
+.hs-v{font-size:22px;font-weight:800;color:#fff;line-height:1;}
+.hs-l{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;}
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px;}
+.htag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:12px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.12);}
+.htag.gn{background:rgba(26,127,55,.2);border-color:rgba(74,222,128,.3);color:#4ade80;}
+.htag.ye{background:rgba(154,103,0,.2);border-color:rgba(250,204,21,.3);color:#fde047;}
+.htag.red{background:rgba(207,34,46,.2);border-color:rgba(207,34,46,.4);color:#fca5a5;}
+.sec{margin-bottom:32px;}
+.sec-t{font-size:18px;font-weight:700;border-left:3px solid var(--gn);padding-left:10px;margin-bottom:16px;}
+.sdiv{height:1px;background:var(--bd2);margin:28px 0;}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:18px;}
+.ct{font-size:13px;font-weight:700;color:var(--mu);margin-bottom:12px;letter-spacing:.3px;}
+.card+.card{margin-top:12px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:680px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+.stat-block{text-align:center;padding:14px 10px;}
+.stat-v{font-size:26px;font-weight:800;color:var(--tx);}
+.stat-v.gn{color:var(--gn);}.stat-v.re{color:var(--re);}.stat-v.ac{color:var(--ac);}.stat-v.ye{color:var(--ye);}
+.stat-l{font-size:11px;color:var(--mu);margin-top:4px;}
+.stat-d{font-size:12px;color:var(--mu2);margin-top:2px;}
+.sc-diagram{display:flex;flex-direction:column;gap:6px;}
+.sc-layer{border-radius:8px;border:1px solid var(--bd);overflow:hidden;}
+.sc-lbl{font-size:11px;font-weight:700;padding:5px 10px;letter-spacing:.4px;}
+.sc-items{display:flex;flex-wrap:wrap;gap:5px;padding:8px 10px;}
+.sc-item{font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid;line-height:1.4;}
+.ly0{border-color:#fca5a5;}.ly0 .sc-lbl{background:#fee2e2;color:#991b1b;}.ly0 .sc-item{background:#fff5f5;border-color:#fca5a5;color:#9f1239;}
+.ly-star{border-color:#86efac;}.ly-star .sc-lbl{background:#dcfce7;color:#15803d;font-weight:800;}.ly-star .sc-item{background:#f0fdf4;border-color:#86efac;color:#166534;}
+.ly2{border-color:#bfdbfe;}.ly2 .sc-lbl{background:#eff6ff;color:#1d4ed8;}.ly2 .sc-item{background:#eff6ff;border-color:#bfdbfe;color:#1e40af;}
+.ly3{border-color:#d1fae5;}.ly3 .sc-lbl{background:#d1fae5;color:#065f46;}.ly3 .sc-item{background:#f0fdf4;border-color:#86efac;color:#166534;}
+.ly4{border-color:#e5e7eb;}.ly4 .sc-lbl{background:#f9fafb;color:#374151;}.ly4 .sc-item{background:#f9fafb;border-color:#e5e7eb;color:#374151;}
+.sc-arr{text-align:center;font-size:14px;color:var(--mu2);line-height:1;padding:2px 0;}
+.sc-highlight{background:#fef9c3 !important;border-color:#fde047 !important;color:#713f12 !important;}
+.cmp-table{width:100%;border-collapse:collapse;font-size:12px;}
+.cmp-table th{background:var(--sf2);font-weight:700;padding:8px 10px;text-align:left;border-bottom:2px solid var(--bd);font-size:11px;color:var(--mu);}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid var(--bd2);vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table .hl td{background:#f0fdf4;}
+.ev-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd2);}
+.ev-item:last-child{border-bottom:none;}
+.ev-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.ev-dot.s{background:var(--gn);}.ev-dot.m{background:var(--ye);}.ev-dot.w{background:var(--re);}
+.ev-content{flex:1;}
+.ev-title{font-size:13px;font-weight:600;margin-bottom:2px;}
+.ev-sub{font-size:12px;color:var(--mu);line-height:1.55;}
+.ev-src{font-size:10px;font-weight:600;padding:1px 6px;border-radius:8px;display:inline-block;margin-top:4px;}
+.ev-src.s{background:#dafbe1;color:#1a7f37;}.ev-src.m{background:#fef9c3;color:#9a6700;}.ev-src.w{background:#ffebe9;color:#cf222e;}
+.risk-item{padding:12px;border-radius:8px;border-left:4px solid;margin-bottom:8px;}
+.risk-h{background:#fff1f2;border-color:var(--re);}
+.risk-m{background:#fef9c3;border-color:var(--ye);}
+.risk-l{background:#f0fdf4;border-color:var(--gn);}
+.risk-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.risk-sub{font-size:12px;color:var(--mu);line-height:1.55;}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.score-label{font-size:12px;width:130px;flex-shrink:0;color:var(--mu);}
+.score-track{flex:1;height:6px;background:var(--bd2);border-radius:3px;overflow:hidden;}
+.score-fill{height:100%;border-radius:3px;}
+.score-val{font-size:12px;font-weight:700;width:30px;text-align:right;}
+.price-card{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;}
+.price-name{font-size:11px;font-weight:700;color:var(--mu);margin-bottom:4px;}
+.price-val{font-size:20px;font-weight:800;color:var(--tx);}
+.price-chg{font-size:11px;font-weight:600;margin-top:2px;}
+.price-chg.up{color:var(--gn);}.price-chg.dn{color:var(--re);}
+.verdict{background:linear-gradient(135deg,#0c1a0a,#1a3d14);color:#fff;border-radius:12px;padding:22px 24px;}
+.verdict-t{font-size:16px;font-weight:800;margin-bottom:10px;color:#86efac;}
+.verdict-body{font-size:13px;line-height:1.7;color:rgba(255,255,255,.85);}
+.verdict-next{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);}
+.verdict-next-t{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;}
+.verdict-checks{display:flex;flex-direction:column;gap:5px;}
+.vc{font-size:12px;color:rgba(255,255,255,.75);display:flex;gap:8px;align-items:flex-start;}
+.vc::before{content:'&#8594;';color:#86efac;flex-shrink:0;}
+.watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
+@media(max-width:639px){html,body{overflow-x:clip;}.hero-t{font-size:22px;}.hero-stats{gap:14px;}.hs-v{font-size:18px;}.main{padding:0 12px 60px;}.hero{padding:28px 16px 22px;border-radius:0;}}
+</style>
+</head>
+<body>
+<div class="watermark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="wm" x="0" y="0" width="220" height="160" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><text x="10" y="60" font-family="-apple-system,sans-serif" font-size="18" font-weight="600" fill="#888" fill-opacity="0.13" letter-spacing="3">reese</text><text x="110" y="130" font-family="-apple-system,sans-serif" font-size="18" font-weight="600" fill="#888" fill-opacity="0.13" letter-spacing="3">reese</text></pattern></defs><rect width="100%" height="100%" fill="url(#wm)"/></svg></div>
+
+<div class="topbar">
+<div class="topbar-inner">
+<div class="logo">&#128202; <span>Serenity</span> Research</div>
+<nav class="tabs" id="tabs">
+<a class="tab" href="#chain">产业链</a>
+<a class="tab" href="#quota">配额壁垒</a>
+<a class="tab" href="#fin">财务</a>
+<a class="tab" href="#cmp">竞争</a>
+<a class="tab" href="#catalyst">催化剂</a>
+<a class="tab" href="#risk">风险</a>
+<a class="tab" href="#verdict">结论</a>
+</nav>
+</div>
+</div>
+
+<div class="main">
+
+<div class="hero">
+<div class="hero-top">
+<span class="hero-badge">&#128300; Serenity · 政策特许经营穿透</span>
+<span class="hero-verdict">&#9679; 优先研究名单 · 配额护城河</span>
+</div>
+<div class="hero-t">巨化股份（600160）<br><em>全球HFCs配额第一 · 制冷剂"特许经营"</em></div>
+<div class="hero-sub">浙江衢州 · 浙江省国资委 · 氟化工全产业链IDM。国内唯一覆盖第一至四代制冷剂的企业，依托蒙特利尔议定书基加利修正案构筑全球最高政策壁垒。</div>
+<div class="hero-stats">
+<div class="hs"><div class="hs-v">269亿</div><div class="hs-l">2025年营收 +10%</div></div>
+<div class="hs"><div class="hs-v">37.8亿</div><div class="hs-l">2025年净利润 +94%</div></div>
+<div class="hs"><div class="hs-v">39.3%</div><div class="hs-l">全国HFCs配额占比 · 全球#1</div></div>
+<div class="hs"><div class="hs-v">+15-20亿</div><div class="hs-l">价格每+1万元/吨 净利弹性</div></div>
+</div>
+<div class="hero-tags">
+<span class="htag gn">&#9989; 全球HFCs配额第一（R32/R125/R134a三大品种）</span>
+<span class="htag gn">&#9989; 基加利修正案硬约束 · 竞争对手无法增产</span>
+<span class="htag gn">&#9989; 净利+94%逆行业周期 · 现金流+128%</span>
+<span class="htag ye">&#9888; 中东冲突致阿联酋工厂维保 · 出口短期受阻</span>
+<span class="htag ye">&#9888; 非制冷剂业务（石化/基础化工）价格承压</span>
+<span class="htag">&#127775; HFO四代布局先发 · 液冷+半导体氟材料新增长</span>
+</div>
+</div>
+
+<!-- ── 产业链 ── -->
+<div class="sec" id="chain">
+<div class="sec-t">产业链层级图 · Serenity 卡点定位</div>
+<div class="card">
+<div class="ct">氟化工全产业链 · 从矿石到应用 · 真正稀缺层高亮</div>
+<div class="sc-diagram">
+
+<div class="sc-layer ly0">
+<div class="sc-lbl">L0 · 全球政策卡点（最高护城河 · 不可被竞争对手突破）</div>
+<div class="sc-items">
+<div class="sc-item sc-highlight">&#127775; 蒙特利尔议定书基加利修正案 — HFCs全球配额上限</div>
+<div class="sc-item sc-highlight">&#127775; 中国生态环境部HFCs生产配额核发 — 企业不可增发</div>
+<div class="sc-item">R32/R125/R134a — 2026年全国总量79.78万吨（刚性约束）</div>
+<div class="sc-item">HFO专利壁垒 — 霍尼韦尔/科慕垄断（国内突破中）</div>
+</div>
+</div>
+
+<div class="sc-arr">&#8595; 配额锁定供给上限 → 需求增长全部转化为价格上涨 → 巨化以39.3%份额主导定价</div>
+
+<div class="sc-layer ly-star">
+<div class="sc-lbl">&#11088; L1 · 巨化股份（IDM链主 · 全链路一体化）</div>
+<div class="sc-items">
+<div class="sc-item">&#127775; 萤石矿 → 氟化氢(HF) 自给一体化</div>
+<div class="sc-item">&#127775; R32（配额全国44.99% · 全球#1）</div>
+<div class="sc-item">&#127775; R125（配额全国38.74% · 全球#1）</div>
+<div class="sc-item">&#127775; R134a（配额全国35.48% · 全球#1）</div>
+<div class="sc-item">&#127775; HCFC-22（内用配额全国31.55% · 国内#1）</div>
+<div class="sc-item">HFOs（8000吨/年已运营 · 5万吨规划中）</div>
+<div class="sc-item">含氟聚合物（PTFE/PVDF/PFA）</div>
+<div class="sc-item">含氟精细化学品 · 高纯PFA（半导体）</div>
+<div class="sc-item sc-highlight">&#9728; 巨芯冷却液 · AI数据中心液冷</div>
+<div class="sc-item">阿联酋基地（海外出口，目前维保）</div>
+</div>
+</div>
+
+<div class="sc-arr">&#8595;</div>
+
+<div class="sc-layer ly2">
+<div class="sc-lbl">L2 · 下游制造商</div>
+<div class="sc-items">
+<div class="sc-item">格力/美的/海信 — 家用/商用空调OEM</div>
+<div class="sc-item">比亚迪/特斯拉/宝马 — 新能源汽车空调</div>
+<div class="sc-item">冷链物流/工业制冷设备厂</div>
+<div class="sc-item">数据中心（液冷新客户）</div>
+</div>
+</div>
+
+<div class="sc-arr">&#8595;</div>
+
+<div class="sc-layer ly3">
+<div class="sc-lbl">L3 · 终端需求</div>
+<div class="sc-items">
+<div class="sc-item">家用空调（2026年国补续力，产量稳增）</div>
+<div class="sc-item">新能源汽车（R134a核心需求，增速20%+）</div>
+<div class="sc-item">出口（占比40%+，中东/印度/东南亚）</div>
+<div class="sc-item">AI算力液冷散热</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div style="height:12px;"></div>
+<div class="g3">
+<div class="card">
+<div class="ct">&#128308; Serenity卡点定位</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">巨化的稀缺性<strong style="color:var(--re);">不来自技术</strong>，来自<strong style="color:var(--gn);">政策特许经营</strong>。基加利修正案将全球HFCs产量锁死，中国占全球80%+配额，而巨化占全国39.3%。这相当于持有全球制冷剂市场约30%的"生产牌照"，且牌照无法被购买、仿制或扩充。</p>
+</div>
+<div class="card">
+<div class="ct">&#127775; 核心投资逻辑</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">这是一个<strong style="color:var(--gn);">"量固定、价格波动"</strong>的特殊商业模式：配额锁定了供给上限，下游需求（空调、汽车）稳定增长，任何需求增量都只能通过价格来出清。制冷剂价格每上涨1万元/吨，巨化净利润增厚<strong>15-20亿元</strong>。</p>
+</div>
+<div class="card">
+<div class="ct">&#9728; 三条新增长曲线</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">① <strong>HFOs（第四代）</strong>：取代HFCs的下一代，已有8000吨运营产能，规划5万吨<br>② <strong>AI液冷</strong>：巨芯冷却液（全氟聚醚），AI数据中心唯一使用场景<br>③ <strong>半导体氟材料</strong>：高纯PFA已量产，国产替代逻辑</p>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 配额壁垒 ── -->
+<div class="sec" id="quota">
+<div class="sec-t">配额壁垒详解 · 为什么这是护城河</div>
+<div class="card" style="margin-bottom:12px;">
+<div class="ct">基加利修正案 · 全球制冷剂配额机制</div>
+<p style="font-size:13px;line-height:1.75;color:var(--mu);">2016年基加利修正案要求各国逐步削减HFCs（第三代制冷剂）生产和消费。中国于2024年正式执行配额制，2026年全国HFCs生产配额总量<strong>79.78万吨</strong>（全球来看中国持有全球80%以上HFCs生产配额，相当于"全球特许经营"）。</p>
+<br>
+<p style="font-size:13px;line-height:1.75;color:var(--mu);">关键机制：<strong style="color:var(--re);">配额不可增发、不可转让</strong>，只有历史上已取得配额的企业才能生产，后来者完全无法进入。这形成了比专利壁垒更强的进入壁垒——专利20年到期，但配额永久有效且随削减计划递减。</p>
+</div>
+
+<div class="g4">
+<div class="price-card"><div class="price-name">R32（空调主制冷剂）</div><div class="price-val">6.27-6.4万</div><div class="price-chg up">元/吨 · Q1均价6.25万</div></div>
+<div class="price-card"><div class="price-name">R134a（汽车空调）</div><div class="price-val">6.0-6.1万</div><div class="price-chg up">元/吨 · Q1均价5.8万 &#9650;</div></div>
+<div class="price-card"><div class="price-name">R410a（中央空调）</div><div class="price-val">5.67-5.9万</div><div class="price-chg up">元/吨 · Q1均价5.6万 &#9650;</div></div>
+<div class="price-card"><div class="price-name">R22（工业/冷链）</div><div class="price-val">+25%</div><div class="price-chg up">年内涨幅 · 持续上行</div></div>
+</div>
+
+<div style="height:12px;"></div>
+<div class="g2">
+<div class="card">
+<div class="ct">2026年主要品种配额：巨化 vs 全行业</div>
+<table class="cmp-table">
+<thead><tr><th>品种</th><th>巨化配额（万吨）</th><th>全国占比</th><th>全球地位</th></tr></thead>
+<tbody>
+<tr class="hl"><td><strong>HFCs合计</strong></td><td><strong>29.99</strong></td><td><strong>39.30%</strong></td><td><strong>全球第一</strong></td></tr>
+<tr><td>R32</td><td>~13.5</td><td>44.99%</td><td>全球第一</td></tr>
+<tr><td>R125</td><td>~11.6</td><td>38.74%</td><td>全球第一</td></tr>
+<tr><td>R134a</td><td>~10.6</td><td>35.48%</td><td>全球第一</td></tr>
+<tr><td>HCFC-22</td><td>3.84</td><td>26.30%（内用31.55%）</td><td>国内第一</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<div class="ct">配额 = 利润杠杆</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">制冷剂价格对利润的弹性测算：</p>
+<br>
+<div class="g2" style="gap:8px;margin-top:4px;">
+<div class="stat-block"><div class="stat-v gn">+15-20亿</div><div class="stat-l">价格每涨1万元/吨</div><div class="stat-d">公司全年净利润增厚</div></div>
+<div class="stat-block"><div class="stat-v ye">50.81%</div><div class="stat-l">2025年制冷剂毛利率</div><div class="stat-d">同比+21.74pp</div></div>
+</div>
+<br>
+<p style="font-size:12px;color:var(--mu);">2026年Q1制冷剂销售均价已达<strong>4.45万元/吨</strong>，较2023年底翻倍。供给刚性约束下，价格还有继续上行空间。</p>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 财务 ── -->
+<div class="sec" id="fin">
+<div class="sec-t">财务质量穿透</div>
+<div class="g2">
+<div class="card">
+<div class="ct">核心财务指标</div>
+<div class="g2" style="gap:8px;">
+<div class="stat-block"><div class="stat-v gn">269亿</div><div class="stat-l">2025 营收</div><div class="stat-d">+10.3% YoY</div></div>
+<div class="stat-block"><div class="stat-v gn">37.8亿</div><div class="stat-l">2025 归母净利</div><div class="stat-d">+94.3% YoY</div></div>
+<div class="stat-block"><div class="stat-v gn">11.7亿</div><div class="stat-l">2026Q1 净利润</div><div class="stat-d">+46% YoY +119% QoQ</div></div>
+<div class="stat-block"><div class="stat-v gn">62.6亿</div><div class="stat-l">2025经营现金流</div><div class="stat-d">+127.5% YoY</div></div>
+</div>
+</div>
+<div class="card">
+<div class="ct">盈利质量信号</div>
+<div style="font-size:12px;line-height:1.75;color:var(--mu);">
+<div style="display:flex;gap:8px;margin-bottom:7px;"><span style="color:var(--gn);font-weight:700;flex-shrink:0;">&#9650;</span><span><strong>利润率持续扩张</strong>：2026Q1毛利率34.39%，同比+5.97pp；制冷剂板块毛利率38.7%，同比+9.2pp</span></div>
+<div style="display:flex;gap:8px;margin-bottom:7px;"><span style="color:var(--gn);font-weight:700;flex-shrink:0;">&#9650;</span><span><strong>现金流质量极佳</strong>：2025年经营现金流62.61亿 vs 净利润37.83亿，现金含量比>1.6x，无造假迹象</span></div>
+<div style="display:flex;gap:8px;margin-bottom:7px;"><span style="color:var(--gn);font-weight:700;flex-shrink:0;">&#9650;</span><span><strong>量价齐升</strong>：2026Q1制冷剂均价+18.72% YoY，销量+1.11% YoY</span></div>
+<div style="display:flex;gap:8px;"><span style="color:var(--ye);font-weight:700;flex-shrink:0;">&#9654;</span><span><strong>一次性减值</strong>：2025Q4巨化锦纶计提约4亿资产减值，导致Q4环比大幅下滑，非持续性扰动</span></div>
+</div>
+</div>
+</div>
+<div style="height:12px;"></div>
+<div class="g3">
+<div class="card">
+<div class="ct">机构净利润预测</div>
+<div class="stat-block"><div class="stat-v ac">55.4亿</div><div class="stat-l">2026E归母净利润</div><div class="stat-d">国信证券 · +46% YoY</div></div>
+<div class="stat-block"><div class="stat-v ac">66.7亿</div><div class="stat-l">2027E归母净利润</div><div class="stat-d">+20% YoY · CAGR 35%</div></div>
+</div>
+<div class="card">
+<div class="ct">2026Q1分业务收入</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">&#128308; 制冷剂：31.42亿 <strong style="color:var(--gn);">+20%</strong>（均价4.45万/吨）<br>&#128308; 含氟聚合物：5.46亿 <strong style="color:var(--gn);">+30%</strong><br>&#128308; 含氟精细化学品：1.42亿 <strong style="color:var(--gn);">+98%</strong><br>&#128308; 石化材料：8.22亿 <span style="color:var(--re);">-14%</span>（仍承压）<br>&#128308; 基础化工：5.79亿 <span style="color:var(--re);">-18%</span></p>
+</div>
+<div class="card">
+<div class="ct">收入结构优化趋势</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">制冷剂占营收比：<br>2023 → 2024 → 2025 → 2026Q1<br><strong>37% → 47% → 50%+ → 52%+</strong><br><br>高毛利业务占比持续提升，结构性改善抵消非制冷剂板块拖累，净利润增速远超营收增速的核心原因。</p>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 竞争 ── -->
+<div class="sec" id="cmp">
+<div class="sec-t">竞争格局 · 寡头垄断形成</div>
+<div class="card" style="margin-bottom:12px;">
+<table class="cmp-table">
+<thead><tr><th>公司</th><th>2026 HFCs配额</th><th>全国占比</th><th>2025净利润</th><th>核心优势</th><th>短板</th></tr></thead>
+<tbody>
+<tr class="hl"><td><strong>巨化股份 &#11088;</strong></td><td><strong>29.99万吨</strong></td><td><strong>39.3%</strong></td><td><strong>37.83亿</strong></td><td>全链IDM · 全代制冷剂 · 液冷新业务</td><td>非制冷板块拖累 · 中东出口受阻</td></tr>
+<tr><td>三美股份</td><td>12.2万吨</td><td>15.2%</td><td>20.61亿</td><td>AHF自给率100% · 净利率行业最高</td><td>规模小 · HFO布局晚</td></tr>
+<tr><td>永和股份</td><td>6.03万吨</td><td>7.6%</td><td>5.62亿</td><td>双主业协同 · 四代前瞻布局</td><td>规模最小 · 产能爬坡</td></tr>
+<tr><td>东阳光</td><td>—</td><td>少量</td><td>—</td><td>电解铝+化工协同</td><td>制冷剂非主业</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="margin-bottom:12px;">
+<div style="font-size:13px;font-weight:700;color:var(--mu);margin-bottom:10px;">Serenity 五维评分</div>
+<div class="score-bar"><div class="score-label">政策壁垒护城河</div><div class="score-track"><div class="score-fill" style="width:95%;background:var(--gn);"></div></div><div class="score-val" style="color:var(--gn);">9.5</div></div>
+<div class="score-bar"><div class="score-label">短期业绩弹性</div><div class="score-track"><div class="score-fill" style="width:88%;background:var(--gn);"></div></div><div class="score-val" style="color:var(--gn);">8.8</div></div>
+<div class="score-bar"><div class="score-label">长期成长性</div><div class="score-track"><div class="score-fill" style="width:72%;background:var(--ye);"></div></div><div class="score-val" style="color:var(--ye);">7.2</div></div>
+<div class="score-bar"><div class="score-label">海外/新业务风险</div><div class="score-track"><div class="score-fill" style="width:55%;background:var(--ye);"></div></div><div class="score-val" style="color:var(--ye);">5.5</div></div>
+<div class="score-bar"><div class="score-label">非制冷板块拖累</div><div class="score-track"><div class="score-fill" style="width:45%;background:var(--re);"></div></div><div class="score-val" style="color:var(--re);">4.5</div></div>
+</div>
+
+<div class="g2">
+<div class="card">
+<div class="ct">&#9989; 强力证据链</div>
+<div class="ev-item"><div class="ev-dot s"></div><div class="ev-content"><div class="ev-title">全球HFCs配额#1（R32/R125/R134a三大品种均全球第一）</div><div class="ev-sub">2026年生态环境部核发配额公示，巨化HFCs合计29.99万吨，占全国39.30%，行业领先三美股份(15.2%)约24pp</div><span class="ev-src s">强证据 · 生态环境部公示</span></div></div>
+<div class="ev-item"><div class="ev-dot s"></div><div class="ev-content"><div class="ev-title">现金流质量极高 · 利润含金量验证</div><div class="ev-sub">2025年经营现金流62.61亿 vs 净利润37.83亿，比值1.65x，证明盈利为真实现金创造，非会计利润</div><span class="ev-src s">强证据 · 年报</span></div></div>
+<div class="ev-item"><div class="ev-dot s"></div><div class="ev-content"><div class="ev-title">总经理明确二季度延续积极态势</div><div class="ev-sub">2026年5月19日业绩说明会，总经理韩金铭明确：二季度主要产品延续积极态势，R22/R134a/R410a价格4月末较Q1末分别+17.14%/+3.36%/+2.65%</div><span class="ev-src s">强证据 · 业绩说明会</span></div></div>
+<div class="ev-item"><div class="ev-dot s"></div><div class="ev-content"><div class="ev-title">R134a需求逻辑：新能源汽车是独立增量</div><div class="ev-sub">新能源汽车热管理需求持续增长，R134a占用配额较少（全国35.48%份额）但需求增速最快，预计供需最紧</div><span class="ev-src s">强证据 · 机构研报</span></div></div>
+</div>
+<div class="card">
+<div class="ct">&#9888; 待验证项</div>
+<div class="ev-item"><div class="ev-dot m"></div><div class="ev-content"><div class="ev-title">甘肃项目HFO产能爬坡节奏</div><div class="ev-sub">计划2026年6月底中交，但管理层坦言"开车和产能提升时间较长"，HFO放量可能晚于预期</div><span class="ev-src m">待验证 · 季报跟踪</span></div></div>
+<div class="ev-item"><div class="ev-dot m"></div><div class="ev-content"><div class="ev-title">巨芯冷却液商业化进度</div><div class="ev-sub">1000吨/年产能处于爬坡阶段，已与国内数家数据中心合作，但规模化收入何时贡献尚不确定</div><span class="ev-src m">待验证 · 季报</span></div></div>
+<div class="ev-item"><div class="ev-dot w"></div><div class="ev-content"><div class="ev-title">中东冲突缓和节奏</div><div class="ev-sub">阿联酋工厂维保，中东出口受阻（2026Q1 R32出口-56%），缓和时间不可预测</div><span class="ev-src w">地缘风险 · 不可预测</span></div></div>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 催化剂 ── -->
+<div class="sec" id="catalyst">
+<div class="sec-t">接下来可能让市场重新定价的事情</div>
+<div class="g2">
+<div>
+<div class="risk-item" style="background:#f0fdf4;border-color:var(--gn);">
+<div class="risk-title" style="color:var(--gn);">&#9654; 近期（0-6个月）</div>
+<div class="risk-sub">
+&#9679; <strong>中东冲突缓和 → 出口需求集中释放</strong>：管理层已在准备"集中交付预案"，霍尔木兹海峡若通航，出口量可能大幅反弹（印度/中东今年是配额基线期最后一年，刚性进口需求强）<br>
+&#9679; <strong>夏季空调旺季到来</strong>：R32、R410a进入消费旺季，库存低位+排产均衡化→量价确定性高<br>
+&#9679; <strong>R134a需求验证</strong>：新能源汽车快速增长，若2026Q2 R134a价格突破历史高点，预期差极大
+</div>
+</div>
+<div class="risk-item" style="background:#eff6ff;border-color:var(--ac);margin-top:8px;">
+<div class="risk-title" style="color:var(--ac);">&#9654; 中期（6-18个月）</div>
+<div class="risk-sub">
+&#9679; <strong>甘肃HFO产能投产</strong>：年底建成+爬坡，2027年HFO收入贡献开始显现，成长逻辑从"周期"转向"成长"<br>
+&#9679; <strong>高纯PFA半导体客户认证</strong>：国产替代逻辑，一旦突破关键半导体客户，估值逻辑升维<br>
+&#9679; <strong>HFCs配额进一步收紧</strong>：基加利修正案削减路径持续，2027-2029年配额继续下调，供给更紧
+</div>
+</div>
+</div>
+<div>
+<div class="risk-item" style="background:#f5f3ff;border-color:var(--pu);margin-top:0;">
+<div class="risk-title" style="color:var(--pu);">&#9654; 长期（18个月+）</div>
+<div class="risk-sub">
+&#9679; <strong>HFOs成为主导产品</strong>：欧盟强制汽车空调使用R1234yf，全球趋势推进，巨化现有技术+产能先发优势将形成新的配额壁垒<br>
+&#9679; <strong>巨芯液冷规模化</strong>：AI数据中心液冷渗透率快速提升，全氟聚醚是当前唯一成熟的单相浸没冷却液，巨化品种最全、背景最强<br>
+&#9679; <strong>非制冷板块困境反转</strong>：石化材料、基础化工处于周期底部，若行业反转，提供额外期权
+</div>
+</div>
+<div class="card" style="margin-top:8px;">
+<div class="ct">市场可能没看清的地方</div>
+<p style="font-size:12px;line-height:1.7;color:var(--mu);">&#10102; <strong>R134a需求被严重低估</strong>：分析师通常将巨化类比为"R32/空调纯周期"，但R134a的新能源汽车需求是结构性增量（非周期），且该品种配额最为紧缺<br>&#10103; <strong>中东恢复后的爆发性</strong>：2026Q1出口-56%是被压抑的，中东和印度本轮是配额基线期最后一年，恢复后可能集中爆发<br>&#10104; <strong>液冷氟材料是隐藏期权</strong>：全氟聚醚同时服务AI液冷+半导体温控，市场尚未给予任何估值</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 风险 ── -->
+<div class="sec" id="risk">
+<div class="sec-t">风险矩阵 · 什么情况说明这个判断错了</div>
+<div class="risk-item risk-h">
+<div class="risk-title">&#128308; 高风险：政策松绑（概率低但影响大）</div>
+<div class="risk-sub">如果政府决定增发HFCs配额或放宽管制，供给刚性约束消除，价格快速下跌，核心逻辑崩塌。目前这一概率极低（中国已签署基加利修正案并承担国际义务），但需持续跟踪。</div>
+</div>
+<div class="risk-item risk-h">
+<div class="risk-title">&#128308; 高风险：中东地缘冲突长期化</div>
+<div class="risk-sub">阿联酋工厂持续维保，中东/印度出口受阻（2026Q1出口量大幅下滑），若冲突长期化，出口营收损失将持续。目前出口占比40%+，影响不可忽视。</div>
+</div>
+<div class="risk-item risk-m">
+<div class="risk-title">&#128992; 中风险：甘肃项目延迟+HFO专利壁垒</div>
+<div class="risk-sub">甘肃项目规模大、装置多，管理层坦言爬坡周期较长。同时R1234yf核心专利由霍尼韦尔/科慕掌握，若国内技术路线被专利限制，HFO布局节奏放慢。</div>
+</div>
+<div class="risk-item risk-m">
+<div class="risk-title">&#128992; 中风险：非制冷板块持续拖累</div>
+<div class="risk-sub">石化材料、基础化工产品均价持续下滑（2026Q1石化-14%、基础化工-18%），虽然占比下降，但仍对整体毛利率有拖累。若化工行业周期不反转，拖累持续。</div>
+</div>
+<div class="risk-item risk-l">
+<div class="risk-title">&#128994; 低风险：巨芯液冷产品路线不确定</div>
+<div class="risk-sub">管理层坦言液冷技术路线（浸没式/间接液冷/冷板等）仍有多种选择，哪种路线成为主流存在不确定性，全氟聚醚未必是最终胜者。</div>
+</div>
+</div>
+
+<div class="sdiv"></div>
+
+<!-- ── 结论 ── -->
+<div class="sec" id="verdict">
+<div class="sec-t">研究结论</div>
+<div class="verdict">
+<div class="verdict-t">&#128202; Serenity 优先研究名单 · 政策护城河最强 · 业绩弹性最高</div>
+<div class="verdict-body">
+巨化股份是A股最罕见的商业模式之一：<strong>核心产品供给被全球条约硬性锁定</strong>。这不是垄断，而是"特许经营"——持有全球最大份额的HFCs生产牌照，而牌照不会增发、不能购买。当下游需求持续增长（空调+新能源汽车），价格只能单向上涨。<br><br>
+<strong>2025-2026年是这套逻辑兑现最充分的时间窗口</strong>：2024年配额制正式运行→历史囤货去化→价格回升→2025年净利润+94%→2026Q1净利润+46%+119%环比→机构预测2026E净利润55亿（再翻50%）。<br><br>
+<strong>市场可能没看清的地方</strong>：① R134a的新能源汽车需求是结构性增量，被"空调周期"叙事遮蔽；② 中东出口-56%是压制的，一旦释放将集中爆发；③ 巨芯液冷（全氟聚醚）是AI算力硬件的直接受益资产，当前估值中未被定价。<br><br>
+<strong>最大反方理由</strong>：政策松绑风险（概率低但存在）；中东冲突长期化；甘肃项目HFO产能爬坡慢；非制冷业务拖累。此外，这不是一个需要"等待"的长期成长故事，而是一个需要持续验证价格走势的配置型机会。
+</div>
+<div class="verdict-next">
+<div class="verdict-next-t">核心验证动作</div>
+<div class="verdict-checks">
+<div class="vc">R32/R134a/R410a周度/月度价格：百川盈孚实时跟踪，高点突破即信号</div>
+<div class="vc">2026Q2季报：中东出口是否恢复？R134a量价是否成为最强品种？</div>
+<div class="vc">甘肃项目中交情况：计划6月底中交，是否按期？化工投料试车进展</div>
+<div class="vc">巨芯冷却液订单：与数据中心客户批量合作进展，能否成为新科目披露</div>
+<div class="vc">中东/霍尔木兹海峡通航信号：地缘缓和→出口爆发→价格进一步拉涨</div>
+<div class="vc">2027年HFCs配额削减方案：若削减幅度超预期，供给更紧，价格上行空间打开</div>
+</div>
+</div>
+</div>
+<p style="margin-top:16px;font-size:11px;color:var(--mu2);text-align:center;line-height:1.7;">本报告由 Serenity Skill 框架生成 · 取证维度：年报/季报 · 业绩说明会 · 生态环境部配额公示 · 百川盈孚价格 · 机构研报<br>仅供研究参考，不构成投资建议。交易决策由投资者自行负责。</p>
+</div>
+
+</div>
+</div>
+
+<script>
+(function(){
+  var tabs=document.querySelectorAll(".tab");
+  var secs=Array.from(document.querySelectorAll(".sec[id]"));
+  var nav=document.getElementById("tabs");
+  function setActive(id){
+    tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("href")==="#"+id);});
+    var at=document.querySelector(".tab.active");
+    if(at&&nav){var l=at.offsetLeft-nav.offsetWidth/2+at.offsetWidth/2;nav.scrollLeft=l;}
+  }
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});
+  },{rootMargin:"-40% 0px -55% 0px"});
+  secs.forEach(function(s){obs.observe(s);});
+  tabs.forEach(function(t){
+    t.addEventListener("click",function(e){
+      e.preventDefault();
+      var id=t.getAttribute("href").replace("#","");
+      var el=document.getElementById(id);
+      if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-60,behavior:"smooth"});}
+    });
+  });
+})();
+</script>
+</body>
+</html>
