@@ -226,7 +226,12 @@
       .vlines-row{height:14px}
       .eth-sw{padding:5px 8px}
     }
-  </style>
+  
+.kw{border-bottom:1px dashed rgba(255,255,255,.45);cursor:help;position:relative;display:inline;}
+.kw-box{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#1a2332;color:#e6edf3;font-size:11px;line-height:1.65;padding:9px 12px;border-radius:8px;min-width:200px;max-width:260px;z-index:700;white-space:normal;box-shadow:0 4px 18px rgba(0,0,0,.4);pointer-events:none;text-align:left;}
+.kw-box::after{content:'';position:absolute;top:100%;left:16px;border:5px solid transparent;border-top-color:#1a2332;}
+.kw:hover .kw-box{display:block;}
+</style>
 </head>
 <body>
 <div id="back-btn-wrap" style="position:fixed;top:12px;left:12px;z-index:10000;">
@@ -304,7 +309,7 @@
     <div class="slide-inner">
       <p class="tag ai d1">0:22 &middot; 内部架构</p>
       <h2 class="head ai d2">迈威尔在集群<span class="ac">内部</span><br>做的三件事</h2>
-      <p class="sub ai d3">全部发生在数据中心内部——XPU 间点对点传输 + 服务器间高速互联。</p>
+      <p class="sub ai d3">全部发生在数据中心内部——<span class="kw">XPU<span class="kw-box"><strong>XPU（定制 AI 加速器）</strong>：由超大规模云厂商（谷歌 TPU、AWS Trainium、微软 Maia）自研的 AI 专用芯片，相比英伟达 GPU 更贴合自身工作负载。Marvell 为这些 XPU 提供定制化芯片设计服务（定制 <span class="kw">ASIC<span class="kw-box"><strong>ASIC（专用集成电路）</strong>：为特定用途定制设计的芯片，相比通用 GPU 效率更高、功耗更低，但只能做特定任务。谷歌 TPU、AWS Trainium 等云厂商 AI 芯片都是 ASIC。Marvell 是少数具备大规模定制 ASIC 设计能力的公司。</span></span>），占其 AI 营收核心。</span></span> 间点对点传输 + 服务器间高速互联。</p>
       <div class="dc-box">
         <div class="dc-title">AI 数据中心 · 内部</div>
         <div class="srv-row">
