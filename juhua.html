@@ -103,6 +103,26 @@ a{color:var(--ac);text-decoration:none;}
 .vc::before{content:'&#8594;';color:#86efac;flex-shrink:0;}
 .watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
 @media(max-width:639px){html,body{overflow-x:clip;}.hero-t{font-size:22px;}.hero-stats{gap:14px;}.hs-v{font-size:18px;}.main{padding:0 12px 60px;}.hero{padding:28px 16px 22px;border-radius:0;}}
+
+/* ── Inline Glossary Tooltips (shared infra) ── */
+.sc-item.has-tip{cursor:pointer;}
+.sc-item.has-tip:hover{opacity:.85;}
+.tip-icon{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(0,0,0,.13);font-size:9px;font-weight:800;margin-left:4px;vertical-align:middle;flex-shrink:0;line-height:1;}
+.sc-item.has-tip.active .tip-icon{background:rgba(0,0,0,.26);}
+.tip-zone{overflow:hidden;transition:max-height .28s ease,opacity .22s ease;max-height:0;opacity:0;}
+.tip-zone.open{max-height:900px;opacity:1;}
+.tip-card{display:none;margin-top:6px;background:rgba(255,255,255,.96);border:1px solid rgba(0,0,0,.11);border-radius:8px;padding:8px 11px;font-size:11px;line-height:1.7;color:#1f2328;}
+.tip-card.vis{display:block;}
+.tip-card-term{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px;opacity:.6;}
+.tip-card strong{font-weight:700;}
+.tip-card em{font-style:normal;display:inline-block;background:rgba(0,0,0,.06);border-radius:5px;padding:1px 5px;font-size:10px;margin-top:3px;}
+.tip-close{float:right;cursor:pointer;font-size:14px;opacity:.35;line-height:1;padding:0 2px;margin-left:4px;}
+.tip-close:hover{opacity:.75;}
+/* ── inline kw highlight ── */
+.kw{border-bottom:1px dashed rgba(9,105,218,.55);cursor:help;position:relative;display:inline;}
+.kw-box{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#1a2332;color:#e6edf3;font-size:11px;line-height:1.65;padding:9px 12px;border-radius:8px;min-width:220px;max-width:280px;z-index:700;white-space:normal;box-shadow:0 4px 18px rgba(0,0,0,.32);pointer-events:none;text-align:left;}
+.kw-box::after{content:'';position:absolute;top:100%;left:16px;border:5px solid transparent;border-top-color:#1a2332;}
+.kw:hover .kw-box{display:block;}
 </style>
 </head>
 <body>
@@ -145,7 +165,7 @@ a{color:var(--ac);text-decoration:none;}
 <span class="hero-verdict">&#9679; 优先研究名单 · 配额护城河</span>
 </div>
 <div class="hero-t">巨化股份（600160）<br><em>全球HFCs配额第一 · 制冷剂"特许经营"</em></div>
-<div class="hero-sub">浙江衢州 · 浙江省国资委 · 氟化工全产业链IDM。国内唯一覆盖第一至四代制冷剂的企业，依托蒙特利尔议定书基加利修正案构筑全球最高政策壁垒。</div>
+<div class="hero-sub">浙江衢州 · 浙江省国资委 · 氟化工全产业链IDM。国内唯一覆盖第一至四代制冷剂的企业，依托蒙特利尔议定书<span class="kw">基加利修正案<span class="kw-box"><strong>2016年《蒙特利尔议定书》修正案</strong>，将 HFCs 纳入全球削减计划。发达国家 2036 年削减 85%，发展中国家 2045 年削减 80%。核心机制：冻结基准年产量后逐年配额削减，企业无法通过投资扩产来绕过。</span></span>构筑全球最高政策壁垒。</div>
 <div class="hero-stats">
 <div class="hs"><div class="hs-v">269亿</div><div class="hs-l">2025年营收 +10%</div></div>
 <div class="hs"><div class="hs-v">37.8亿</div><div class="hs-l">2025年净利润 +94%</div></div>
@@ -158,7 +178,7 @@ a{color:var(--ac);text-decoration:none;}
 <span class="htag gn">&#9989; 净利+94%逆行业周期 · 现金流+128%</span>
 <span class="htag ye">&#9888; 中东冲突致阿联酋工厂维保 · 出口短期受阻</span>
 <span class="htag ye">&#9888; 非制冷剂业务（石化/基础化工）价格承压</span>
-<span class="htag">&#127775; HFO四代布局先发 · 液冷+半导体氟材料新增长</span>
+<span class="htag">&#127775; HFO四代布局先发 · <span class="kw">液冷<span class="kw-box"><strong>数据中心液体冷却</strong>：用液体（水、矿物油或含氟液体）代替风扇散热。AI 芯片单卡功耗超 700W，传统风冷已无法满足，液冷成为必选项。巨化氟化液冷产品针对"浸没式液冷"（服务器直接浸泡在绝缘液体中）。</span></span>+半导体氟材料新增长</span>
 </div>
 </div>
 
@@ -172,10 +192,16 @@ a{color:var(--ac);text-decoration:none;}
 <div class="sc-layer ly0">
 <div class="sc-lbl">L0 · 全球政策卡点（最高护城河 · 不可被竞争对手突破）</div>
 <div class="sc-items">
-<div class="sc-item sc-highlight">&#127775; 蒙特利尔议定书基加利修正案 — HFCs全球配额上限</div>
-<div class="sc-item sc-highlight">&#127775; 中国生态环境部HFCs生产配额核发 — 企业不可增发</div>
-<div class="sc-item">R32/R125/R134a — 2026年全国总量79.78万吨（刚性约束）</div>
-<div class="sc-item">HFO专利壁垒 — 霍尼韦尔/科慕垄断（国内突破中）</div>
+<div class="sc-item has-tip sc-highlight" onclick="showTip(this,'j0-kigali')">&#127775; 蒙特利尔议定书基加利修正案 — HFCs全球配额上限<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip sc-highlight" onclick="showTip(this,'j0-quota')">&#127775; 中国生态环境部HFCs生产配额核发 — 企业不可增发<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'j0-r32')">R32/R125/R134a — 2026年全国总量79.78万吨（刚性约束）<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip" onclick="showTip(this,'j0-hfo')">HFO专利壁垒 — 霍尼韦尔/科慕垄断（国内突破中）<span class="tip-icon">i</span></div>
+</div>
+<div class="tip-zone" id="tz-j0"><div class="tip-card" id="tc-j0-kigali"><span class="tip-close" onclick="closeTip('j0','j0-kigali')">&#10005;</span><div class="tip-card-term">基加利修正案</div><strong>基加利修正案（Kigali Amendment, 2016）</strong>：《蒙特利尔议定书》的修订版，将 HFCs（氢氟碳化物）纳入受控物质，各国须按计划削减生产和消费量。中国作为最大 HFC 生产国，2024 年冻结基准，之后每年线性削减至 2045 年降至基准值的 20%。配额一旦核定，企业<strong>无法通过市场手段增加</strong>，形成天然供给壁垒。<em>类比：政府永久限定每个厂家的"生产牌照"数量，且逐年收紧</em></div>
+<div class="tip-card" id="tc-j0-quota"><span class="tip-close" onclick="closeTip('j0','j0-quota')">&#10005;</span><div class="tip-card-term">HFCs 生产配额制度</div><strong>HFC 配额</strong>：中国生态环境部依据基加利修正案承诺，向每家企业核发固定生产配额（以 ODP 当量吨计）。巨化 R32+R125+R134a 合计配额全国第一（合计占比约 39.3%），且配额<strong>不可转让、不可增发</strong>。竞争对手进入市场需要新增配额，而新增配额通道已实质关闭。<em>这是比专利更强的壁垒：专利可以绕过，配额是政府直接管控的准入制度</em></div>
+<div class="tip-card" id="tc-j0-r32"><span class="tip-close" onclick="closeTip('j0','j0-r32')">&#10005;</span><div class="tip-card-term">R32 / R125 / R134a 制冷剂</div><strong>R32</strong>（二氟甲烷）：新一代空调主流制冷剂，全球变暖潜能值（GWP=675）远低于 R22，是家用空调的主流替代品。<strong>R125</strong>：R410A（混合制冷剂）的组成成分，用于商用空调。<strong>R134a</strong>：车用空调主流制冷剂，也用于工商业制冷。三者合计占全球制冷剂需求约 50%，巨化三品种全球市占第一。<em>GWP（全球变暖潜能值）：数字越低，越符合环保趋势；R32 在 HFCs 中属于低 GWP 品种</em></div>
+<div class="tip-card" id="tc-j0-hfo"><span class="tip-close" onclick="closeTip('j0','j0-hfo')">&#10005;</span><div class="tip-card-term">HFO 专利壁垒</div><strong>HFO（氢氟烯烃）</strong>：下一代制冷剂，GWP 接近 0，是 HFCs 的长期替代品。核心专利由<strong>霍尼韦尔</strong>（Solstice 系列）和<strong>科慕</strong>（Chemours, Opteon 系列）垄断，合计市场份额超 90%。中国现已突破：巨化 HFO 产能 8000 吨/年已运营，5 万吨规划在建。<em>先占先得：HFO 专利大多在 2028-2035 年陆续到期，中国厂商正在卡位</em></div>
+
 </div>
 </div>
 
@@ -190,7 +216,7 @@ a{color:var(--ac);text-decoration:none;}
 <div class="sc-item">&#127775; R134a（配额全国35.48% · 全球#1）</div>
 <div class="sc-item">&#127775; HCFC-22（内用配额全国31.55% · 国内#1）</div>
 <div class="sc-item">HFOs（8000吨/年已运营 · 5万吨规划中）</div>
-<div class="sc-item">含氟聚合物（PTFE/PVDF/PFA）</div>
+<div class="sc-item">含氟聚合物（PTFE/<span class="kw">PVDF<span class="kw-box"><strong>聚偏二氟乙烯</strong>，高性能含氟聚合物。锂电正极粘结剂、隔膜涂覆材料，也用于半导体光刻胶。价值是普通制冷剂的 5-10 倍，是巨化产品结构升级的方向。</span></span>/PFA）</div>
 <div class="sc-item">含氟精细化学品 · 高纯PFA（半导体）</div>
 <div class="sc-item sc-highlight">&#9728; 巨芯冷却液 · AI数据中心液冷</div>
 <div class="sc-item">阿联酋基地（海外出口，目前维保）</div>
@@ -497,6 +523,34 @@ a{color:var(--ac);text-decoration:none;}
     });
   });
 })();
+
+var activeTips={};
+function showTip(el,id){
+  var lk=id.split('-').slice(0,-1).join('-');
+  var zone=document.getElementById('tz-'+lk);
+  var card=document.getElementById('tc-'+id);
+  if(!zone||!card)return;
+  if(activeTips[lk]===id&&card.classList.contains('vis')){
+    card.classList.remove('vis');el.classList.remove('active');activeTips[lk]=null;
+    if(!zone.querySelector('.tip-card.vis'))zone.classList.remove('open');return;
+  }
+  if(activeTips[lk]){
+    var pc=document.getElementById('tc-'+activeTips[lk]);
+    if(pc)pc.classList.remove('vis');
+    zone.closest('.sc-layer').querySelectorAll('.sc-item.has-tip.active').forEach(function(i){i.classList.remove('active');});
+  }
+  card.classList.add('vis');zone.classList.add('open');el.classList.add('active');activeTips[lk]=id;
+  setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'nearest'});},50);
+}
+function closeTip(lk,id){
+  var zone=document.getElementById('tz-'+lk);
+  var card=document.getElementById('tc-'+id);
+  if(card)card.classList.remove('vis');
+  if(zone){if(!zone.querySelector('.tip-card.vis'))zone.classList.remove('open');
+    var sl=zone.closest('.sc-layer');if(sl)sl.querySelectorAll('.sc-item.has-tip.active').forEach(function(i){i.classList.remove('active');});}
+  activeTips[lk]=null;
+}
+
 </script>
 </body>
 </html>
