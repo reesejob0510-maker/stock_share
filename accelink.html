@@ -110,6 +110,26 @@ a{color:var(--ac);text-decoration:none;}
 .vc::before{content:'&#8594;';color:#60a5fa;flex-shrink:0;}
 .watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
 @media(max-width:639px){html,body{overflow-x:clip;}.hero-t{font-size:22px;}.hero-stats{gap:14px;}.hs-v{font-size:18px;}.main{padding:0 12px 60px;}.hero{padding:28px 16px 22px;border-radius:0;}}
+
+/* ── Inline Glossary Tooltips (shared infra) ── */
+.sc-item.has-tip{cursor:pointer;}
+.sc-item.has-tip:hover{opacity:.85;}
+.tip-icon{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(0,0,0,.13);font-size:9px;font-weight:800;margin-left:4px;vertical-align:middle;flex-shrink:0;line-height:1;}
+.sc-item.has-tip.active .tip-icon{background:rgba(0,0,0,.26);}
+.tip-zone{overflow:hidden;transition:max-height .28s ease,opacity .22s ease;max-height:0;opacity:0;}
+.tip-zone.open{max-height:900px;opacity:1;}
+.tip-card{display:none;margin-top:6px;background:rgba(255,255,255,.96);border:1px solid rgba(0,0,0,.11);border-radius:8px;padding:8px 11px;font-size:11px;line-height:1.7;color:#1f2328;}
+.tip-card.vis{display:block;}
+.tip-card-term{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px;opacity:.6;}
+.tip-card strong{font-weight:700;}
+.tip-card em{font-style:normal;display:inline-block;background:rgba(0,0,0,.06);border-radius:5px;padding:1px 5px;font-size:10px;margin-top:3px;}
+.tip-close{float:right;cursor:pointer;font-size:14px;opacity:.35;line-height:1;padding:0 2px;margin-left:4px;}
+.tip-close:hover{opacity:.75;}
+/* ── inline kw highlight ── */
+.kw{border-bottom:1px dashed rgba(9,105,218,.55);cursor:help;position:relative;display:inline;}
+.kw-box{display:none;position:absolute;bottom:calc(100% + 6px);left:0;background:#1a2332;color:#e6edf3;font-size:11px;line-height:1.65;padding:9px 12px;border-radius:8px;min-width:220px;max-width:280px;z-index:700;white-space:normal;box-shadow:0 4px 18px rgba(0,0,0,.32);pointer-events:none;text-align:left;}
+.kw-box::after{content:'';position:absolute;top:100%;left:16px;border:5px solid transparent;border-top-color:#1a2332;}
+.kw:hover .kw-box{display:block;}
 </style>
 </head>
 <body>
@@ -151,7 +171,7 @@ a{color:var(--ac);text-decoration:none;}
 <span class="hero-badge">&#128300; 产业链卡点穿透</span>
 <span class="hero-verdict">&#9679; 优先研究名单</span>
 </div>
-<div class="hero-t">光迅科技（002281）<br><em>国内唯一全链路 IDM · 光芯片护城河</em></div>
+<div class="hero-t">光迅科技（002281）<br><em>国内唯一全链路 <span class="kw">IDM<span class="kw-box"><strong>IDM（Integrated Device Manufacturer，垂直整合制造商）</strong>：自主完成芯片设计、晶圆制造、封装测试全流程，与"Fabless（只设计）"和"Foundry（只代工）"相对。光迅是国内唯一光器件全链路 IDM，可同时自研自产激光芯片、探测器、模块。</span></span> · 光芯片护城河</em></div>
 <div class="hero-sub">武汉 · 中国信科集团（央企）· 光电子器件/模块/子系统。全球六大光模块厂之一，唯一 100G EML 光芯片量产自给，数通模块+电信+星网三轮驱动。</div>
 <div class="hero-stats">
 <div class="hs"><div class="hs-v">119亿</div><div class="hs-l">2025年营收 +44%</div></div>
@@ -179,10 +199,16 @@ a{color:var(--ac);text-decoration:none;}
 <div class="sc-layer ly0">
 <div class="sc-lbl">&#9888; L0 · 上游卡脖子层（光迅已部分自解）</div>
 <div class="sc-items">
-<div class="sc-item sc-caution">InP/GaAs 衬底晶圆 — 全球仅住友/AXT等少数厂</div>
-<div class="sc-item sc-caution">高端 EML 激光芯片 — 国内&lt;5%自给，光迅已量产</div>
-<div class="sc-item sc-caution">硅光 PIC 晶圆代工 — 仍依赖 TSMC/GlobalFoundries</div>
-<div class="sc-item sc-caution">高端 VCSEL 芯片 — 国内仍弱</div>
+<div class="sc-item has-tip sc-caution" onclick="showTip(this,'a0-inp')">InP/GaAs 衬底晶圆 — 全球仅住友/AXT等少数厂<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip sc-caution" onclick="showTip(this,'a0-eml')">高端 EML 激光芯片 — 国内&lt;5%自给，光迅已量产<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip sc-caution" onclick="showTip(this,'a0-pic')">硅光 PIC 晶圆代工 — 仍依赖 TSMC/GlobalFoundries<span class="tip-icon">i</span></div>
+<div class="sc-item has-tip sc-caution" onclick="showTip(this,'a0-vcsel')">高端 VCSEL 芯片 — 国内仍弱<span class="tip-icon">i</span></div>
+</div>
+<div class="tip-zone" id="tz-a0"><div class="tip-card" id="tc-a0-inp"><span class="tip-close" onclick="closeTip('a0','a0-inp')">&#10005;</span><div class="tip-card-term">InP / GaAs 衬底晶圆</div><strong>InP（磷化铟）</strong> 和 <strong>GaAs（砷化镓）</strong>：III-V 族化合物半导体，是制造高速激光器（EML、DFB）和光探测器的基础衬底材料。InP 导电率高、电子迁移率是硅的 4 倍，适合制造 100G/400G 以上速率的光器件。全球主要供应商：住友电工（日本）、AXT（美国），产能高度集中。<em>InP 晶圆的可获得性是光芯片国产化的最核心卡点之一</em></div>
+<div class="tip-card" id="tc-a0-eml"><span class="tip-close" onclick="closeTip('a0','a0-eml')">&#10005;</span><div class="tip-card-term">EML — 电吸收调制激光器</div><strong>EML（Electro-absorption Modulated Laser）</strong>：将 DFB 激光器与电吸收调制器单片集成，体积极小、功耗低，是 100G/400G 数通光模块的核心发射芯片。全球量产能力长期被 II-VI（现 Coherent）、住友、三菱垄断，国内自研量产是重大突破。光迅是国内<strong>唯一量产 100G EML 的企业</strong>，打破多年对外依赖。<em>EML 是光模块成本占比最高的器件（约30-40%），国产化直接改变毛利结构</em></div>
+<div class="tip-card" id="tc-a0-pic"><span class="tip-close" onclick="closeTip('a0','a0-pic')">&#10005;</span><div class="tip-card-term">硅光 PIC</div><strong>硅光 PIC（Photonic Integrated Circuit，光子集成电路）</strong>：在硅基板上集成激光器、调制器、探测器等多个光器件，用 CMOS 工艺制造，实现大规模量产和成本下降。是 800G/1.6T 超高速光模块的核心技术路线。晶圆代工依赖 TSMC 或 GlobalFoundries 的硅光线（SiPh PDK），是当前国产化的卡脖子环节。<em>光迅 3.2T NPO 模块采用自研硅光 PIC，是该技术全球首发</em></div>
+<div class="tip-card" id="tc-a0-vcsel"><span class="tip-close" onclick="closeTip('a0','a0-vcsel')">&#10005;</span><div class="tip-card-term">VCSEL — 垂直腔面发射激光器</div><strong>VCSEL（Vertical-Cavity Surface-Emitting Laser）</strong>：从芯片表面垂直发射光的激光器，成本低、可晶圆级测试，广泛用于短距（400m 内）数据中心互联光模块（100GBASE-SR4 等）和 3D 感知（Face ID）。全球高端 VCSEL 主要由 II-VI（Coherent）、苹果供应商垄断，国内量产能力仍较弱。</div>
+
 </div>
 </div>
 
@@ -505,6 +531,34 @@ a{color:var(--ac);text-decoration:none;}
     });
   });
 })();
+
+var activeTips={};
+function showTip(el,id){
+  var lk=id.split('-').slice(0,-1).join('-');
+  var zone=document.getElementById('tz-'+lk);
+  var card=document.getElementById('tc-'+id);
+  if(!zone||!card)return;
+  if(activeTips[lk]===id&&card.classList.contains('vis')){
+    card.classList.remove('vis');el.classList.remove('active');activeTips[lk]=null;
+    if(!zone.querySelector('.tip-card.vis'))zone.classList.remove('open');return;
+  }
+  if(activeTips[lk]){
+    var pc=document.getElementById('tc-'+activeTips[lk]);
+    if(pc)pc.classList.remove('vis');
+    zone.closest('.sc-layer').querySelectorAll('.sc-item.has-tip.active').forEach(function(i){i.classList.remove('active');});
+  }
+  card.classList.add('vis');zone.classList.add('open');el.classList.add('active');activeTips[lk]=id;
+  setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'nearest'});},50);
+}
+function closeTip(lk,id){
+  var zone=document.getElementById('tz-'+lk);
+  var card=document.getElementById('tc-'+id);
+  if(card)card.classList.remove('vis');
+  if(zone){if(!zone.querySelector('.tip-card.vis'))zone.classList.remove('open');
+    var sl=zone.closest('.sc-layer');if(sl)sl.querySelectorAll('.sc-item.has-tip.active').forEach(function(i){i.classList.remove('active');});}
+  activeTips[lk]=null;
+}
+
 </script>
 </body>
 </html>
