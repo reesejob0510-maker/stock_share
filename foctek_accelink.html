@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>福晶 vs 光迅：为何同在光通信，涨幅相差154%？</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Noto Sans SC",sans-serif;background:#f4f6f9;color:#1a1d23;line-height:1.7;}
+a{color:#0969da;text-decoration:none;}
+body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='120'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='22' font-family='Arial,sans-serif' fill='%23000' fill-opacity='0.045' transform='rotate(-30,100,60)'%3Ereese%3C/text%3E%3C/svg%3E");}
+#back-btn-wrap{position:fixed;top:14px;left:14px;z-index:10000;}
+#back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #d0d7de;border-radius:20px;padding:6px 14px 6px 10px;font-size:13px;font-weight:600;color:#0969da;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:box-shadow .15s,border-color .15s;}
+#back-btn:hover{box-shadow:0 4px 14px rgba(9,105,218,.18);border-color:#0969da;}
+.site-header{background:linear-gradient(135deg,#0a1628 0%,#0f2744 50%,#1a3a5c 100%);color:#fff;padding:60px 24px 48px;text-align:center;position:relative;overflow:hidden;}
+.site-header::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(100,180,255,.12) 0%,transparent 70%);pointer-events:none;}
+.header-badge{display:inline-block;background:rgba(255,200,0,.18);border:1px solid rgba(255,200,0,.4);color:#ffd966;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px;}
+.site-header h1{font-size:clamp(20px,4vw,36px);font-weight:800;line-height:1.25;max-width:900px;margin:0 auto 14px;}
+.site-header .sub{color:#94b8d8;font-size:15px;max-width:700px;margin:0 auto;}
+.header-stats{display:flex;justify-content:center;gap:32px;margin-top:36px;flex-wrap:wrap;}
+.hstat{text-align:center;}
+.hstat .val{font-size:28px;font-weight:800;}
+.hstat .lbl{font-size:12px;color:#7aa5c5;margin-top:2px;}
+.container{max-width:1100px;margin:0 auto;padding:0 20px;}
+.section{padding:48px 0;}
+.section-title{font-size:22px;font-weight:800;color:#0a1628;margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.section-title .num{background:#0969da;color:#fff;border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.section-desc{color:#666;font-size:14px;margin-bottom:28px;}
+.divider{border:none;border-top:2px solid #e8ecf0;margin:0 0 32px;}
+.callout{border-radius:12px;padding:20px 24px;margin:20px 0;font-size:14.5px;line-height:1.75;}
+.callout.blue{background:#e8f0fe;border-left:4px solid #0969da;}
+.callout.orange{background:#fff3e0;border-left:4px solid #e67e22;}
+.callout.green{background:#e6f9f0;border-left:4px solid #27ae60;}
+.callout.purple{background:#f3e8ff;border-left:4px solid #8b5cf6;}
+.card-grid{display:flex;gap:20px;flex-wrap:wrap;}
+.card{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid #e8ecf0;flex:1 1 280px;}
+.card h3{font-size:16px;font-weight:700;margin-bottom:12px;color:#0a1628;}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:10px;}
+.tag-blue{background:#e8f0fe;color:#0969da;}
+.tag-orange{background:#fff3e0;color:#e67e22;}
+.tag-green{background:#e6f9f0;color:#27ae60;}
+.tag-red{background:#fde8e8;color:#e53e3e;}
+.tag-purple{background:#f3e8ff;color:#8b5cf6;}
+.comp-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.comp-table th{background:#0a1628;color:#fff;padding:14px 16px;font-size:13px;font-weight:700;text-align:left;}
+.comp-table td{padding:13px 16px;font-size:13.5px;border-bottom:1px solid #f0f2f5;background:#fff;vertical-align:top;}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table tr:nth-child(even) td{background:#f8fafc;}
+.hl-green{color:#27ae60;font-weight:700;}
+.hl-red{color:#e53e3e;font-weight:700;}
+.hl-blue{color:#0969da;font-weight:700;}
+.col-a{background:#fffbe6 !important;}
+.col-b{background:#eef6ff !important;}
+.bar-wrap{margin:20px 0;}
+.bar-item{display:flex;align-items:center;gap:12px;margin:8px 0;}
+.bar-label{width:120px;font-size:12.5px;color:#555;text-align:right;flex-shrink:0;}
+.bar-track{flex:1;height:22px;background:#f0f2f5;border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:11.5px;font-weight:700;color:#fff;}
+.bar-val{width:60px;font-size:12.5px;font-weight:700;flex-shrink:0;}
+.risk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.risk-item{background:#fff;border-radius:12px;padding:18px;border:1px solid #e8ecf0;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.risk-item h4{font-size:14px;font-weight:700;margin-bottom:8px;}
+.risk-item p{font-size:13px;color:#555;line-height:1.6;}
+.risk-high{border-left:3px solid #e53e3e;}
+.risk-med{border-left:3px solid #e67e22;}
+.risk-low{border-left:3px solid #27ae60;}
+.conclusion{background:linear-gradient(135deg,#0a1628,#1a3a5c);color:#fff;border-radius:16px;padding:36px;margin:40px 0;}
+.conclusion h2{font-size:20px;font-weight:800;margin-bottom:20px;color:#ffd966;}
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.verdict-card{background:rgba(255,255,255,.08);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,.12);}
+.verdict-card h3{font-size:14px;font-weight:700;margin-bottom:12px;color:#94c5ff;}
+.verdict-card ul{list-style:none;font-size:13px;color:#cdd5e0;line-height:1.9;}
+.verdict-card ul li::before{content:"→ ";color:#ffd966;}
+.full-chain{overflow-x:auto;padding:8px 0;}
+.chain-flow{display:flex;align-items:center;gap:0;min-width:950px;padding:8px 0;}
+.cf-node{background:#fff;border:1px solid #d0d7de;border-radius:10px;padding:12px 14px;text-align:center;flex-shrink:0;min-width:105px;}
+.cf-title{font-size:12px;font-weight:700;color:#0a1628;margin-bottom:4px;}
+.cf-subs{font-size:10.5px;color:#666;line-height:1.4;}
+.cf-node.foctek{border-color:#e67e22;background:#fff8f0;}
+.cf-node.accelink{border-color:#0969da;background:#f0f6ff;}
+.cf-node.both{border-color:#8b5cf6;background:#f8f3ff;}
+.cf-node.gpu{border-color:#e53e3e;background:#fff5f5;}
+.cf-arrow{font-size:18px;color:#aaa;padding:0 4px;flex-shrink:0;}
+.cf-legend{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap;}
+.cf-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;}
+.cf-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+.kw{position:relative;border-bottom:1px dashed #0969da;cursor:help;color:#0969da;}
+.kw .kw-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1a1d23;color:#e8ecf0;font-size:12px;padding:10px 14px;border-radius:8px;white-space:normal;width:260px;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,.3);line-height:1.6;font-weight:400;}
+.kw:hover .kw-box{display:block;}
+@media(max-width:768px){
+  .site-header{padding:50px 16px 36px;}
+  .header-stats{gap:20px;}
+  .hstat .val{font-size:22px;}
+  .card-grid{flex-direction:column;}
+  .verdict-grid{grid-template-columns:1fr;}
+  .comp-table th,.comp-table td{font-size:12px;padding:10px 12px;}
+  .bar-label{width:90px;}
+  .section{padding:32px 0;}
+}
+</style>
+</head>
+<body>
+
+<div id="back-btn-wrap">
+  <a href="stock_daily.html" id="back-btn">&#8592; 返回研报合集</a>
+</div>
+
+<div class="site-header">
+  <div class="header-badge">深度研报 &middot; AI产业链对比分析</div>
+  <h1>福晶科技 vs 光迅科技<br>为何同在"光通信"，涨幅相差154%？</h1>
+  <p class="sub">透过产业链层级、AI纯度、财务弹性三维度，拆解两家公司在AI算力浪潮中的真实定位与分化逻辑</p>
+  <div class="header-stats">
+    <div class="hstat">
+      <div class="val" style="color:#ff6b6b;">+181%</div>
+      <div class="lbl">光迅科技 2026年初至今</div>
+    </div>
+    <div class="hstat">
+      <div class="val" style="color:#aaa;">vs</div>
+      <div class="lbl">&nbsp;</div>
+    </div>
+    <div class="hstat">
+      <div class="val" style="color:#52c41a;">+27%</div>
+      <div class="lbl">福晶科技 2026年初至今</div>
+    </div>
+    <div class="hstat">
+      <div class="val" style="color:#ffd966;">154pp</div>
+      <div class="lbl">两者涨幅差距</div>
+    </div>
+  </div>
+</div>
+
+<!-- 0. 核心问题 -->
+<div class="container section">
+  <div class="section-title"><span class="num">0</span> 核心问题</div>
+  <hr class="divider">
+  <div class="callout blue">
+    <strong>同处"光通信"板块，为何光迅涨了181%而福晶仅涨27%？</strong><br>
+    答案不是景气度差异，而是<strong>产业链层级的根本不同</strong>——光迅是直接卖给AI数据中心的"完成品制造商"，福晶是卖给器件厂的"基础材料商"。市场把两者错误地归入同一"光模块"板块，实质上它们身处截然不同的价值链节点，承受截然不同的AI弹性倍数。
+  </div>
+  <div class="card-grid" style="margin-top:24px;">
+    <div class="card">
+      <span class="tag tag-orange">福晶科技 002222</span>
+      <h3>光学晶体与精密元件供应商</h3>
+      <p style="font-size:13.5px;color:#555;line-height:1.7;">
+        产业链<strong>最上游</strong>：全球最大LBO/BBO非线性光学晶体供应商（中科院福建物构所背景）。核心产品为磁光晶体（TGG/TSAG）、衍射光栅、法拉第旋光片、偏振分束器（PBS）等精密光学元件。光通信营收占比约<strong>25%</strong>，其余75%服务工业激光器市场。
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag tag-blue">光迅科技 002281</span>
+      <h3>全链路光电器件IDM</h3>
+      <p style="font-size:13.5px;color:#555;line-height:1.7;">
+        产业链<strong>中游核心</strong>：中国信科集团旗下，从光芯片（EML/InP/硅光PIC）→器件→模块全链条垂直整合。2025年数通业务（AI数据中心光模块）占总营收约<strong>71%</strong>，800G批量出货，1.6T具备量产能力，3.2T全球首发。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 1. 完整产业链 -->
+<div style="background:#fff;border-top:1px solid #e8ecf0;border-bottom:1px solid #e8ecf0;padding:48px 0;">
+<div class="container">
+  <div class="section-title"><span class="num">1</span> AI算力光通信完整产业链图谱</div>
+  <p class="section-desc">从英伟达GPU到光学晶体，追踪每一层核心公司及两家公司的精确位置</p>
+  <div class="full-chain">
+    <div class="chain-flow">
+      <div class="cf-node gpu">
+        <div class="cf-title">🖥 GPU/NPU集群</div>
+        <div class="cf-subs">英伟达H100/B200<br>华为昇腾910C</div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-node accelink">
+        <div class="cf-title">📦 800G/1.6T<br>光模块</div>
+        <div class="cf-subs"><strong>光迅★</strong> 中际旭创<br>新易盛 华工科技</div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-node accelink">
+        <div class="cf-title">⚡ CPO/NPO<br>共封装光学</div>
+        <div class="cf-subs"><strong>光迅★</strong> 天孚通信<br>光库科技</div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-node both">
+        <div class="cf-title">🔀 OCS<br>全光交换</div>
+        <div class="cf-subs">腾景 光库 德科立<br><strong>福晶★(晶体)</strong></div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-node foctek">
+        <div class="cf-title">🌐 WSS/ROADM<br>波分复用</div>
+        <div class="cf-subs">华为/中兴(设备)<br><strong>福晶★(衍射光栅)</strong></div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-node">
+        <div class="cf-title">💡 光芯片</div>
+        <div class="cf-subs">源杰 长光华芯<br>仕佳 <strong>光迅(自研)</strong></div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-node foctek">
+        <div class="cf-title">🔬 精密光学元件</div>
+        <div class="cf-subs"><strong>福晶★</strong> 腾景科技<br>PBS/光栅/旋光片</div>
+      </div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-node foctek">
+        <div class="cf-title">💎 光学晶体材料</div>
+        <div class="cf-subs"><strong>福晶★(全球龙头)</strong><br>LBO/BBO/TGG/KTP</div>
+      </div>
+    </div>
+  </div>
+  <div class="cf-legend">
+    <div class="cf-legend-item"><div class="cf-legend-dot" style="background:#f0f6ff;border:1px solid #0969da;"></div><span>光迅科技主要布局</span></div>
+    <div class="cf-legend-item"><div class="cf-legend-dot" style="background:#fff8f0;border:1px solid #e67e22;"></div><span>福晶科技主要布局</span></div>
+    <div class="cf-legend-item"><div class="cf-legend-dot" style="background:#f8f3ff;border:1px solid #8b5cf6;"></div><span>两者均有涉及</span></div>
+  </div>
+  <div class="callout orange" style="margin-top:24px;">
+    <strong>关键洞察：</strong>光迅直接面向算力中心终端客户（字节/阿里/腾讯/华为），AI投资每增加1元几乎直接转化为光迅订单。福晶面向的是WSS器件厂等中间商，传导链条多2~3层，弹性被显著稀释。
+  </div>
+</div>
+</div>
+
+<!-- 2. 财务对比 -->
+<div class="container section">
+  <div class="section-title"><span class="num">2</span> 财务对比：规模差10倍，净利弹性差2倍</div>
+  <hr class="divider">
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>指标</th>
+        <th style="text-align:center;">福晶科技 (002222)</th>
+        <th style="text-align:center;">光迅科技 (002281)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>产业链定位</td>
+        <td class="col-a" style="text-align:center;"><strong>上游原材料+精密元件</strong><br><small>光通信占比 ~25%</small></td>
+        <td class="col-b" style="text-align:center;"><strong>中游IDM光模块</strong><br><small>数通占比 ~71%</small></td>
+      </tr>
+      <tr>
+        <td>2025年营收</td>
+        <td class="col-a" style="text-align:center;"><span class="hl-green">11.58亿元</span><br><small>同比 +32.21%</small></td>
+        <td class="col-b" style="text-align:center;"><span class="hl-blue">119.29亿元</span><br><small>同比 +44.20%</small></td>
+      </tr>
+      <tr>
+        <td>2025年归母净利润</td>
+        <td class="col-a" style="text-align:center;"><span class="hl-green">2.79亿元</span><br><small>同比 +27.32%</small></td>
+        <td class="col-b" style="text-align:center;"><span class="hl-blue">9.46亿元</span><br><small>同比 +43.10%</small></td>
+      </tr>
+      <tr>
+        <td>2026Q1营收</td>
+        <td class="col-a" style="text-align:center;">3.24亿元 <span class="hl-green">+35.63%</span></td>
+        <td class="col-b" style="text-align:center;">27.73亿元 <span class="hl-blue">+24.79%</span></td>
+      </tr>
+      <tr>
+        <td>2026Q1归母净利润</td>
+        <td class="col-a" style="text-align:center;">0.65亿元 <span class="hl-green">+30.70%</span></td>
+        <td class="col-b" style="text-align:center;">2.40亿元 <span class="hl-red">+59.76%</span></td>
+      </tr>
+      <tr>
+        <td>毛利率</td>
+        <td class="col-a" style="text-align:center;"><strong>~53%</strong><br><small>非线性晶体~75%，激光晶体~60%</small></td>
+        <td class="col-b" style="text-align:center;"><strong>26.8%</strong>（2026Q1）<br><small>持续提升，+2.7pct QoQ</small></td>
+      </tr>
+      <tr>
+        <td>净利率</td>
+        <td class="col-a" style="text-align:center;"><strong>~24%</strong>（厚利少销型）</td>
+        <td class="col-b" style="text-align:center;"><strong>~8.7%</strong>（规模效应持续释放）</td>
+      </tr>
+      <tr>
+        <td>2025年研发投入</td>
+        <td class="col-a" style="text-align:center;">1.06亿元（占营收9.2%）</td>
+        <td class="col-b" style="text-align:center;">11.36亿元（占营收9.5%，YoY+48.2%）</td>
+      </tr>
+      <tr>
+        <td>资产负债率</td>
+        <td class="col-a" style="text-align:center;"><span class="hl-green">~19%（极低）</span></td>
+        <td class="col-b" style="text-align:center;">中等水平</td>
+      </tr>
+      <tr>
+        <td>资本支出/融资计划</td>
+        <td class="col-a" style="text-align:center;">二期D楼扩产<br>磁光晶体/超快激光产线</td>
+        <td class="col-b" style="text-align:center;"><span class="hl-red">定增35亿元</span><br>高速光模块扩产+前沿研发</td>
+      </tr>
+      <tr>
+        <td>2026年初至今股价涨幅</td>
+        <td class="col-a" style="text-align:center;"><span style="font-size:22px;font-weight:800;color:#27ae60;">+27%</span></td>
+        <td class="col-b" style="text-align:center;"><span style="font-size:22px;font-weight:800;color:#e53e3e;">+181%</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:32px;">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:16px;">2026年初至今A股光通信板块涨幅对比（数据来源：东方财富，截至2026年6月）</h3>
+    <div class="bar-wrap">
+      <div class="bar-item">
+        <div class="bar-label">光迅科技</div>
+        <div class="bar-track"><div class="bar-fill" style="width:90%;background:#e53e3e;">+181%</div></div>
+        <div class="bar-val" style="color:#e53e3e;">181%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">源杰科技</div>
+        <div class="bar-track"><div class="bar-fill" style="width:89%;background:#c0392b;">+179%</div></div>
+        <div class="bar-val">179%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">长光华芯</div>
+        <div class="bar-track"><div class="bar-fill" style="width:73%;background:#e07070;">+147%</div></div>
+        <div class="bar-val">147%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">天孚通信</div>
+        <div class="bar-track"><div class="bar-fill" style="width:53%;background:#e09090;">+107%</div></div>
+        <div class="bar-val">107%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">中际旭创</div>
+        <div class="bar-track"><div class="bar-fill" style="width:48%;background:#d0a0a0;">+97%</div></div>
+        <div class="bar-val">97%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">新易盛</div>
+        <div class="bar-track"><div class="bar-fill" style="width:47%;background:#ccc;">+94%</div></div>
+        <div class="bar-val">94%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">仕佳光子</div>
+        <div class="bar-track"><div class="bar-fill" style="width:36%;background:#aaa;">+72%</div></div>
+        <div class="bar-val">72%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label" style="font-weight:700;color:#27ae60;">福晶科技</div>
+        <div class="bar-track"><div class="bar-fill" style="width:14%;background:#27ae60;">+27%</div></div>
+        <div class="bar-val" style="color:#27ae60;font-weight:800;">27%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. 六层逻辑 -->
+<div style="background:#fff;border-top:1px solid #e8ecf0;border-bottom:1px solid #e8ecf0;padding:48px 0;">
+<div class="container">
+  <div class="section-title"><span class="num">3</span> 股价分化的6层底层逻辑</div>
+  <p class="section-desc">不是业绩差，而是弹性差——6个维度全面拆解154pp差距</p>
+  <div class="card-grid">
+    <div class="card" style="border-top:3px solid #e53e3e;">
+      <span class="tag tag-red">核心原因 #1</span>
+      <h3>🎯 AI纯度天壤之别</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        光迅2025年<span class="kw">数通业务<span class="kw-box">面向数据中心的光模块业务，主要客户为字节、阿里、腾讯等互联网大厂及海外云厂商，2025年贡献营收84.6亿元（+65.9% YoY）。</span></span>占比71%，AI算力是核心驱动。<br><br>
+        福晶光通信营收仅占约25%，其余75%来自工业超快激光器、医疗激光等，AI只是增量，不是主逻辑。
+      </p>
+      <div style="display:flex;gap:4px;margin-top:14px;height:10px;border-radius:6px;overflow:hidden;">
+        <div style="width:71%;background:#0969da;"></div>
+        <div style="width:29%;background:#ddd;"></div>
+      </div>
+      <div style="font-size:11px;color:#888;margin-top:4px;">光迅：AI数通71% / 其余29%</div>
+      <div style="display:flex;gap:4px;margin-top:8px;height:10px;border-radius:6px;overflow:hidden;">
+        <div style="width:25%;background:#e67e22;"></div>
+        <div style="width:75%;background:#ddd;"></div>
+      </div>
+      <div style="font-size:11px;color:#888;margin-top:4px;">福晶：光通信25% / 激光器等75%</div>
+    </div>
+    <div class="card" style="border-top:3px solid #e67e22;">
+      <span class="tag tag-orange">核心原因 #2</span>
+      <h3>📦 产业链距离决定弹性</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        光迅→云厂商：<strong>1跳传导</strong>（直接接单）<br>
+        福晶→WSS器件厂→设备商→云厂商：<strong>3~4跳传导</strong><br><br>
+        AI每多采购100元光模块，光迅可能直接收到80元；福晶可能只收到不足10元。传导链条越长，弹性折损越大，这是最根本的分化原因。
+      </p>
+    </div>
+    <div class="card" style="border-top:3px solid #8b5cf6;">
+      <span class="tag tag-purple">核心原因 #3</span>
+      <h3>📊 净利润弹性差异</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        2026Q1净利同比：<br>
+        &bull; 光迅：<strong style="color:#e53e3e;">+59.76%</strong>（毛利率持续提升至26.8%）<br>
+        &bull; 福晶：<strong style="color:#27ae60;">+30.70%</strong>（稳健但不惊艳）<br><br>
+        市场用"高弹性"给光迅溢价，用"稳健成长"给福晶折价。福晶53%的超高毛利反映材料稀缺性护城河，而非AI订单爆发。
+      </p>
+    </div>
+    <div class="card" style="border-top:3px solid #0969da;">
+      <span class="tag tag-blue">核心原因 #4</span>
+      <h3>💬 技术叙事的吸引力差异</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        光迅持有极具叙事性的标签：<br>
+        &bull; "1.6T全球量产交付"<br>
+        &bull; "3.2T硅光NPO全球首发，完成头部CSP验证"<br>
+        &bull; "国内唯一芯片→模块全链条IDM"<br><br>
+        福晶最性感的叙事"<span class="kw">法拉第旋光片<span class="kw-box">光隔离器核心器件，基于法拉第磁光效应。日本Granopt大幅缩减产能后，福晶成为国内唯一TGG/TSAG量产商，国产替代窗口打开。</span></span>国产替代"还在爬坡，市场给予期权折价。
+      </p>
+    </div>
+    <div class="card" style="border-top:3px solid #27ae60;">
+      <span class="tag tag-green">核心原因 #5</span>
+      <h3>💰 规模差异与机构偏好</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        光迅营收约为福晶的<strong>10倍</strong>（119亿 vs 12亿）。机构资金布局AI主题时偏好市值大、流动性好的核心标的，可以配置更多仓位，引发持续性增量资金涌入。<br><br>
+        福晶市值较小（~160亿 vs 光迅~660亿），机构主配额有限，主要依赖游资情绪炒作，波动大但持续性弱。
+      </p>
+    </div>
+    <div class="card" style="border-top:3px solid #f0a020;">
+      <span class="tag tag-orange">核心原因 #6</span>
+      <h3>🔖 市场的板块分类错误</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        福晶被A股系统归入"光模块"概念板块，造成双向误伤：<br>
+        &bull; 板块情绪上涨时被追买（脱离基本面超涨）<br>
+        &bull; 板块情绪退潮时被错杀（光模块订单逻辑不适用福晶）<br><br>
+        <strong>本质：福晶是"激光晶体/精密光学材料"公司，不制造任何光模块。</strong>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 4. 福晶深度 -->
+<div class="container section">
+  <div class="section-title"><span class="num">4</span> 福晶科技：三条被低估的AI受益链</div>
+  <hr class="divider">
+  <div class="callout green">
+    <strong>福晶的真正AI逻辑 ≠ 光模块</strong>：它有三条独立的AI受益路径，每条都有真实订单支撑，但传导周期比光模块慢6~18个月。
+  </div>
+  <div class="card-grid" style="margin-top:20px;">
+    <div class="card">
+      <span class="tag tag-orange">AI受益链 1</span>
+      <h3>🌐 WSS衍射光栅：AI跨机房互联刚需</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        AI算力集群跨园区互联需要ROADM → <span class="kw">WSS（波长选择开关）<span class="kw-box">Wavelength Selective Switch，在ROADM设备中实现光信号的波长选择、路由切换和动态调度，是数据中心互联（DCI）的核心器件。</span></span>是ROADM核心器件。<br><br>
+        福晶已实现面向WSS模块的棱镜光栅批量生产，进入国内外多家领先光模块企业供应链。<strong>2025年年报明确确认该业务高速增长。</strong>
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag tag-orange">AI受益链 2</span>
+      <h3>🔀 OCS钒酸钇晶体：全光交换新增长极</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        谷歌2026年<span class="kw">OCS（全光交换机）<span class="kw-box">Optical Circuit Switch，无需光电转换直接对光路物理重构，时延降低80%以上，适用于AI训练集群骨干层调度。谷歌2026年采购目标超1.5万台，Lumentum积压订单超4亿美元。</span></span>采购目标超1.5万台。OCS核心器件需要<strong>钒酸钇（Nd:YVO4）晶体</strong>，福晶是该材料全球主要供应商之一，直接受益腾景/光库等OCS厂商放量。
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag tag-orange">AI受益链 3</span>
+      <h3>🛡 法拉第旋光片：国产替代窗口打开</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        日本Granopt大幅缩减产能，全球交付周期拉长至<strong>6~9个月</strong>。<br><br>
+        福晶是国内唯一具备TGG/TSAG磁光晶体到<span class="kw">法拉第旋光片<span class="kw-box">光隔离器核心器件，防止激光器反射损伤。每个光收发端需要1~2个光隔离器，1.6T光模块放量将直接拉动需求。</span></span>全制程能力的企业。申万宏源预测2026~2027年净利润4.2亿/5.9亿（+50%/+40%），主要驱动来自旋光片放量。
+      </p>
+    </div>
+  </div>
+  <div class="callout purple" style="margin-top:24px;">
+    <strong>总结：</strong>福晶是"AI光通信上游材料"的稳定受益者，受益通过中间商传导（时间滞后+比例折损），市场给予的弹性倍数远低于光迅，但高毛利（53%）、低负债（19%）构成穿越周期的安全边际。
+  </div>
+</div>
+
+<!-- 5. 光迅深度 -->
+<div style="background:#fff;border-top:1px solid #e8ecf0;border-bottom:1px solid #e8ecf0;padding:48px 0;">
+<div class="container">
+  <div class="section-title"><span class="num">5</span> 光迅科技：AI光互联全链路核心资产</div>
+  <p class="section-desc">芯片→模块垂直整合，构建独一无二的技术护城河</p>
+  <div class="card-grid">
+    <div class="card">
+      <span class="tag tag-blue">产品线1</span>
+      <h3>🚀 800G→1.6T→3.2T 技术路线领跑</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        &bull; 800G：已批量出货，占比持续提升<br>
+        &bull; 1.6T：具备批量交付能力<br>
+        &bull; 3.2T <span class="kw">硅光单模NPO<span class="kw-box">Near-Packaged Optics，光引擎靠近交换芯片但不封装在一起，是CPO和可插拔模块之间的过渡方案，兼顾高密度和可维修性。</span></span>：全球首发，完成国内头部CSP系统验证
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag tag-blue">产品线2</span>
+      <h3>🔬 高端光芯片自研自给（核心壁垒）</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        国内少数具备<span class="kw">25G+高端EML芯片<span class="kw-box">EML（电吸收调制激光器）是高速光模块发射端核心芯片，制造难度极高。国内能量产的仅少数几家，光迅通过自研自给降低进口依赖，是其成本优势的核心。</span></span>自研自给能力的厂商。<br><br>
+        垂直整合降本持续释放：毛利率从2025年23.4%→2026Q1 26.8%（+3.4pct），净利润弹性远超营收增速。
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag tag-blue">产品线3</span>
+      <h3>⚡ CPO前瞻布局 + 35亿定增加码</h3>
+      <p style="font-size:13.5px;color:#444;line-height:1.75;">
+        &bull; <span class="kw">CPO（共封装光学）<span class="kw-box">Co-Packaged Optics，光引擎与交换芯片封装在一起，功耗比可插拔模块降低50%以上。预计2027-2028年大规模量产。</span></span>：积极投入光器件及连接方案研发<br>
+        &bull; 定增35亿元：高速光模块扩产+前沿技术研发<br><br>
+        银河证券预测2026/2027/2028年净利润：<strong>16.0亿/22.3亿/28.8亿</strong>（+69%/+39%/+29%）
+      </p>
+    </div>
+  </div>
+  <div class="callout blue" style="margin-top:24px;">
+    <strong>光迅主要风险：</strong>高速增长已被大幅price-in（2026E PE约66倍），若1.6T/3.2T放量不及预期、北美订单放缓，或国内价格战加剧，估值回调空间同样显著。存货跌价风险（2025年计提3.10亿元）需持续关注。
+  </div>
+</div>
+</div>
+
+<!-- 6. 完整公司图谱 -->
+<div class="container section">
+  <div class="section-title"><span class="num">6</span> AI光通信完整公司图谱</div>
+  <hr class="divider">
+  <div class="risk-grid">
+    <div class="risk-item risk-high">
+      <h4>🖥 GPU/算力底座</h4>
+      <p>英伟达（H100/B200/Blackwell）、华为（昇腾910C）、AMD（MI325X）。算力需求是光互联所有环节的原始驱动力。</p>
+    </div>
+    <div class="risk-item risk-high">
+      <h4>📦 高速光模块（最直接受益）</h4>
+      <p><strong>光迅科技</strong>（IDM龙头，+181%）、<strong>中际旭创</strong>（全球第二，+97%）、<strong>新易盛</strong>（+94%）、<strong>华工科技</strong>（+79%）。算力投资对光模块需求弹性约1.5~2倍。</p>
+    </div>
+    <div class="risk-item risk-high">
+      <h4>💡 光芯片（最高技术壁垒）</h4>
+      <p><strong>源杰科技</strong>（EML，+179%）、<strong>长光华芯</strong>（VCSEL/EML，+147%）、<strong>仕佳光子</strong>（PLC分路器，+72%）。芯片层弹性超过模块层，但国产化率仍低。</p>
+    </div>
+    <div class="risk-item risk-med">
+      <h4>⚡ CPO/NPO器件（下一代布局）</h4>
+      <p><strong>天孚通信</strong>（CPO连接器/硅光耦合器，+107%）、<strong>光库科技</strong>（OCS核心器件，谷歌主供，单台价值3万美元）。CPO大规模量产窗口约2027~2028年。</p>
+    </div>
+    <div class="risk-item risk-med">
+      <h4>🔀 OCS全光交换（新增长极）</h4>
+      <p><strong>腾景科技</strong>（谷歌OCS晶体光楔主供，单台5000美元价值量）、<strong>德科立</strong>（DCI+OCS）、<strong>赛微电子</strong>（MEMS微镜）。谷歌2026年采购目标1.5万台，Lumentum积压订单超4亿美元。</p>
+    </div>
+    <div class="risk-item risk-med">
+      <h4>🌐 WSS/ROADM（DCI传输）</h4>
+      <p>华为/中兴/烽火（设备商）；<strong>福晶科技</strong>（衍射光栅，WSS上游核心元件，已批量供货多家头部企业）。AI跨数据中心传输拉动DCI/ROADM加速部署。</p>
+    </div>
+    <div class="risk-item risk-low">
+      <h4>🔬 光学晶体/精密元件（上游材料）</h4>
+      <p><strong>福晶科技</strong>（LBO/BBO全球#1、TGG磁光晶体、衍射光栅、法拉第旋光片，+27%）、<strong>天通股份</strong>（铌酸锂晶圆，国内唯一8英寸量产）。材料层稳健高毛利，AI弹性被传导链条折损。</p>
+    </div>
+    <div class="risk-item risk-low">
+      <h4>🔗 光纤光缆（被低估的基础设施）</h4>
+      <p><strong>亨通光电</strong>（+335%，最强受益者之一）、<strong>中天科技</strong>（+172%）、<strong>长飞光纤</strong>。AI数据中心建设和DCI扩容拉动光纤超强需求，普通投资者往往忽视这一环节。</p>
+    </div>
+    <div class="risk-item risk-low">
+      <h4>🔧 测试设备（量产支撑刚需）</h4>
+      <p><strong>联讯仪器</strong>（光模块测试仪器，+171%）、<strong>罗博特科</strong>（自动化测试，+113%）。光模块扩产刚需，测试设备先于产能布局，业绩确定性高。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. 风险催化剂 -->
+<div style="background:#fff;border-top:1px solid #e8ecf0;border-bottom:1px solid #e8ecf0;padding:48px 0;">
+<div class="container">
+  <div class="section-title"><span class="num">7</span> 关键风险与上行催化剂</div>
+  <p class="section-desc">两家公司的风险与机会需独立评估</p>
+  <div class="card-grid">
+    <div class="card">
+      <span class="tag tag-orange">福晶科技</span>
+      <h3>🟢 上行催化剂</h3>
+      <ul style="list-style:none;font-size:13.5px;color:#444;line-height:2;">
+        <li>→ 法拉第旋光片产能爬坡完成并放量（预计2026H2）</li>
+        <li>→ Granopt持续减产，国产替代窗口扩大</li>
+        <li>→ 谷歌OCS大规模部署，钒酸钇晶体需求激增</li>
+        <li>→ 超快激光器在PCB打孔/半导体制造渗透率提升</li>
+        <li>→ 二期D楼扩产顺利完工投产</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag tag-orange">福晶科技</span>
+      <h3>🔴 下行风险</h3>
+      <ul style="list-style:none;font-size:13.5px;color:#444;line-height:2;">
+        <li>→ 硅光技术渗透加速，部分传统晶体需求被替代</li>
+        <li>→ 光通信占比25%，AI放量慢于预期时缺乏故事性</li>
+        <li>→ 工业激光器（75%主业）景气下行</li>
+        <li>→ 法拉第旋光片客户认证周期超预期</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag tag-blue">光迅科技</span>
+      <h3>🟢 上行催化剂</h3>
+      <ul style="list-style:none;font-size:13.5px;color:#444;line-height:2;">
+        <li>→ 1.6T向北美云厂商放量</li>
+        <li>→ 3.2T全球商用落地，技术领先进一步巩固</li>
+        <li>→ 35亿定增完成，产能瓶颈解除</li>
+        <li>→ CPO率先商用，卡位技术迭代</li>
+        <li>→ 国内AI算力政策加码</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag tag-blue">光迅科技</span>
+      <h3>🔴 下行风险</h3>
+      <ul style="list-style:none;font-size:13.5px;color:#444;line-height:2;">
+        <li>→ 高估值（2026E PE ~66倍）容错率低</li>
+        <li>→ 全球AI投资放缓（地缘政治/利率）</li>
+        <li>→ 国内价格战（中际旭创/新易盛/华工）</li>
+        <li>→ 存货跌价风险（2025年计提3.10亿元）</li>
+        <li>→ 北美出口限制风险升级</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 8. 结论 -->
+<div class="container section">
+  <div class="section-title"><span class="num">8</span> 研究结论</div>
+  <hr class="divider">
+  <div class="conclusion">
+    <h2>📌 核心结论</h2>
+    <div class="verdict-grid">
+      <div class="verdict-card">
+        <h3>福晶科技 002222 — "卖铲人"，稳健穿越周期</h3>
+        <ul>
+          <li>产业链最上游材料商，AI是增量逻辑（非主逻辑）</li>
+          <li>三条真实AI受益路径：WSS光栅+OCS钒酸钇+法拉第旋光片替代</li>
+          <li>高毛利（53%）低负债（19%）是穿越周期安全边际</li>
+          <li>法拉第旋光片是最重要期权，兑现时间2026H2-2027</li>
+          <li>短期跟随光模块板块情绪波动，基本面稳健</li>
+        </ul>
+      </div>
+      <div class="verdict-card">
+        <h3>光迅科技 002281 — AI光互联核心资产，高弹性高估值</h3>
+        <ul>
+          <li>直接面向AI数据中心，1.6T量产+3.2T首发，技术领跑</li>
+          <li>数通占比71%，业绩弹性最大，2026E净利增速约69%</li>
+          <li>垂直整合（芯片→模块）是核心护城河，毛利率持续提升</li>
+          <li>当前66倍PE已price-in大量好消息，关注订单节奏</li>
+          <li>正弹性和负弹性都远大于福晶</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);">
+      <p style="color:#cdd5e0;font-size:14px;line-height:1.8;">
+        <strong style="color:#ffd966;">最核心认知差异：</strong>两家公司都在AI光通信受益，但受益的"传导距离"决定了弹性倍数。光迅是第一梯队受益（直接订单），福晶是第二梯队受益（间接传导）。这不代表福晶质地差——恰恰相反，福晶的超高毛利和独特技术壁垒在AI浪潮退潮时将比光迅更抗风险。投资者需根据自身对<strong style="color:#ffd966;">"高弹性高波动"（光迅）vs "稳健复利"（福晶）</strong>的偏好做出选择。
+      </p>
+    </div>
+  </div>
+  <p style="font-size:12px;color:#aaa;text-align:center;margin-top:24px;">本报告基于公开信息（公司年报/季报、研究机构报告、网络资讯）整理，仅供研究参考，不构成投资建议。数据截至2026年6月。</p>
+</div>
+
+</body>
+</html>
