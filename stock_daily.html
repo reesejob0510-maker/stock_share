@@ -6,15 +6,16 @@
 <title>Stock Research · 研报合集</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{--bg:#f6f8fa;--sf:#fff;--bd:#d0d7de;--bd2:#e8ebef;--tx:#1f2328;--mu:#57606a;--ac:#0969da;--gn:#1a7f37;--re:#cf222e;--ye:#9a6700;--pu:#8250df;}
+:root{--bg:#f6f8fa;--sf:#fff;--bd:#d0d7de;--bd2:#e8ebef;--tx:#1f2328;--mu:#57606a;--ac:#0969da;--gn:#1a7f37;--re:#cf222e;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;}
 a{text-decoration:none;color:inherit;}
-.hd{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 24px;}
-.hd-inner{max-width:880px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:54px;}
+body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='120'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='22' font-family='Arial,sans-serif' fill='%23000' fill-opacity='0.04' transform='rotate(-30,100,60)'%3Ereese%3C/text%3E%3C/svg%3E");}
+.hd{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 24px;position:sticky;top:0;z-index:100;}
+.hd-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:54px;}
 .hd-logo{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;}
 .hd-sub{font-size:12px;color:var(--mu);}
 .hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);color:#fff;padding:44px 24px 40px;}
-.hero-inner{max-width:880px;margin:0 auto;}
+.hero-inner{max-width:900px;margin:0 auto;}
 .hero-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:.55;margin-bottom:10px;}
 .hero-t{font-size:28px;font-weight:800;line-height:1.25;margin-bottom:10px;}
 .hero-t em{font-style:normal;color:#60a5fa;}
@@ -23,13 +24,16 @@ a{text-decoration:none;color:inherit;}
 .hstat{border-left:2px solid rgba(255,255,255,.2);padding-left:12px;}
 .hstat-v{font-size:22px;font-weight:800;line-height:1;}
 .hstat-l{font-size:11px;opacity:.55;margin-top:3px;}
-.filters{max-width:880px;margin:0 auto;padding:20px 24px 0;}
-.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
-.filter-label{font-size:12px;color:var(--mu);margin-right:4px;}
+.toolbar{max-width:900px;margin:0 auto;padding:20px 24px 0;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;flex:1;}
+.filter-label{font-size:12px;color:var(--mu);margin-right:4px;white-space:nowrap;}
 .ftag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid var(--bd);background:var(--sf);cursor:pointer;transition:all .15s;color:var(--mu);}
 .ftag:hover,.ftag.active{border-color:var(--ac);color:var(--ac);background:#ddf4ff;}
 .ftag.active{font-weight:600;}
-.grid{max-width:880px;margin:0 auto;padding:20px 24px 60px;display:grid;grid-template-columns:1fr;gap:16px;}
+.search-box{display:flex;align-items:center;background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:4px 14px;gap:6px;width:200px;}
+.search-box input{border:none;outline:none;font-size:12.5px;color:var(--tx);background:transparent;width:100%;}
+.search-box input::placeholder{color:#aaa;}
+.grid{max-width:900px;margin:0 auto;padding:20px 24px 60px;display:grid;grid-template-columns:1fr;gap:16px;}
 @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr);}}
 .card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;transition:box-shadow .15s,border-color .15s;position:relative;overflow:hidden;}
 .card:hover{border-color:#0969da;box-shadow:0 4px 16px rgba(9,105,218,.1);}
@@ -47,14 +51,17 @@ a{text-decoration:none;color:inherit;}
 .tag-mrvl{background:#ddf4ff;color:#0550ae;}
 .tag-supply{background:#f0fdf4;color:#166534;}
 .tag-risk{background:#fef9c3;color:#92400e;}
+.tag-chem{background:#fdf0ff;color:#7c3aed;}
+.tag-opt{background:#e0f2fe;color:#0369a1;}
+.tag-us{background:#fff0f0;color:#9a3412;}
 .card-footer{margin-top:auto;padding-top:10px;border-top:1px solid var(--bd2);display:flex;align-items:center;justify-content:space-between;}
 .card-link{font-size:12px;font-weight:600;color:var(--ac);}
-.card-link:hover{text-decoration:underline;}
 .card-type{font-size:11px;color:var(--mu);}
 .badge-new{position:absolute;top:12px;right:12px;background:var(--gn);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;letter-spacing:.5px;}
 .card-empty{border-style:dashed;background:transparent;opacity:.5;cursor:default;}
 .card-empty:hover{border-color:var(--bd);box-shadow:none;}
-@media(max-width:639px){.hero-t{font-size:22px;}.hero-stats{gap:16px;}.hstat-v{font-size:18px;}.hd-sub{display:none;}}
+#search-empty{display:none;text-align:center;padding:40px;color:var(--mu);font-size:14px;grid-column:1/-1;}
+@media(max-width:639px){.hero-t{font-size:22px;}.hero-stats{gap:16px;}.hstat-v{font-size:18px;}.hd-sub{display:none;}.search-box{width:150px;}.toolbar{flex-direction:column;align-items:flex-start;}}
 </style>
 </head>
 <body>
@@ -68,32 +75,106 @@ a{text-decoration:none;color:inherit;}
   <div class="hero-inner">
     <div class="hero-label">Research Portfolio</div>
     <div class="hero-t">深度研报 <em>合集</em></div>
-    <div class="hero-desc">覆盖半导体、AI 算力、科技产业链，多维度取证分析。点击卡片进入完整报告。</div>
+    <div class="hero-desc">覆盖半导体、AI算力、光通信、化工产业链，多维度取证分析。点击卡片进入完整报告。</div>
     <div class="hero-stats">
-      <div class="hstat"><div class="hstat-v">2</div><div class="hstat-l">已发布研报</div></div>
+      <div class="hstat"><div class="hstat-v">6</div><div class="hstat-l">已发布研报</div></div>
       <div class="hstat"><div class="hstat-v">7+</div><div class="hstat-l">取证维度</div></div>
       <div class="hstat"><div class="hstat-v">2026</div><div class="hstat-l">持续更新中</div></div>
     </div>
   </div>
 </div>
-<div class="filters">
+<div class="toolbar">
   <div class="filter-row">
     <span class="filter-label">筛选：</span>
     <span class="ftag active" onclick="filter(this,'all')">全部</span>
     <span class="ftag" onclick="filter(this,'semi')">半导体</span>
     <span class="ftag" onclick="filter(this,'ai')">AI / 算力</span>
+    <span class="ftag" onclick="filter(this,'opt')">光通信</span>
     <span class="ftag" onclick="filter(this,'supply')">产业链</span>
+    <span class="ftag" onclick="filter(this,'us')">美股</span>
+  </div>
+  <div class="search-box">
+    <span style="color:#aaa;font-size:14px;">&#128269;</span>
+    <input id="search-input" type="text" placeholder="搜索报告..." oninput="doSearch(this.value)">
   </div>
 </div>
 <div class="grid" id="grid">
-  <a class="card" href="cxmt-analysis.html" data-tags="semi supply ai">
+  <a class="card" href="foctek_accelink.html" data-tags="opt ai supply">
     <div class="badge-new">最新</div>
+    <div class="card-top">
+      <div class="card-icon" style="background:#e0f2fe;">&#128300;</div>
+      <div class="card-meta"><div>002222 &amp; 002281 · A股</div><div class="card-date">2026-07-07</div></div>
+    </div>
+    <div class="card-title">福晶科技 vs 光迅科技：为何涨幅相差154%？</div>
+    <div class="card-sub">同在光通信板块，股价分化154pp的底层逻辑。AI产业链完整图谱：从GPU到光学晶体，六大核心受益公司层级解析。</div>
+    <div class="card-tags">
+      <span class="tag tag-opt">光通信</span>
+      <span class="tag tag-ai">AI / 算力</span>
+      <span class="tag tag-supply">产业链对比</span>
+    </div>
+    <div class="card-footer">
+      <span class="card-link">阅读完整报告 →</span>
+      <span class="card-type">对比研报</span>
+    </div>
+  </a>
+  <a class="card" href="bb.html" data-tags="us ai supply">
+    <div class="card-top">
+      <div class="card-icon" style="background:#fff0f0;">&#128241;</div>
+      <div class="card-meta"><div>BB · NYSE</div><div class="card-date">2026-07-05</div></div>
+    </div>
+    <div class="card-title">BlackBerry (BB) Deep Dive</div>
+    <div class="card-sub">QNX汽车OS 21%增速、Cylance AI安全资产处置、IVY平台机遇。SEC证明、客户集中度风险与价值链中被低估的部分。</div>
+    <div class="card-tags">
+      <span class="tag tag-us">美股 BB</span>
+      <span class="tag tag-ai">AI / 算力</span>
+      <span class="tag tag-supply">产业链</span>
+    </div>
+    <div class="card-footer">
+      <span class="card-link">阅读完整报告 →</span>
+      <span class="card-type">深度研报</span>
+    </div>
+  </a>
+  <a class="card" href="juhua.html" data-tags="chem supply">
+    <div class="card-top">
+      <div class="card-icon" style="background:#fdf0ff;">&#129514;</div>
+      <div class="card-meta"><div>600160 · A股</div><div class="card-date">2026-07-03</div></div>
+    </div>
+    <div class="card-title">巨化股份：氟化工全产业链穿透分析</div>
+    <div class="card-sub">基加利修正案配额制度、HFOs专利壁垒、R32/R125/R134a格局演变。氟化工龙头的制裁免疫性与隐性定价权。</div>
+    <div class="card-tags">
+      <span class="tag tag-chem">氟化工</span>
+      <span class="tag tag-supply">产业链</span>
+      <span class="tag tag-risk">政策催化</span>
+    </div>
+    <div class="card-footer">
+      <span class="card-link">阅读完整报告 →</span>
+      <span class="card-type">深度研报</span>
+    </div>
+  </a>
+  <a class="card" href="accelink.html" data-tags="opt ai supply">
+    <div class="card-top">
+      <div class="card-icon" style="background:#ddf4ff;">&#128268;</div>
+      <div class="card-meta"><div>002281 · A股</div><div class="card-date">2026-07-02</div></div>
+    </div>
+    <div class="card-title">光迅科技：光电器件IDM全链路穿透</div>
+    <div class="card-sub">EML芯片自研、1.6T量产能力、硅光PIC布局。从芯片到模块的垂直整合壁垒与AI数据中心核心受益逻辑。</div>
+    <div class="card-tags">
+      <span class="tag tag-opt">光通信</span>
+      <span class="tag tag-ai">AI / 算力</span>
+      <span class="tag tag-supply">产业链</span>
+    </div>
+    <div class="card-footer">
+      <span class="card-link">阅读完整报告 →</span>
+      <span class="card-type">深度研报</span>
+    </div>
+  </a>
+  <a class="card" href="cxmt-analysis.html" data-tags="semi supply ai">
     <div class="card-top">
       <div class="card-icon" style="background:#fff0f0;">&#128300;</div>
       <div class="card-meta"><div>CXMT · A股</div><div class="card-date">2026-07-01</div></div>
     </div>
     <div class="card-title">长鑫存储（CXMT）全产业链穿透分析</div>
-    <div class="card-sub">招股书 · 上交所问询函 · 招投标 · 环评公示 · 专利数据库 · 客户认证动态 · 财务质量穿透。HBM 封装差距 3-4 年，设备库存临界点，苹果游说进行中。</div>
+    <div class="card-sub">招股书 · 上交所问询函 · 招投标 · 环评公示 · 专利数据库 · 客户认证动态。HBM封装差距3~4年，设备库存临界点，苹果游说进行中。</div>
     <div class="card-tags">
       <span class="tag tag-semi">半导体</span>
       <span class="tag tag-hbm">HBM</span>
@@ -105,13 +186,13 @@ a{text-decoration:none;color:inherit;}
       <span class="card-type">深度研报</span>
     </div>
   </a>
-  <a class="card" href="marvell-story-en.html" data-tags="ai semi">
+  <a class="card" href="marvell-story.html" data-tags="ai semi us">
     <div class="card-top">
       <div class="card-icon" style="background:#ddf4ff;">&#9889;</div>
       <div class="card-meta"><div>MRVL · NASDAQ</div><div class="card-date">2026-06</div></div>
     </div>
-    <div class="card-title">Marvell Technology (MRVL) Deep Dive</div>
-    <div class="card-sub">AI 数据中心定制化 XPU 设计、光学 DSP 互联、以太网交换芯片。Marvell 在 AI 算力基础设施中的三重角色与增长逻辑。</div>
+    <div class="card-title">Marvell Technology (MRVL) 深度研报</div>
+    <div class="card-sub">AI数据中心定制化XPU设计、光学DSP互联、以太网交换芯片。Marvell在AI算力基础设施中的三重角色与增长逻辑。</div>
     <div class="card-tags">
       <span class="tag tag-ai">AI / 算力</span>
       <span class="tag tag-mrvl">MRVL</span>
@@ -122,23 +203,31 @@ a{text-decoration:none;color:inherit;}
       <span class="card-type">深度研报</span>
     </div>
   </a>
-  <div class="card card-empty">
-    <div class="card-top">
-      <div class="card-icon" style="background:#f6f8fa;">＋</div>
-    </div>
-    <div class="card-title" style="color:#8c959f;">更多研报即将发布</div>
-    <div class="card-sub">持续追踪 AI 算力、半导体、产业链标的……</div>
-  </div>
+  <div id="search-empty">未找到匹配报告，请尝试其他关键词。</div>
 </div>
 <script>
+var activeTag='all';
 function filter(el,tag){
   document.querySelectorAll('.ftag').forEach(function(t){t.classList.remove('active');});
   el.classList.add('active');
-  document.querySelectorAll('#grid .card:not(.card-empty)').forEach(function(c){
-    if(tag==='all'){c.style.display='';return;}
+  activeTag=tag;
+  applyFilters();
+}
+function doSearch(q){applyFilters(q);}
+function applyFilters(q){
+  if(q===undefined) q=document.getElementById('search-input').value;
+  q=q.toLowerCase().trim();
+  var cards=document.querySelectorAll('#grid .card:not(.card-empty):not(#search-empty)');
+  var visible=0;
+  cards.forEach(function(c){
     var tags=(c.dataset.tags||'').split(' ');
-    c.style.display=tags.includes(tag)?'':'none';
+    var tagOk=(activeTag==='all')||tags.includes(activeTag);
+    var title=(c.querySelector('.card-title')||{}).textContent||'';
+    var sub=(c.querySelector('.card-sub')||{}).textContent||'';
+    var searchOk=!q||(title+sub).toLowerCase().includes(q);
+    if(tagOk&&searchOk){c.style.display='';visible++;}else{c.style.display='none';}
   });
+  document.getElementById('search-empty').style.display=visible?'none':'block';
 }
 </script>
 </body>
