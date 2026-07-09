@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>东山精密深度研报 | reese研究</title>
+<style>
+:root{
+  --c-bg:#f5f6fa;
+  --c-card:#fff;
+  --c-border:#e4e6ef;
+  --c-text:#1a1a2e;
+  --c-sub:#6b7280;
+  --c-accent:#2563eb;
+  --c-accent2:#7c3aed;
+  --c-green:#059669;
+  --c-red:#dc2626;
+  --c-orange:#d97706;
+  --c-yellow:#ca8a04;
+  --radius:12px;
+  --shadow:0 2px 12px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Noto Sans SC',sans-serif;background:var(--c-bg);color:var(--c-text);line-height:1.7;font-size:15px}
+a{color:var(--c-accent);text-decoration:none}
+
+/* watermark */
+body::before{
+  content:'reese';
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(
+    -45deg,
+    transparent 0,transparent 120px,
+    rgba(180,180,200,.06) 120px,rgba(180,180,200,.06) 121px
+  );
+  display:flex;align-items:center;justify-content:center;
+  font-size:100px;font-weight:900;color:rgba(100,100,130,.04);
+  letter-spacing:8px;white-space:nowrap;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='110'%3E%3Ctext x='10' y='70' font-size='22' font-family='Arial' fill='rgba(150,150,180,0.07)' transform='rotate(-30,110,55)'%3Ereese%3C/text%3E%3C/svg%3E");
+}
+
+/* back button */
+#back-btn-wrap{position:fixed;top:14px;left:14px;z-index:10000}
+#back-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid #d0d7de;border-radius:20px;padding:6px 14px 6px 10px;
+  font-size:13px;font-weight:600;color:#0969da;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);transition:box-shadow .15s,border-color .15s;
+}
+#back-btn:hover{box-shadow:0 4px 14px rgba(9,105,218,.18);border-color:#0969da}
+
+/* hero */
+.hero{
+  background:linear-gradient(135deg,#1e3a8a 0%,#312e81 50%,#4c1d95 100%);
+  color:#fff;padding:80px 24px 56px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:48px;
+  background:var(--c-bg);clip-path:ellipse(55% 100% at 50% 100%);
+}
+.hero .badge{
+  display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;letter-spacing:.5px;
+  margin-bottom:16px;backdrop-filter:blur(4px);
+}
+.hero h1{font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.2;margin-bottom:8px}
+.hero h1 span{color:#a5f3fc}
+.hero .sub{font-size:15px;opacity:.8;margin-bottom:32px}
+.hero-stats{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:8px;
+}
+.hero-stat{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:12px;padding:14px 22px;backdrop-filter:blur(6px);min-width:140px;
+}
+.hero-stat .val{font-size:28px;font-weight:800;line-height:1}
+.hero-stat .lbl{font-size:11px;opacity:.75;margin-top:4px;letter-spacing:.3px}
+.pos{color:#86efac}.neg{color:#fca5a5}.neu{color:#fde68a}
+
+/* layout */
+.container{max-width:960px;margin:0 auto;padding:0 16px}
+
+/* section */
+.section{margin:36px 0}
+.section-title{
+  font-size:20px;font-weight:700;color:var(--c-text);
+  display:flex;align-items:center;gap:10px;margin-bottom:20px;
+  padding-bottom:10px;border-bottom:2px solid var(--c-border);
+}
+.section-title .icon{
+  width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.icon-blue{background:#dbeafe;color:#1d4ed8}
+.icon-purple{background:#ede9fe;color:#7c3aed}
+.icon-green{background:#d1fae5;color:#065f46}
+.icon-orange{background:#ffedd5;color:#9a3412}
+.icon-red{background:#fee2e2;color:#991b1b}
+.icon-yellow{background:#fef3c7;color:#92400e}
+
+/* card */
+.card{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow)}
+.card+.card{margin-top:14px}
+.card-title{font-size:14px;font-weight:700;color:var(--c-sub);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+
+/* grid */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+/* stat row */
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--c-border)}
+.stat-row:last-child{border-bottom:none}
+.stat-key{font-size:13px;color:var(--c-sub)}
+.stat-val{font-size:14px;font-weight:700}
+
+/* callout */
+.callout{border-radius:10px;padding:14px 18px;margin:14px 0;font-size:14px;line-height:1.65;border-left:4px solid}
+.callout.blue{background:#eff6ff;border-color:#3b82f6;color:#1e40af}
+.callout.green{background:#f0fdf4;border-color:#22c55e;color:#14532d}
+.callout.orange{background:#fff7ed;border-color:#f97316;color:#7c2d12}
+.callout.red{background:#fef2f2;border-color:#ef4444;color:#7f1d1d}
+.callout.purple{background:#f5f3ff;border-color:#8b5cf6;color:#4c1d95}
+.callout strong{font-weight:700}
+
+/* supply chain */
+.sc-wrap{position:relative}
+.sc-layer{margin-bottom:10px}
+.sc-label{font-size:11px;font-weight:700;color:var(--c-sub);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px;padding-left:4px}
+.sc-items{display:flex;flex-wrap:wrap;gap:8px}
+.sc-item{
+  padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;
+  border:1.5px solid transparent;transition:transform .15s,box-shadow .15s;
+  position:relative;
+}
+.sc-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.sc-item.tier1{background:#dbeafe;border-color:#93c5fd;color:#1e3a8a}
+.sc-item.tier2{background:#d1fae5;border-color:#6ee7b7;color:#065f46}
+.sc-item.tier3{background:#ede9fe;border-color:#c4b5fd;color:#4c1d95}
+.sc-item.tier4{background:#fef3c7;border-color:#fcd34d;color:#78350f}
+.sc-item.tier5{background:#ffe4e6;border-color:#fda4af;color:#881337}
+.sc-item.highlight{border-style:solid;border-width:2px;box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.sc-arrow{text-align:center;font-size:20px;color:var(--c-sub);line-height:1;margin:4px 0}
+
+/* tip system */
+.sc-item.has-tip .tip-icon{
+  display:inline-block;margin-left:5px;font-size:10px;
+  background:rgba(0,0,0,.12);border-radius:50%;width:15px;height:15px;
+  line-height:15px;text-align:center;vertical-align:middle;
+}
+.tip-zone{display:none;margin-top:10px}
+.tip-zone.open{display:block}
+.tip-card{
+  background:#fff;border:1px solid #e0e7ff;border-radius:10px;
+  padding:14px 16px;margin-bottom:8px;
+  box-shadow:0 2px 8px rgba(99,102,241,.08);
+  animation:fadeIn .2s ease;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.tip-card h4{font-size:13px;font-weight:700;color:#1e40af;margin-bottom:6px}
+.tip-card p{font-size:13px;color:#374151;line-height:1.6}
+.tip-close{float:right;cursor:pointer;color:#9ca3af;font-size:14px;margin-left:8px}
+.tip-close:hover{color:#ef4444}
+
+/* kw hover */
+.kw{position:relative;display:inline-block;border-bottom:1.5px dotted var(--c-accent);cursor:help;color:var(--c-accent)}
+.kw .kw-box{
+  display:none;position:absolute;bottom:calc(100%+6px);left:50%;transform:translateX(-50%);
+  background:#1e293b;color:#f1f5f9;font-size:12px;line-height:1.5;
+  padding:8px 12px;border-radius:8px;width:220px;z-index:200;pointer-events:none;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);white-space:normal;
+}
+.kw:hover .kw-box{display:block}
+.kw .kw-box::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:5px solid transparent;border-top-color:#1e293b;
+}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{background:#f8fafc;font-weight:700;color:var(--c-sub);text-align:left;padding:10px 12px;border-bottom:2px solid var(--c-border)}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--c-border);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#f9fafb}
+.badge-red{display:inline-block;background:#fee2e2;color:#991b1b;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600}
+.badge-green{display:inline-block;background:#d1fae5;color:#065f46;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600}
+.badge-orange{display:inline-block;background:#ffedd5;color:#9a3412;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600}
+.badge-blue{display:inline-block;background:#dbeafe;color:#1e40af;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600}
+.badge-purple{display:inline-block;background:#ede9fe;color:#4c1d95;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600}
+
+/* bar chart */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.bar-name{min-width:100px;font-size:12px;font-weight:600;color:var(--c-sub);text-align:right;flex-shrink:0}
+.bar-track{flex:1;background:#f1f5f9;border-radius:6px;height:22px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:11px;font-weight:700;color:#fff;white-space:nowrap;transition:width .8s ease}
+.bar-val{font-size:12px;font-weight:700;color:var(--c-text);min-width:60px}
+.bar-unit{font-size:11px;color:var(--c-sub);margin-left:4px}
+
+/* timeline */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--c-border)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-dot{
+  position:absolute;left:-24px;top:4px;width:14px;height:14px;
+  border-radius:50%;border:2px solid var(--c-accent);background:#fff;
+}
+.tl-year{font-size:11px;font-weight:700;color:var(--c-accent);margin-bottom:2px}
+.tl-content{font-size:13px;color:var(--c-text)}
+
+/* risk meter */
+.risk-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--c-border)}
+.risk-item:last-child{border-bottom:none}
+.risk-badge{
+  flex-shrink:0;width:48px;height:22px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;
+}
+.risk-high{background:#fee2e2;color:#991b1b}
+.risk-mid{background:#ffedd5;color:#9a3412}
+.risk-low{background:#fef9c3;color:#78350f}
+.risk-text{font-size:13px;line-height:1.6}
+.risk-text strong{color:var(--c-text);font-weight:700}
+
+/* valuation box */
+.val-box{
+  background:linear-gradient(135deg,#1e3a8a 0%,#312e81 100%);
+  color:#fff;border-radius:14px;padding:24px;margin:16px 0;
+}
+.val-box h3{font-size:16px;font-weight:700;margin-bottom:16px;opacity:.9}
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:540px){.val-grid{grid-template-columns:1fr 1fr}}
+.val-cell{background:rgba(255,255,255,.12);border-radius:10px;padding:12px 14px;text-align:center}
+.val-cell .n{font-size:22px;font-weight:800;line-height:1}
+.val-cell .l{font-size:11px;opacity:.7;margin-top:4px}
+
+/* footer */
+footer{text-align:center;padding:40px 24px 32px;font-size:12px;color:var(--c-sub);border-top:1px solid var(--c-border);margin-top:48px}
+
+/* scrollbar */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:#f1f5f9}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
+
+/* mobile nav */
+.sticky-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--c-border);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.sticky-nav::-webkit-scrollbar{display:none}
+.sticky-nav ul{
+  display:flex;list-style:none;gap:0;min-width:max-content;
+  padding:0 16px;margin:0;
+}
+.sticky-nav li a{
+  display:block;padding:12px 14px;font-size:13px;font-weight:600;color:var(--c-sub);
+  border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap;
+}
+.sticky-nav li a:hover{color:var(--c-accent);border-bottom-color:var(--c-accent)}
+
+@media(max-width:600px){
+  .hero{padding:64px 16px 48px}
+  .card{padding:16px}
+  .container{padding:0 12px}
+  .val-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="back-btn-wrap">
+  <a href="stock_daily.html" id="back-btn">&#8592; 返回研报合集</a>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="badge">深度研报 · 2026.07</div>
+  <h1>东山精密 <span>002384</span></h1>
+  <p class="sub">PCB龙头 × AI光芯片 IDM — "从代工厂到算力基建"的蜕变与风险</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="val pos">+194%</div>
+      <div class="lbl">2026年初至今(YTD)</div>
+    </div>
+    <div class="hero-stat">
+      <div class="val neu">4573亿</div>
+      <div class="lbl">总市值(2026.7.9)</div>
+    </div>
+    <div class="hero-stat">
+      <div class="val pos">+143%</div>
+      <div class="lbl">2026Q1归母净利同比</div>
+    </div>
+    <div class="hero-stat">
+      <div class="val neg">121亿</div>
+      <div class="lbl">短期债务(2026Q1末)</div>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="sticky-nav">
+  <ul>
+    <li><a href="#overview">公司概览</a></li>
+    <li><a href="#chain">产业链定位</a></li>
+    <li><a href="#finance">财务解析</a></li>
+    <li><a href="#moat">护城河</a></li>
+    <li><a href="#catalyst">催化剂</a></li>
+    <li><a href="#risk">风险</a></li>
+    <li><a href="#valuation">估值</a></li>
+    <li><a href="#verdict">研判</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<!-- Section 1: Overview -->
+<div class="section" id="overview">
+  <div class="section-title">
+    <div class="icon icon-blue">🏢</div>公司概览
+  </div>
+  <div class="callout blue">
+    <strong>核心逻辑：</strong>东山精密是A股最典型的"并购驱动型转型"样本——从苏州精密零件小厂，经过12年、6次关键收购，演变成集全球FPC第二、PCB第三、国内唯一200G EML光芯片量产于一体的AI算力基础设施供应商。2026年Q1，光模块业务仅贡献16%营收，却撑起超过52%利润。
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">基本信息</div>
+      <div class="stat-row"><span class="stat-key">证券代码</span><span class="stat-val">002384.SZ</span></div>
+      <div class="stat-row"><span class="stat-key">公司全称</span><span class="stat-val">苏州东山精密制造</span></div>
+      <div class="stat-row"><span class="stat-key">实控人</span><span class="stat-val">袁氏兄弟（袁永刚/永义）</span></div>
+      <div class="stat-row"><span class="stat-key">上市日期</span><span class="stat-val">2010年4月9日</span></div>
+      <div class="stat-row"><span class="stat-key">总股本</span><span class="stat-val">约18.3亿股</span></div>
+      <div class="stat-row"><span class="stat-key">最新股价</span><span class="stat-val" style="color:var(--c-green)">249.66元（2026.7.9）</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">营收结构（2025年）</div>
+      <div class="bar-row">
+        <div class="bar-name">电子电路PCB</div>
+        <div class="bar-track"><div class="bar-fill" style="width:63.85%;background:#3b82f6">63.85%</div></div>
+        <div class="bar-val">256亿</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-name">光电显示模组</div>
+        <div class="bar-track"><div class="bar-fill" style="width:14.92%;background:#8b5cf6">14.92%</div></div>
+        <div class="bar-val">60亿</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-name">精密组件</div>
+        <div class="bar-track"><div class="bar-fill" style="width:14.78%;background:#10b981">14.78%</div></div>
+        <div class="bar-val">59亿</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-name">光模块</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.58%;background:#f59e0b">3.58%</div></div>
+        <div class="bar-val">14亿</div>
+      </div>
+      <div style="font-size:11px;color:var(--c-sub);margin-top:6px">总营收 401亿 | 光模块毛利率 36.74% vs 整体 13.85%</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">并购成长史</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2014</div>
+        <div class="tl-content">收购<strong>牧东光电</strong>，切入触控显示领域（后整合为光电显示板块）</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2016</div>
+        <div class="tl-content">以39.84亿元收购美国<strong>MFLEX</strong>，打入苹果供应链，成为全球FPC第二</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2018</div>
+        <div class="tl-content">以19.92亿元收购<strong>Multek</strong>（PCB），补强高端硬板，深绑AI服务器算力链</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2023</div>
+        <div class="tl-content">收购<strong>苏州晶端</strong>，拓展车载显示模组；收购法国<strong>GMD集团</strong>，扩充新能源汽车精密件</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:#f59e0b"></div>
+        <div class="tl-year" style="color:#f59e0b">2025 ★</div>
+        <div class="tl-content">以约59.35亿元（含6.29亿美元股权+10亿可转债）收购<strong>索尔思光电100%股权</strong>，全球唯一200G EML量产IDM；公司完成从PCB代工到AI算力"四大板块"战略跃迁</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:#dc2626"></div>
+        <div class="tl-year" style="color:#dc2626">2026.06</div>
+        <div class="tl-content">索尔思光电宣布<strong>12亿美元扩产</strong>（常州光芯片+泰国光模块），自筹资金；港股H股招股书已于5月失效，融资通道存疑</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2: Supply Chain -->
+<div class="section" id="chain">
+  <div class="section-title">
+    <div class="icon icon-purple">🔗</div>产业链定位 —— AI算力互联核心层
+  </div>
+  <div class="callout purple">
+    <strong>产业链独特性：</strong>东山精密横跨算力基建的多个环节，是A股极少数在<strong>AI服务器硬板（Multek）+ 消费电子FPC（MFLEX）+ EML光芯片（索尔思）+ 800G/1.6T光模块（索尔思）</strong>均有实质性卡位的上市公司。不同于纯PCB或纯光模块厂商，市场对其"拆开定价"——PCB逻辑+光芯片IDM逻辑叠加是年内6倍行情的核心驱动。
+  </div>
+
+  <div class="card sc-wrap">
+    <div class="sc-layer" id="layer-0">
+      <div class="sc-label">⬆ 上游 — AI算力芯片</div>
+      <div class="sc-items">
+        <div class="sc-item tier1">英伟达 GB200/H100</div>
+        <div class="sc-item tier1">AMD MI300X</div>
+        <div class="sc-item tier1">自研ASIC（谷歌TPU/AWS Trainium）</div>
+      </div>
+    </div>
+    <div class="sc-arrow">↓</div>
+    <div class="sc-layer" id="layer-1">
+      <div class="sc-label">▶ 关键瓶颈 — EML光芯片（磷化铟）</div>
+      <div class="sc-items">
+        <div class="sc-item tier2 highlight has-tip" onclick="showTip('tip-eml')">
+          索尔思光电（东山精密）200G EML量产 ✦<span class="tip-icon">?</span>
+        </div>
+        <div class="sc-item tier2">Lumentum（美，全球最大份额）</div>
+        <div class="sc-item tier2">II-VI / Coherent</div>
+        <div class="sc-item tier2">光迅科技（小批量）</div>
+      </div>
+      <div class="tip-zone" id="tip-eml">
+        <div class="tip-card">
+          <span class="tip-close" onclick="closeTip('tip-eml')">✕</span>
+          <h4>200G EML光芯片 — 1.6T时代的"稀缺资源"</h4>
+          <p><strong>EML（Electro-absorption Modulated Laser）</strong>电吸收调制激光器，是800G/1.6T光模块的核心发光元件。1.6T光模块每个需要8颗200G EML，而全球2025年产能仅约2000-3000万颗/年，需求2026年飙升至4000-5000万颗，供需缺口极大。东山精密（索尔思）是国内<strong>唯一能大规模量产200G EML</strong>的企业，良率85-90%，已通过英伟达、Meta顶级认证，产品售价约17美元/颗。</p>
+        </div>
+      </div>
+    </div>
+    <div class="sc-arrow">↓</div>
+    <div class="sc-layer" id="layer-2">
+      <div class="sc-label">▶ 核心层 — 高速光模块（800G/1.6T）</div>
+      <div class="sc-items">
+        <div class="sc-item tier3 highlight has-tip" onclick="showTip('tip-module')">
+          索尔思光电 800G批量出货 / 1.6T Q4放量 ✦<span class="tip-icon">?</span>
+        </div>
+        <div class="sc-item tier3">中际旭创（龙头，英伟达最大份额）</div>
+        <div class="sc-item tier3">新易盛（英伟达第二）</div>
+        <div class="sc-item tier3">光迅科技（国资背景）</div>
+      </div>
+      <div class="tip-zone" id="tip-module">
+        <div class="tip-card">
+          <span class="tip-close" onclick="closeTip('tip-module')">✕</span>
+          <h4>索尔思光电在光模块竞争中的差异化定位</h4>
+          <p>索尔思的基本盘在<strong>非英伟达的云厂商生态</strong>（Meta为最大客户，微软/亚马逊/Oracle/xAI已导入）。英伟达链条主要由旭创和新易盛瓜分（合计80%+），索尔思尚未实质性导入。硅光版1.6T正送样谷歌/英伟达，预计2026年Q3出认证结果。<br><br>核心优势：芯片自供 → 成本结构优于纯封装厂 → 在缺芯背景下议价权更强。规模上<strong>仍远小于中际旭创</strong>，这是东山精密光模块业务的体量天花板。</p>
+        </div>
+      </div>
+    </div>
+    <div class="sc-arrow">↓</div>
+    <div class="sc-layer" id="layer-3">
+      <div class="sc-label">▶ 并行层 — AI服务器PCB（高多层硬板）</div>
+      <div class="sc-items">
+        <div class="sc-item tier4 highlight has-tip" onclick="showTip('tip-pcb')">
+          Multek（东山精密）AI服务器高多层PCB ✦<span class="tip-icon">?</span>
+        </div>
+        <div class="sc-item tier4">胜宏科技</div>
+        <div class="sc-item tier4">深南电路</div>
+        <div class="sc-item tier4">TTM（美）</div>
+      </div>
+      <div class="tip-zone" id="tip-pcb">
+        <div class="tip-card">
+          <span class="tip-close" onclick="closeTip('tip-pcb')">✕</span>
+          <h4>Multek — AI服务器PCB与FPC双引擎</h4>
+          <p><strong>Multek（2018年收购）</strong>专注高多层刚性PCB，已切入英伟达AI服务器核心板卡供应链。公司规划约10亿美元整体投资，第一期新产能预计<strong>2026年Q3释放</strong>，直接对应AI数据中心爆发需求。<br><br><strong>MFLEX（2016年收购）</strong>是全球FPC第二，深度绑定苹果。iPhone FPC升级（AI功能驱动摄像头/折叠屏）是FPC业务的单机价值量提升逻辑。两条PCB线路共同构成传统基本盘，合计收入256亿，是公司的"现金奶牛"，毛利率但仅16.7%（持续下滑）。</p>
+        </div>
+      </div>
+    </div>
+    <div class="sc-arrow">↓</div>
+    <div class="sc-layer" id="layer-4">
+      <div class="sc-label">⬇ 下游 — 云厂商 / AI客户</div>
+      <div class="sc-items">
+        <div class="sc-item tier5">Meta（最大客户）</div>
+        <div class="sc-item tier5">微软</div>
+        <div class="sc-item tier5">亚马逊AWS</div>
+        <div class="sc-item tier5">Oracle</div>
+        <div class="sc-item tier5">xAI</div>
+        <div class="sc-item tier5">苹果（FPC）</div>
+        <div class="sc-item tier5">特斯拉（精密件）</div>
+        <div class="sc-item tier5">英伟达（认证中⚠）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout orange" style="margin-top:14px">
+    <strong>产业链瓶颈分析：</strong>当前最关键的卡点是<strong>200G EML光芯片供给</strong>——2026年全球需求量约是2025年的2倍但产能扩张滞后。索尔思作为国内唯一量产者，享有超额定价权（芯片毛利率接近50%）。这个优势窗口期预计持续2-3年，2027年后随多家产能集中释放（光迅、华为光芯片等）将面临价格压力。
+  </div>
+</div>
+
+<!-- Section 3: Finance -->
+<div class="section" id="finance">
+  <div class="section-title">
+    <div class="icon icon-green">📊</div>财务解析
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">2025年年报</div>
+      <div class="stat-row"><span class="stat-key">营业收入</span><span class="stat-val">401.25亿</span></div>
+      <div class="stat-row"><span class="stat-key">同比增速</span><span class="stat-val" style="color:var(--c-green)">+9.12%</span></div>
+      <div class="stat-row"><span class="stat-key">归母净利润</span><span class="stat-val">13.86亿</span></div>
+      <div class="stat-row"><span class="stat-key">扣非净利润</span><span class="stat-val">9.66亿</span></div>
+      <div class="stat-row"><span class="stat-key">毛利率</span><span class="stat-val">14.09%</span></div>
+      <div class="stat-row"><span class="stat-key">ROE</span><span class="stat-val">6.89%</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">2026Q1最新</div>
+      <div class="stat-row"><span class="stat-key">营业收入</span><span class="stat-val">131.38亿</span></div>
+      <div class="stat-row"><span class="stat-key">同比增速</span><span class="stat-val" style="color:var(--c-green)">+52.72%</span></div>
+      <div class="stat-row"><span class="stat-key">归母净利润</span><span class="stat-val" style="color:var(--c-green)">11.10亿</span></div>
+      <div class="stat-row"><span class="stat-key">扣非净利润</span><span class="stat-val">10.59亿</span></div>
+      <div class="stat-row"><span class="stat-key">毛利率</span><span class="stat-val" style="color:var(--c-green)">19.33%↑</span></div>
+      <div class="stat-row"><span class="stat-key">EPS</span><span class="stat-val">0.61元/股</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">资产负债（Q1末）</div>
+      <div class="stat-row"><span class="stat-key">总资产</span><span class="stat-val">630.5亿</span></div>
+      <div class="stat-row"><span class="stat-key">归母净资产</span><span class="stat-val">226.4亿</span></div>
+      <div class="stat-row"><span class="stat-key">资产负债率</span><span class="stat-val" style="color:var(--c-red)">63.71%</span></div>
+      <div class="stat-row"><span class="stat-key">商誉</span><span class="stat-val" style="color:var(--c-red)">47.69亿</span></div>
+      <div class="stat-row"><span class="stat-key">短期债务合计</span><span class="stat-val" style="color:var(--c-red)">121.36亿</span></div>
+      <div class="stat-row"><span class="stat-key">账面货币+金融资产</span><span class="stat-val">90.92亿</span></div>
+    </div>
+  </div>
+
+  <div class="callout red" style="margin-top:14px">
+    <strong>财务警示 — 短期债务缺口30亿+：</strong>截至2026年Q1末，短期借款88.61亿+一年内到期非流动负债32.75亿=<strong>短期债务121.36亿</strong>，账上可动用资金仅90.92亿，缺口超30亿。同期财务费用同比暴增<strong>3479%</strong>（主要是并购贷款+人民币升值汇兑损失）。港股上市募资计划已受阻（招股书5月失效），资金压力将在12亿美元扩产落地后进一步加剧。
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">关键业务毛利率对比（2025年）</div>
+    <div class="bar-row">
+      <div class="bar-name">光模块</div>
+      <div class="bar-track"><div class="bar-fill" style="width:73.48%;background:linear-gradient(90deg,#f59e0b,#ef4444)">36.74%</div></div>
+      <div class="bar-val">36.74%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-name">精密组件</div>
+      <div class="bar-track"><div class="bar-fill" style="width:28%;background:#10b981">~14%</div></div>
+      <div class="bar-val">~14%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-name">电子电路PCB</div>
+      <div class="bar-track"><div class="bar-fill" style="width:33.4%;background:#3b82f6">16.7%</div></div>
+      <div class="bar-val">16.7%↓</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-name">光电显示模组</div>
+      <div class="bar-track"><div class="bar-fill" style="width:9%;background:#8b5cf6">4.5%</div></div>
+      <div class="bar-val">4.5%↓↓</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-name">整体综合</div>
+      <div class="bar-track"><div class="bar-fill" style="width:27.7%;background:#64748b">13.85%</div></div>
+      <div class="bar-val">13.85%</div>
+    </div>
+    <p style="font-size:11px;color:var(--c-sub);margin-top:10px">★ 光模块仅占3.58%营收，却是整体毛利率提升的唯一引擎；PCB与显示模组拖累整体盈利</p>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">净利润趋势 — 触底反弹 or 一次性并购效应？</div>
+    <table class="tbl">
+      <thead><tr><th>年份</th><th>营收</th><th>归母净利</th><th>净利率</th><th>扣非净利</th><th>ROE</th></tr></thead>
+      <tbody>
+        <tr><td>2022</td><td>—</td><td><span class="badge-green">23.68亿</span></td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>2023</td><td>336.5亿</td><td><span class="badge-orange">19.65亿↓17%</span></td><td>5.84%</td><td>16.15亿</td><td>11.38%</td></tr>
+        <tr><td>2024</td><td>367.7亿</td><td><span class="badge-red">10.86亿↓45%</span></td><td>2.95%</td><td>8.99亿</td><td>5.89%</td></tr>
+        <tr><td>2025</td><td>401.3亿</td><td><span class="badge-green">13.86亿↑28%</span></td><td>3.45%</td><td>9.66亿</td><td>6.89%</td></tr>
+        <tr><td><strong>2026Q1</strong></td><td>131.4亿</td><td><span class="badge-green" style="background:#bbf7d0"><strong>11.10亿↑143%</strong></span></td><td>8.56%</td><td>10.59亿</td><td>5.05%（单季）</td></tr>
+      </tbody>
+    </table>
+    <div class="callout orange" style="margin-top:12px">
+      <strong>关键问题：</strong>2022-2024年利润腰斩（连续3年下滑），2025年反弹但归母净利13.86亿仍不及2022年23.68亿的六成。2026Q1单季11.1亿（含索尔思并表）是真实转型成效，还是并购并表带来的"一次性增厚"？需关注2026H2索尔思1.6T放量的可持续性。
+    </div>
+  </div>
+</div>
+
+<!-- Section 4: Moat -->
+<div class="section" id="moat">
+  <div class="section-title">
+    <div class="icon icon-yellow">🏰</div>护城河分析
+  </div>
+
+  <table class="tbl">
+    <thead><tr><th>护城河维度</th><th>内容</th><th>强度</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>200G EML光芯片IDM</strong></td>
+        <td>国内唯一量产，良率85-90%，已通过英伟达/Meta顶级认证；朗讯/贝尔实验室技术基因+20年芯片研发积累；订单锁定至2028年</td>
+        <td><span class="badge-green">强（2-3年窗口）</span></td>
+      </tr>
+      <tr>
+        <td><strong>全链条IDM垂直整合</strong></td>
+        <td>芯片设计→晶圆制造→封装测试→模块组装，全程自主；在缺芯背景下可实现芯片内部消化，成本结构远优于纯封装厂</td>
+        <td><span class="badge-green">强</span></td>
+      </tr>
+      <tr>
+        <td><strong>全球FPC第二地位</strong></td>
+        <td>MFLEX深度绑定苹果，iPhone/MacBook每台必用，切换成本极高；泰国新工厂2026H2量产，进一步巩固地位</td>
+        <td><span class="badge-blue">中强</span></td>
+      </tr>
+      <tr>
+        <td><strong>Multek AI服务器PCB</strong></td>
+        <td>高多层PCB（20层+）进入英伟达AI服务器供应链，技术门槛高；10亿美元扩产计划支撑份额增长</td>
+        <td><span class="badge-blue">中强</span></td>
+      </tr>
+      <tr>
+        <td><strong>北美顶级客户生态</strong></td>
+        <td>Meta/微软/亚马逊/英伟达（部分）/苹果/特斯拉六大顶级客户，海外收入超77.7%，关系壁垒深</td>
+        <td><span class="badge-blue">中强</span></td>
+      </tr>
+      <tr>
+        <td><strong>Intel硅光授权</strong></td>
+        <td>独家获得Intel硅光平台设计授权（累计出货800万+PIC）；支撑硅光CW激光器路线布局，对冲EML迭代风险</td>
+        <td><span class="badge-orange">中（技术路线不确定）</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 5: Catalysts -->
+<div class="section" id="catalyst">
+  <div class="section-title">
+    <div class="icon icon-green">⚡</div>近期催化剂（3-12个月）
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title" style="color:var(--c-green)">🚀 短期（3-6个月）</div>
+      <div class="stat-row">
+        <span class="stat-key">1.6T光模块 Q4批量出货</span>
+        <span><span class="badge-green">高确定性</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">英伟达1.6T认证结果（Q3）</span>
+        <span><span class="badge-orange">关键节点</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">200G EML对外销售放量</span>
+        <span><span class="badge-green">打开第二增长曲线</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">Multek AI PCB Q3新产能</span>
+        <span><span class="badge-blue">PCB业务修复</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">2026H1业绩超预期</span>
+        <span><span class="badge-green">近期最强催化</span></span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--c-accent2)">🔭 中长期（6-24个月）</div>
+      <div class="stat-row">
+        <span class="stat-key">3.2T布局（400G EML）</span>
+        <span><span class="badge-purple">下一代卡位</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">CPO（共封装光学）商业化</span>
+        <span><span class="badge-purple">长期颠覆性机遇</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">EML芯片对外销售成熟</span>
+        <span><span class="badge-blue">毛利率提升</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">港股上市重启（融资）</span>
+        <span><span class="badge-orange">解决债务压力</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">苹果新机种FPC量产</span>
+        <span><span class="badge-blue">消费电子护基本盘</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout green" style="margin-top:14px">
+    <strong>最强催化组合：</strong>若2026Q3英伟达1.6T认证通过 + Q3 EML对外供货突破 + Multek新产能顺利爬坡，三件事同步兑现，则公司2026年全年净利有望冲击<span class="kw">50-60亿指引<span class="kw-box">公司管理层2026年利润指引50-60亿元人民币，但市场此前券商一致预期约75亿，存在显著下修后的预期差。若Q3超预期，市场有望重新上修预期。</span></span>上沿，市场估值重新打开空间。
+  </div>
+</div>
+
+<!-- Section 6: Risk -->
+<div class="section" id="risk">
+  <div class="section-title">
+    <div class="icon icon-red">⚠️</div>主要风险
+  </div>
+
+  <div class="card">
+    <div class="risk-item">
+      <div class="risk-badge risk-high">高</div>
+      <div class="risk-text">
+        <strong>估值严重透支机构预期：</strong>8家机构平均目标价167.80元，当前股价249.66元，已超机构定价<strong>约49%</strong>；管理层2026年净利指引50-60亿，对应当前4573亿市值PE约76-91倍。股价任何不及预期的消息均可引发剧烈回调（7月2日单日跌停即为警示）。
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-badge risk-high">高</div>
+      <div class="risk-text">
+        <strong>短期债务缺口30亿+ × 12亿美元扩产并举：</strong>当前账上资金无法覆盖短期债务，港股融资通道受阻，财务费用2026Q1同比暴增3479%。一旦外部融资受阻叠加经营现金流下滑，资金链风险不可忽视。
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-badge risk-high">高</div>
+      <div class="risk-text">
+        <strong>英伟达链条缺席：</strong>中际旭创+新易盛占英伟达800G份额80%以上，索尔思目前不在英伟达核心供应链。若1.6T英伟达认证失败或延期，市场最大的想象力将显著受损。
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-badge risk-mid">中</div>
+      <div class="risk-text">
+        <strong>硅光技术路线迭代风险：</strong>谷歌等云厂商倾向硅光架构降低成本。若硅光方案2026-2027年加速替代EML，索尔思的200G EML超额利润将被压缩。虽然索尔思已布局硅光（Intel授权+自研），但主营收入仍以EML为主，切换需要时间。
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-badge risk-mid">中</div>
+      <div class="risk-text">
+        <strong>2027年产能过剩：</strong>光模块和EML芯片全球各厂商同步扩产，产能集中释放后2027-2028年行业可能出现供给过剩，价格战将侵蚀当前超高毛利率（光模块毛利率从36%下滑至20-25%的情景需要定价）。
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-badge risk-mid">中</div>
+      <div class="risk-text">
+        <strong>PCB传统基本盘持续承压：</strong>PCB（256亿营收，63%份额）毛利率从2023年20.3%降至2025年16.7%，平均售价从5846元/㎡降至3827元/㎡，市场竞争激烈。光电显示模组毛利率仅4.5%，拖累整体盈利质量。
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-badge risk-mid">中</div>
+      <div class="risk-text">
+        <strong>人民币升值汇兑损失：</strong>海外收入超77%，主要以美元计价。人民币对美元快速升值直接造成汇兑损失，2026Q1财务费用中汇兑损失已显著体现，公司套保无法完全覆盖。
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-badge risk-low">低中</div>
+      <div class="risk-text">
+        <strong>商誉减值风险：</strong>账面商誉47.69亿（其中索尔思约28亿），若光模块业务发展不及预期，存在减值压力（参考2024年利润大幅下滑时期的教训）。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 7: Valuation -->
+<div class="section" id="valuation">
+  <div class="section-title">
+    <div class="icon icon-orange">💰</div>估值分析
+  </div>
+
+  <div class="val-box">
+    <h3>关键估值数据（2026.7.9，股价249.66元）</h3>
+    <div class="val-grid">
+      <div class="val-cell">
+        <div class="n">4573亿</div>
+        <div class="l">当前总市值</div>
+      </div>
+      <div class="val-cell">
+        <div class="n" style="color:#fca5a5">~330x</div>
+        <div class="l">静态PE（2025净利13.86亿）</div>
+      </div>
+      <div class="val-cell">
+        <div class="n" style="color:#fde68a">~103x</div>
+        <div class="l">动态PE（Q1净利年化44亿）</div>
+      </div>
+      <div class="val-cell">
+        <div class="n" style="color:#86efac">76-91x</div>
+        <div class="l">PE（公司指引50-60亿）</div>
+      </div>
+      <div class="val-cell">
+        <div class="n" style="color:#fca5a5">167元</div>
+        <div class="l">机构平均目标价（8家均值）</div>
+      </div>
+      <div class="val-cell">
+        <div class="n" style="color:#fca5a5">-33%</div>
+        <div class="l">距机构目标价下行空间</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">不同情景估值</div>
+    <table class="tbl">
+      <thead><tr><th>情景</th><th>2026净利预测</th><th>合理PE</th><th>目标市值</th><th>目标股价</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge-red">悲观</span><br><small>1.6T推迟/PCB失速</small></td>
+          <td>30-40亿</td>
+          <td>40-50x</td>
+          <td>1200-2000亿</td>
+          <td>65-109元</td>
+        </tr>
+        <tr>
+          <td><span class="badge-orange">基准</span><br><small>指引上沿兑现</small></td>
+          <td>55-65亿</td>
+          <td>55-70x</td>
+          <td>3025-4550亿</td>
+          <td>165-248元</td>
+        </tr>
+        <tr>
+          <td><span class="badge-green">乐观</span><br><small>英伟达认证+超预期</small></td>
+          <td>75-90亿</td>
+          <td>60-80x</td>
+          <td>4500-7200亿</td>
+          <td>246-393元</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout blue" style="margin-top:12px">
+      <strong>估值结论：</strong>当前股价249.66元处于基准/乐观情景的分界线。市场已充分定价了"英伟达导入+1.6T放量"的最佳剧本。如果任何一环出现延期，股价有向基准情景下沿（约165元）回调的可能，下行风险超过-33%。
+    </div>
+  </div>
+</div>
+
+<!-- Section 8: Verdict -->
+<div class="section" id="verdict">
+  <div class="section-title">
+    <div class="icon icon-blue">🔍</div>综合研判
+  </div>
+
+  <div class="callout blue">
+    <strong>东山精密：AI基建里的"最贵的代工厂"还是"下一个旭创"？</strong><br><br>
+    东山精密的转型逻辑是真实的。索尔思光电是国内唯一能以IDM方式量产200G EML的企业，这个稀缺性在供需极度紧张的2026年创造了超额利润，Q1光模块16%营收贡献53%利润正是明证。PCB基本盘（MFLEX/Multek）稳固，覆盖苹果、英伟达生态，长期不会消失。<br><br>
+    但3个核心问题必须回答才能支撑当前估值：<br>
+    ① <strong>英伟达供应链导入能否实现？</strong>目前英伟达链条缺席，旭创和新易盛已形成较强的换供应商壁垒。<br>
+    ② <strong>12亿美元扩产的资金从哪来？</strong>现有账面资金+债务结构下，如果港股上市再次受阻，大规模融资压力将压制股价。<br>
+    ③ <strong>PCB基本盘能否止住下滑？</strong>光模块占3.58%营收但贡献53%利润，一旦光模块遭遇任何逆风，整体利润将迅速消失。<br><br>
+    <strong>总体来看：业绩成长逻辑扎实，但当前股价已完全定价乐观情景，风险收益比不对称。适合短期交易、高确定性事件驱动，不适合高位追入长期持有。密切跟踪Q3英伟达认证结果和H1业绩披露，是当前最重要的验证节点。</strong>
+  </div>
+
+  <div class="grid-2" style="margin-top:14px">
+    <div class="card">
+      <div class="card-title" style="color:var(--c-green)">✅ 多方观点</div>
+      <ul style="padding-left:18px;font-size:13px;line-height:2">
+        <li>国内唯一200G EML量产，稀缺性无可替代</li>
+        <li>2026Q1利润爆发（+143%）验证转型逻辑</li>
+        <li>产能快速爬坡（年底2200万颗/月）</li>
+        <li>多个顶级客户同步认证，打开想象空间</li>
+        <li>PCB+光芯片双轮驱动，弹性极大</li>
+        <li>花旗给出350元最高目标价</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--c-red)">❌ 空方观点</div>
+      <ul style="padding-left:18px;font-size:13px;line-height:2">
+        <li>估值49%超机构平均目标价，下行风险大</li>
+        <li>短期债务缺口30亿+，港股融资受阻</li>
+        <li>英伟达核心链条仍缺席</li>
+        <li>PCB毛利率持续下滑拖累整体盈利</li>
+        <li>7月初主力周净流出60亿元</li>
+        <li>公司净利指引50-60亿 vs 市场预期75亿</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <div>本报告基于公开数据（深交所公告、年报/季报、东兴证券等券商报告）整理分析，数据截至2026年7月9日</div>
+  <div style="margin-top:6px">仅供研究参考，不构成投资建议。投资有风险，入市需谨慎。</div>
+  <div style="margin-top:12px;font-weight:700;letter-spacing:2px;color:#94a3b8">reese 研究 · 2026</div>
+</footer>
+
+<script>
+function showTip(id){
+  document.querySelectorAll('.tip-zone').forEach(z=>{
+    if(z.id!==id) z.classList.remove('open');
+  });
+  var z=document.getElementById(id);
+  if(z) z.classList.toggle('open');
+}
+function closeTip(id){
+  var z=document.getElementById(id);
+  if(z) z.classList.remove('open');
+}
+
+// Scroll spy
+(function(){
+  var links=document.querySelectorAll('.sticky-nav a');
+  var sections=[];
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(el) sections.push({id:id,el:el,a:a});
+  });
+  window.addEventListener('scroll',function(){
+    var top=window.scrollY+80;
+    var cur=sections[0];
+    sections.forEach(function(s){
+      if(s.el.offsetTop<=top) cur=s;
+    });
+    links.forEach(function(a){a.style.color='';a.style.borderBottomColor='transparent'});
+    if(cur){cur.a.style.color='#2563eb';cur.a.style.borderBottomColor='#2563eb';}
+  },{passive:true});
+})();
+</script>
+
+</body>
+</html>
