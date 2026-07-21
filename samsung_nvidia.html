@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三星×英伟达：深度合作对英伟达的影响分析</title>
+<style>
+:root{
+  --c-bg:#f8fafc;
+  --c-card:#ffffff;
+  --c-border:#e2e8f0;
+  --c-text:#1e293b;
+  --c-sub:#64748b;
+  --c-green:#059669;
+  --c-green-bg:#ecfdf5;
+  --c-blue:#2563eb;
+  --c-blue-bg:#eff6ff;
+  --c-orange:#d97706;
+  --c-orange-bg:#fffbeb;
+  --c-red:#dc2626;
+  --c-red-bg:#fef2f2;
+  --c-purple:#7c3aed;
+  --c-purple-bg:#f5f3ff;
+  --c-navy:#1e3a5f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Noto Sans CJK SC',sans-serif;background:var(--c-bg);color:var(--c-text);line-height:1.6}
+
+/* ─── WATERMARK ─── */
+body::before{
+  content:"reese";
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(60px,12vw,160px);font-weight:900;
+  color:rgba(0,0,0,0.028);
+  pointer-events:none;z-index:9999;
+  transform:rotate(-30deg);
+  white-space:nowrap;
+}
+
+/* ─── BACK BUTTON ─── */
+#back-btn-wrap{position:fixed;top:12px;left:12px;z-index:10000}
+#back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #d0d7de;border-radius:20px;padding:6px 14px 6px 10px;font-size:13px;font-weight:600;color:#0969da;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .15s}
+#back-btn:hover{box-shadow:0 4px 14px rgba(9,105,218,.18);border-color:#0969da}
+
+/* ─── HERO ─── */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%);padding:64px 24px 48px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 400px at 50% 0%,rgba(37,99,235,0.25),transparent)}
+.hero-tag{display:inline-block;background:rgba(37,99,235,0.3);border:1px solid rgba(37,99,235,0.5);color:#93c5fd;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-size:clamp(22px,4vw,38px);font-weight:800;color:#f8fafc;line-height:1.25;margin-bottom:12px}
+.hero h1 span{color:#60a5fa}
+.hero-sub{font-size:14px;color:#94a3b8;margin-bottom:32px}
+.hero-meta{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .val{font-size:clamp(24px,4vw,36px);font-weight:800;color:#f8fafc;line-height:1}
+.hero-stat .val.up{color:#34d399}
+.hero-stat .val.warn{color:#fbbf24}
+.hero-stat .lbl{font-size:11px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:.8px}
+
+/* ─── NAV ─── */
+.nav-wrap{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--c-border)}
+.nav{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 16px}
+.nav::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:12px 16px;font-size:13px;font-weight:600;color:var(--c-sub);white-space:nowrap;text-decoration:none;border-bottom:2px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:var(--c-blue);border-bottom-color:var(--c-blue)}
+
+/* ─── LAYOUT ─── */
+.container{max-width:900px;margin:0 auto;padding:24px 16px 64px}
+.section{margin-bottom:32px}
+.section-title{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:800;color:var(--c-navy);margin-bottom:16px}
+.icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.icon-blue{background:var(--c-blue-bg)}
+.icon-green{background:var(--c-green-bg)}
+.icon-orange{background:var(--c-orange-bg)}
+.icon-red{background:var(--c-red-bg)}
+.icon-purple{background:var(--c-purple-bg)}
+
+/* ─── CARDS ─── */
+.card{background:var(--c-card);border:1px solid var(--c-border);border-radius:12px;padding:20px;margin-bottom:14px}
+.card-title{font-size:15px;font-weight:700;color:var(--c-navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+
+/* ─── CALLOUTS ─── */
+.callout{border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.7;border-left:4px solid}
+.callout.blue{background:var(--c-blue-bg);border-color:var(--c-blue)}
+.callout.green{background:var(--c-green-bg);border-color:var(--c-green)}
+.callout.orange{background:var(--c-orange-bg);border-color:var(--c-orange)}
+.callout.red{background:var(--c-red-bg);border-color:var(--c-red)}
+
+/* ─── BADGES ─── */
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700}
+.badge-green{background:var(--c-green-bg);color:var(--c-green)}
+.badge-red{background:var(--c-red-bg);color:var(--c-red)}
+.badge-orange{background:var(--c-orange-bg);color:var(--c-orange)}
+.badge-blue{background:var(--c-blue-bg);color:var(--c-blue)}
+.badge-purple{background:var(--c-purple-bg);color:var(--c-purple)}
+.badge-gray{background:#f1f5f9;color:#475569}
+
+/* ─── TABLE ─── */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{background:#f8fafc;padding:10px 12px;text-align:left;font-weight:700;color:var(--c-sub);font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--c-border)}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--c-border);vertical-align:top;line-height:1.5}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#fafafa}
+
+/* ─── FLOW DIAGRAM ─── */
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+.flow-node{background:var(--c-blue-bg);border:1.5px solid #93c5fd;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--c-blue);white-space:nowrap}
+.flow-node.samsung{background:#fff7ed;border-color:#fdba74;color:#c2410c}
+.flow-node.nvidia{background:#ecfdf5;border-color:#6ee7b7;color:#065f46}
+.flow-node.impact{background:var(--c-purple-bg);border-color:#c4b5fd;color:var(--c-purple)}
+.flow-arrow{color:#94a3b8;font-size:18px;flex-shrink:0}
+
+/* ─── SUPPLY SHARE BAR ─── */
+.share-bar{display:flex;height:28px;border-radius:8px;overflow:hidden;margin:12px 0}
+.share-seg{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;transition:all .3s}
+.share-seg.hynix{background:linear-gradient(90deg,#2563eb,#3b82f6)}
+.share-seg.samsung{background:linear-gradient(90deg,#059669,#10b981)}
+.share-seg.micron{background:linear-gradient(90deg,#7c3aed,#8b5cf6)}
+
+/* ─── TIMELINE ─── */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:linear-gradient(180deg,#2563eb,#e2e8f0)}
+.tl-item{position:relative;margin-bottom:16px}
+.tl-item::before{content:'';position:absolute;left:-20px;top:5px;width:10px;height:10px;border-radius:50%;background:#2563eb;border:2px solid #fff;box-shadow:0 0 0 2px #2563eb}
+.tl-date{font-size:11px;font-weight:700;color:var(--c-blue);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.tl-content{font-size:13.5px;line-height:1.6}
+
+/* ─── VERDICT BOX ─── */
+.verdict{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:16px;padding:28px;color:#f8fafc}
+.verdict h3{font-size:18px;font-weight:800;margin-bottom:16px;color:#60a5fa}
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:600px){.verdict-grid{grid-template-columns:1fr}}
+.verdict-box{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px}
+.verdict-box h4{font-size:13px;font-weight:700;margin-bottom:8px;color:#93c5fd}
+.verdict-box ul{list-style:none;font-size:12.5px;color:#cbd5e1;line-height:1.7}
+.verdict-box ul li::before{content:'→ ';color:#60a5fa}
+
+/* ─── FOOTER ─── */
+footer{text-align:center;padding:32px 16px;color:#94a3b8;font-size:12px;border-top:1px solid var(--c-border);background:#fff}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:640px){
+  .hero{padding:52px 16px 36px}
+  .hero-meta{gap:16px}
+  .container{padding:16px 12px 48px}
+  .tbl{font-size:12px}
+  .tbl th,.tbl td{padding:8px 8px}
+}
+</style>
+</head>
+<body>
+
+<div id="back-btn-wrap">
+  <a href="stock_daily.html" id="back-btn">&#8592; 返回研报合集</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">深度分析 · 产业链研究</div>
+  <h1>三星×英伟达：<span>全面合作深化</span><br>对英伟达的战略影响</h1>
+  <div class="hero-sub">数据截至 2026年7月 · 涵盖HBM4供应链、代工合作、定价博弈</div>
+  <div class="hero-meta">
+    <div class="hero-stat"><div class="val up">3家</div><div class="lbl">首次三供应商同代资格</div></div>
+    <div class="hero-stat"><div class="val warn">25-30%</div><div class="lbl">三星HBM4分配份额</div></div>
+    <div class="hero-stat"><div class="val up">$20B</div><div class="lbl">英伟达收购Groq（三星代工）</div></div>
+    <div class="hero-stat"><div class="val warn">代工+HBM</div><div class="lbl">合作双轨并进</div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="#overview">合作全景</a>
+    <a href="#hbm4">HBM4供应链</a>
+    <a href="#foundry">代工合作</a>
+    <a href="#impact-nvda">对英伟达影响</a>
+    <a href="#risks">风险与隐忧</a>
+    <a href="#roadmap">未来路线图</a>
+    <a href="#verdict">综合研判</a>
+  </nav>
+</div>
+
+<div class="container">
+
+<!-- SECTION 1: 合作全景 -->
+<div class="section" id="overview">
+  <div class="section-title"><div class="icon icon-blue">🌐</div>合作全景：从单一内存到"双轨并进"</div>
+
+  <div class="callout blue">
+    <strong>核心结论：</strong>2026年上半年，三星与英伟达的合作发生了质的飞跃——不再只是单一的内存供应商关系，而是演变为<strong>HBM内存供应 + 代工制造</strong>的双轨深度绑定。这是Vera Rubin时代英伟达供应链战略的重要支点，对英伟达的影响涵盖供应安全、成本结构、议价权和推理生态四个维度。
+  </div>
+
+  <div class="card">
+    <div class="card-title">📅 合作关键时间线</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2025年12月</div>
+        <div class="tl-content">英伟达以<strong>200亿美元</strong>收购Groq资产与核心人才——而三星早已是Groq的早期投资者和4nm代工伙伴，这一收购直接将三星代工纳入英伟达推理生态核心</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026年2月</div>
+        <div class="tl-content">三星<strong>全球首家</strong>量产HBM4，向客户（不含英伟达大批量订单）开始供货；三星晶圆代工生产的Groq 3 LPU加速出货</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026年3月 GTC</div>
+        <div class="tl-content">黄仁勋公开感谢三星："感谢三星为我们生产Groq 3 LPU，他们正全力以赴"；三星与SK海力士同步获得Vera Rubin HBM4供货资格</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026年6月5日</div>
+        <div class="tl-content">黄仁勋首次公开确认三家供应商全部通过HBM4认证并进入量产：<em>"三家供应商均已通过认证，全线进入量产阶段，正全速赶工"</em></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026年6月8日</div>
+        <div class="tl-content">三星副会长全泳铉与黄仁勋在首尔新罗酒店举行会谈，覆盖HBM4现货供应、SOCAMM2、HBM4E、HBM5长期路线图，以及<strong>LP40代工竞标</strong>；三星称这是双方史上"最好的一次对话"</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026年7月17日</div>
+        <div class="tl-content">韩媒DealSite报道：三星迄今仍<strong>未收到英伟达HBM4量产订单</strong>，英伟达相关营收仍停留在付费评估阶段；英伟达与三星均未公开置评</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🗺️ 合作双轨结构</div>
+    <table class="tbl">
+      <thead><tr><th>合作轨道</th><th>现状</th><th>规模</th><th>对英伟达重要性</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>HBM4内存供应</strong><br><small>Vera Rubin平台</small></td>
+          <td><span class="badge badge-orange">付费评估→待量产订单</span></td>
+          <td>预计占英伟达HBM4总用量25-30%</td>
+          <td><span class="badge badge-blue">供应安全关键</span></td>
+        </tr>
+        <tr>
+          <td><strong>SOCAMM2内存</strong><br><small>Vera CPU用低功耗LPDDR5X</small></td>
+          <td><span class="badge badge-green">已确认供货</span></td>
+          <td>96GB/槽，可后期升级</td>
+          <td><span class="badge badge-gray">补充性组件</span></td>
+        </tr>
+        <tr>
+          <td><strong>代工：Groq 3 LP30</strong><br><small>推理LPU，三星4nm制程</small></td>
+          <td><span class="badge badge-green">已量产出货</span></td>
+          <td>256颗/推理机柜，Q3开始交付</td>
+          <td><span class="badge badge-purple">推理生态核心</span></td>
+        </tr>
+        <tr>
+          <td><strong>代工：Groq LP40（下代）</strong><br><small>潜在三星代工，TSMC竞争中</small></td>
+          <td><span class="badge badge-orange">讨论中，未签约</span></td>
+          <td>TBD</td>
+          <td><span class="badge badge-blue">代工多元化机遇</span></td>
+        </tr>
+        <tr>
+          <td><strong>自动驾驶芯片</strong><br><small>Drive AGX Thor，4nm/8nm</small></td>
+          <td><span class="badge badge-green">已合作生产</span></td>
+          <td>4nm+8nm节点</td>
+          <td><span class="badge badge-gray">边缘AI领域</span></td>
+        </tr>
+        <tr>
+          <td><strong>长期：HBM4E/HBM5</strong></td>
+          <td><span class="badge badge-blue">路线图讨论中</span></td>
+          <td>分析师估计年收益$80-100亿（若拿到）</td>
+          <td><span class="badge badge-blue">2027+战略锁定</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 2: HBM4供应链 -->
+<div class="section" id="hbm4">
+  <div class="section-title"><div class="icon icon-green">💾</div>HBM4供应链：三强竞逐，英伟达定价权回归</div>
+
+  <div class="callout green">
+    <strong>历史性转折：</strong>Vera Rubin是HBM历史上第一个从第一天就有三家供应商同时通过认证并进入量产的平台。此前SK海力士独大、三星缺席（HBM3E延误18个月），英伟达对单一供应商的依赖造成了Blackwell周期的供应瓶颈。这次结构性改变，将定价主导权决定性地转向英伟达。
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 Vera Rubin HBM4供应份额分布（分析师估算）</div>
+    <div class="share-bar">
+      <div class="share-seg hynix" style="width:65%">SK海力士 ~65%</div>
+      <div class="share-seg samsung" style="width:27%">三星 ~27%</div>
+      <div class="share-seg micron" style="width:8%">美光</div>
+    </div>
+    <div style="font-size:11px;color:var(--c-sub);margin-top:6px">注：英伟达未公开官方分配数据；来源：TrendForce、Silicon Analysts、多家卖方分析师综合估算（2026年6月）</div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+      <div style="background:#eff6ff;border-radius:10px;padding:14px;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:#2563eb">60-70%</div>
+        <div style="font-size:12px;font-weight:700;color:#1d4ed8;margin-top:2px">SK海力士</div>
+        <div style="font-size:11px;color:#64748b;margin-top:4px">主力供应商；SK海力士独家192GB超高带宽SOCAMM2模组</div>
+      </div>
+      <div style="background:#ecfdf5;border-radius:10px;padding:14px;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:#059669">25-30%</div>
+        <div style="font-size:12px;font-weight:700;color:#065f46;margin-top:2px">三星电子</div>
+        <div style="font-size:11px;color:#64748b;margin-top:4px">全球首发HBM4量产（2026.2）；HBM3E延误后重建信任</div>
+      </div>
+      <div style="background:#f5f3ff;border-radius:10px;padding:14px;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:#7c3aed">~5%</div>
+        <div style="font-size:12px;font-weight:700;color:#5b21b6;margin-top:2px">美光科技</div>
+        <div style="font-size:11px;color:#64748b;margin-top:4px">美国战略备份；最快完成HBM4样品出货</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ Vera Rubin平台：HBM4为何是命门</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:#f8fafc;border-radius:8px;padding:14px">
+        <div style="font-size:11px;font-weight:700;color:var(--c-sub);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">平台规格</div>
+        <div style="font-size:13px;line-height:1.8">
+          • NVL72机柜：72颗Rubin GPU<br>
+          • 每GPU：<strong>288GB HBM4</strong>，22TB/s带宽<br>
+          • 总系统内存：<strong>~20.7TB</strong><br>
+          • GPU内存总带宽：1,580TB/s<br>
+          • HBM4在总BOM中占比：<strong>~26%</strong>
+        </div>
+      </div>
+      <div style="background:#f8fafc;border-radius:8px;padding:14px">
+        <div style="font-size:11px;font-weight:700;color:var(--c-sub);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">定价变化</div>
+        <div style="font-size:13px;line-height:1.8">
+          • HBM4每48GB栈：<strong>~$500</strong><br>
+          • 对比HBM3E：约$7-8/GB → $10+/GB<br>
+          • SK海力士溢价：较上代+50%<br>
+          • 三星HBM4定价：较竞品高<strong>20-30%</strong><br>
+          • 2026年HBM产能：<strong>已全部售罄</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">❓ 当前悬念：三星量产订单仍未落地</div>
+    <div style="display:flex;gap:14px;align-items:flex-start">
+      <div style="flex-shrink:0;width:40px;height:40px;border-radius:10px;background:#fff7ed;display:flex;align-items:center;justify-content:center;font-size:20px">⏳</div>
+      <div style="font-size:13.5px;line-height:1.8">
+        截至2026年7月17日，据韩媒DealSite援引半导体业界人士消息：<strong>三星尚未收到英伟达的HBM4量产订单</strong>，英伟达相关营收仍停留在付费评估样品阶段。认证通过≠量产订单——英伟达可以买评估样品测试性能，无需承诺量产配额。三星HBM4已向其他客户（非英伟达）量产出货，但Nvidia这个最重要客户的正式商务订单尚未落地。
+        <div style="margin-top:10px;padding:10px 12px;background:#fff7ed;border-radius:8px;font-size:12.5px;color:#92400e">
+          <strong>市场影响：</strong>一旦英伟达下达量产订单，将是三星HBM4业务的<strong>决定性商业事件</strong>，直接转化为可预测的季度营收，并验证三星在Nvidia供应链中的长期地位。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: 代工合作 -->
+<div class="section" id="foundry">
+  <div class="section-title"><div class="icon icon-purple">🏭</div>代工合作：三星已是Vera Rubin推理引擎制造商</div>
+
+  <div class="callout purple" style="background:var(--c-purple-bg);border-color:var(--c-purple);color:#1e1b4b">
+    <strong>市场忽视的关键事实：</strong>三星代工目前正在生产Nvidia <strong>Groq 3 LPU（LP30）</strong>——Vera Rubin推理架构的核心芯片之一。这不是潜在合作，而是已在出货的现实。黄仁勋在GTC 2026公开致谢："感谢三星为我们生产Groq 3 LPU，他们正全力以赴。"
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔁 三星Groq代工的完整背景</div>
+    <div class="flow">
+      <div class="flow-node samsung">三星早期投资Groq</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node samsung">三星4nm代工Groq LPU</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node nvidia">英伟达$200亿收购Groq（2025.12）</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node impact">三星自动成为英伟达推理芯片制造商</div>
+    </div>
+    <div style="font-size:13px;line-height:1.8;margin-top:12px;color:var(--c-sub)">
+      三星在这笔"Groq彩票"中的独特优势：既是Groq的早期股权投资者，又是其产品的独家代工方。当英伟达完成收购时，这种关系被自动继承。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🤖 Groq 3 LPU在Vera Rubin中的角色</div>
+    <table class="tbl">
+      <thead><tr><th>组件</th><th>功能</th><th>制造商</th><th>规模</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Rubin GPU</strong></td>
+          <td>AI训练 / 预填充（Prefill）</td>
+          <td>TSMC（先进封装CoWoS）</td>
+          <td>72颗/NVL72机柜</td>
+        </tr>
+        <tr>
+          <td><strong>Vera CPU</strong></td>
+          <td>数据调度 / 系统控制</td>
+          <td>TSMC</td>
+          <td>36颗/NVL72机柜</td>
+        </tr>
+        <tr style="background:#faf5ff">
+          <td><strong>Groq 3 LPU（LP30）</strong></td>
+          <td><strong>低延迟推理解码（Decode）</strong><br>较纯GPU推理快35倍</td>
+          <td><strong>三星Foundry 4nm</strong></td>
+          <td>256颗/推理机柜</td>
+        </tr>
+        <tr>
+          <td><strong>HBM4</strong></td>
+          <td>GPU显存</td>
+          <td>SK海力士(65%) + 三星(27%) + 美光(8%)</td>
+          <td>288GB/GPU</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px;font-size:13px;color:var(--c-sub)">
+      Vera Rubin = GPU训练集群 + LPU推理加速器的<strong>异构架构</strong>。三星同时供应其中的内存（HBM4）和推理芯片（Groq 3 LPU），双轨嵌入Vera Rubin核心。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 LP40代工：打破TSMC垄断的战略机遇</div>
+    <div style="display:flex;gap:12px;margin-bottom:12px">
+      <div style="flex:1;background:#ecfdf5;border-radius:8px;padding:12px">
+        <div style="font-size:12px;font-weight:700;color:#065f46;margin-bottom:6px">当前（LP30）</div>
+        <div style="font-size:13px;line-height:1.7">三星4nm制程已量产，黄仁勋公开背书，出货Q3 2026</div>
+      </div>
+      <div style="flex:1;background:#fff7ed;border-radius:8px;padding:12px">
+        <div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:6px">竞标中（LP40）</div>
+        <div style="font-size:13px;line-height:1.7">业界原预期TSMC拿下，三星凭借LP30现有合作杀入竞标，三星晶圆代工总裁称"4nm工艺绝不逊色"</div>
+      </div>
+    </div>
+    <div class="callout orange" style="margin-top:0">
+      若三星拿到LP40代工合同，将是三星Foundry重塑市场信任的里程碑，也将使英伟达在TSMC之外形成真正的代工双轨——直接降低对台积电先进封装（CoWoS）的单点依赖风险。
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: 对英伟达影响 -->
+<div class="section" id="impact-nvda">
+  <div class="section-title"><div class="icon icon-green">📈</div>对英伟达的正面影响：五大维度</div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+
+    <div class="card" style="border-left:4px solid #059669">
+      <div class="card-title">✅ ① 供应安全：终结单一供应商瓶颈</div>
+      <div style="font-size:13.5px;line-height:1.8">
+        <strong>Blackwell的教训：</strong>三星HBM3E延误18个月，使SK海力士在HBM3E时代几乎独供英伟达（62%市占），导致H100/H200出货受制于内存产能，英伟达丢失了大量可能的营收。<br><br>
+        <strong>Vera Rubin的修正：</strong>三家同时认证，三星补位25-30%产能，显著提升供应弹性。即使一家出现产能问题或良率波动，英伟达可以将需求快速切换至另外两家。<br><br>
+        2026年HBM产能已全部售罄，<strong>拥有三家合格供应商是英伟达保障Q3按时交付给AWS/Google/Azure/Oracle的关键底线</strong>。
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid #2563eb">
+      <div class="card-title">✅ ② 议价权回归：从"仰供"到"多源竞争"</div>
+      <div style="font-size:13.5px;line-height:1.8">
+        Silicon Analysts分析："Supply spread across three vendors from day one, <strong>pricing leverage shifts decisively toward NVIDIA.</strong>"<br><br>
+        当SK海力士是唯一合格供应商时，英伟达几乎没有谈判筹码——拒绝SK海力士意味着GPU无法出货。三星入局彻底改变了这一博弈结构：
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+          <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:12.5px">
+            <strong style="color:#dc2626">HBM3E时代（单供）</strong><br>
+            SK海力士溢价能力极强<br>英伟达接受任意条款<br>BOM成本快速攀升
+          </div>
+          <div style="background:#ecfdf5;border-radius:8px;padding:10px;font-size:12.5px">
+            <strong style="color:#059669">HBM4时代（三供）</strong><br>
+            供应商相互竞争份额<br>英伟达可以 "以量换价"<br>长期合同条款更有利
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid #7c3aed">
+      <div class="card-title">✅ ③ 推理生态完整性：Groq LPU是差异化护城河</div>
+      <div style="font-size:13.5px;line-height:1.8">
+        英伟达以$200亿收购Groq，核心目的是获得LPU（Language Processing Unit）技术——一种专为AI推理"解码"阶段优化的芯片架构，声称比纯GPU推理快<strong>35倍</strong>。<br><br>
+        三星代工LP30使得这个推理生态得以快速落地。未来英伟达"GPU训练 + LPU推理"的异构架构，若成为数据中心标准配置，三星代工将直接受益——而英伟达则获得了竞争对手（AMD、英特尔）无法轻易复制的<strong>推理性能差异化</strong>。
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid #d97706">
+      <div class="card-title">✅ ④ TSMC依赖分散：代工多元化降低单点风险</div>
+      <div style="font-size:13.5px;line-height:1.8">
+        Vera Rubin平台上：GPU/CPU = TSMC CoWoS；Groq LPU = <strong>三星Foundry 4nm</strong>；自动驾驶芯片 = 三星4nm/8nm。<br><br>
+        长期来看，英伟达通过与三星Foundry在非核心计算芯片（LPU、驾驶芯片）上的合作，<strong>建立了TSMC之外的第二代工关系</strong>，降低了地缘政治风险和CoWoS产能瓶颈对英伟达整体出货的冲击。
+        <div class="callout blue" style="margin-top:12px;margin-bottom:0">
+          东方财富分析称：英伟达此次布局形成了"<strong>自研设计+韩国存储+三星代工</strong>"的全闭环供应链体系，供应链抗风险能力、产能弹性、成本优化空间三重提升。
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid #0891b2">
+      <div class="card-title">✅ ⑤ 长期战略锁仓：2027-2028供应链底座提前确立</div>
+      <div style="font-size:13.5px;line-height:1.8">
+        6月8日会谈涵盖HBM4E（2027）和HBM5（2027/2028）的长期合作路线图。三星HBM4E样品已在2026年5月向全球客户供货，从HBM4量产到HBM4E样品仅用<strong>约3个月</strong>，表明三星技术节奏已赶上。<br><br>
+        若三星签约HBM4E/HBM5供应，分析师估计<strong>每年可为三星带来$80-100亿营收</strong>——英伟达同样通过提前锁定优质产能，确保2027-2028年AI算力爆发期的供应底座。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: 风险与隐忧 -->
+<div class="section" id="risks">
+  <div class="section-title"><div class="icon icon-red">⚠️</div>风险与隐忧：三个尚未解决的核心问题</div>
+
+  <div class="card">
+    <div class="card-title" style="color:var(--c-red)">风险一：三星量产订单悬而未决</div>
+    <div style="font-size:13.5px;line-height:1.8">
+      认证通过是必要条件，量产订单才是充分条件。截至7月17日，英伟达仍未向三星下达HBM4量产订单。可能原因：
+      <ul style="margin:10px 0 0 20px;font-size:13px;line-height:2">
+        <li>三星HBM4良率尚未达到英伟达量产标准（三星HBM3E延误先例留下的不信任）</li>
+        <li>英伟达借助"三家认证"的谈判筹码向SK海力士压价，三星作为备选牌</li>
+        <li>英伟达集中SK海力士先交付Q3客户订单，三星产能优先给其他客户</li>
+      </ul>
+      <div style="margin-top:10px;padding:10px;background:#fef2f2;border-radius:8px;font-size:12.5px;color:#991b1b">
+        <strong>风险影响：</strong>若三星持续停在评估阶段，其"25-30%份额"预期将落空，影响三星HBM4营收兑现，同时使英伟达供应分散化的预期效益打折扣。
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:var(--c-red)">风险二：HBM4成本压力显著上升</div>
+    <div style="font-size:13.5px;line-height:1.8">
+      虽然三供局面提升了议价权，但HBM4单位成本仍大幅上涨：
+      <div style="display:flex;gap:10px;margin:12px 0;flex-wrap:wrap">
+        <div style="flex:1;min-width:140px;background:#fef2f2;border-radius:8px;padding:12px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:#dc2626">$500</div>
+          <div style="font-size:11px;color:#64748b">HBM4每48GB栈（~$10+/GB）</div>
+        </div>
+        <div style="flex:1;min-width:140px;background:#fff7ed;border-radius:8px;padding:12px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:#d97706">$7-8/GB</div>
+          <div style="font-size:11px;color:#64748b">HBM3E（上代）对比</div>
+        </div>
+        <div style="flex:1;min-width:140px;background:#fffbeb;border-radius:8px;padding:12px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:#d97706">26%</div>
+          <div style="font-size:11px;color:#64748b">HBM4占Vera Rubin总BOM比例</div>
+        </div>
+      </div>
+      三星HBM4定价比竞品高20-30%，若三星占据高份额，英伟达硬件毛利率将承压。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:var(--c-red)">风险三：三星Foundry vs TSMC的技术差距</div>
+    <div style="font-size:13.5px;line-height:1.8">
+      Groq LP30用的是三星4nm——但下一代LP40需要更先进的工艺。三星晶圆代工虽称"4nm不逊色"，但市场普遍认为三星在3nm及以上先进制程的良率仍落后TSMC 1-2个世代。若LP40合同最终给TSMC，三星代工合作将主要停留在"非核心计算"层面，对英伟达的代工多元化贡献有限。
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: 未来路线图 -->
+<div class="section" id="roadmap">
+  <div class="section-title"><div class="icon icon-blue">🔭</div>未来路线图：2026-2028合作演进</div>
+
+  <div class="card">
+    <div class="card-title">合作深化路线图</div>
+    <table class="tbl">
+      <thead><tr><th>时间</th><th>关键里程碑</th><th>对英伟达影响</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>2026 Q3</td>
+          <td>Vera Rubin NVL72开始交付AWS/Google/Azure/Oracle；Groq 3 LPU出货</td>
+          <td>三星同时供应HBM4+Groq LPU，双轨验证</td>
+        </tr>
+        <tr>
+          <td>2026 Q3-Q4</td>
+          <td>三星HBM4量产订单落地（预期）；LP40代工合同谈判结果揭晓</td>
+          <td><strong>决定性节点</strong>：量产订单落地=供应分散确认；LP40定向=代工双轨成立</td>
+        </tr>
+        <tr>
+          <td>2027</td>
+          <td>HBM4E供应启动；英伟达"Kyber"（下代）平台规划中（有报道Kyber延迟12+月至2028）</td>
+          <td>三星若拿到HBM4E份额，年供应价值$80-100亿，供应关系深度绑定</td>
+        </tr>
+        <tr>
+          <td>2027-2028</td>
+          <td>HBM5技术路线图；三星HBM5热管理技术（HPB方案）；三星3nm/2nm代工潜在合作</td>
+          <td>英伟达锁定下两代存储供应；若三星代工升级至3nm，真正实现TSMC替代</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px;background:#eff6ff;border-radius:8px;padding:12px;font-size:13px;line-height:1.7">
+      <strong style="color:#1d4ed8">关键观测指标：</strong>① 三星HBM4量产订单是否于2026年Q3前落地；② LP40代工合同花落三星还是TSMC；③ 2026年Q3 Vera Rubin实际出货量与HBM良率数据
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: 综合研判 -->
+<div class="section" id="verdict">
+  <div class="verdict">
+    <h3>📋 综合研判：三星-英伟达合作对英伟达的净影响</h3>
+    <p style="font-size:14px;line-height:1.8;color:#cbd5e1;margin-bottom:16px">
+      这次合作对英伟达的影响是<strong>结构性正向</strong>的——供应安全、议价权、推理生态三重受益。但短期存在量产订单悬而未决、成本上行的不确定性。长期战略价值大于短期财务影响。
+    </p>
+
+    <div class="verdict-grid">
+      <div class="verdict-box">
+        <h4>✅ 对英伟达的正面影响</h4>
+        <ul>
+          <li>首次实现三供HBM格局，供应安全性大幅提升</li>
+          <li>议价权从单供被动→三供主动，HBM4定价谈判更有利</li>
+          <li>Groq LPU×三星代工，推理生态差异化护城河成立</li>
+          <li>代工多元化布局，降低地缘风险与TSMC单点依赖</li>
+          <li>2027-2028 HBM4E/HBM5供应底座提前锁定</li>
+        </ul>
+      </div>
+      <div class="verdict-box">
+        <h4>⚠️ 当前风险与不确定性</h4>
+        <ul>
+          <li>三星量产订单迄今未落地（仅付费评估阶段）</li>
+          <li>HBM4单价较上代涨幅显著，BOM成本压力上行</li>
+          <li>三星Foundry先进制程仍落后TSMC，LP40竞标不确定</li>
+          <li>SK海力士仍占65-70%，多供局面并非真正三足鼎立</li>
+          <li>Kyber延迟报道若属实，将延缓下代HBM需求节奏</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:rgba(255,255,255,0.08);border-radius:10px;padding:16px">
+      <div style="font-size:13px;font-weight:700;color:#93c5fd;margin-bottom:8px">最终判断</div>
+      <div style="font-size:14px;line-height:1.8;color:#e2e8f0">
+        三星的重新入局，是英伟达<strong>主动构建的战略选择</strong>，而非被动接受。通过在HBM和代工两条轨道上同时深化三星关系，英伟达正在将自己从"受制于韩系内存"变为"驾驭韩系内存"。Vera Rubin是第一个真正体现这一战略意图的平台。决定这一合作最终价值的，将是接下来3-6个月的量产订单数字和实际出货良率——而非6月首尔的握手和声明。
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  <p>reese · 深度研究 · 2026年7月</p>
+  <p style="margin-top:6px">数据来源：Korea JoongAng Daily、IBTimes KR、TrendForce、Silicon Analysts、东方财富、TradingKey、Winbuzzer、Digitimes</p>
+</footer>
+
+<script>
+// Nav active state
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      navLinks.forEach(l => l.classList.remove('active'));
+      const id = e.target.id;
+      const link = document.querySelector('.nav a[href="#'+id+'"]');
+      if(link) link.classList.add('active');
+    }
+  });
+}, {threshold: 0.25});
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
