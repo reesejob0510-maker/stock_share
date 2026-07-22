@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI电力超级周期：数据中心用电2035年占美国总量20%</title>
+<style>
+:root{
+  --c-bg:#f8fafc;--c-card:#fff;--c-border:#e2e8f0;
+  --c-text:#1e293b;--c-sub:#64748b;
+  --c-blue:#2563eb;--c-blue-bg:#eff6ff;
+  --c-green:#059669;--c-green-bg:#ecfdf5;
+  --c-orange:#d97706;--c-orange-bg:#fffbeb;
+  --c-red:#dc2626;--c-red-bg:#fef2f2;
+  --c-purple:#7c3aed;--c-purple-bg:#f5f3ff;
+  --c-navy:#0f172a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB',sans-serif;background:var(--c-bg);color:var(--c-text);line-height:1.6}
+
+/* WATERMARK */
+body::before{content:"reese";position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:clamp(60px,12vw,160px);font-weight:900;color:rgba(0,0,0,0.025);pointer-events:none;z-index:9999;transform:rotate(-30deg);white-space:nowrap}
+
+/* BACK BTN */
+#back-btn-wrap{position:fixed;top:12px;left:12px;z-index:10000}
+#back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border:1px solid #d0d7de;border-radius:20px;padding:6px 14px 6px 10px;font-size:13px;font-weight:600;color:#0969da;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .15s}
+#back-btn:hover{box-shadow:0 4px 14px rgba(9,105,218,.18);border-color:#0969da}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 55%,#0f172a 100%);padding:64px 24px 52px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 900px 450px at 50% 0%,rgba(37,99,235,0.22),transparent)}
+.hero-tag{display:inline-block;background:rgba(250,204,21,0.15);border:1px solid rgba(250,204,21,0.4);color:#fde68a;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:18px}
+.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;color:#f8fafc;line-height:1.2;margin-bottom:10px}
+.hero h1 span{color:#fbbf24}
+.hero-sub{font-size:13px;color:#94a3b8;margin-bottom:32px}
+.hero-kpis{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.kpi{text-align:center}
+.kpi-val{font-size:clamp(26px,5vw,42px);font-weight:900;line-height:1;color:#f8fafc}
+.kpi-val.yellow{color:#fbbf24}
+.kpi-val.green{color:#34d399}
+.kpi-lbl{font-size:10px;color:#94a3b8;margin-top:5px;text-transform:uppercase;letter-spacing:.8px}
+
+/* NAV */
+.nav-wrap{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--c-border)}
+.nav{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 16px}
+.nav::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:12px 14px;font-size:12.5px;font-weight:600;color:var(--c-sub);white-space:nowrap;text-decoration:none;border-bottom:2px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.act{color:var(--c-blue);border-bottom-color:var(--c-blue)}
+
+/* LAYOUT */
+.container{max-width:920px;margin:0 auto;padding:28px 16px 72px}
+.section{margin-bottom:36px}
+.section-title{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;color:var(--c-navy);margin-bottom:16px}
+.icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.icon-blue{background:var(--c-blue-bg)}.icon-green{background:var(--c-green-bg)}
+.icon-orange{background:var(--c-orange-bg)}.icon-red{background:var(--c-red-bg)}
+.icon-purple{background:var(--c-purple-bg)}
+
+/* CARDS */
+.card{background:var(--c-card);border:1px solid var(--c-border);border-radius:12px;padding:20px;margin-bottom:14px}
+.card-title{font-size:14.5px;font-weight:700;color:var(--c-navy);margin-bottom:12px}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.card-grid{grid-template-columns:1fr}}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.75;border-left:4px solid}
+.callout.blue{background:var(--c-blue-bg);border-color:var(--c-blue)}
+.callout.green{background:var(--c-green-bg);border-color:var(--c-green)}
+.callout.orange{background:var(--c-orange-bg);border-color:var(--c-orange)}
+.callout.red{background:var(--c-red-bg);border-color:var(--c-red)}
+.callout.yellow{background:#fefce8;border-color:#ca8a04}
+
+/* PROGRESS BARS */
+.pbar-wrap{margin:6px 0}
+.pbar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.pbar-label span:first-child{font-weight:600;color:var(--c-text)}
+.pbar-label span:last-child{font-weight:700;color:var(--c-blue)}
+.pbar-track{height:10px;background:#e2e8f0;border-radius:6px;overflow:hidden}
+.pbar-fill{height:100%;border-radius:6px;transition:width .5s}
+.fill-blue{background:linear-gradient(90deg,#2563eb,#60a5fa)}
+.fill-green{background:linear-gradient(90deg,#059669,#34d399)}
+.fill-orange{background:linear-gradient(90deg,#d97706,#fbbf24)}
+.fill-purple{background:linear-gradient(90deg,#7c3aed,#a78bfa)}
+
+/* STOCK TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{background:#f8fafc;padding:9px 12px;text-align:left;font-weight:700;color:var(--c-sub);font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--c-border)}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--c-border);vertical-align:top;line-height:1.5}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#fafbff}
+
+/* BADGES */
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
+.b-green{background:var(--c-green-bg);color:var(--c-green)}
+.b-blue{background:var(--c-blue-bg);color:var(--c-blue)}
+.b-orange{background:var(--c-orange-bg);color:var(--c-orange)}
+.b-purple{background:var(--c-purple-bg);color:var(--c-purple)}
+.b-red{background:var(--c-red-bg);color:var(--c-red)}
+.b-gray{background:#f1f5f9;color:#475569}
+
+/* TIER CARDS */
+.tier-card{border-radius:12px;padding:18px;margin-bottom:12px;border:1px solid}
+.tier-1{background:linear-gradient(135deg,#fefce8,#fffbeb);border-color:#fde047}
+.tier-2{background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-color:#86efac}
+.tier-3{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#93c5fd}
+.tier-label{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.tier-1 .tier-label{color:#92400e}
+.tier-2 .tier-label{color:#065f46}
+.tier-3 .tier-label{color:#1e40af}
+.stock-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)}
+.stock-row:last-child{border-bottom:none}
+.stock-code{font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;background:#fff;border:1px solid currentColor;white-space:nowrap}
+.stock-us{color:#2563eb}
+.stock-a{color:#dc2626}
+.stock-hk{color:#7c3aed}
+.stock-name{font-size:13.5px;font-weight:700;color:var(--c-navy);min-width:90px}
+.stock-desc{font-size:12.5px;color:var(--c-sub);line-height:1.5;flex:1}
+
+/* VERDICT */
+.verdict-box{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:16px;padding:28px;color:#f8fafc}
+.verdict-box h3{font-size:17px;font-weight:800;margin-bottom:14px;color:#fbbf24}
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media(max-width:580px){.verdict-grid{grid-template-columns:1fr}}
+.vcard{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px}
+.vcard h4{font-size:12.5px;font-weight:700;color:#93c5fd;margin-bottom:8px}
+.vcard ul{list-style:none;font-size:12px;color:#cbd5e1;line-height:1.8}
+.vcard ul li::before{content:'→ ';color:#60a5fa}
+
+/* CHINA RISK NOTE */
+.risk-note{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:14px 16px;font-size:12.5px;color:#9a3412;line-height:1.7;margin-top:12px}
+
+footer{text-align:center;padding:32px 16px;color:#94a3b8;font-size:12px;border-top:1px solid var(--c-border);background:#fff}
+
+@media(max-width:640px){.hero{padding:52px 16px 36px}.hero-kpis{gap:16px}.tbl{font-size:11.5px}.tbl th,.tbl td{padding:8px 8px}}
+</style>
+</head>
+<body>
+
+<div id="back-btn-wrap"><a href="stock_daily.html" id="back-btn">&#8592; 返回研报合集</a></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">⚡ 电力超级周期 · 利好标的速览</div>
+  <h1>AI电力饥渴症：数据中心用电<br>2035年将占美国总量 <span>20%</span></h1>
+  <div class="hero-sub">来源：BloombergNEF报告（2026年7月21日） · 较12月预测上调83%</div>
+  <div class="hero-kpis">
+    <div class="kpi"><div class="kpi-val yellow">5.9%</div><div class="kpi-lbl">当前占比</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#f8fafc">→</div><div class="kpi-lbl">&nbsp;</div></div>
+    <div class="kpi"><div class="kpi-val yellow">12%</div><div class="kpi-lbl">2030年</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#f8fafc">→</div><div class="kpi-lbl">&nbsp;</div></div>
+    <div class="kpi"><div class="kpi-val yellow">20%</div><div class="kpi-lbl">2035年</div></div>
+    <div class="kpi"><div class="kpi-val green">194 GW</div><div class="kpi-lbl">2035年装机需求</div></div>
+    <div class="kpi"><div class="kpi-val green">+83%</div><div class="kpi-lbl">较6个月前预测</div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav" id="nav">
+    <a href="#thesis">核心逻辑</a>
+    <a href="#data">关键数据</a>
+    <a href="#targets-us">美股标的</a>
+    <a href="#targets-a">A股标的</a>
+    <a href="#priority">优先级</a>
+    <a href="#risks">风险</a>
+  </nav>
+</div>
+
+<div class="container">
+
+<!-- 核心逻辑 -->
+<div class="section" id="thesis">
+  <div class="section-title"><div class="icon icon-blue">🔗</div>核心逻辑：一根导线串起三条受益主线</div>
+
+  <div class="callout blue">
+    <strong>投资核心：</strong>BNEF将194 GW数据中心装机预测相当于<strong>194座传统核电站</strong>的容量。这不是远期故事——数据中心开工周期通常领先用电需求3-5年，意味着电力基础设施建设高峰在<strong>2026-2030年</strong>，正当下。
+  </div>
+
+  <div class="card">
+    <div class="card-title">逻辑链全景</div>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:flex;align-items:stretch;gap:0">
+        <div style="width:3px;background:linear-gradient(180deg,#2563eb,#059669,#d97706);border-radius:2px;flex-shrink:0;margin-right:16px"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1;padding:4px 0">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:#eff6ff;border:2px solid #2563eb;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#2563eb;flex-shrink:0">AI</div>
+            <div style="font-size:13.5px;line-height:1.7"><strong>AI算力需求爆发</strong> → GPU集群电功率密度较5年前提升10倍，Rubin GPU单机柜超100kW</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:#eff6ff;border:2px solid #2563eb;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#2563eb;flex-shrink:0">①</div>
+            <div style="font-size:13.5px;line-height:1.7"><strong>发电侧：</strong>数据中心偏好"7×24小时稳定基荷电力"，核电/天然气成为首选。核电机组价值重估，签署长期PPA（20年）锁定稳定现金流</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:#ecfdf5;border:2px solid #059669;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#059669;flex-shrink:0">②</div>
+            <div style="font-size:13.5px;line-height:1.7"><strong>输配电侧：</strong>BNEF估算即使以历史峰值7.1 GW/年并网速度，到2035年仍有<strong>19 GW缺口</strong>。电网设备（变压器/GIS/开关）是真正的"卡脖子"环节，订单排产到2027年</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:#fff7ed;border:2px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#d97706;flex-shrink:0">③</div>
+            <div style="font-size:13.5px;line-height:1.7"><strong>数据中心内部：</strong>功率密度↑ → 液冷渗透率↑ → UPS/PDU/冷却系统单机价值量翻倍。Eaton数据中心订单+240% YoY，GE Vernova上半年数据中心电气化订单$50亿，较2025全年翻倍</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 关键数据 -->
+<div class="section" id="data">
+  <div class="section-title"><div class="icon icon-orange">📊</div>BNEF报告关键数据 · 比任何时候都严肃的预警</div>
+
+  <div class="card">
+    <div class="card-title">数据中心用电占美国总量比例演进</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span>2025年（当前）</span><span>5.9%</span></div>
+        <div class="pbar-track"><div class="pbar-fill fill-blue" style="width:29.5%"></div></div>
+      </div>
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span>2030年（中期）</span><span>12%</span></div>
+        <div class="pbar-track"><div class="pbar-fill fill-orange" style="width:60%"></div></div>
+      </div>
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span>2035年（目标）</span><span>20%</span></div>
+        <div class="pbar-track"><div class="pbar-fill fill-purple" style="width:100%"></div></div>
+      </div>
+    </div>
+    <div style="margin-top:14px;font-size:12.5px;color:var(--c-sub)">若以最大AI芯片部署情景：<strong>229 GW</strong>（更高情境预测）。弗吉尼亚（PJM电网）和德克萨斯（ERCOT电网）数据中心密度最高，部分地区占比远超全国均值。</div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-title">供给缺口预测</div>
+      <div style="font-size:28px;font-weight:900;color:#dc2626;margin-bottom:6px">19 GW</div>
+      <div style="font-size:13px;color:var(--c-sub);line-height:1.7">即使以历史最高并网速度（7.1 GW/年）持续到2035年，仍将出现19 GW缺口。相当于<strong>19座核电站</strong>的产能缺口需要通过现场天然气发电补充</div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-title">BNEF预测大幅上调</div>
+      <div style="font-size:28px;font-weight:900;color:#d97706;margin-bottom:6px">+83%</div>
+      <div style="font-size:13px;color:var(--c-sub);line-height:1.7">相较2025年12月报告，仅6个月预测就上调83%（106 GW → 194 GW）。说明AI带来的需求增速远超模型预期，且这种超预期还在持续</div>
+    </div>
+  </div>
+</div>
+
+<!-- 美股标的 -->
+<div class="section" id="targets-us">
+  <div class="section-title"><div class="icon icon-blue">🇺🇸</div>美股受益标的</div>
+
+  <!-- Tier 1 -->
+  <div class="tier-card tier-1">
+    <div class="tier-label">🥇 第一梯队 · 核电复苏（直接受益，估值重估逻辑）</div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">CEG.US</span>
+      <span class="stock-name">Constellation Energy</span>
+      <span class="stock-desc">美国最大核电运营商。已与<strong>微软签20年PPA</strong>（835MW，TMI-1复活）。FERC于2026年6月批准电网接入权转移，计划<strong>2027年底发电</strong>。每年提供700万MWh稳定清洁电力，EPS年增速≥13%</span>
+    </div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">TLN.US</span>
+      <span class="stock-name">Talen Energy</span>
+      <span class="stock-desc">核电直连数据中心的先行者。Susquehanna核电站已将部分电力直接卖给<strong>亚马逊AWS</strong>数据中心，绕过公共电网。AI数据中心"核电直连"商业模式的最纯粹标的</span>
+    </div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">VST.US</span>
+      <span class="stock-name">Vistra Energy</span>
+      <span class="stock-desc">核电+天然气双轮。德克萨斯ERCOT市场布局深，AI数据中心高度集中于德州。拥有Comanche Peak核电站，持续与超大型科技企业洽谈长期PPA</span>
+    </div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">CCJ.US</span>
+      <span class="stock-name">Cameco（铀矿）</span>
+      <span class="stock-desc">全球最大上市铀矿公司。核电复苏→铀需求↑→价格弹性大。无论哪家核电运营商受益，Cameco作为上游燃料供应商都直接受益。弹性最大的"间接受益"</span>
+    </div>
+  </div>
+
+  <!-- Tier 2 -->
+  <div class="tier-card tier-2">
+    <div class="tier-label">🥈 第二梯队 · 电网基础设施（确定性最高，订单已见底）</div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">GEV.US</span>
+      <span class="stock-name">GE Vernova</span>
+      <span class="stock-desc"><strong>Q2 2026数据：</strong>订单+88% YoY达$242亿；积压订单$1760亿（目标2027年$2000亿）；上半年<strong>数据中心电气化订单$50亿，较2025全年翻倍</strong>。燃气轮机排产2030年。CEO称"多年成长机遇的早期阶段"</span>
+    </div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">ETN.US</span>
+      <span class="stock-name">Eaton</span>
+      <span class="stock-desc"><strong>Q1 2026数据：</strong>Electrical Americas滚动12月订单+42%；数据中心订单+240% YoY；电气部门总积压+48% YoY。数据中心PDU/UPS/配电系统全球第一，单位价值量随功率密度正比上升</span>
+    </div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">PWR.US</span>
+      <span class="stock-name">Quanta Services</span>
+      <span class="stock-desc">电网升级工程总承包龙头。高压输电线路建设、变电站工程是核心业务。数据中心新增并网需求必须依赖其承建，订单与BNEF报告的缺口数据高度挂钩</span>
+    </div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">VRT.US</span>
+      <span class="stock-name">Vertiv Holdings</span>
+      <span class="stock-desc">数据中心液冷+UPS+精密配电的全球领导者。AI集群功率密度提升直接推动液冷渗透率↑，单台机柜配套Vertiv设备的ASP显著提升。需求可见性强，订单覆盖周期长</span>
+    </div>
+  </div>
+
+  <!-- Tier 3 -->
+  <div class="tier-card tier-3">
+    <div class="tier-label">🥉 第三梯队 · 天然气发电（BNEF预测19GW缺口需现场天然气补充）</div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">NRG.US</span>
+      <span class="stock-name">NRG Energy</span>
+      <span class="stock-desc">天然气灵活调峰发电商，积极与数据中心运营商签署长期PPA。数据中心高峰负荷弹性供电首选</span>
+    </div>
+    <div class="stock-row">
+      <span class="stock-code stock-us">EQT.US</span>
+      <span class="stock-name">EQT Corporation</span>
+      <span class="stock-desc">美国最大天然气生产商。BNEF报告明确提到天然气现场发电将弥补19 GW缺口，天然气需求确定性上升</span>
+    </div>
+  </div>
+</div>
+
+<!-- A股标的 -->
+<div class="section" id="targets-a">
+  <div class="section-title"><div class="icon icon-red">🇨🇳</div>A股受益标的：变压器出口与国内电网</div>
+
+  <div class="callout orange">
+    <strong>为什么A股值得关注？</strong>美国本土变压器严重短缺——本土唯一具备765kV变压器产能的Hyosung HICO排产已锁满至2028年，西门子、ABB等依赖海外进口。中国变压器凭借供应链优势交付周期仅为海外的1/6，正在大规模出口美国和欧洲。
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ 核心出口受益标的</div>
+    <table class="tbl">
+      <thead><tr><th>代码</th><th>公司</th><th>核心看点</th><th>关键数据</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge b-red">600089</span></td>
+          <td><strong>特变电工</strong></td>
+          <td>全球变压器龙头，已通过美国大型电力变压器认证；北美AI数据中心专用变压器批量出海</td>
+          <td>在手订单>800亿元，排产至2027年；国际产品签约+80% YoY；北美毛利率>40%</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-red">002028</span></td>
+          <td><strong>思源电气</strong></td>
+          <td>民营出海黑马。通过思源东芝合资厂进美国市场；北美AI数据中心变压器订单爆发</td>
+          <td>2026年1-2月美国订单已超2025全年；对美增速>200%；海外毛利率显著高于国内</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-red">002922</span></td>
+          <td><strong>伊戈尔</strong></td>
+          <td>移相变压器/高频变压器专家；获谷歌、微软大额数据中心订单；墨西哥工厂2026年中投产</td>
+          <td>数据中心订单+400% YoY（2025年）；深度绑定北美超算中心</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-red">688676</span></td>
+          <td><strong>金盘科技</strong></td>
+          <td>干式变压器全球龙头，数据中心专用。已有墨西哥工厂规避关税，拟在美国建厂</td>
+          <td>2026年海外订单持续高增；数据中心变压器占比快速提升</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-red">600550</span></td>
+          <td><strong>保变电气</strong></td>
+          <td>特高压+特种变压器龙头，核电/数据中心高端变压器优势强；高端化带动毛利率提升</td>
+          <td>订单饱满，排期拉长；为国内核电扩建和数据中心配套</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔌 电网自动化与输配电设备</div>
+    <table class="tbl">
+      <thead><tr><th>代码</th><th>公司</th><th>核心看点</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge b-red">600406</span></td>
+          <td><strong>国电南瑞</strong></td>
+          <td>电网自动化/继电保护设备龙头。电网投资加速直接带动继保、调度、二次设备采购</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-red">601179</span></td>
+          <td><strong>中国西电</strong></td>
+          <td>特高压GIS组合电器+高压开关龙头，国家电网核心供应商；同步布局固态变压器(SST)</td>
+        </tr>
+        <tr>
+          <td><span class="badge b-red">601985</span></td>
+          <td><strong>中国核电</strong></td>
+          <td>国内数据中心用电增长的核电受益方，逻辑同Constellation Energy</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="risk-note">
+      <strong>⚠️ 中国变压器出口美国的监管限制：</strong>特朗普2020年行政令（拜登延续）禁止美国关键国防设施电网采购中国产69kV及以上电力变压器。中国企业目前主要通过：①认证进入配电/特种变压器市场；②通过墨西哥/越南工厂规避关税和限制；③美国数据中心运营商直接采购（不涉及国防设施）。关注关税政策变化风险。
+    </div>
+  </div>
+</div>
+
+<!-- 优先级 -->
+<div class="section" id="priority">
+  <div class="section-title"><div class="icon icon-purple">🎯</div>综合优先级排序</div>
+
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>优先级</th><th>标的</th><th>逻辑强度</th><th>当前确定性</th><th>适合持仓类型</th></tr></thead>
+      <tbody>
+        <tr style="background:#fefce8">
+          <td><strong>⭐⭐⭐⭐⭐</strong></td>
+          <td><strong>GEV / ETN / VRT</strong></td>
+          <td>电网/数据中心基础设施，无论何种能源路线都受益</td>
+          <td><span class="badge b-green">极高（订单已锁定）</span></td>
+          <td>中期核心仓位</td>
+        </tr>
+        <tr style="background:#f0fdf4">
+          <td><strong>⭐⭐⭐⭐</strong></td>
+          <td><strong>CEG / TLN</strong></td>
+          <td>核电估值重估，长期PPA锁定，监管障碍最大的不确定性</td>
+          <td><span class="badge b-blue">高（协议已签）</span></td>
+          <td>中长期主题仓位</td>
+        </tr>
+        <tr style="background:#f0fdf4">
+          <td><strong>⭐⭐⭐⭐</strong></td>
+          <td><strong>特变电工 / 思源电气 / 伊戈尔</strong></td>
+          <td>中国变压器出口爆发，订单真实可查，排产已至2027年</td>
+          <td><span class="badge b-green">高（订单数据验证）</span></td>
+          <td>A股核心配置</td>
+        </tr>
+        <tr>
+          <td><strong>⭐⭐⭐</strong></td>
+          <td><strong>CCJ / VST / PWR</strong></td>
+          <td>弹性标的，逻辑成立但执行周期长或受制于政策</td>
+          <td><span class="badge b-orange">中（政策/许可依赖）</span></td>
+          <td>卫星仓位</td>
+        </tr>
+        <tr>
+          <td><strong>⭐⭐</strong></td>
+          <td><strong>EQT / NRG</strong></td>
+          <td>天然气补缺口逻辑，但需等BNEF缺口预测真正兑现</td>
+          <td><span class="badge b-gray">中低（长周期验证）</span></td>
+          <td>可选卫星</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 风险 -->
+<div class="section" id="risks">
+  <div class="section-title"><div class="icon icon-red">⚠️</div>主要风险提示</div>
+
+  <div class="card-grid">
+    <div class="card" style="margin-bottom:0;border-left:4px solid #dc2626">
+      <div class="card-title" style="color:#dc2626">并网许可瓶颈</div>
+      <div style="font-size:13px;line-height:1.7">BNEF自己也承认"美国现在建数据中心是个非常困难的环境"。州级许可、环评、NIMBYism都会延迟并网，历史最快也只有7.1 GW/年。需求和供给之间的时间差可能超预期。</div>
+    </div>
+    <div class="card" style="margin-bottom:0;border-left:4px solid #d97706">
+      <div class="card-title" style="color:#d97706">预测本身的不确定性</div>
+      <div style="font-size:13px;line-height:1.7">BNEF在6个月内上调83%，说明模型不稳定。同理，未来6个月也可能下调。这是计划管道中的潜在装机，不是已完工项目，实际落地率存在不确定性。</div>
+    </div>
+    <div class="card" style="margin-bottom:0;border-left:4px solid #7c3aed">
+      <div class="card-title" style="color:#7c3aed">估值已提前反映</div>
+      <div style="font-size:13px;line-height:1.7">GEV、CEG、ETN今年已有显著涨幅，部分乐观预期已被定价。买入时机和仓位管理比"买不买"更关键，避免高位追入。</div>
+    </div>
+    <div class="card" style="margin-bottom:0;border-left:4px solid #0891b2">
+      <div class="card-title" style="color:#0891b2">能效技术迭代风险</div>
+      <div style="font-size:13px;line-height:1.7">若AI推理效率大幅提升（如谷歌TurboQuant等架构优化），单位算力耗电量下降，可能使部分电力需求预测落空。这是"第二层"风险，概率低但影响大。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 研判 -->
+<div class="verdict-box">
+  <h3>📋 综合研判</h3>
+  <p style="font-size:13.5px;line-height:1.8;color:#cbd5e1">
+    BNEF将预测上调83%，背后是AI基础设施管道数量的真实爆发，而非纸面数字。这是一个<strong>9年维度的系统性机会</strong>，但建设高峰集中在2026-2030年。当前阶段，<strong>有真实订单数据支撑的电网设备和数据中心基础设施</strong>（GEV、ETN、VRT，A股变压器出口股）是确定性最强的选择；核电股（CEG、TLN）是估值重构的弹性选择；天然气/铀矿是中长期主题配置。
+  </p>
+  <div class="verdict-grid">
+    <div class="vcard">
+      <h4>✅ 最强确定性组合</h4>
+      <ul>
+        <li>GEV（订单+88%，$176B积压）</li>
+        <li>ETN（数据中心+240% YoY）</li>
+        <li>VRT（液冷密度升级受益）</li>
+        <li>特变电工/思源电气（出口订单实证）</li>
+      </ul>
+    </div>
+    <div class="vcard">
+      <h4>🚀 弹性最大组合</h4>
+      <ul>
+        <li>CEG（核电估值重构+微软20年PPA）</li>
+        <li>TLN（数据中心直连核电先行者）</li>
+        <li>CCJ（铀矿弹性，核电复苏上游）</li>
+        <li>伊戈尔（数据中心变压器+400%）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  <p>reese · 深度研究 · 2026年7月22日</p>
+  <p style="margin-top:6px">数据来源：BloombergNEF（2026.7.21）、GE Vernova Q2 2026财报、Eaton Q1 2026财报、Constellation Energy公告、财联社、钛媒体、东方财富</p>
+</footer>
+
+<script>
+// Active nav on scroll
+const sections = document.querySelectorAll('.section');
+const links = document.querySelectorAll('#nav a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      links.forEach(l => l.classList.remove('act'));
+      const l = document.querySelector('#nav a[href="#'+e.target.id+'"]');
+      if(l) l.classList.add('act');
+    }
+  });
+}, {threshold: 0.3});
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
