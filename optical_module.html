@@ -177,7 +177,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
   <div class="sec-title"><div class="ico" style="background:#eff6ff">💰</div>第一步：AI 资本开支流向哪里</div>
 
   <div class="cl b">
-    <strong>根本误区：把"AI受益"当成一个整体。</strong>实际上，云厂商每投入 $100 的 AI 数据中心资本开支，各组件拿到的比例差异巨大——光模块是"必须买"，NAND存储几乎不在采购清单里。
+    <strong>根本误区：把"AI受益"当成一个整体。</strong>实际上，云厂商每投入 $100 的 AI 数据中心资本开支，各组件拿到的比例差异巨大——光模块与消费NAND在AI数据中心采购结构中所处位置差异显著。
   </div>
 
   <!-- CAPEX BAR CHART -->
@@ -224,11 +224,11 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
 
     <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
       <div style="flex:1;min-width:180px;background:#ecfdf5;border-radius:10px;padding:12px 14px;border-left:4px solid var(--green)">
-        <div style="font-size:12px;font-weight:800;color:var(--green);margin-bottom:4px">📡 光互联：必须采购，无可替代</div>
+        <div style="font-size:12px;font-weight:800;color:var(--green);margin-bottom:4px">📡 光互联：AI集群的核心网络组件</div>
         <div style="font-size:12px;color:var(--sub);line-height:1.7">GPU 组网的唯一方案。每新增一张 GPU，对应的光模块端口数量同步增加，需求刚性极强。占数据中心 capex 约 10-15%。</div>
       </div>
       <div style="flex:1;min-width:180px;background:#fef2f2;border-radius:10px;padding:12px 14px;border-left:4px solid var(--red)">
-        <div style="font-size:12px;font-weight:800;color:var(--red);margin-bottom:4px">💾 消费NAND：AI训练根本不用</div>
+        <div style="font-size:12px;font-weight:800;color:var(--red);margin-bottom:4px">💾 消费NAND：与AI数据中心需求关联度低</div>
         <div style="font-size:12px;color:var(--sub);line-height:1.7">AI 训练消耗的是 HBM + DRAM，NAND 只用于数据集存储，且占比极低。消费 NAND 的需求驱动力是手机/PC，与 AI capex 几乎脱钩。</div>
       </div>
     </div>
@@ -446,7 +446,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
 
   <!-- Silicon vs InP -->
   <div class="card">
-    <div class="card-t">为什么必须是磷化铟，而不是硅</div>
+    <div class="card-t">为什么是磷化铟，而不是硅</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
       <div style="padding:14px;background:#fef2f2;border-radius:10px;border-left:4px solid #dc2626">
         <div style="font-size:13px;font-weight:800;color:#dc2626;margin-bottom:6px">硅（Si）— 间接带隙</div>
@@ -455,7 +455,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
       </div>
       <div style="padding:14px;background:#ecfdf5;border-radius:10px;border-left:4px solid #059669">
         <div style="font-size:13px;font-weight:800;color:#059669;margin-bottom:6px">磷化铟（InP）— 直接带隙</div>
-        <div style="font-size:12.5px;color:var(--sub);line-height:1.8">电子跃迁<strong>直接转化为光子</strong>，效率极高。是目前高速激光器最佳材料，无可替代。</div>
+        <div style="font-size:12.5px;color:var(--sub);line-height:1.8">电子跃迁<strong>直接转化为光子</strong>，效率极高。是目前高速激光器的主流材料。</div>
         <div style="margin-top:8px;font-size:22px;text-align:center">💡 → 光子（有效）</div>
       </div>
     </div>
@@ -647,7 +647,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
 <div class="verdict">
   <h3>📋 一句话研判</h3>
   <p style="font-size:13.5px;line-height:1.9;color:#cbd5e1;margin-bottom:18px">
-    光模块和存储分化的本质是 <strong>AI 资本开支在产业链的"流量分配"</strong>——光互联是 AI 集群的必需品，每一张 GPU 对应的光模块采购是刚性需求；消费 NAND 的需求驱动力是手机和 PC 换机，与 AI capex 几乎脱钩。<br><br>
+    光模块和存储分化的本质是 <strong>AI 资本开支在产业链的"流量分配"</strong>——光互联在 AI 集群中承担组网功能，每增加一张 GPU 都需要对应的光模块端口；消费 NAND 的主要需求驱动力是手机和 PC 换机周期，与 AI 数据中心资本开支关联度较低。<br><br>
     HBM 是真正的 AI 直接需求，但已经过了一轮完整的估值定价周期，当前是"业绩兑现 vs 叙事重置"的博弈。<br><br>
     <strong>光模块上游的 InP 材料层（源杰科技、云南锗业、有研新材）是当前认知度最低、距离真实稀缺约束最近的机会。</strong>市场在看光模块封装龙头的时候，这层还没有被充分定价。
   </p>
