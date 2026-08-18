@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>光模块为什么涨：三层卡点、四重驱动与产业链投资图谱</title>
+<title>同是AI受益股，为什么存储跌了光模块涨了？</title>
 <style>
 :root{
   --bg:#f8fafc;--card:#fff;--border:#e2e8f0;
@@ -13,29 +13,30 @@
   --orange:#d97706;--orange-bg:#fffbeb;
   --red:#dc2626;--red-bg:#fef2f2;
   --purple:#7c3aed;--purple-bg:#f5f3ff;
-  --yellow:#ca8a04;--yellow-bg:#fefce8;
   --navy:#0f172a;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB',sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
 
+/* 水印 */
 body::before{content:"reese";position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:clamp(60px,12vw,160px);font-weight:900;color:rgba(0,0,0,0.025);pointer-events:none;z-index:9999;transform:rotate(-30deg);white-space:nowrap}
 
+/* 返回按钮 */
 #back-btn-wrap{position:fixed;top:12px;left:12px;z-index:10000}
 #back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border:1px solid #d0d7de;border-radius:20px;padding:6px 14px 6px 10px;font-size:13px;font-weight:600;color:#0969da;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .15s}
 #back-btn:hover{box-shadow:0 4px 14px rgba(9,105,218,.18);border-color:#0969da}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,#0a0f1e 0%,#0f2040 50%,#0a0f1e 100%);padding:64px 24px 52px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 900px 400px at 50% 0%,rgba(16,185,129,0.18),transparent)}
-.hero-tag{display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);color:#6ee7b7;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:18px}
-.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;color:#f8fafc;line-height:1.2;margin-bottom:10px}
-.hero h1 span{color:#34d399}
-.hero-sub{font-size:13px;color:#94a3b8;margin-bottom:34px}
+.hero{background:linear-gradient(135deg,#0a0f1e 0%,#0f1f3a 50%,#0a0f1e 100%);padding:64px 24px 52px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 900px 400px at 50% 0%,rgba(37,99,235,0.15),transparent)}
+.hero-tag{display:inline-block;background:rgba(37,99,235,0.18);border:1px solid rgba(37,99,235,0.4);color:#93c5fd;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:18px}
+.hero h1{font-size:clamp(19px,3.8vw,34px);font-weight:800;color:#f8fafc;line-height:1.25;margin-bottom:10px}
+.hero h1 .up{color:#34d399}.hero h1 .dn{color:#f87171}
+.hero-sub{font-size:13px;color:#94a3b8;margin-bottom:34px;max-width:600px;margin-left:auto;margin-right:auto}
 .hero-kpis{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-.kpi{text-align:center;min-width:90px}
-.kpi-v{font-size:clamp(22px,4vw,36px);font-weight:900;line-height:1;color:#f8fafc}
-.kpi-v.g{color:#34d399}.kpi-v.y{color:#fbbf24}.kpi-v.r{color:#f87171}
+.kpi{text-align:center;min-width:88px}
+.kpi-v{font-size:clamp(20px,3.5vw,32px);font-weight:900;line-height:1;color:#f8fafc}
+.kpi-v.g{color:#34d399}.kpi-v.r{color:#f87171}.kpi-v.y{color:#fbbf24}
 .kpi-l{font-size:10px;color:#94a3b8;margin-top:5px;text-transform:uppercase;letter-spacing:.7px}
 
 /* NAV */
@@ -47,455 +48,537 @@ body::before{content:"reese";position:fixed;top:0;left:0;width:100%;height:100%;
 
 /* LAYOUT */
 .container{max-width:920px;margin:0 auto;padding:28px 16px 72px}
-.section{margin-bottom:36px}
+.section{margin-bottom:40px}
 .sec-title{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:16px}
 .ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.ico-b{background:var(--blue-bg)}.ico-g{background:var(--green-bg)}
-.ico-o{background:var(--orange-bg)}.ico-r{background:var(--red-bg)}
-.ico-p{background:var(--purple-bg)}.ico-y{background:var(--yellow-bg)}
 
-/* CARDS */
+/* CARD */
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
 .card-t{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:12px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:580px){.g2{grid-template-columns:1fr}}
+@media(max-width:560px){.g2{grid-template-columns:1fr}}
 
-/* CALLOUTS */
-.cl{border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.75;border-left:4px solid}
+/* CALLOUT */
+.cl{border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.8;border-left:4px solid}
 .cl.b{background:var(--blue-bg);border-color:var(--blue)}
 .cl.g{background:var(--green-bg);border-color:var(--green)}
 .cl.o{background:var(--orange-bg);border-color:var(--orange)}
 .cl.r{background:var(--red-bg);border-color:var(--red)}
-.cl.y{background:var(--yellow-bg);border-color:var(--yellow)}
 
-/* BADGES */
-.bd{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
-.bd-g{background:var(--green-bg);color:var(--green)}
-.bd-b{background:var(--blue-bg);color:var(--blue)}
-.bd-o{background:var(--orange-bg);color:var(--orange)}
-.bd-r{background:var(--red-bg);color:var(--red)}
-.bd-p{background:var(--purple-bg);color:var(--purple)}
-.bd-y{background:var(--yellow-bg);color:var(--yellow)}
-.bd-gr{background:#f1f5f9;color:#475569}
+/* DEMAND SPLIT DIAGRAM */
+.demand-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:14px;overflow:hidden;border:2px solid var(--border);margin:16px 0}
+.demand-col{padding:20px 18px}
+.demand-col.up{background:linear-gradient(160deg,#ecfdf5,#d1fae5);border-right:2px solid var(--border)}
+.demand-col.dn{background:linear-gradient(160deg,#fef2f2,#fee2e2)}
+.demand-col h3{font-size:13px;font-weight:800;letter-spacing:.5px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.demand-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,0.08)}
+.demand-item:last-child{border-bottom:none}
+.di-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.di-body{}
+.di-name{font-size:13px;font-weight:700;margin-bottom:2px}
+.di-desc{font-size:11.5px;color:var(--sub);line-height:1.6}
+@media(max-width:560px){.demand-grid{grid-template-columns:1fr}.demand-col.up{border-right:none;border-bottom:2px solid var(--border)}}
 
-/* CHAIN LAYERS */
-.chain{display:flex;flex-direction:column;gap:2px;margin:8px 0}
-.chain-row{display:flex;align-items:stretch;gap:12px}
-.chain-line{width:3px;border-radius:2px;flex-shrink:0;min-height:100%}
-.chain-body{flex:1;border-radius:10px;padding:14px 16px;border:1px solid}
-.chain-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
-.chain-name{font-size:14px;font-weight:700;margin-bottom:4px}
-.chain-desc{font-size:12.5px;color:var(--sub);line-height:1.6}
-.chain-tickers{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
-.tk{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:700;background:#fff;border:1.5px solid}
-.tk-r{color:var(--red);border-color:var(--red)}
-.tk-b{color:var(--blue);border-color:var(--blue)}
-.tk-p{color:var(--purple);border-color:var(--purple)}
+/* AI INFRA PYRAMID */
+.pyramid{display:flex;flex-direction:column;gap:6px;margin:16px 0}
+.pyr-row{display:flex;align-items:stretch;gap:10px}
+.pyr-bar{border-radius:8px;padding:12px 16px;flex:1;position:relative}
+.pyr-rank{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0;margin-top:4px}
+.pyr-label{font-size:12px;font-weight:800;margin-bottom:3px}
+.pyr-items{font-size:12px;color:var(--sub);line-height:1.7}
+.pyr-badge{position:absolute;top:10px;right:12px;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:800}
 
-/* SCARCITY PILL */
-.scarcity{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:800}
-.sc-critical{background:#fef2f2;color:#991b1b;border:1px solid #fca5a5}
-.sc-high{background:#fff7ed;color:#92400e;border:1px solid #fdba74}
-.sc-med{background:#ecfdf5;color:#065f46;border:1px solid #6ee7b7}
-
-/* STOCK TABLE */
+/* DIVERGENCE TABLE */
 .tbl{width:100%;border-collapse:collapse;font-size:12.5px}
 .tbl th{background:#f8fafc;padding:9px 12px;text-align:left;font-weight:700;color:var(--sub);font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--border)}
-.tbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
 .tbl tr:last-child td{border-bottom:none}
 .tbl tr:hover td{background:#fafbff}
 
-/* PRICE BAR */
-.pbar{height:8px;border-radius:4px;background:#e2e8f0;overflow:hidden;margin-top:4px}
-.pbar-f{height:100%;border-radius:4px}
+/* CHAIN */
+.chain-row{display:flex;align-items:stretch;gap:12px;margin-bottom:8px}
+.chain-line{width:3px;border-radius:2px;flex-shrink:0}
+.chain-body{flex:1;border-radius:10px;padding:14px 16px;border:1px solid}
+.chain-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
+.chain-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.chain-desc{font-size:12.5px;color:var(--sub);line-height:1.65}
+.chain-tickers{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.tk{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:700;background:#fff;border:1.5px solid}
+.tk-r{color:var(--red);border-color:var(--red)}.tk-b{color:var(--blue);border-color:var(--blue)}
 
 /* VERDICT */
 .verdict{background:linear-gradient(135deg,#0a0f1e,#0f2040);border-radius:16px;padding:28px;color:#f8fafc}
-.verdict h3{font-size:17px;font-weight:800;margin-bottom:14px;color:#34d399}
+.verdict h3{font-size:17px;font-weight:800;margin-bottom:14px;color:#60a5fa}
 .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
 @media(max-width:560px){.vgrid{grid-template-columns:1fr}}
 .vc{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px}
-.vc h4{font-size:12.5px;font-weight:700;color:#6ee7b7;margin-bottom:8px}
-.vc ul{list-style:none;font-size:12px;color:#cbd5e1;line-height:1.9}
-.vc ul li::before{content:'→ ';color:#34d399}
+.vc h4{font-size:12.5px;font-weight:700;color:#93c5fd;margin-bottom:8px}
+.vc ul{list-style:none;font-size:12px;color:#cbd5e1;line-height:1.95}
+.vc ul li::before{content:'→ ';color:#60a5fa}
+
+.bd{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
+.bd-g{background:var(--green-bg);color:var(--green)}.bd-r{background:var(--red-bg);color:var(--red)}
+.bd-b{background:var(--blue-bg);color:var(--blue)}.bd-o{background:var(--orange-bg);color:var(--orange)}
+.bd-gr{background:#f1f5f9;color:#475569}
 
 footer{text-align:center;padding:32px 16px;color:#94a3b8;font-size:12px;border-top:1px solid var(--border);background:#fff}
-
-@media(max-width:640px){.hero{padding:52px 16px 36px}.hero-kpis{gap:14px}.tbl{font-size:11.5px}.tbl th,.tbl td{padding:8px 8px}}
+@media(max-width:640px){.hero{padding:52px 16px 36px}}
 </style>
 </head>
 <body>
+
 <div id="back-btn-wrap"><a href="stock_daily.html" id="back-btn">&#8592; 返回研报合集</a></div>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">Serenity 供应链卡点分析 · 2026年8月</div>
-  <h1>光模块为什么涨：<span>三层卡点</span>、四重驱动<br>与产业链投资图谱</h1>
-  <div class="hero-sub">先排产业链层级，再排公司 · 磷化铟供需缺口70%才是真正的故事核心</div>
+  <div class="hero-tag">Serenity · AI需求拆解 · 2026年8月</div>
+  <h1>同是 AI 受益股<br><span class="dn">存储为什么跌了</span>，<span class="up">光模块为什么涨了</span>？</h1>
+  <div class="hero-sub">AI 需求不是一个整体，是分层流向不同组件的。理解这个分层，才能看清楚谁是真受益、谁是伪受益。</div>
   <div class="hero-kpis">
-    <div class="kpi"><div class="kpi-v r">70%+</div><div class="kpi-l">InP全球供需缺口</div></div>
-    <div class="kpi"><div class="kpi-v y">2.7-3x</div><div class="kpi-l">1.6T比800G更耗InP</div></div>
-    <div class="kpi"><div class="kpi-v g">+103%</div><div class="kpi-l">新易盛H1净利润YoY</div></div>
-    <div class="kpi"><div class="kpi-v g">+109%</div><div class="kpi-l">Lumentum Q4营收YoY</div></div>
-    <div class="kpi"><div class="kpi-v y">2028年</div><div class="kpi-l">Coherent订单已排至</div></div>
+    <div class="kpi"><div class="kpi-v r">-20%</div><div class="kpi-l">SK海力士 近1月</div></div>
+    <div class="kpi"><div class="kpi-v r">-18%</div><div class="kpi-l">闪迪/西部数据</div></div>
+    <div class="kpi"><div class="kpi-v g">+103%</div><div class="kpi-l">新易盛H1净利润</div></div>
+    <div class="kpi"><div class="kpi-v g">+109%</div><div class="kpi-l">Lumentum Q4营收</div></div>
+    <div class="kpi"><div class="kpi-v y">2028年</div><div class="kpi-l">光模块订单已排至</div></div>
   </div>
 </div>
 
 <!-- NAV -->
 <div class="nav-wrap">
   <nav class="nav" id="nav">
-    <a href="#story">系统变化</a>
-    <a href="#chain">产业链层级</a>
-    <a href="#bottleneck">核心卡点InP</a>
-    <a href="#companies">公司优先级</a>
-    <a href="#catalysts">近期催化</a>
-    <a href="#risks">反方理由</a>
-    <a href="#verdict">研判</a>
+    <a href="#split">AI需求拆分</a>
+    <a href="#optical-why">光模块为什么涨</a>
+    <a href="#storage-why">存储为什么跌</a>
+    <a href="#diverge">分歧的本质</a>
+    <a href="#chain">产业链卡点</a>
+    <a href="#stocks">投资图谱</a>
+    <a href="#risks">风险</a>
   </nav>
 </div>
 
 <div class="container">
 
-<!-- 系统变化 -->
-<div class="section" id="story">
-  <div class="sec-title"><div class="ico ico-g">🔀</div>系统发生了什么变化</div>
+<!-- SECTION 1: AI DEMAND SPLIT -->
+<div class="section" id="split">
+  <div class="sec-title"><div class="ico" style="background:#eff6ff">🔀</div>第一步：把 AI 需求拆开来看</div>
 
   <div class="cl b">
-    <strong>Serenity框架的第一步：光模块涨不是一个单一逻辑，是四重驱动叠加，且相互增强。</strong>最容易被低估的是"单模块InP耗量翻倍"——这不是量多了，而是每个单位的材料消耗在倍增，比总量扩张更猛。
+    <strong>最常见的误区：把"AI受益"当成一个整体。</strong>事实上，AI 产业链的需求是分层流向不同组件的，有些组件直接受益于算力集群扩张，有些受益于AI应用端的普及，有些只是在AI叙事下被顺带定价。存储和光模块的分化，正是因为它们对接的是AI需求的不同层次。
   </div>
 
-  <div class="card">
-    <div class="card-t">四重驱动：哪些已经发生，哪些还在路上</div>
-    <div style="display:flex;flex-direction:column;gap:14px">
-
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="flex-shrink:0;width:36px;height:36px;border-radius:10px;background:#ecfdf5;display:flex;align-items:center;justify-content:center;font-size:16px">☁️</div>
-        <div>
-          <div style="font-size:13.5px;font-weight:700;margin-bottom:3px">① 云厂商资本开支继续上修 <span class="bd bd-g">已发生</span></div>
-          <div style="font-size:12.5px;color:var(--sub);line-height:1.7">亚马逊全年指引从$2000亿→$2200亿；谷歌$1800-1900亿→$1950-2050亿；Meta下限从$1250亿→$1300亿（摩根士丹利全球云资本开支追踪，2026年7月）。AI从投入到回报的正循环已初步形成，"砸钱→有回报→继续砸"飞轮在转。</div>
+  <!-- Demand split diagram -->
+  <div class="demand-grid">
+    <div class="demand-col up">
+      <h3 style="color:#065f46">📡 光模块 · 算力集群基础设施需求</h3>
+      <div class="demand-item">
+        <div class="di-icon">🖥️</div>
+        <div class="di-body">
+          <div class="di-name">需求来源：GPU集群组网</div>
+          <div class="di-desc">每台 H100/H200 服务器有 8 个 400G 光口；一个万卡集群需要约 8-10 万颗光模块。集群越大，光模块需求越多——且是乘法关系，不是加法关系。</div>
         </div>
       </div>
-
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="flex-shrink:0;width:36px;height:36px;border-radius:10px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:16px">⚡</div>
-        <div>
-          <div style="font-size:13.5px;font-weight:700;margin-bottom:3px">② 800G→1.6T：单模块InP耗量翻倍 <span class="bd bd-r">最被低估</span></div>
-          <div style="font-size:12.5px;color:var(--sub);line-height:1.7">800G光模块需要4-8颗磷化铟激光芯片，1.6T光通道数翻倍到8条，每条通道独立的InP收发器件。从800G切到1.6T，<strong>每个模块消耗InP约是800G的2.7-3倍</strong>。这种"单位消耗倍增"往往比总量扩张来得更猛，市场很容易只看出货量而低估材料端压力。</div>
+      <div class="demand-item">
+        <div class="di-icon">⚡</div>
+        <div class="di-body">
+          <div class="di-name">速率升级 = 需求量级跃升</div>
+          <div class="di-desc">从 400G → 800G → 1.6T，每次速率翻倍都带来单模块材料消耗倍增。速率升级不是替换，是叠加，旧速率的模块也继续采购。</div>
         </div>
       </div>
-
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="flex-shrink:0;width:36px;height:36px;border-radius:10px;background:#f5f3ff;display:flex;align-items:center;justify-content:center;font-size:16px">🔌</div>
-        <div>
-          <div style="font-size:13.5px;font-weight:700;margin-bottom:3px">③ "光进铜退"：GPU集群内部新增TAM <span class="bd bd-b">加速中</span></div>
-          <div style="font-size:12.5px;color:var(--sub);line-height:1.7">AI集群Scale-Up网络（机架内GPU互联）正在从铜缆DAC向光模块迁移。Lumentum明确表示下一代GPU/XPU/自研AI芯片需要光链路延伸Scale-Up连接跨机架。这是原有数据中心互联之外的<strong>全新TAM</strong>，需求还没有真正开始放量（2027-2028年才大规模落地）。</div>
+      <div class="demand-item">
+        <div class="di-icon">🔌</div>
+        <div class="di-body">
+          <div class="di-name">铜缆 → 光缆替换（新增TAM）</div>
+          <div class="di-desc">机架内部的 GPU Scale-Up 连接正从铜 DAC 线缆迁移到光模块。这是现有数据中心互联之外的全新市场，还没有大规模启动。</div>
         </div>
       </div>
-
-      <div style="display:flex;gap:12px;align-items:flex-start">
-        <div style="flex-shrink:0;width:36px;height:36px;border-radius:10px;background:#fff7ed;display:flex;align-items:center;justify-content:center;font-size:16px">🌏</div>
-        <div>
-          <div style="font-size:13.5px;font-weight:700;margin-bottom:3px">④ 地缘博弈叠加：中国InP出口管制 <span class="bd bd-o">特殊催化</span></div>
-          <div style="font-size:12.5px;color:var(--sub);line-height:1.7">2026年中国商务部将磷化铟纳入许可管理，对日本军用出口全面禁止，民用许可拒绝率已超80%。日本住友、JX金属约90%铟依赖中国进口，全球InP寡头供应链被直接收紧。中国厂商需求不减，国内产能优先满足国内，进一步加剧全球缺口。</div>
+      <div class="demand-item">
+        <div class="di-icon">☁️</div>
+        <div class="di-body">
+          <div class="di-name">云厂商资本开支持续上修</div>
+          <div class="di-desc">亚马逊从 $2000亿→$2200亿、谷歌上修约 $150亿、Meta 继续加码。每一笔资本开支里，光互联是"必买清单"，没有可替代品。</div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- 产业链层级 -->
-<div class="section" id="chain">
-  <div class="sec-title"><div class="ico ico-b">🗺️</div>产业链层级：从最紧到最松</div>
-
-  <div class="cl g"><strong>Serenity原则：先排层级，再排公司。</strong>最有价值的研究路径不是找业绩最好的，而是找离真实扩产约束最近的。下面从最紧到最松排列各层。</div>
-
-  <div class="chain">
-
-    <!-- Layer 1: InP Substrate -->
-    <div class="chain-row" style="margin-bottom:10px">
-      <div class="chain-line" style="background:linear-gradient(180deg,#dc2626,#dc2626)"></div>
-      <div class="chain-body" style="background:#fef2f2;border-color:#fca5a5">
-        <div class="chain-label" style="color:#991b1b">第一层 · 最紧卡点</div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-          <div class="chain-name">磷化铟（InP）衬底 + 铟原料</div>
-          <span class="scarcity sc-critical">🔴 极度稀缺 缺口70%+</span>
-        </div>
-        <div class="chain-desc">
-          <strong>供需：</strong>2026年全球需求260-300万片，有效产能约75万片，缺口70-75%<br>
-          <strong>价格：</strong>4英寸衬底今年已涨50%至¥6500/片；6英寸从$1400涨至$5000（+257%）；Q4将迎来"第四连涨"，涨幅>10%<br>
-          <strong>垄断：</strong>住友电工（日）、AXT（美/中）、JX金属（日）三家合计产能占全球90%<br>
-          <strong>制约扩产的硬约束：</strong>高纯铟（≥6N纯度）提纯工艺+InP单晶生长（LEC/VGF/VB法）技术壁垒极高，新增产能从立项到量产至少3-5年
-        </div>
-        <div class="chain-tickers">
-          <span class="tk tk-r">002428 云南锗业</span><span class="tk tk-r">600206 有研新材</span>
-          <span class="tk tk-r">000960 锡业股份</span><span class="tk tk-r">603065 宿迁联盛</span>
+    <div class="demand-col dn">
+      <h3 style="color:#991b1b">💾 存储 · 面向不同需求层的混合产品</h3>
+      <div class="demand-item">
+        <div class="di-icon">🧠</div>
+        <div class="di-body">
+          <div class="di-name">HBM（高带宽内存）：AI直接需求</div>
+          <div class="di-desc">封装在 GPU 内部，SK海力士垄断 50%+，是真正的 AI 受益品种。但市场已完全定价，并开始 forward-looking 担忧三星追赶 HBM4。</div>
         </div>
       </div>
-    </div>
-
-    <!-- Layer 2: Epitaxy + EML chips -->
-    <div class="chain-row" style="margin-bottom:10px">
-      <div class="chain-line" style="background:linear-gradient(180deg,#d97706,#d97706)"></div>
-      <div class="chain-body" style="background:#fff7ed;border-color:#fdba74">
-        <div class="chain-label" style="color:#92400e">第二层 · 高度紧缺</div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-          <div class="chain-name">InP外延片 + EML激光芯片 + 高功率CW光源</div>
-          <span class="scarcity sc-high">🟠 高度紧缺</span>
-        </div>
-        <div class="chain-desc">
-          <strong>EML芯片：</strong>调制器与激光器集成，是800G/1.6T长距传输核心，需要InP外延片制造。供给端：Lumentum、Broadcom（Coherent）、源杰科技为主，产能排期已满<br>
-          <strong>CW激光器：</strong>硅光模块所需连续波光源，高功率要求苛刻，Lumentum已在初步交付CPO用外部激光模块<br>
-          <strong>业绩验证：</strong>源杰科技H1营收¥9亿，净利润¥6亿，同比增长超13倍——光芯片层的业绩比光模块层更纯粹<br>
-          <strong>Lumentum：</strong>Q4 FY2026营收$10.1亿（+109% YoY），开始1.6T出货，多年多十亿美元OCS采购协议已签
-        </div>
-        <div class="chain-tickers">
-          <span class="tk tk-r">688498 源杰科技</span><span class="tk tk-r">600703 三安光电</span>
-          <span class="tk tk-r">002281 光迅科技</span>
-          <span class="tk tk-b">LITE.US Lumentum</span><span class="tk tk-b">COHR.US Coherent</span>
+      <div class="demand-item">
+        <div class="di-icon">💿</div>
+        <div class="di-body">
+          <div class="di-name">NAND 闪存：AI 需求极其间接</div>
+          <div class="di-desc">AI 训练消耗的是 HBM + DRAM，NAND 只用于数据集存储和检查点，占 AI 计算成本极低。NAND 主要市场仍是手机、PC、SSD —— 跟 AI 资本开支关系不大。</div>
         </div>
       </div>
-    </div>
-
-    <!-- Layer 3: Module Assembly -->
-    <div class="chain-row" style="margin-bottom:10px">
-      <div class="chain-line" style="background:linear-gradient(180deg,#2563eb,#2563eb)"></div>
-      <div class="chain-body" style="background:#eff6ff;border-color:#93c5fd">
-        <div class="chain-label" style="color:#1e40af">第三层 · 偏紧但扩产中</div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-          <div class="chain-name">高速光模块封装（800G / 1.6T）</div>
-          <span class="scarcity sc-med">🟢 订单饱满 扩产中</span>
-        </div>
-        <div class="chain-desc">
-          <strong>新易盛：</strong>H1净利润¥70-80亿（+103% YoY）；Q2单季¥42-52亿（+88% QoQ）；800G主力出货，1.6T Q2较Q1显著增长；泰国工厂已投产<br>
-          <strong>天孚通信：</strong>H1净利润¥12.24-13.04亿（+275%）；1.6T光引擎已规模量产；CPO配套FAU/ELS产品交付中<br>
-          <strong>中际旭创：</strong>订单已覆盖2026全年，部分到2027；客户已给出2028年新产品指引；3.2T研发中，2028年方案成熟<br>
-          <strong>瓶颈：</strong>这层的瓶颈不是自身产能，而是上游光芯片物料供应——"物料紧缺逐步缓解"是近期共识，H2改善可期<br>
-          <strong>AAOI：</strong>800G收入将Q3环比增5x，目标年底月产65万颗，2027年底93万颗
-        </div>
-        <div class="chain-tickers">
-          <span class="tk tk-r">300502 新易盛</span><span class="tk tk-r">300308 中际旭创</span>
-          <span class="tk tk-r">300394 天孚通信</span>
-          <span class="tk tk-b">AAOI.US AOI</span><span class="tk tk-b">IIVI.US Coherent</span>
+      <div class="demand-item">
+        <div class="di-icon">📱</div>
+        <div class="di-body">
+          <div class="di-name">消费端 NAND 需求疲软</div>
+          <div class="di-desc">智能手机换机周期延长、PC 需求未完全复苏。闪迪（SanDisk）、铠侠等 NAND 纯厂商，AI 叙事掩护了消费端软弱的事实，一旦市场回到基本面，估值修正。</div>
         </div>
       </div>
-    </div>
-
-    <!-- Layer 4: Cloud demand -->
-    <div class="chain-row">
-      <div class="chain-line" style="background:linear-gradient(180deg,#059669,#059669)"></div>
-      <div class="chain-body" style="background:#ecfdf5;border-color:#86efac">
-        <div class="chain-label" style="color:#065f46">下游需求端（非约束层）</div>
-        <div class="chain-name">云厂商AI数据中心建设</div>
-        <div class="chain-desc">AWS/Google/Meta/微软资本开支持续上修，AI from 投入到回报正循环，需求方不是卡点——是驱动力。各家HPC集群规模继续扩张，GPU配比持续提升，每增加一个GPU节点就要配套相应的高速光互联。</div>
+      <div class="demand-item">
+        <div class="di-icon">📉</div>
+        <div class="di-body">
+          <div class="di-name">HBM 股票的"完美定价"陷阱</div>
+          <div class="di-desc">SK 海力士 Q1 净利润 +158%，但股价已提前 6-9 个月计入，当业绩"只是符合预期"时，市场开始卖出。这是典型的"买预期 卖事实"。</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- 核心卡点InP -->
-<div class="section" id="bottleneck">
-  <div class="sec-title"><div class="ico ico-r">🔴</div>真正的卡点：磷化铟（InP）的断供危机</div>
-
-  <div class="cl r"><strong>市场在讨论"光模块涨"，但真正的研究应该问：谁卡住了光模块？答案是磷化铟衬底。</strong>这个环节不为大众所知，但供需缺口是整个产业链里最严重的，且扩产比光模块难得多。</div>
+<!-- SECTION 2: WHY OPTICAL UP -->
+<div class="section" id="optical-why">
+  <div class="sec-title"><div class="ico" style="background:#ecfdf5">📡</div>光模块为什么涨：三重需求共振</div>
 
   <div class="card">
-    <div class="card-t">📊 磷化铟全球供需结构（2026年）</div>
-    <div class="g2" style="margin-bottom:14px">
-      <div style="background:#fef2f2;border-radius:10px;padding:14px;text-align:center">
-        <div style="font-size:32px;font-weight:900;color:#dc2626">260-300</div>
-        <div style="font-size:12px;color:var(--sub)">万片/年 · 全球需求</div>
-        <div style="font-size:11px;color:#dc2626;margin-top:4px">Yole/Omdia 2026年测算</div>
-      </div>
-      <div style="background:#ecfdf5;border-radius:10px;padding:14px;text-align:center">
-        <div style="font-size:32px;font-weight:900;color:#059669">75</div>
-        <div style="font-size:12px;color:var(--sub)">万片/年 · 有效产能</div>
-        <div style="font-size:11px;color:#dc2626;margin-top:4px">缺口高达 <strong>70-75%</strong></div>
-      </div>
+    <div class="card-t">AI 算力集群的物理结构决定了光模块的刚需属性</div>
+    <div style="font-size:13.5px;line-height:1.9;margin-bottom:14px">
+      一个 <strong>10,000 卡 H100 集群</strong>的光模块用量：
+      <br>• 每台服务器 8 个 400G 光口（约 8 个模块）
+      <br>• 10,000 卡 ÷ 8 卡/服务器 = 1,250 台服务器
+      <br>• 1,250 台 × 8 个模块 × 2（收发双向）≈ <strong>约 8-10 万颗光模块</strong>
+      <br>• 若升级到 800G，同样集群模块数量减半但单价倍增；若集群规模扩大到 10 万卡，光模块需求直接 ×10
     </div>
-    <div style="background:#f8fafc;border-radius:8px;padding:12px;font-size:13px;line-height:1.8">
-      <strong>供给侧：</strong>全球90%产能集中在住友电工（日）、AXT（美/中）、JX金属（日）。<br>
-      <strong>价格：</strong>4英寸衬底 ¥6,500/片（年初至今+50%）；2英寸从$800涨至$2,300-2,500（紧急订单$3,000+）；6英寸从$1,400涨至$5,000（+257%）。即将迎来<strong>第四次连续涨价</strong>，Q4涨幅>10%创历史最大单次。<br>
-      <strong>扩产约束：</strong>高纯铟（6N纯度）全球年产量已被限制在中国年产量的30%；LEC/VGF单晶生长每炉只能产数十片，良率受温控精度决定。新建产线从立项到稳定量产≥3-5年。
+    <div style="background:#ecfdf5;border-radius:10px;padding:14px;font-size:13px;line-height:1.8;color:#065f46">
+      <strong>关键结论：光模块是 AI 集群的"神经系统"，缺一个集群就运转不了。</strong>这与 NAND 存储的"锦上添花"属性形成根本差异——没有光模块 GPU 就是一块砖，没有 NAND 仍然可以训练（只是慢一点）。
     </div>
   </div>
-
-  <div class="card">
-    <div class="card-t">🇨🇳 国产替代窗口：一个被出口管制"强制创造"的机会</div>
-    <div style="font-size:13.5px;line-height:1.8;margin-bottom:12px">
-      中国是全球最大铟生产国（锡业股份铟资源储量全球第一），同时也是InP衬底重要生产国。2026年出口管制政策叠加后：<br>
-      • 日本申请中国产InP的民用许可拒绝率 > 80%<br>
-      • 对日军用出口已降至零<br>
-      • 中国产InP从出口转为<strong>优先供应国内光模块产业链</strong><br><br>
-      这在客观上创造了一个<strong>国内供需比全球稍好</strong>的环境：中国光模块厂商（旭创、新易盛）可以获得本土InP产能的优先配额，国产光芯片厂商（源杰科技、三安光电）也更容易拿到上游材料。国产替代不是口号，是出口管制的逻辑结果。
-    </div>
-    <table class="tbl">
-      <thead><tr><th>环节</th><th>海外主导</th><th>国内代表</th><th>国产化进度</th></tr></thead>
-      <tbody>
-        <tr><td>铟资源</td><td>-</td><td>锡业股份(000960)、华锡有色</td><td><span class="bd bd-g">全球最大储量</span></td></tr>
-        <tr><td>InP衬底</td><td>住友电工、JX金属、AXT</td><td>云南锗业(002428)、有研新材(600206)</td><td><span class="bd bd-b">6英寸已量产/送样</span></td></tr>
-        <tr><td>InP外延片</td><td>住友电工、IQE、联亚光电</td><td>三安光电(600703)、全磊光电</td><td><span class="bd bd-b">6英寸规模化中</span></td></tr>
-        <tr><td>EML光芯片</td><td>Lumentum、Coherent、Broadcom</td><td>源杰科技(688498)、光迅科技(002281)</td><td><span class="bd bd-o">批量交付中 从15%→30%+</span></td></tr>
-        <tr><td>高速光模块</td><td>Coherent、Lumentum、Finisar</td><td>中际旭创(300308)、新易盛(300502)</td><td><span class="bd bd-g">国内领先 有竞争力</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- 公司优先级 -->
-<div class="section" id="companies">
-  <div class="sec-title"><div class="ico ico-p">📋</div>公司优先研究名单</div>
-
-  <div class="cl y"><strong>排序逻辑：</strong>离真实扩产约束近 + 证据强度高 + 市场可能没看清的地方。越上游越稀缺但市场认知越低；越下游业绩越清晰但已高度拥挤。</div>
-
-  <div class="card">
-    <table class="tbl">
-      <thead><tr><th>#</th><th>公司</th><th>产业链位置</th><th>核心看点</th><th>关键证据</th><th>主要风险</th></tr></thead>
-      <tbody>
-        <tr style="background:#fff7ed">
-          <td style="font-weight:800;font-size:16px;color:#d97706">1</td>
-          <td><strong>源杰科技</strong><br><span class="bd bd-r">688498</span></td>
-          <td>国内EML光芯片龙头<br><small>离InP芯片层最近的A股标的</small></td>
-          <td>直接卡住光模块封装的上游；国产替代从15%向30%+推进；单价高，毛利率远优于模块厂</td>
-          <td>H1营收¥9亿，净利润¥6亿，<strong>同比增长13倍</strong>（业绩预告）；Q2净利润¥4.2-4.7亿，环比+134-162%</td>
-          <td>硅光替代侵蚀部分EML市场；客户认证速度；海外竞争</td>
-        </tr>
-        <tr>
-          <td style="font-weight:800;font-size:16px;color:#dc2626">2</td>
-          <td><strong>云南锗业</strong><br><span class="bd bd-r">002428</span></td>
-          <td>InP衬底国产最大玩家<br><small>距离原材料端最近</small></td>
-          <td>6英寸InP衬底已量产；已签大单（合同金额或为2024年营收53-80%）；铟资源+锗资源双轮；国内唯一有规模的InP衬底厂</td>
-          <td>8月17-18日涨幅靠前；专家表示2-4英寸年产15万片→18万片计划；大单合同实证</td>
-          <td>技术难度大，良率爬坡慢；大客户集中；锗价波动影响情绪</td>
-        </tr>
-        <tr style="background:#fef2f2">
-          <td style="font-weight:800;font-size:16px;color:#dc2626">3</td>
-          <td><strong>有研新材</strong><br><span class="bd bd-r">600206</span></td>
-          <td>InP衬底国家队<br><small>承担02专项</small></td>
-          <td>国家02专项背书；6英寸已送样验证；上游稀缺性最纯粹；政策催化与国产替代双重逻辑</td>
-          <td>8月17日涨停（磷化铟概念首板）；国家02专项是强证据</td>
-          <td>产品尚在验证阶段，量产时间表不确定；市值小，流动性波动大</td>
-        </tr>
-        <tr>
-          <td style="font-weight:800;font-size:16px;color:#7c3aed">4</td>
-          <td><strong>三安光电</strong><br><span class="bd bd-r">600703</span></td>
-          <td>化合物半导体IDM龙头<br><small>InP外延片+芯片规模化</small></td>
-          <td>国内唯一具备6英寸InP光芯片大规模量产能力的IDM；覆盖GaN/GaAs/SiC/InP全材料；规模效应使成本下降约40%</td>
-          <td>九峰山实验室数据：6英寸突破后国产光芯片份额从15%→30%+；光芯片研究报告多次提名核心标的</td>
-          <td>业务多元，InP占比有限；IDM重资产模式，扩产需时间；竞争格局变化</td>
-        </tr>
-        <tr style="background:#eff6ff">
-          <td style="font-weight:800;font-size:16px;color:#2563eb">5</td>
-          <td><strong>新易盛</strong><br><span class="bd bd-r">300502</span></td>
-          <td>光模块封装TOP2<br><small>业绩确定性最强</small></td>
-          <td>H1净利润+103%；Q2单季突破¥50亿历史首次；泰国工厂一期量产；1.6T已从Q1→Q2显著放量；已推出6.4T NPO和12.8T XPO前沿产品</td>
-          <td>417家机构参加电话会议；否认"1.6T订单下修"传闻；订单覆盖2026-2027</td>
-          <td>估值已高；物料瓶颈（虽在缓解）；客户集中度（美国大型云厂商）；贸易政策</td>
-        </tr>
-        <tr>
-          <td style="font-weight:800;font-size:16px;color:#2563eb">6</td>
-          <td><strong>中际旭创</strong><br><span class="bd bd-r">300308</span></td>
-          <td>光模块封装TOP1<br><small>龙头地位最稳固</small></td>
-          <td>订单覆盖2026全年，部分到2027；客户2028年新产品指引"金额非常可观"；7月28日大跌后当晚火速推出大额回购（管理层真金白银护盘）</td>
-          <td>副总裁+董秘电话会实证；年内涨幅49%（截至7月末）；回购行动</td>
-          <td>估值历史高位；澄清"小作文"事件遗留市场不信任；毛利率压力</td>
-        </tr>
-        <tr style="background:#eff6ff">
-          <td style="font-weight:800;font-size:16px;color:#2563eb">7</td>
-          <td><strong>Lumentum</strong><br><span class="bd bd-b">LITE.US</span></td>
-          <td>全球EML芯片+光模块双栖龙头</td>
-          <td>Q4 FY2026营收$10.1亿（+109%）；已签多年多十亿美元OCS采购协议；CPO/NPO外部激光模块已初步交付；预测InP光通道出货量CAGR 85%</td>
-          <td>Q4财报实证；OCS多年协议签约是强证据；1.6T初步出货</td>
-          <td>客户集中；地缘风险（生产基地分布）；CPO/NPO时间表不确定</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- 近期催化 -->
-<div class="section" id="catalysts">
-  <div class="sec-title"><div class="ico ico-y">⚡</div>接下来可能让市场重新定价的事情</div>
 
   <div class="g2">
     <div class="card" style="margin-bottom:0;border-left:4px solid var(--green)">
-      <div class="card-t" style="color:var(--green)">近期（1-3个月内）</div>
-      <ul style="font-size:13px;line-height:2;list-style:none">
-        <li>📈 InP衬底Q4涨价落地（>10%）→ 上游材料股量价齐升</li>
-        <li>📦 中际旭创H1业绩预告（尚未披露）→ 打破"不及预期"谣言</li>
-        <li>🏭 新易盛/旭创 H2订单交付量环比提升实证</li>
-        <li>🔬 1.6T出货量数据更新（AOI、Lumentum季报）</li>
-        <li>💡 源杰科技中报业绩正式披露</li>
-      </ul>
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px">800G→1.6T：单模块材料消耗翻3倍</div>
+      <div style="font-size:12.5px;color:var(--sub);line-height:1.8">
+        800G：每模块需 4 颗 InP 激光芯片<br>
+        1.6T：光通道数从 4→8 条，每条独立收发<br>
+        → <strong>每个模块消耗 InP 约 2.7-3 倍</strong><br>
+        这是"单位消耗倍增"而非总量增长，更猛，更难被替代
+      </div>
     </div>
     <div class="card" style="margin-bottom:0;border-left:4px solid var(--blue)">
-      <div class="card-t" style="color:var(--blue)">中期（3-12个月）</div>
-      <ul style="font-size:13px;line-height:2;list-style:none">
-        <li>🔗 NPO/CPO规模部署开始（Lumentum预测2027年底）</li>
-        <li>📡 3.2T产品路线图确认（旭创2028年成熟）</li>
-        <li>🌐 Scale-Up光互联在主流GPU平台落地</li>
-        <li>🏗️ 云厂商Q3资本开支数据（继续上修/持平/下修）</li>
-        <li>🇨🇳 国产InP认证进度（云南锗业6英寸通过率）</li>
+      <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:10px">订单能见度清晰，2027-2028年已锁定</div>
+      <div style="font-size:12.5px;color:var(--sub);line-height:1.8">
+        中际旭创：订单覆盖至 2027，部分客户已给 2028 指引<br>
+        Coherent：CEO 表示"订单已排至 2028 年"<br>
+        AOI：在手 1.6T 订单超 $2 亿<br>
+        → 需求能见度是光模块板块定价最强的支撑
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: WHY STORAGE DOWN -->
+<div class="section" id="storage-why">
+  <div class="sec-title"><div class="ico" style="background:#fef2f2">💾</div>存储为什么跌：三类不同跌法，逻辑各异</div>
+
+  <div class="cl o">
+    <strong>"存储跌了"这个描述本身是模糊的。</strong>存储板块其实有三种截然不同的资产，跌的逻辑完全不同，不能混为一谈。
+  </div>
+
+  <div class="card">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>存储类型</th>
+          <th>代表公司</th>
+          <th>AI需求关联度</th>
+          <th>下跌真实原因</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>HBM</strong><br><small>高带宽内存</small></td>
+          <td>SK 海力士<br>三星（HBM部门）</td>
+          <td><span class="bd bd-g">极高 · 直接嵌入GPU</span></td>
+          <td>
+            <strong>不是需求下降，是估值修正</strong><br>
+            ① 股价提前 6-9 个月定价，业绩"符合预期"反而成卖出信号<br>
+            ② 三星 HBM4 即将通过 NVIDIA 认证 → 独家格局松动恐慌<br>
+            ③ TSMC 依赖（HBM4 需要 TSMC CoW 封装）→ 供应链风险<br>
+            <span style="color:var(--sub);font-size:11.5px">AI 需求没有减少，是"buy the rumor, sell the news"</span>
+          </td>
+        </tr>
+        <tr style="background:#fef2f2">
+          <td><strong>NAND 闪存</strong><br><small>消费+企业存储</small></td>
+          <td>闪迪（SanDisk）<br>铠侠、美光NAND</td>
+          <td><span class="bd bd-r">极低 · 消费端为主</span></td>
+          <td>
+            <strong>AI 叙事遮盖了消费端软弱</strong><br>
+            ① NAND 80%+ 市场是手机、PC、SSD —— 消费需求未复苏<br>
+            ② AI 训练实际不需要太多 NAND（用的是内存+HBM）<br>
+            ③ 跟光模块一起被贴"AI存储"标签是错误叙事<br>
+            <span style="color:var(--sub);font-size:11.5px">AI 需求从未实质性利好过 NAND，估值泡沫破裂而已</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>企业 SSD / NVMe</strong><br><small>数据中心存储</small></td>
+          <td>美光 NVMe<br>三星企业SSD</td>
+          <td><span class="bd bd-o">中等 · 数据存储/检索</span></td>
+          <td>
+            <strong>真实受益但被 NAND 板块情绪拖累</strong><br>
+            ① AI 推理端确实需要高速 NVMe 存模型权重<br>
+            ② 但体量有限，不足以撑起整个存储板块估值<br>
+            ③ 随 NAND 整体跌，属于错杀<br>
+            <span style="color:var(--sub);font-size:11.5px">这层是少数真的被低估的存储资产</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 4: DIVERGENCE ESSENCE -->
+<div class="section" id="diverge">
+  <div class="sec-title"><div class="ico" style="background:#f5f3ff">⚖️</div>分歧的本质：AI需求流向的位置决定一切</div>
+
+  <div class="card">
+    <div class="card-t">AI 基础设施需求金字塔（按直接性和确定性排序）</div>
+    <div class="pyramid">
+      <div class="pyr-row">
+        <div class="pyr-rank" style="background:#dc2626;color:#fff">1</div>
+        <div class="pyr-bar" style="background:#fef2f2;border:1.5px solid #fca5a5">
+          <div class="pyr-label" style="color:#dc2626">GPU / 定制AI芯片（算力本体）</div>
+          <div class="pyr-items">NVIDIA H100/B200、AMD MI300X、Google TPU、AWS Trainium — 最直接受益，需求无弹性</div>
+          <div class="pyr-badge" style="background:#dc2626;color:#fff">直接 · 无替代</div>
+        </div>
+      </div>
+      <div class="pyr-row">
+        <div class="pyr-rank" style="background:#d97706;color:#fff">2</div>
+        <div class="pyr-bar" style="background:#fffbeb;border:1.5px solid #fdba74">
+          <div class="pyr-label" style="color:#d97706">高速光互联（光模块 · 光芯片）</div>
+          <div class="pyr-items">中际旭创、新易盛、Lumentum、Coherent — GPU 组网的唯一方案，集群扩大自动带动需求，供给严重紧缺</div>
+          <div class="pyr-badge" style="background:#d97706;color:#fff">直接 · 供给极紧</div>
+        </div>
+      </div>
+      <div class="pyr-row">
+        <div class="pyr-rank" style="background:#d97706;color:#fff">2</div>
+        <div class="pyr-bar" style="background:#fffbeb;border:1.5px solid #fdba74">
+          <div class="pyr-label" style="color:#d97706">HBM（高带宽内存）</div>
+          <div class="pyr-items">SK 海力士、三星 HBM 部门、Micron HBM — 封装在 GPU 内部，直接受益，但已过充分定价阶段，进入估值修正</div>
+          <div class="pyr-badge" style="background:#d97706;color:#fff">直接 · 已定价</div>
+        </div>
+      </div>
+      <div class="pyr-row">
+        <div class="pyr-rank" style="background:#2563eb;color:#fff">3</div>
+        <div class="pyr-bar" style="background:#eff6ff;border:1.5px solid #93c5fd">
+          <div class="pyr-label" style="color:#2563eb">电力基础设施 / 液冷 / 配电</div>
+          <div class="pyr-items">GE Vernova、Eaton、Vertiv、英维克 — 数据中心用电量剧增的受益方，长周期但确定性高</div>
+          <div class="pyr-badge" style="background:#2563eb;color:#fff">间接 · 高确定性</div>
+        </div>
+      </div>
+      <div class="pyr-row">
+        <div class="pyr-rank" style="background:#7c3aed;color:#fff">4</div>
+        <div class="pyr-bar" style="background:#f5f3ff;border:1.5px solid #c4b5fd">
+          <div class="pyr-label" style="color:#7c3aed">企业 NVMe SSD / 数据中心存储</div>
+          <div class="pyr-items">三星企业SSD、美光企业SSD — AI 推理需要存储模型权重，但体量有限，不足以驱动整板块</div>
+          <div class="pyr-badge" style="background:#7c3aed;color:#fff">间接 · 有限</div>
+        </div>
+      </div>
+      <div class="pyr-row">
+        <div class="pyr-rank" style="background:#64748b;color:#fff">5</div>
+        <div class="pyr-bar" style="background:#f8fafc;border:1.5px solid #e2e8f0">
+          <div class="pyr-label" style="color:#64748b">消费 NAND / 普通 DRAM</div>
+          <div class="pyr-items">闪迪、铠侠、西部数据 NAND — AI 需求几乎不流向这里；主要驱动力仍是手机 PC 换机周期，与 AI 资本开支基本脱钩</div>
+          <div class="pyr-badge" style="background:#64748b;color:#fff">脱钩 · 消费周期</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#f0fdf4;border-radius:10px;padding:14px 16px;font-size:13.5px;line-height:1.85;margin-top:4px;border-left:4px solid var(--green)">
+      <strong>结论：光模块在金字塔第2层，NAND消费存储在第5层。</strong>同样被贴上"AI概念"标签，实际上离AI需求的距离相差了3个层级。市场纠偏的过程就是对这3层距离的重新定价。
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: SUPPLY CHAIN -->
+<div class="section" id="chain">
+  <div class="sec-title"><div class="ico" style="background:#fff7ed">🔴</div>光模块产业链：真正的卡点在磷化铟（InP）</div>
+
+  <div class="cl b">
+    光模块涨的表面是需求爆发，底层是供给卡死了。<strong>磷化铟衬底全球供需缺口超过 70%</strong>，三家日美企业垄断了 90% 的全球产能，中国出口管制又进一步收紧了对日本的供给。这是教科书级别的稀缺卡点。
+  </div>
+
+  <div class="chain-row">
+    <div class="chain-line" style="background:#dc2626"></div>
+    <div class="chain-body" style="background:#fef2f2;border-color:#fca5a5">
+      <div class="chain-label" style="color:#991b1b">第一卡点 · 最紧</div>
+      <div class="chain-name">磷化铟（InP）衬底 + 铟原料</div>
+      <div class="chain-desc">
+        2026年需求 260-300 万片，有效产能仅 75 万片，<strong>缺口 70%+</strong>。4英寸衬底年内涨价 50%（¥6,500/片），Q4将迎第四连涨（>10%）。中国对日出口管制使日本申请拒绝率超80%，全球寡头供给进一步收窄。
+      </div>
+      <div class="chain-tickers">
+        <span class="tk tk-r">002428 云南锗业</span><span class="tk tk-r">600206 有研新材</span>
+        <span class="tk tk-r">000960 锡业股份</span><span class="tk tk-r">603065 宿迁联盛</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chain-row">
+    <div class="chain-line" style="background:#d97706"></div>
+    <div class="chain-body" style="background:#fffbeb;border-color:#fdba74">
+      <div class="chain-label" style="color:#92400e">第二卡点 · 高度紧缺</div>
+      <div class="chain-name">EML 激光芯片 + 高功率 CW 光源</div>
+      <div class="chain-desc">
+        每颗 1.6T 模块消耗 InP 是 800G 的 2.7-3 倍，供给极度偏紧。源杰科技 H1 净利润同比增长超 13 倍，是光芯片层的业绩实证。国产化从 15% 向 30% 推进，但仍严重依赖海外。
+      </div>
+      <div class="chain-tickers">
+        <span class="tk tk-r">688498 源杰科技</span><span class="tk tk-r">600703 三安光电</span>
+        <span class="tk tk-r">002281 光迅科技</span>
+        <span class="tk tk-b">LITE.US Lumentum</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chain-row">
+    <div class="chain-line" style="background:#2563eb"></div>
+    <div class="chain-body" style="background:#eff6ff;border-color:#93c5fd">
+      <div class="chain-label" style="color:#1e40af">第三层 · 订单饱满 扩产中</div>
+      <div class="chain-name">高速光模块封装（800G / 1.6T）</div>
+      <div class="chain-desc">
+        新易盛 H1 净利润 +103%（¥70-80亿），天孚通信 H1 净利润 +275%。中际旭创订单至 2027，客户已给 2028 指引。这层的瓶颈是上游物料（光芯片），H2 随供应链改善，交付量环比提升可期。
+      </div>
+      <div class="chain-tickers">
+        <span class="tk tk-r">300502 新易盛</span><span class="tk tk-r">300308 中际旭创</span>
+        <span class="tk tk-r">300394 天孚通信</span><span class="tk tk-b">AAOI.US AOI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: INVESTMENT MAP -->
+<div class="section" id="stocks">
+  <div class="sec-title"><div class="ico" style="background:#ecfdf5">📋</div>投资图谱：应该看哪里</div>
+
+  <div class="card">
+    <div class="card-t">按 AI 需求直接性 × 供给稀缺性 筛选</div>
+    <table class="tbl">
+      <thead>
+        <tr><th>公司</th><th>AI需求直接性</th><th>供给稀缺性</th><th>当前估值状态</th><th>核心看点</th></tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fffbeb">
+          <td><strong>源杰科技</strong> <span class="bd bd-r">688498</span></td>
+          <td><span class="bd bd-g">极高</span></td>
+          <td><span class="bd bd-r">极度稀缺</span></td>
+          <td><span class="bd bd-o">合理偏高</span></td>
+          <td>国内 EML 光芯片龙头，H1 净利润+13倍，离 InP 卡点最近，国产替代逻辑最纯粹</td>
+        </tr>
+        <tr>
+          <td><strong>云南锗业</strong> <span class="bd bd-r">002428</span></td>
+          <td><span class="bd bd-g">极高</span></td>
+          <td><span class="bd bd-r">极度稀缺</span></td>
+          <td><span class="bd bd-o">部分反应</span></td>
+          <td>国内最大 InP 衬底厂，6英寸已量产，已签大单，铟资源上游</td>
+        </tr>
+        <tr style="background:#fffbeb">
+          <td><strong>有研新材</strong> <span class="bd bd-r">600206</span></td>
+          <td><span class="bd bd-g">极高</span></td>
+          <td><span class="bd bd-r">极度稀缺</span></td>
+          <td><span class="bd bd-b">认知度低</span></td>
+          <td>国家 02 专项，InP 衬底国产替代政策背书，认知度最低</td>
+        </tr>
+        <tr>
+          <td><strong>三安光电</strong> <span class="bd bd-r">600703</span></td>
+          <td><span class="bd bd-g">高</span></td>
+          <td><span class="bd bd-o">高度紧缺</span></td>
+          <td><span class="bd bd-o">中等</span></td>
+          <td>6英寸 InP IDM，国内唯一规模化制造，化合物半导体全材料覆盖</td>
+        </tr>
+        <tr style="background:#fffbeb">
+          <td><strong>新易盛</strong> <span class="bd bd-r">300502</span></td>
+          <td><span class="bd bd-g">高</span></td>
+          <td><span class="bd bd-o">偏紧扩产</span></td>
+          <td><span class="bd bd-r">估值高位</span></td>
+          <td>光模块封装龙头，业绩确定性最强，但估值已充分反映，波动风险大</td>
+        </tr>
+        <tr>
+          <td><strong>中际旭创</strong> <span class="bd bd-r">300308</span></td>
+          <td><span class="bd bd-g">高</span></td>
+          <td><span class="bd bd-o">偏紧扩产</span></td>
+          <td><span class="bd bd-r">估值高位</span></td>
+          <td>光模块封装市占最高，2028 客户指引可观，管理层回购彰显信心</td>
+        </tr>
+        <tr style="background:#fef2f2">
+          <td><strong>SK 海力士</strong> <span class="bd bd-gr">KRX</span></td>
+          <td><span class="bd bd-o">高（HBM）</span></td>
+          <td><span class="bd bd-g">相对充足</span></td>
+          <td><span class="bd bd-r">已过度定价</span></td>
+          <td>HBM 需求真实，但估值已提前定价；三星 HBM4 追赶是主要隐患</td>
+        </tr>
+        <tr style="background:#fef2f2">
+          <td><strong>闪迪 / 铠侠</strong> <span class="bd bd-gr">NAND</span></td>
+          <td><span class="bd bd-r">极低（NAND）</span></td>
+          <td><span class="bd bd-gr">不适用</span></td>
+          <td><span class="bd bd-r">AI叙事破裂</span></td>
+          <td>消费 NAND 为主，AI 需求几乎无法传导至此，AI 概念标签已被市场撕掉</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 7: RISKS -->
+<div class="section" id="risks">
+  <div class="sec-title"><div class="ico" style="background:#fef2f2">⚠️</div>什么情况说明这个判断错了</div>
+  <div class="g2">
+    <div style="background:#fef2f2;border-radius:10px;padding:14px;border-left:4px solid #dc2626">
+      <div style="font-size:13px;font-weight:700;color:#dc2626;margin-bottom:8px">光模块端的反方理由</div>
+      <ul style="font-size:12.5px;color:var(--sub);line-height:2;list-style:none">
+        <li>🔴 硅光方案加速替代 EML，减少 InP 需求</li>
+        <li>🔴 云厂商资本开支大幅下修（7月28日已预演过）</li>
+        <li>🔴 美国对中国光模块加征关税或实施禁令</li>
+        <li>🔴 InP 产能比预期更快扩张 → 价格回落</li>
+        <li>🟠 1.6T 规模化放量不及预期（被澄清但市场仍担忧）</li>
+      </ul>
+    </div>
+    <div style="background:#eff6ff;border-radius:10px;padding:14px;border-left:4px solid #2563eb">
+      <div style="font-size:13px;font-weight:700;color:#2563eb;margin-bottom:8px">存储端的潜在反转信号</div>
+      <ul style="font-size:12.5px;color:var(--sub);line-height:2;list-style:none">
+        <li>🟢 消费电子需求超预期复苏，NAND 涨价</li>
+        <li>🟢 三星 HBM4 量产被推迟 → 海力士独占格局延续</li>
+        <li>🟢 AI 推理端爆发带动 NVMe SSD 大规模采购</li>
+        <li>🟢 存储价格下跌触底反转，周期拐点到来</li>
+        <li>🟠 HBM 估值修正完毕后重新成为优质买点</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- 反方理由 -->
-<div class="section" id="risks">
-  <div class="sec-title"><div class="ico ico-r">⚠️</div>什么情况说明这个判断错了</div>
-
-  <div class="card">
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div style="padding:12px;background:#fef2f2;border-radius:8px;border-left:4px solid #dc2626">
-        <div style="font-size:13.5px;font-weight:700;color:#dc2626;margin-bottom:4px">硅光替代加速（最大长期威胁）</div>
-        <div style="font-size:13px;line-height:1.7">1.6T市场中硅光方案渗透率若超预期提升，可减少对InP EML芯片的依赖。现状：新易盛正在"加速硅光方案出货、减轻EML芯片依赖"，说明替代趋势真实存在。Lumentum认为1.6T大量用硅光+CW激光器，3.2T时EML重新占优——但硅光也需要高功率CW激光器（仍是InP），替代不是逃出InP的路径。</div>
-      </div>
-      <div style="padding:12px;background:#fff7ed;border-radius:8px;border-left:4px solid #d97706">
-        <div style="font-size:13.5px;font-weight:700;color:#d97706;margin-bottom:4px">云厂商资本开支大幅下修（7月28日已经发生过一次预演）</div>
-        <div style="font-size:13px;line-height:1.7">7月28日光模块板块单日蒸发3300亿元，诱因是市场对"1.6T订单下修"的传闻。后来三家公司均否认，但说明市场对需求端的脆弱性高度敏感。如果云厂商Q3财报下修资本开支，板块可能再度急跌。</div>
-      </div>
-      <div style="padding:12px;background:#eff6ff;border-radius:8px;border-left:4px solid #2563eb">
-        <div style="font-size:13.5px;font-weight:700;color:#2563eb;margin-bottom:4px">贸易政策：美国限制中国光模块进口</div>
-        <div style="font-size:13px;line-height:1.7">AOI明确提到"美国超大规模客户正在重新评估光学供应链，潜在的美国对中国制造收发器的限制仍在讨论中"。如果美国对中国光模块加征关税或禁令，旭创、新易盛的北美营收（占大头）将直接受损。AAOI的美国本土制造就是在押注这一政策方向。</div>
-      </div>
-      <div style="padding:12px;background:#ecfdf5;border-radius:8px;border-left:4px solid #059669">
-        <div style="font-size:13.5px;font-weight:700;color:#059669;margin-bottom:4px">InP产能比预期更快扩张 → 价格回落</div>
-        <div style="font-size:13px;line-height:1.7">如果住友电工、AXT等加速扩产，或新的中国产能提前量产良率达标，InP从极度紧缺转向供需再平衡，价格涨势将被打断，上游材料标的将首先受损。需要定期跟踪三家主要衬底厂的产能公告。</div>
-      </div>
+<!-- VERDICT -->
+<div class="verdict" style="margin-bottom:0">
+  <h3>📋 一句话研判</h3>
+  <p style="font-size:14px;line-height:1.9;color:#cbd5e1;margin-bottom:20px">
+    光模块和存储的分化，本质是 AI 需求在产业链不同层级的<strong>流量分配问题</strong>。光模块处于"必需品"层——没有它 GPU 集群无法工作；消费 NAND 处于"无关品"层——AI 训练对它的需求微乎其微。<br><br>
+    HBM 是真 AI 受益品，但已经历了一轮完整的估值定价周期，现在进入的是"业绩兑现 vs 叙事重置"的博弈阶段。<br><br>
+    <strong>光模块的上游 InP 材料层（源杰科技、云南锗业、有研新材）才是当前认知度最低、距离真实稀缺约束最近的研究机会。</strong>市场在看"易中天"三兄弟的时候，这层还没有被充分定价。
+  </p>
+  <div class="vgrid">
+    <div class="vc">
+      <h4>🎯 优先研究顺序</h4>
+      <ul>
+        <li>源杰科技 — 光芯片国产龙头，业绩实证最强</li>
+        <li>云南锗业 — InP 衬底最上游，大单证据</li>
+        <li>有研新材 — 政策背书，认知度最低的机会</li>
+        <li>三安光电 — IDM 规模化，中游卡位</li>
+        <li>新易盛/旭创 — 业绩确定但估值已高，波段为主</li>
+      </ul>
     </div>
-  </div>
-</div>
-
-<!-- 研判 -->
-<div class="section" id="verdict">
-  <div class="verdict">
-    <h3>📋 Serenity 综合研判</h3>
-    <p style="font-size:13.5px;line-height:1.85;color:#cbd5e1;margin-bottom:16px">
-      光模块涨的表面是需求爆发，内核是<strong>磷化铟卡住了整条产业链</strong>。70%的供需缺口、2.7倍的单模块材料消耗增量、中国出口管制收紧海外供给——三重逻辑叠加在一起，是一个罕见的"需求清晰、供给有硬约束、扩产周期长"的组合。这是教科书级别的稀缺卡点故事。<br><br>
-      但要警惕两件事：①光模块层（旭创、新易盛）的估值已经很高，业绩越来越好但上涨空间需要看估值再定价空间；②<strong>真正的研究机会可能在上游材料层</strong>（云南锗业、有研新材、源杰科技），这里的市场认知相对不充分，InP的缺口故事还没有被充分定价。
-    </p>
-    <div class="vgrid">
-      <div class="vc">
-        <h4>🎯 优先研究名单（按稀缺层距离）</h4>
-        <ul>
-          <li>源杰科技 — EML光芯片国产龙头，最靠近卡点</li>
-          <li>云南锗业 — InP衬底最上游，已有大单证据</li>
-          <li>有研新材 — 国家02专项，政策背书强</li>
-          <li>三安光电 — 6英寸IDM规模化，中游卡位</li>
-          <li>新易盛 — 业绩确定性最强，但估值最高</li>
-        </ul>
-      </div>
-      <div class="vc">
-        <h4>🔍 接下来要验证的关键事实</h4>
-        <ul>
-          <li>云南锗业"大单"合同披露金额与客户</li>
-          <li>中际旭创H1业绩预告（澄清谣言时间）</li>
-          <li>Q4 InP价格涨幅是否真的超10%</li>
-          <li>AOI Q3实际800G出货量（5x QoQ兑现否）</li>
-          <li>云厂商Q3资本开支数据（继续上修是关键）</li>
-          <li>美国对中国光模块政策方向（AAOI提示）</li>
-        </ul>
-      </div>
+    <div class="vc">
+      <h4>🔍 需要持续跟踪的信号</h4>
+      <ul>
+        <li>云厂商 Q3 资本开支数据（最关键）</li>
+        <li>InP 衬底 Q4 涨价幅度是否超 10%</li>
+        <li>云南锗业"大单"合同金额披露</li>
+        <li>三星 HBM4 进入 NVIDIA 量产时间表</li>
+        <li>美国光模块贸易政策动向</li>
+        <li>NAND 消费端价格拐点（存储反转先行指标）</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -503,23 +586,23 @@ footer{text-align:center;padding:32px 16px;color:#94a3b8;font-size:12px;border-t
 </div>
 
 <footer>
-  <p>reese · Serenity供应链卡点研究 · 2026年8月18日</p>
-  <p style="margin-top:6px">数据来源：中信证券、东吴证券、广发证券研报、Yole/Omdia产业报告、钛媒体、21财经、东方财富、Converge Digest、AOI财报、Lumentum Q4 FY2026财报、Bloomberg</p>
+  <p>reese · Serenity 供应链卡点研究 · 2026年8月18日</p>
+  <p style="margin-top:6px">数据来源：中信证券、东吴证券研报、Yole/Omdia、新易盛/天孚通信业绩预告、AOI 财报、Lumentum Q4 FY2026、Bloomberg、Converge Digest、东方财富</p>
 </footer>
 
 <script>
 const sections = document.querySelectorAll('.section');
 const links = document.querySelectorAll('#nav a');
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      links.forEach(l=>l.classList.remove('act'));
-      const l=document.querySelector('#nav a[href="#'+e.target.id+'"]');
-      if(l)l.classList.add('act');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('act'));
+      const l = document.querySelector('#nav a[href="#' + e.target.id + '"]');
+      if (l) l.classList.add('act');
     }
   });
-},{threshold:0.25});
-sections.forEach(s=>obs.observe(s));
+}, { threshold: 0.2 });
+sections.forEach(s => obs.observe(s));
 </script>
 </body>
 </html>
