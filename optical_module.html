@@ -163,6 +163,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
     <a href="#gpu-cluster">GPU集群需要什么</a>
     <a href="#why-optical">光模块为什么涨</a>
     <a href="#why-storage">存储为什么跌</a>
+    <a href="#inp-explainer">InP与光的关系</a>
     <a href="#bottleneck">供给卡点</a>
     <a href="#stocks">投资图谱</a>
     <a href="#risks">风险</a>
@@ -403,6 +404,114 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<!-- ============ SECTION 4.5: InP EXPLAINER ============ -->
+<div class="section" id="inp-explainer">
+  <div class="sec-title"><div class="ico" style="background:#f5f3ff">🔬</div>插页：磷化铟和"光"是什么关系</div>
+
+  <div class="cl b">
+    很多人知道磷化铟（InP）是光模块的关键材料，但不明白为什么。答案在物理层面——InP 是光模块里<strong>真正产生光子的材料</strong>，没有它就造不出激光器，GPU 之间就没法用光纤通信。
+  </div>
+
+  <!-- FLOW: electric to light -->
+  <div class="card">
+    <div class="card-t">光模块的核心任务：把电信号变成光信号</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;padding:16px 8px;background:#f8fafc;border-radius:10px;margin-bottom:12px">
+      <div style="text-align:center;padding:10px 12px;background:#eff6ff;border-radius:10px;border:1.5px solid #93c5fd">
+        <div style="font-size:18px;margin-bottom:2px">💻</div>
+        <div style="font-size:11.5px;font-weight:700;color:#2563eb">GPU 电信号</div>
+      </div>
+      <div style="font-size:18px;color:#94a3b8">→</div>
+      <div style="text-align:center;padding:10px 12px;background:#fef9ec;border-radius:10px;border:2px solid #d97706">
+        <div style="font-size:18px;margin-bottom:2px">⚡</div>
+        <div style="font-size:11.5px;font-weight:700;color:#d97706">InP 激光器芯片</div>
+        <div style="font-size:10px;color:var(--sub)">电子跃迁 → 光子</div>
+      </div>
+      <div style="font-size:18px;color:#94a3b8">→</div>
+      <div style="text-align:center;padding:10px 12px;background:#ecfdf5;border-radius:10px;border:1.5px solid #34d399">
+        <div style="font-size:18px;margin-bottom:2px">💡</div>
+        <div style="font-size:11.5px;font-weight:700;color:#059669">光信号</div>
+        <div style="font-size:10px;color:var(--sub)">1310 / 1550 nm</div>
+      </div>
+      <div style="font-size:18px;color:#94a3b8">→</div>
+      <div style="text-align:center;padding:10px 12px;background:#eff6ff;border-radius:10px;border:1.5px solid #93c5fd">
+        <div style="font-size:18px;margin-bottom:2px">🔗</div>
+        <div style="font-size:11.5px;font-weight:700;color:#2563eb">光纤 → 另一GPU</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--sub);line-height:1.8">InP 坐在这条链的<strong>最关键位置</strong>——它是光子的产生者。没有它，后面的光纤、交换机都没有意义。</div>
+  </div>
+
+  <!-- Silicon vs InP -->
+  <div class="card">
+    <div class="card-t">为什么必须是磷化铟，而不是硅</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+      <div style="padding:14px;background:#fef2f2;border-radius:10px;border-left:4px solid #dc2626">
+        <div style="font-size:13px;font-weight:800;color:#dc2626;margin-bottom:6px">硅（Si）— 间接带隙</div>
+        <div style="font-size:12.5px;color:var(--sub);line-height:1.8">电子从高能态跳落时，能量<strong>以热的形式散掉</strong>，不产生光子。硅是半导体之王，但偏偏不会发光。</div>
+        <div style="margin-top:8px;font-size:22px;text-align:center">🔥 → 热量（浪费）</div>
+      </div>
+      <div style="padding:14px;background:#ecfdf5;border-radius:10px;border-left:4px solid #059669">
+        <div style="font-size:13px;font-weight:800;color:#059669;margin-bottom:6px">磷化铟（InP）— 直接带隙</div>
+        <div style="font-size:12.5px;color:var(--sub);line-height:1.8">电子跃迁<strong>直接转化为光子</strong>，效率极高。是目前高速激光器最佳材料，无可替代。</div>
+        <div style="margin-top:8px;font-size:22px;text-align:center">💡 → 光子（有效）</div>
+      </div>
+    </div>
+    <div style="background:#fffbeb;border-radius:10px;padding:13px 15px;font-size:13px;line-height:1.8;border-left:4px solid #d97706">
+      <strong>天然波长匹配：</strong>InP 基材料发光波长天然落在 <strong>1310nm 和 1550nm</strong>——恰好是单模光纤传输损耗最低的两个窗口。这是物理决定的，不是设计出来的，别的材料做不到这么精准的匹配。
+    </div>
+  </div>
+
+  <!-- Silicon photonics still needs InP -->
+  <div class="card">
+    <div class="card-t">硅光（Silicon Photonics）能替代 InP 吗？替代不掉</div>
+    <div style="font-size:13.5px;line-height:1.85;margin-bottom:12px">硅光把<strong>调制</strong>（改变光的强弱来编码信息）移到了硅上，降低成本，渗透率在提升。但硅没法发光，所以<strong>硅光模块仍然需要 InP 激光器提供原始光源</strong>（CW 连续波激光器），再交给硅去调制。</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+      <div style="padding:12px;background:#f8fafc;border-radius:10px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:6px;text-transform:uppercase">传统方案（EML芯片）</div>
+        <div style="font-size:12px;line-height:1.8">InP 同时做 <strong>激光器 + 调制器</strong><br>全集成在一颗芯片，长距/高速性能更优</div>
+      </div>
+      <div style="padding:12px;background:#f8fafc;border-radius:10px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:6px;text-transform:uppercase">硅光方案（SiPh）</div>
+        <div style="font-size:12px;line-height:1.8"><span style="color:#d97706;font-weight:700">InP 做激光光源（仍必须）</span><br>硅做调制器 → 成本低，但绕不开 InP</div>
+      </div>
+    </div>
+    <div style="padding:11px 14px;background:#eff6ff;border-radius:8px;font-size:12.5px;color:var(--sub);line-height:1.8">
+      <strong>结论：</strong>EML 路线或硅光路线，InP 都是绕不开的核心材料。硅光普及不会消灭 InP 需求，只是把 InP 的角色从"EML 芯片"转变为"CW 光源"，总需求不降反升。
+    </div>
+  </div>
+
+  <!-- InP supply chain position -->
+  <div class="card">
+    <div class="card-t">InP 在产业链里的位置</div>
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <div style="display:flex;gap:8px;align-items:center">
+        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#991b1b;flex-shrink:0">InP 衬底</div>
+        <div style="flex:1;padding:9px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid #dc2626;font-size:12px;color:var(--sub)">铟 + 磷 → 单晶生长 → 切割抛光成晶圆 <span style="color:#dc2626;font-weight:700">← 全球缺口 70%</span></div>
+      </div>
+      <div style="padding-left:116px;font-size:16px;color:#94a3b8">↓</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#d97706;flex-shrink:0">InP 外延片</div>
+        <div style="flex:1;padding:9px 12px;background:#fffbeb;border-radius:8px;border-left:3px solid #d97706;font-size:12px;color:var(--sub)">衬底上生长多层功能薄膜，决定激光波长与效率</div>
+      </div>
+      <div style="padding-left:116px;font-size:16px;color:#94a3b8">↓</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#7c3aed;flex-shrink:0">EML / CW 芯片</div>
+        <div style="flex:1;padding:9px 12px;background:#f5f3ff;border-radius:8px;border-left:3px solid #7c3aed;font-size:12px;color:var(--sub)">外延片加工成激光器芯片，EML 集成激光器与调制器，实现 200G/lane 高速调制</div>
+      </div>
+      <div style="padding-left:116px;font-size:16px;color:#94a3b8">↓</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#2563eb;flex-shrink:0">光模块封装</div>
+        <div style="flex:1;padding:9px 12px;background:#eff6ff;border-radius:8px;border-left:3px solid #2563eb;font-size:12px;color:var(--sub)">EML + 探测器 + 驱动IC + 光学器件 → 800G / 1.6T 光模块成品</div>
+      </div>
+      <div style="padding-left:116px;font-size:16px;color:#94a3b8">↓</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#059669;flex-shrink:0">AI 数据中心</div>
+        <div style="flex:1;padding:9px 12px;background:#ecfdf5;border-radius:8px;border-left:3px solid #059669;font-size:12px;color:var(--sub)">插入 GPU 服务器，连接万卡集群，承载所有 AI 训练的数据流量</div>
+      </div>
+    </div>
   </div>
 </div>
 
