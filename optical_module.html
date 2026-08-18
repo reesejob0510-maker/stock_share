@@ -760,64 +760,50 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
   var tip = document.createElement('div');
   tip.id = 'kw-tooltip';
   document.body.appendChild(tip);
+  var active = null;
 
-  var current = null;
+  function place(kw){
+    var r = kw.getBoundingClientRect();
+    var W = window.innerWidth, H = window.innerHeight;
+    var tipW = Math.min(280, W - 16);
+    tip.style.width = tipW + 'px';
+    tip.style.left = '-9999px'; tip.style.top = '-9999px';
+    tip.className = 'show';          // make visible off-screen to measure height
+    var tipH = tip.offsetHeight;
+    var cx = r.left + r.width / 2;
+    var left = Math.max(8, Math.min(cx - tipW / 2, W - tipW - 8));
+    var top, dir;
+    if(r.top - tipH - 12 >= 8){
+      top = r.top - tipH - 12; dir = 'dir-up';
+    } else {
+      top = r.bottom + 10; dir = 'dir-dn';
+    }
+    tip.style.left = left + 'px';
+    tip.style.top  = top  + 'px';
+    tip.className = 'show ' + dir;
+    var ax = Math.max(14, Math.min(cx - left, tipW - 14));
+    tip.style.setProperty('--arrow-x', ax + 'px');
+  }
 
-  function showTip(kw, e){
+  function show(kw){
     var box = kw.querySelector('.kw-box');
     if(!box) return;
     tip.innerHTML = box.innerHTML;
-    tip.className = 'show';
-
-    // Position
-    var rect = kw.getBoundingClientRect();
-    var W = window.innerWidth, H = window.innerHeight;
-    var tipW = Math.min(280, W * 0.9);
-    tip.style.width = tipW + 'px';
-
-    // Horizontal: center on element, clamp to viewport
-    var cx = rect.left + rect.width / 2;
-    var left = Math.max(8, Math.min(cx - tipW / 2, W - tipW - 8));
-    tip.style.left = left + 'px';
-
-    // Vertical: prefer above, fallback below
-    tip.style.top = '';
-    tip.style.bottom = '';
-    var tipH = 140; // estimate
-    if(rect.top - tipH - 12 > 0){
-      tip.style.top = (rect.top - tipH - 12 + window.scrollY) + 'px';
-      tip.classList.add('dir-up'); tip.classList.remove('dir-dn');
-    } else {
-      tip.style.top = (rect.bottom + 10 + window.scrollY) + 'px';
-      tip.classList.add('dir-dn'); tip.classList.remove('dir-up');
-    }
-    // Arrow x position relative to tooltip left
-    var arrowX = Math.max(16, Math.min(cx - left, tipW - 16));
-    tip.style.setProperty('--arrow-x', arrowX + 'px');
-    current = kw;
+    place(kw);
+    active = kw;
   }
 
-  function hideTip(){
-    tip.className = '';
-    tip.style.display = 'none';
-    // force reflow so re-show works
-    tip.style.display = '';
-    current = null;
+  function hide(){
+    tip.className = ''; active = null;
   }
 
   document.addEventListener('click', function(e){
     var kw = e.target.closest('.kw');
-    if(kw){
-      e.stopPropagation();
-      if(current === kw){ hideTip(); return; }
-      showTip(kw, e);
-    } else {
-      hideTip();
-    }
+    if(kw){ e.stopPropagation(); active === kw ? hide() : show(kw); }
+    else hide();
   });
-
-  // Hide on scroll
-  window.addEventListener('scroll', hideTip, {passive:true});
+  window.addEventListener('scroll', hide, {passive:true});
+  window.addEventListener('resize', function(){ if(active) place(active); });
 })();
 // Nav active
 const sections2 = document.querySelectorAll('.section');
