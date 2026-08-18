@@ -143,8 +143,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
 /* ===== TOOLTIP SYSTEM ===== */
 .kw{border-bottom:1.5px dashed #94a3b8;cursor:pointer;display:inline;white-space:nowrap}
 .kw sup{font-size:9px;font-weight:800;color:#94a3b8;margin-left:1px;vertical-align:super;line-height:0}
-/* hide the inline box data - only used as data source */
-.kw-box{display:none !important}
+
 /* global floating tooltip - injected by JS, always fixed on top */
 #kw-tooltip{
   display:none;position:fixed;z-index:2147483647;
@@ -312,13 +311,13 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
       </div>
       <div style="padding:0 10px;font-size:20px;color:var(--sub)">→</div>
       <div style="flex:1;padding:14px;text-align:center;border-right:1px solid var(--border)">
-        <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:5px"><span class="kw">800G<sup>?</sup><div class="kw-box"><div class="kw-title">800G 光模块</div>传输速率为 800 Gbps 的光模块，是当前 AI 数据中心的主力部署产品（2025-2026 年）。通常有 4 或 8 条光通道，每条 100G 或 200G。每个模块需要 4-8 颗 InP 激光芯片。</div></span></div>
+        <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:5px">800G</div>
         <div style="font-size:22px;font-weight:900;color:var(--orange)">4-8</div>
         <div style="font-size:11px;color:var(--sub)">颗 InP 芯片</div>
       </div>
       <div style="padding:0 10px;font-size:20px;color:var(--sub)">→</div>
       <div style="flex:1;padding:14px;text-align:center;background:#fef9ec">
-        <div style="font-size:11px;font-weight:700;color:var(--orange);margin-bottom:5px"><span class="kw">1.6T<sup>?</sup><div class="kw-box"><div class="kw-title">1.6T 光模块</div>传输速率为 1.6 Tbps 的光模块，是当前产业升级的前沿产品。有 8 条 200G 光通道，相比 800G 每个模块消耗 InP 芯片约多 2.7-3 倍。新易盛、中际旭创 2026 年 Q2 开始显著放量。</div></span></div>
+        <div style="font-size:11px;font-weight:700;color:var(--orange);margin-bottom:5px">1.6T</div>
         <div style="font-size:22px;font-weight:900;color:var(--red)">×2.7-3</div>
         <div style="font-size:11px;color:var(--red)">比800G多耗 InP</div>
       </div>
@@ -347,12 +346,12 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
         </div>
         <div style="padding:10px;background:#f0fdf4;border-radius:8px">
           <div style="font-size:12.5px;font-weight:700;margin-bottom:3px">③ 光进铜退：全新 TAM</div>
-          <div style="font-size:11.5px;color:var(--sub)">GPU <span class="kw">Scale-Up<sup>?</sup><div class="kw-box"><div class="kw-title">Scale-Up · GPU间高速互联</div>AI 集群内部 GPU 之间的高速通信网络（同一机架内或跨机架的短距互联）。传统上用铜缆直连（DAC），正在向光模块迁移（"光进铜退"），这将创造新的光模块需求 TAM，预计 2027-2028 年大规模落地。</div></span> 连接从铜 DAC 迁移到光模块，2027-28年大规模落地，是额外增量，还没算进当前订单。</div>
+          <div style="font-size:11.5px;color:var(--sub)">GPU <span class="kw" data-tip="scaleup">Scale-Up<sup>?</sup></span> 连接从铜 DAC 迁移到光模块，2027-28年大规模落地，是额外增量，还没算进当前订单。</div>
         </div>
       </div>
     </div>
     <div class="card" style="margin-bottom:0">
-      <div class="card-t" style="color:var(--red)">供给端：<span class="kw">磷化铟<sup>?</sup><div class="kw-box"><div class="kw-title">InP · 磷化铟</div>一种<span class="kw">直接带隙<sup>?</sup><div class="kw-box"><div class="kw-title">直接带隙 · Direct Bandgap</div>半导体物理概念。电子从导带跌落价带时，动量不变，可直接发射光子，发光效率极高。InP、GaAs 等化合物半导体具有此特性，适合制造激光器。</div></span>化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。全球供需缺口超 70%，衬底价格 2025 年底以来已连涨四次。</div></span>卡死了</div>
+      <div class="card-t" style="color:var(--red)">供给端：磷化铟化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。全球供需缺口超 70%，衬底价格 2025 年底以来已连涨四次。</div></span>卡死了</div>
       <div style="display:flex;flex-direction:column;gap:10px">
         <div style="padding:10px;background:#fef2f2;border-radius:8px">
           <div style="font-size:12.5px;font-weight:700;margin-bottom:3px">全球供需缺口 70%+</div>
@@ -390,7 +389,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
         </div>
         <div style="flex:1;padding:12px 14px;background:#fef2f2;border-radius:10px;border-left:4px solid #dc2626">
           <div style="font-size:13px;font-weight:800;margin-bottom:3px">HBM（高带宽内存）<span style="font-size:11px;font-weight:400;color:var(--sub);margin-left:6px">SK海力士 · 三星 · 美光</span></div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.75">多层 DRAM 芯片 3D 堆叠后直接封装在 GPU 旁边（<span class="kw">CoWoS<sup>?</sup><div class="kw-box"><div class="kw-title">CoWoS · 台积电封装技术</div>台积电的 Chip-on-Wafer-on-Substrate 封装技术，用于将 HBM 芯片堆叠封装在 GPU/AI 芯片旁边。<span class="kw">HBM4<sup>?</sup><div class="kw-box"><div class="kw-title">HBM4 · 第四代高带宽内存</div>下一代 HBM，需要台积电 CoWoS-L 封装工艺。三星正在争夺英伟达 HBM4 订单，若成功将打破 SK 海力士的独占地位，这是市场对海力士股价最大的担忧之一。</div></span> 需要 CoWoS-L 工艺，台积电是目前唯一可量产的厂商，这也是 SK 海力士 <span class="kw">HBM4<sup>?</sup><div class="kw-box"><div class="kw-title">HBM4 · 第四代高带宽内存</div>下一代 HBM，需要台积电 CoWoS-L 封装工艺。三星正在争夺英伟达 HBM4 订单，若成功将打破 SK 海力士的独占地位，这是市场对海力士股价最大的担忧之一。</div></span> 依赖台积电的原因。</div></span> 技术）。带宽极高（<span class="kw">HBM3<sup>?</sup><div class="kw-box"><div class="kw-title">HBM3 · 第三代高带宽内存</div>SK 海力士主导的第三代 HBM，单栈带宽 819 GB/s，H100 GPU 标配 80GB HBM3。HBM3e 为增强版，带宽提升至约 1.2 TB/s。</div></span>e 达 1.2 TB/s），GPU 做矩阵运算时直接从这里读写数据。<strong>AI 训练对它的需求最直接</strong>，一张 H100 配备 80GB <span class="kw">HBM3<sup>?</sup><div class="kw-box"><div class="kw-title">HBM3 · 第三代高带宽内存</div>SK 海力士主导的第三代 HBM，单栈带宽 819 GB/s，H100 GPU 标配 80GB HBM3。HBM3e 为增强版，带宽提升至约 1.2 TB/s。</div></span>。</div>
+          <div style="font-size:12px;color:var(--sub);line-height:1.75">多层 DRAM 芯片 3D 堆叠后直接封装在 GPU 旁边（CoWoS 需要 CoWoS-L 工艺，台积电是目前唯一可量产的厂商，这也是 SK 海力士 <span class="kw" data-tip="hbm4">HBM4<sup>?</sup></span> 依赖台积电的原因。</div></span> 技术）。带宽极高（<span class="kw" data-tip="hbm3"><span class="kw" data-tip="hbm3">HBM3<sup>?</sup></span>e<sup>?</sup></span> 达 1.2 TB/s），GPU 做矩阵运算时直接从这里读写数据。<strong>AI 训练对它的需求最直接</strong>，一张 H100 配备 80GB <span class="kw" data-tip="hbm3">HBM3<sup>?</sup></span>。</div>
         </div>
       </div>
       <div style="padding-left:100px;font-size:16px;color:#94a3b8;line-height:1">↕ 数据缓冲</div>
@@ -445,7 +444,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
           <td>AI 训练直接需求</td>
           <td>
             <strong>不是需求减少，是估值修正</strong><br>
-            <span style="font-size:11px;color:var(--sub)">①股价提前 6-9 个月定价完毕，"符合预期"即卖出<br>②三星 <span class="kw">HBM4<sup>?</sup><div class="kw-box"><div class="kw-title">HBM4 · 第四代高带宽内存</div>下一代 HBM，需要台积电 CoWoS-L 封装工艺。三星正在争夺英伟达 HBM4 订单，若成功将打破 SK 海力士的独占地位，这是市场对海力士股价最大的担忧之一。</div></span> 即将通过英伟达认证，独占格局松动<br>③"买预期 卖事实"的经典陷阱</span>
+            <span style="font-size:11px;color:var(--sub)">①股价提前 6-9 个月定价完毕，"符合预期"即卖出<br>②三星 <span class="kw" data-tip="hbm4">HBM4<sup>?</sup></span> 即将通过英伟达认证，独占格局松动<br>③"买预期 卖事实"的经典陷阱</span>
           </td>
         </tr>
         <tr style="background:#fef2f2">
@@ -482,7 +481,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
   <div class="sec-title"><div class="ico" style="background:#f5f3ff">🔬</div>插页：磷化铟和"光"是什么关系</div>
 
   <div class="cl b">
-    很多人知道<span class="kw">磷化铟<sup>?</sup><div class="kw-box"><div class="kw-title">InP · 磷化铟</div>一种<span class="kw">直接带隙<sup>?</sup><div class="kw-box"><div class="kw-title">直接带隙 · Direct Bandgap</div>半导体物理概念。电子从导带跌落价带时，动量不变，可直接发射光子，发光效率极高。InP、GaAs 等化合物半导体具有此特性，适合制造激光器。</div></span>化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。全球供需缺口超 70%，衬底价格 2025 年底以来已连涨四次。</div></span>是光模块的关键材料，但不明白为什么。答案在物理层面——InP 是光模块里<strong>真正产生光子的材料</strong>，没有它就造不出激光器，GPU 之间就没法用光纤通信。
+    很多人知道磷化铟化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。全球供需缺口超 70%，衬底价格 2025 年底以来已连涨四次。</div></span>是光模块的关键材料，但不明白为什么。答案在物理层面——InP 是光模块里<strong>真正产生光子的材料</strong>，没有它就造不出激光器，GPU 之间就没法用光纤通信。
   </div>
 
   <!-- FLOW: electric to light -->
@@ -496,7 +495,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
       <div style="font-size:18px;color:#94a3b8">→</div>
       <div style="text-align:center;padding:10px 12px;background:#fef9ec;border-radius:10px;border:2px solid #d97706">
         <div style="font-size:18px;margin-bottom:2px">⚡</div>
-        <div style="font-size:11.5px;font-weight:700;color:#d97706"><span class="kw">InP<sup>?</sup><div class="kw-box"><div class="kw-title">InP · 磷化铟</div>一种<span class="kw">直接带隙<sup>?</sup><div class="kw-box"><div class="kw-title">直接带隙 · Direct Bandgap</div>半导体物理概念。电子从导带跌落价带时，动量不变，可直接发射光子，发光效率极高。InP、GaAs 等化合物半导体具有此特性，适合制造激光器。</div></span>化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。是制造 EML 激光器和 <span class="kw">CW激光器<sup>?</sup><div class="kw-box"><div class="kw-title">CW 激光器 · 连续波激光器</div>提供稳定连续光波的激光器，是<span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>的核心光源。硅本身无法发光，需要 InP 制造的 CW 激光器提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span>的核心材料，无论传统方案还是<span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>都无法绕开。</div></span>芯片</div>
+        <div style="font-size:11.5px;font-weight:700;color:#d97706">InP化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。是制造 EML 激光器和 CW激光器的核心光源。硅本身无法发光，需要 InP 制造的 <span class="kw" data-tip="cw">CW 激光器<sup>?</sup></span>提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span>的核心材料，无论传统方案还是硅光都无法绕开。</div></span>芯片</div>
         <div style="font-size:10px;color:var(--sub)">电子跃迁 → 光子</div>
       </div>
       <div style="font-size:18px;color:#94a3b8">→</div>
@@ -519,12 +518,12 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
     <div class="card-t">为什么是磷化铟，而不是硅</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
       <div style="padding:14px;background:#fef2f2;border-radius:10px;border-left:4px solid #dc2626">
-        <div style="font-size:13px;font-weight:800;color:#dc2626;margin-bottom:6px">硅（Si）— <span class="kw">间接带隙<sup>?</sup><div class="kw-box"><div class="kw-title">间接带隙 · Indirect Bandgap</div>半导体物理概念。电子跃迁时需借助声子（晶格振动）才能完成，大部分能量以热的形式散失，发光效率极低。硅（Si）属于此类，这是硅无法制造高效激光器的根本原因。</div></span></div>
+        <div style="font-size:13px;font-weight:800;color:#dc2626;margin-bottom:6px">硅（Si）— <span class="kw" data-tip="indirect_bg">间接带隙<sup>?</sup></span></div>
         <div style="font-size:12.5px;color:var(--sub);line-height:1.8">电子从高能态跳落时，能量<strong>以热的形式散掉</strong>，不产生光子。硅是半导体之王，但偏偏不会发光。</div>
         <div style="margin-top:8px;font-size:22px;text-align:center">🔥 → 热量（浪费）</div>
       </div>
       <div style="padding:14px;background:#ecfdf5;border-radius:10px;border-left:4px solid #059669">
-        <div style="font-size:13px;font-weight:800;color:#059669;margin-bottom:6px"><span class="kw">磷化铟<sup>?</sup><div class="kw-box"><div class="kw-title">InP · 磷化铟</div>一种<span class="kw">直接带隙<sup>?</sup><div class="kw-box"><div class="kw-title">直接带隙 · Direct Bandgap</div>半导体物理概念。电子从导带跌落价带时，动量不变，可直接发射光子，发光效率极高。InP、GaAs 等化合物半导体具有此特性，适合制造激光器。</div></span>化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。全球供需缺口超 70%，衬底价格 2025 年底以来已连涨四次。</div></span>— <span class="kw">直接带隙<sup>?</sup><div class="kw-box"><div class="kw-title">直接带隙 · Direct Bandgap</div>半导体物理概念。电子从导带跌落价带时，动量不变，可直接发射光子，发光效率极高。InP、GaAs 等化合物半导体具有此特性，适合制造激光器。</div></span></div>
+        <div style="font-size:13px;font-weight:800;color:#059669;margin-bottom:6px">磷化铟化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。全球供需缺口超 70%，衬底价格 2025 年底以来已连涨四次。</div></span>— <span class="kw" data-tip="direct_bg">直接带隙<sup>?</sup></span></div>
         <div style="font-size:12.5px;color:var(--sub);line-height:1.8">电子跃迁<strong>直接转化为光子</strong>，效率极高。是目前高速激光器的主流材料。</div>
         <div style="margin-top:8px;font-size:22px;text-align:center">💡 → 光子（有效）</div>
       </div>
@@ -537,19 +536,19 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
   <!-- Silicon photonics still needs InP -->
   <div class="card">
     <div class="card-t">硅光（Silicon Photonics）能替代 InP 吗？替代不掉</div>
-    <div style="font-size:13.5px;line-height:1.85;margin-bottom:12px">硅光把<strong>调制</strong>（改变光的强弱来编码信息）移到了硅上，降低成本，渗透率在提升。但硅没法发光，所以<strong><span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>仍然需要 <span class="kw">InP<sup>?</sup><div class="kw-box"><div class="kw-title">InP · 磷化铟</div>一种<span class="kw">直接带隙<sup>?</sup><div class="kw-box"><div class="kw-title">直接带隙 · Direct Bandgap</div>半导体物理概念。电子从导带跌落价带时，动量不变，可直接发射光子，发光效率极高。InP、GaAs 等化合物半导体具有此特性，适合制造激光器。</div></span>化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。是制造 EML 激光器和 <span class="kw">CW激光器<sup>?</sup><div class="kw-box"><div class="kw-title">CW 激光器 · 连续波激光器</div>提供稳定连续光波的激光器，是<span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>的核心光源。硅本身无法发光，需要 InP 制造的 CW 激光器提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span>的核心材料，无论传统方案还是<span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>都无法绕开。</div></span>提供原始光源</strong>（CW 连续波激光器），再交给硅去调制。</div>
+    <div style="font-size:13.5px;line-height:1.85;margin-bottom:12px">硅光把<strong>调制</strong>（改变光的强弱来编码信息）移到了硅上，降低成本，渗透率在提升。但硅没法发光，所以<strong>硅光仍然需要 InP化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。是制造 EML 激光器和 CW激光器的核心光源。硅本身无法发光，需要 InP 制造的 <span class="kw" data-tip="cw">CW 激光器<sup>?</sup></span>提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span>的核心材料，无论传统方案还是硅光都无法绕开。</div></span>提供原始光源</strong>（CW 连续波激光器），再交给硅去调制。</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
       <div style="padding:12px;background:#f8fafc;border-radius:10px;border:1px solid var(--border)">
         <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:6px;text-transform:uppercase">传统方案（EML芯片）</div>
         <div style="font-size:12px;line-height:1.8">InP 同时做 <strong>激光器 + 调制器</strong><br>全集成在一颗芯片，长距/高速性能更优</div>
       </div>
       <div style="padding:12px;background:#f8fafc;border-radius:10px;border:1px solid var(--border)">
-        <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:6px;text-transform:uppercase"><span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>（SiPh）</div>
+        <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:6px;text-transform:uppercase">硅光（SiPh）</div>
         <div style="font-size:12px;line-height:1.8"><span style="color:#d97706;font-weight:700">InP 做激光光源（仍必须）</span><br>硅做调制器 → 成本低，但绕不开 InP</div>
       </div>
     </div>
     <div style="padding:11px 14px;background:#eff6ff;border-radius:8px;font-size:12.5px;color:var(--sub);line-height:1.8">
-      <strong>结论：</strong>EML 路线或硅光路线，InP 都是绕不开的核心材料。硅光普及不会消灭 InP 需求，只是把 InP 的角色从"<span class="kw">EML<sup>?</sup><div class="kw-box"><div class="kw-title">EML · 电吸收调制激光器</div>将激光器与调制器集成在一颗 InP 芯片上。电信号驱动调制器改变光的强弱，实现高速率（200G/lane）数据编码。是 800G/1.6T 长距传输光模块的核心发光器件，国内代表：源杰科技。</div></span>"转变为"<span class="kw">CW激光器<sup>?</sup><div class="kw-box"><div class="kw-title">CW 激光器 · 连续波激光器</div>提供稳定连续光波的激光器，是<span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>的核心光源。硅本身无法发光，需要 InP 制造的 CW 激光器提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span>"，总需求不降反升。
+      <strong>结论：</strong>EML 路线或硅光路线，InP 都是绕不开的核心材料。硅光普及不会消灭 InP 需求，只是把 InP 的角色从"EML"转变为"CW激光器的核心光源。硅本身无法发光，需要 InP 制造的 <span class="kw" data-tip="cw">CW 激光器<sup>?</sup></span>提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span>"，总需求不降反升。
     </div>
   </div>
 
@@ -558,23 +557,23 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
     <div class="card-t">InP 在产业链里的位置</div>
     <div style="display:flex;flex-direction:column;gap:3px">
       <div style="display:flex;gap:8px;align-items:center">
-        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#991b1b;flex-shrink:0"><span class="kw">InP 衬底<sup>?</sup><div class="kw-box"><div class="kw-title">InP衬底 · 磷化铟晶圆</div>单晶 InP 晶圆片，是外延生长和芯片制造的基础原材料。全球产能寡头垄断（住友电工/AXT/JX金属），2026 年供需缺口超 70%，4英寸衬底今年已涨价 50%。</div></span></div>
+        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#991b1b;flex-shrink:0"><span class="kw" data-tip="inp_substrate">InP 衬底<sup>?</sup></span></div>
         <div style="flex:1;padding:9px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid #dc2626;font-size:12px;color:var(--sub)">铟 + 磷 → 单晶生长 → 切割抛光成晶圆 <span style="color:#dc2626;font-weight:700">← 全球缺口 70%</span></div>
       </div>
       <div style="padding-left:116px;font-size:16px;color:#94a3b8">↓</div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#d97706;flex-shrink:0"><span class="kw"><span class="kw">外延片<sup>?</sup><div class="kw-box"><div class="kw-title">外延片 · Epitaxial Wafer</div>在 InP 衬底上通过气相外延（MOCVD）工艺生长出的多层半导体薄膜结构，包含有源发光层、限制层等，决定激光器的发光波长和电光转换效率。是衬底→芯片制造的中间环节。</div></span><sup>?</sup><div class="kw-box"><div class="kw-title"><span class="kw">外延片<sup>?</sup><div class="kw-box"><div class="kw-title">外延片 · Epitaxial Wafer</div>在 InP 衬底上通过气相外延（MOCVD）工艺生长出的多层半导体薄膜结构，包含有源发光层、限制层等，决定激光器的发光波长和电光转换效率。是衬底→芯片制造的中间环节。</div></span> · Epitaxial Wafer</div>在 InP 衬底上通过气相外延（MOCVD）工艺生长出的多层半导体薄膜结构，包含有源发光层、限制层等，决定激光器的发光波长和电光转换效率。是衬底→芯片制造的中间环节。</div></span></div>
+        <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#d97706;flex-shrink:0"><span class="kw" data-tip="epitaxy">外延片<sup>?</sup></span><sup>?</sup>在 <span class="kw" data-tip="inp_substrate">InP 衬底<sup>?</sup></span>上通过气相外延（MOCVD）工艺生长出的多层半导体薄膜结构，包含有源发光层、限制层等，决定激光器的发光波长和电光转换效率。是衬底→芯片制造的中间环节。</div></span></div>
         <div style="flex:1;padding:9px 12px;background:#fffbeb;border-radius:8px;border-left:3px solid #d97706;font-size:12px;color:var(--sub)">衬底上生长多层功能薄膜，决定激光波长与效率</div>
       </div>
       <div style="padding-left:116px;font-size:16px;color:#94a3b8">↓</div>
       <div style="display:flex;gap:8px;align-items:center">
         <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#7c3aed;flex-shrink:0">EML / CW 芯片</div>
-        <div style="flex:1;padding:9px 12px;background:#f5f3ff;border-radius:8px;border-left:3px solid #7c3aed;font-size:12px;color:var(--sub)"><span class="kw">外延片<sup>?</sup><div class="kw-box"><div class="kw-title">外延片 · Epitaxial Wafer</div>在 InP 衬底上通过气相外延（MOCVD）工艺生长出的多层半导体薄膜结构，包含有源发光层、限制层等，决定激光器的发光波长和电光转换效率。是衬底→芯片制造的中间环节。</div></span>加工成激光器芯片，EML 集成激光器与调制器，实现 200G/lane 高速调制</div>
+        <div style="flex:1;padding:9px 12px;background:#f5f3ff;border-radius:8px;border-left:3px solid #7c3aed;font-size:12px;color:var(--sub)"><span class="kw" data-tip="epitaxy">外延片<sup>?</sup></span>加工成激光器芯片，EML 集成激光器与调制器，实现 200G/lane 高速调制</div>
       </div>
       <div style="padding-left:116px;font-size:16px;color:#94a3b8">↓</div>
       <div style="display:flex;gap:8px;align-items:center">
         <div style="width:108px;text-align:right;font-size:12px;font-weight:700;color:#2563eb;flex-shrink:0">光模块封装</div>
-        <div style="flex:1;padding:9px 12px;background:#eff6ff;border-radius:8px;border-left:3px solid #2563eb;font-size:12px;color:var(--sub)">EML + 探测器 + 驱动IC + 光学器件 → 800G / <span class="kw">1.6T<sup>?</sup><div class="kw-box"><div class="kw-title">1.6T 光模块</div>传输速率为 1.6 Tbps 的光模块，是当前产业升级的前沿产品。有 8 条 200G 光通道，相比 800G 每个模块消耗 InP 芯片约多 2.7-3 倍。新易盛、中际旭创 2026 年 Q2 开始显著放量。</div></span>成品</div>
+        <div style="flex:1;padding:9px 12px;background:#eff6ff;border-radius:8px;border-left:3px solid #2563eb;font-size:12px;color:var(--sub)">EML + 探测器 + 驱动IC + 光学器件 → 800G / 1.6T成品</div>
       </div>
       <div style="padding-left:116px;font-size:16px;color:#94a3b8">↓</div>
       <div style="display:flex;gap:8px;align-items:center">
@@ -593,7 +592,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
     <div class="chain-line" style="background:#dc2626"></div>
     <div class="chain-body" style="background:#fef2f2;border-color:#fca5a5">
       <div class="chain-label" style="color:#991b1b">第一层 · 最紧卡点</div>
-      <div class="chain-name"><span class="kw"><span class="kw">磷化铟<sup>?</sup><div class="kw-box"><div class="kw-title">InP · 磷化铟</div>一种<span class="kw">直接带隙<sup>?</sup><div class="kw-box"><div class="kw-title">直接带隙 · Direct Bandgap</div>半导体物理概念。电子从导带跌落价带时，动量不变，可直接发射光子，发光效率极高。InP、GaAs 等化合物半导体具有此特性，适合制造激光器。</div></span>化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。全球供需缺口超 70%，衬底价格 2025 年底以来已连涨四次。</div></span>衬底<sup>?</sup><div class="kw-box"><div class="kw-title">InP · 磷化铟衬底</div>将高纯铟和磷在高温下合成的化合物半导体单晶，切割抛光成晶圆（衬底）。是 EML 激光器和 <span class="kw">CW激光器<sup>?</sup><div class="kw-box"><div class="kw-title">CW 激光器 · 连续波激光器</div>提供稳定连续光波的激光器，是<span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>的核心光源。硅本身无法发光，需要 InP 制造的 CW 激光器提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span>的原始基材。2026年全球需求 260-300 万片，有效产能仅 75 万片，缺口超 70%。</div></span> — 缺口 70%+</div>
+      <div class="chain-name">磷化铟化合物半导体（铟+磷）。电子跃迁直接产生光子，发光效率极高。天然发光波长落在 1310nm/1550nm——恰好是光纤传输损耗最低的窗口。全球供需缺口超 70%，衬底价格 2025 年底以来已连涨四次。</div></span>衬底<sup>?</sup>将高纯铟和磷在高温下合成的化合物半导体单晶，切割抛光成晶圆（衬底）。是 EML 激光器和 CW激光器的核心光源。硅本身无法发光，需要 InP 制造的 <span class="kw" data-tip="cw">CW 激光器<sup>?</sup></span>提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span>的原始基材。2026年全球需求 260-300 万片，有效产能仅 75 万片，缺口超 70%。</div></span> — 缺口 70%+</div>
       <div class="chain-desc">2026年需求 260-300万片，有效产能约 75万片。4英寸年内涨价50%，Q4将迎第四连涨（>10%）。住友电工+AXT+JX金属垄断全球90%。中国出口管制使日本申请拒绝率>80%，国产替代窗口打开。</div>
       <div class="chain-tickers">
         <span class="tk tk-r">002428 云南锗业</span><span class="tk tk-r">600206 有研新材</span><span class="tk tk-r">000960 锡业股份</span>
@@ -604,7 +603,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
     <div class="chain-line" style="background:#d97706"></div>
     <div class="chain-body" style="background:#fffbeb;border-color:#fdba74">
       <div class="chain-label" style="color:#92400e">第二层 · 高度紧缺</div>
-      <div class="chain-name"><span class="kw">EML<sup>?</sup><div class="kw-box"><div class="kw-title">EML · 电吸收调制激光器</div>将激光器与调制器集成在一颗 InP 芯片上。电信号驱动调制器改变光的强弱，实现高速率（200G/lane）数据编码。是 800G/1.6T 长距传输光模块的核心发光器件，国内代表：源杰科技。</div></span> + <span class="kw">CW激光器<sup>?</sup><div class="kw-box"><div class="kw-title">CW 激光器 · 连续波激光器</div>提供稳定连续光波的激光器，是<span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>的核心光源。硅本身无法发光，需要 InP 制造的 CW 激光器提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span> — 供给极度偏紧</div>
+      <div class="chain-name">EML + CW激光器的核心光源。硅本身无法发光，需要 InP 制造的 <span class="kw" data-tip="cw">CW 激光器<sup>?</sup></span>提供原始光源，再由硅调制器改变光的强弱来编码数据。</div></span> — 供给极度偏紧</div>
       <div class="chain-desc">每颗 1.6T 模块消耗 InP 是 800G 的 2.7-3 倍。源杰科技 H1 净利润同比+1300%（¥6亿），是光芯片层业绩的直接验证。国产化从 15% 推进至 30%+ 中。</div>
       <div class="chain-tickers">
         <span class="tk tk-r">688498 源杰科技</span><span class="tk tk-r">600703 三安光电</span><span class="tk tk-r">002281 光迅科技</span><span class="tk tk-b">LITE Lumentum</span>
@@ -655,7 +654,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
           <td><strong>三安光电</strong> <span class="bd bd-r">600703</span></td>
           <td><span class="bd bd-g">高</span></td><td><span class="bd bd-o">偏紧</span></td>
           <td><span class="bd bd-o">中等</span></td>
-          <td>6英寸InP <span class="kw">IDM<sup>?</sup><div class="kw-box"><div class="kw-title">IDM · 垂直整合制造商</div>同时从事芯片设计和自主制造的企业模式（相对于 Fabless 纯设计公司）。三安光电是国内 InP 领域的 IDM 龙头，自行完成衬底→外延→芯片的完整制造流程，规模优势使 6 英寸 InP 成本下降约 40%。</div></span>，国内唯一规模化制造</td>
+          <td>6英寸InP <span class="kw" data-tip="idm">IDM<sup>?</sup></span>，国内唯一规模化制造</td>
         </tr>
         <tr style="background:#fffbeb">
           <td><strong>新易盛</strong> <span class="bd bd-r">300502</span></td>
@@ -673,7 +672,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
           <td><strong>SK海力士</strong> <span class="bd bd-gr">KRX</span></td>
           <td><span class="bd bd-o">高（HBM）</span></td><td><span class="bd bd-g">充足</span></td>
           <td><span class="bd bd-r">估值修正中</span></td>
-          <td>HBM需求真实，但已过度定价，等三星<span class="kw">HBM4<sup>?</sup><div class="kw-box"><div class="kw-title">HBM4 · 第四代高带宽内存</div>下一代 HBM，需要台积电 CoWoS-L 封装工艺。三星正在争夺英伟达 HBM4 订单，若成功将打破 SK 海力士的独占地位，这是市场对海力士股价最大的担忧之一。</div></span>风险落地后再评估</td>
+          <td>HBM需求真实，但已过度定价，等三星<span class="kw" data-tip="hbm4">HBM4<sup>?</sup></span>风险落地后再评估</td>
         </tr>
         <tr style="background:#fef2f2">
           <td><strong>闪迪/铠侠</strong> <span class="bd bd-gr">NAND</span></td>
@@ -693,7 +692,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
     <div style="background:#fef2f2;border-radius:10px;padding:14px;border-left:4px solid #dc2626">
       <div style="font-size:12.5px;font-weight:700;color:#dc2626;margin-bottom:8px">光模块的反方信号</div>
       <ul style="font-size:12px;color:var(--sub);line-height:2;list-style:none">
-        <li>🔴 <span class="kw">硅光<sup>?</sup><div class="kw-box"><div class="kw-title">硅光 · Silicon Photonics</div>利用成熟的硅工艺制造光学调制器，将调制功能从 InP 芯片迁移到硅上，降低制造成本。但硅无法发光，仍需 InP 提供 CW 激光光源。1.6T 模块中硅光方案渗透率在提升。</div></span>加速替代 EML，InP 需求减少</li>
+        <li>🔴 硅光加速替代 EML，InP 需求减少</li>
         <li>🔴 云厂商 Q3 资本开支大幅下修</li>
         <li>🔴 美国对中国光模块实施禁令或高关税</li>
         <li>🔴 InP 产能扩张超预期 → 价格回落</li>
@@ -704,7 +703,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
       <div style="font-size:12.5px;font-weight:700;color:#2563eb;margin-bottom:8px">存储潜在反转信号</div>
       <ul style="font-size:12px;color:var(--sub);line-height:2;list-style:none">
         <li>🟢 消费电子需求超预期复苏，NAND 涨价</li>
-        <li>🟢 三星 <span class="kw">HBM4<sup>?</sup><div class="kw-box"><div class="kw-title">HBM4 · 第四代高带宽内存</div>下一代 HBM，需要台积电 CoWoS-L 封装工艺。三星正在争夺英伟达 HBM4 订单，若成功将打破 SK 海力士的独占地位，这是市场对海力士股价最大的担忧之一。</div></span> 量产推迟 → 海力士格局延续</li>
+        <li>🟢 三星 <span class="kw" data-tip="hbm4">HBM4<sup>?</sup></span> 量产推迟 → 海力士格局延续</li>
         <li>🟢 AI 推理规模爆发带动 NVMe 大采购</li>
         <li>🟢 存储周期触底反转，NAND 价格企稳</li>
         <li>🟠 HBM 估值修正完毕后重新成为买点</li>
@@ -728,7 +727,7 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
         <li>源杰科技 — 光芯片国产龙头，业绩实证最强</li>
         <li>云南锗业 — InP衬底最上游，已签大单</li>
         <li>有研新材 — 政策背书，认知度最低的机会</li>
-        <li>三安光电 — <span class="kw">IDM<sup>?</sup><div class="kw-box"><div class="kw-title">IDM · 垂直整合制造商</div>同时从事芯片设计和自主制造的企业模式（相对于 Fabless 纯设计公司）。三安光电是国内 InP 领域的 IDM 龙头，自行完成衬底→外延→芯片的完整制造流程，规模优势使 6 英寸 InP 成本下降约 40%。</div></span>规模化，中游卡位</li>
+        <li>三安光电 — <span class="kw" data-tip="idm">IDM<sup>?</sup></span>规模化，中游卡位</li>
         <li>新易盛/旭创 — 业绩确定但估值高，波段操作</li>
       </ul>
     </div>
@@ -736,9 +735,9 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
       <h4>🔍 关键跟踪信号</h4>
       <ul>
         <li>云厂商 Q3 资本开支数据（最关键）</li>
-        <li><span class="kw">InP 衬底<sup>?</sup><div class="kw-box"><div class="kw-title">InP衬底 · 磷化铟晶圆</div>单晶 InP 晶圆片，是外延生长和芯片制造的基础原材料。全球产能寡头垄断（住友电工/AXT/JX金属），2026 年供需缺口超 70%，4英寸衬底今年已涨价 50%。</div></span> Q4 涨价幅度（>10%是验证）</li>
+        <li><span class="kw" data-tip="inp_substrate">InP 衬底<sup>?</sup></span> Q4 涨价幅度（>10%是验证）</li>
         <li>云南锗业大单合同金额正式披露</li>
-        <li>三星 <span class="kw">HBM4<sup>?</sup><div class="kw-box"><div class="kw-title">HBM4 · 第四代高带宽内存</div>下一代 HBM，需要台积电 CoWoS-L 封装工艺。三星正在争夺英伟达 HBM4 订单，若成功将打破 SK 海力士的独占地位，这是市场对海力士股价最大的担忧之一。</div></span> 量产时间表（海力士估值的定价锚）</li>
+        <li>三星 <span class="kw" data-tip="hbm4">HBM4<sup>?</sup></span> 量产时间表（海力士估值的定价锚）</li>
         <li>美国光模块贸易政策动向</li>
       </ul>
     </div>
@@ -755,6 +754,68 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
 
 
 <script>
+(function(){
+var TIPS={
+  "inp_substrate":"<div class=\\\"kw-title\\\">InP\u886c\u5e95</div>\u5355\u6676 InP \u6676\u5706\u7247\uff0c\u662f\u5916\u5ef6\u751f\u957f\u548c\u82af\u7247\u5236\u9020\u7684\u57fa\u7840\u539f\u6750\u6599\u3002\u5168\u7403\u4ea7\u80fd\u5be1\u5934\u5784\u65ad\uff08\u4f4f\u53cb\u7535\u5de5/AXT/JX\u91d1\u5c5e\uff09\uff0c2026\u5e74\u4f9b\u9700\u7f3a\u53e3\u8d8570%\uff0c4\u82f1\u5bf8\u886c\u5e95\u4eca\u5e74\u5df2\u6da8\u4ef750%\u3002",
+  "inp":"<div class=\\\"kw-title\\\">InP \u00b7 \u78f7\u5316\u94df</div>\u4e00\u79cd\u76f4\u63a5\u5e26\u9699\u5316\u5408\u7269\u534a\u5bfc\u4f53\uff08\u94df+\u78f7\uff09\u3002\u7535\u5b50\u8dc3\u8fc1\u76f4\u63a5\u4ea7\u751f\u5149\u5b50\uff0c\u53d1\u5149\u6548\u7387\u6781\u9ad8\u3002\u5929\u7136\u53d1\u5149\u6ce2\u957f\u843d\u57281310/1550nm\u2014\u2014\u6070\u597d\u662f\u5149\u7ea4\u4f20\u8f93\u635f\u8017\u6700\u4f4e\u7684\u7a97\u53e3\uff0cEML\u8def\u7ebf\u548c\u7845\u5149\u8def\u7ebf\u90fd\u7ed5\u4e0d\u5f00\u5b83\u3002",
+  "eml":"<div class=\\\"kw-title\\\">EML \u00b7 \u7535\u5438\u6536\u8c03\u5236\u6fc0\u5149\u5668</div>\u5c06\u6fc0\u5149\u5668\u4e0e\u8c03\u5236\u5668\u96c6\u6210\u5728\u4e00\u9897InP\u82af\u7247\u4e0a\uff0c\u5b9e\u73b0\u9ad8\u901f\u7387\uff08200G/lane\uff09\u6570\u636e\u7f16\u7801\u3002\u662f800G/1.6T\u957f\u8ddd\u5149\u6a21\u5757\u7684\u6838\u5fc3\u53d1\u5149\u5668\u4ef6\uff0c\u56fd\u5185\u4ee3\u8868\uff1a\u6e90\u6770\u79d1\u6280\u3001\u5149\u8fc5\u79d1\u6280\u3002",
+  "cw":"<div class=\\\"kw-title\\\">CW\u6fc0\u5149\u5668 \u00b7 \u8fde\u7eed\u6ce2\u6fc0\u5149\u5668</div>\u63d0\u4f9b\u7a33\u5b9a\u8fde\u7eed\u5149\u6ce2\u7684\u6fc0\u5149\u5668\uff0c\u662f\u7845\u5149\u6a21\u5757\u7684\u6838\u5fc3\u5149\u6e90\u3002\u7845\u672c\u8eab\u65e0\u6cd5\u53d1\u5149\uff0c\u9700\u8981InP\u5236\u9020\u7684CW\u6fc0\u5149\u5668\u63d0\u4f9b\u539f\u59cb\u5149\u6e90\uff0c\u518d\u7531\u7845\u8c03\u5236\u5668\u7f16\u7801\u6570\u636e\u3002",
+  "siph":"<div class=\\\"kw-title\\\">\u7845\u5149 \u00b7 Silicon Photonics</div>\u5229\u7528\u6210\u719f\u7845\u5de5\u827a\u5236\u9020\u5149\u5b66\u8c03\u5236\u5668\uff0c\u5c06\u8c03\u5236\u529f\u80fd\u4eceInP\u82af\u7247\u8fc1\u79fb\u5230\u7845\u4e0a\uff0c\u964d\u4f4e\u6210\u672c\u3002\u4f46\u7845\u65e0\u6cd5\u53d1\u5149\uff0c\u4ecd\u9700InP\u63d0\u4f9bCW\u6fc0\u5149\u5149\u6e90\u30021.6T\u6a21\u5757\u4e2d\u7845\u5149\u6e17\u900f\u7387\u5728\u63d0\u5347\u3002",
+  "cpo":"<div class=\\\"kw-title\\\">CPO \u00b7 \u5171\u5c01\u88c5\u5149\u5b66</div>\u5c06\u5149\u5f15\u64ce\u4e0e\u4ea4\u6362\u82af\u7247\u5c01\u88c5\u5728\u540c\u4e00\u57fa\u677f\u4e0a\uff0c\u5927\u5e45\u51cf\u5c11\u7535\u4fe1\u53f7\u4f20\u8f93\u8ddd\u79bb\uff0c\u964d\u4f4e\u529f\u8017\u3002\u662f\u4e0b\u4e00\u4ee3\u9ad8\u5bc6\u5ea6\u6570\u636e\u4e2d\u5fc3\u5149\u4e92\u8054\u65b9\u6848\uff0c\u9884\u8ba12027-2028\u5e74\u89c4\u6a21\u90e8\u7f72\u3002",
+  "npo":"<div class=\\\"kw-title\\\">NPO \u00b7 \u8fd1\u5c01\u88c5\u5149\u5b66</div>\u4ecb\u4e8e\u63d2\u62d4\u5f0f\u5149\u6a21\u5757\u4e0eCPO\u4e4b\u95f4\u7684\u8fc7\u6e21\u65b9\u6848\u3002\u5149\u5f15\u64ce\u9760\u8fd1\u4f46\u4e0d\u5b8c\u5168\u5c01\u88c5\u5728\u82af\u7247\u65c1\uff0c\u517c\u987e\u7075\u6d3b\u6027\u4e0e\u529f\u8017\u4f18\u5316\u3002\u65b0\u6613\u76db\u5df2\u63a8\u51fa6.4T NPO\u4ea7\u54c1\u3002",
+  "cowos":"<div class=\\\"kw-title\\\">CoWoS \u00b7 \u53f0\u79ef\u7535\u5c01\u88c5\u6280\u672f</div>\u53f0\u79ef\u7535\u7684Chip-on-Wafer-on-Substrate\u5c01\u88c5\u6280\u672f\uff0c\u7528\u4e8e\u5c06HBM\u82af\u7247\u5806\u53e0\u5c01\u88c5\u5728GPU/AI\u82af\u7247\u65c1\u8fb9\u3002HBM4\u9700\u8981CoWoS-L\u5de5\u827a\uff0c\u53f0\u79ef\u7535\u662f\u76ee\u524d\u552f\u4e00\u53ef\u91cf\u4ea7\u7684\u5382\u5546\u3002",
+  "scaleup":"<div class=\\\"kw-title\\\">Scale-Up \u00b7 GPU\u95f4\u9ad8\u901f\u4e92\u8054</div>AI\u96c6\u7fa4\u5185\u90e8GPU\u4e4b\u95f4\u7684\u9ad8\u901f\u901a\u4fe1\u7f51\u7edc\u3002\u4f20\u7edf\u4e0a\u7528\u94dc\u7f06\uff08DAC\uff09\uff0c\u6b63\u5728\u5411\u5149\u6a21\u5757\u8fc1\u79fb\uff08\u5149\u8fdb\u94dc\u9000\uff09\uff0c\u9884\u8ba12027-2028\u5e74\u5927\u89c4\u6a21\u843d\u5730\uff0c\u662f\u989d\u5916\u65b0\u589e\u7684TAM\u3002",
+  "epitaxy":"<div class=\\\"kw-title\\\">\u5916\u5ef6\u7247 \u00b7 Epitaxial Wafer</div>\u5728InP\u886c\u5e95\u4e0a\u901a\u8fc7MOCVD\u5de5\u827a\u751f\u957f\u51fa\u7684\u591a\u5c42\u534a\u5bfc\u4f53\u8584\u819c\u7ed3\u6784\uff0c\u51b3\u5b9a\u6fc0\u5149\u5668\u7684\u53d1\u5149\u6ce2\u957f\u548c\u6548\u7387\u3002\u662f\u886c\u5e95\u5230\u82af\u7247\u5236\u9020\u7684\u4e2d\u95f4\u73af\u8282\u3002",
+  "idm":"<div class=\\\"kw-title\\\">IDM \u00b7 \u5782\u76f4\u6574\u5408\u5236\u9020\u5546</div>\u540c\u65f6\u4ece\u4e8b\u82af\u7247\u8bbe\u8ba1\u548c\u81ea\u4e3b\u5236\u9020\u7684\u4f01\u4e1a\uff08\u76f8\u5bf9\u4e8eFabless\u7eaf\u8bbe\u8ba1\u516c\u53f8\uff09\u3002\u4e09\u5b89\u5149\u7535\u662f\u56fd\u5185InP\u9886\u57df\u7684IDM\u9f99\u5934\uff0c\u81ea\u884c\u5b8c\u6210\u886c\u5e95\u2192\u5916\u5ef6\u2192\u82af\u7247\u7684\u5b8c\u6574\u5236\u9020\u6d41\u7a0b\u3002",
+  "direct_bg":"<div class=\\\"kw-title\\\">\u76f4\u63a5\u5e26\u9699 \u00b7 Direct Bandgap</div>\u7535\u5b50\u4ece\u5bfc\u5e26\u8dcc\u843d\u4ef7\u5e26\u65f6\uff0c\u53ef\u76f4\u63a5\u53d1\u5c04\u5149\u5b50\uff0c\u53d1\u5149\u6548\u7387\u6781\u9ad8\u3002InP\u3001GaAs\u7b49\u5316\u5408\u7269\u534a\u5bfc\u4f53\u5177\u6709\u6b64\u7279\u6027\uff0c\u9002\u5408\u5236\u9020\u6fc0\u5149\u5668\u3002",
+  "indirect_bg":"<div class=\\\"kw-title\\\">\u95f4\u63a5\u5e26\u9699 \u00b7 Indirect Bandgap</div>\u7535\u5b50\u8dc3\u8fc1\u9700\u501f\u52a9\u58f0\u5b50\u624d\u80fd\u5b8c\u6210\uff0c\u5927\u90e8\u5206\u80fd\u91cf\u4ee5\u70ed\u6563\u5931\uff0c\u53d1\u5149\u6548\u7387\u6781\u4f4e\u3002\u7845\uff08Si\uff09\u5c5e\u4e8e\u6b64\u7c7b\uff0c\u8fd9\u662f\u7845\u65e0\u6cd5\u5236\u9020\u9ad8\u6548\u6fc0\u5149\u5668\u7684\u6839\u672c\u539f\u56e0\u3002",
+  "hbm3":"<div class=\\\"kw-title\\\">HBM3 \u00b7 \u7b2c\u4e09\u4ee3\u9ad8\u5e26\u5bbd\u5185\u5b58</div>SK\u6d77\u529b\u58eb\u4e3b\u5bfc\u7684\u7b2c\u4e09\u4ee3HBM\uff0c\u5355\u6808\u5e26\u5bbd819 GB/s\uff0cH100 GPU\u6807\u914d80GB HBM3\u3002HBM3e\u4e3a\u589e\u5f3a\u7248\uff0c\u5e26\u5bbd\u7ea61.2 TB/s\u3002",
+  "hbm4":"<div class=\\\"kw-title\\\">HBM4 \u00b7 \u7b2c\u56db\u4ee3\u9ad8\u5e26\u5bbd\u5185\u5b58</div>\u4e0b\u4e00\u4ee3HBM\uff0c\u9700\u8981\u53f0\u79ef\u7535CoWoS-L\u5c01\u88c5\u5de5\u827a\u3002\u4e09\u661f\u6b63\u5728\u4e89\u593a\u82f1\u4f1f\u8fbeHBM4\u8ba2\u5355\uff0c\u82e5\u6210\u529f\u5c06\u6253\u7834SK\u6d77\u529b\u58eb\u7684\u72ec\u5360\u5730\u4f4d\uff0c\u8fd9\u662f\u5e02\u573a\u5bf9\u6d77\u529b\u58eb\u4f30\u503c\u7684\u4e3b\u8981\u9690\u5fe7\u3002",
+  "g800":"<div class=\\\"kw-title\\\">800G\u5149\u6a21\u5757</div>\u4f20\u8f93\u901f\u7387800 Gbps\u7684\u5149\u6a21\u5757\uff0c\u662f\u5f53\u524dAI\u6570\u636e\u4e2d\u5fc3\u7684\u4e3b\u529b\u4ea7\u54c1\u3002\u901a\u5e384-8\u6761\u5149\u901a\u9053\uff0c\u6bcf\u4e2a\u6a21\u5757\u9700\u89814-8\u9897InP\u6fc0\u5149\u82af\u7247\u3002",
+  "g1600":"<div class=\\\"kw-title\\\">1.6T\u5149\u6a21\u5757</div>\u4f20\u8f93\u901f\u73871.6 Tbps\u7684\u5149\u6a21\u5757\uff0c\u662f\u5f53\u524d\u4ea7\u4e1a\u5347\u7ea7\u7684\u524d\u6cbf\u4ea7\u54c1\u3002\u67098\u6761200G\u5149\u901a\u9053\uff0c\u76f8\u6bd4800G\u6bcf\u4e2a\u6a21\u5757\u6d88\u8017InP\u82af\u7247\u7ea6\u591a2.7-3\u500d\u3002",
+  "g800_1600":"<div class=\\\"kw-title\\\">800G/1.6T\u5149\u6a21\u5757</div>\u5f53\u524d\u4e3b\u6d41\u9ad8\u901f\u5149\u6a21\u5757\u7684\u4e24\u4e2a\u901f\u7387\u6863\u4f4d\u3002800G\u662f\u5f53\u524dAI\u6570\u636e\u4e2d\u5fc3\u4e3b\u529b\uff0c1.6T\u6b63\u5728\u52a0\u901f\u653e\u91cf\u3002\u4ece800G\u5347\u7ea7\u52301.6T\uff0c\u6bcf\u4e2a\u6a21\u5757\u6d88\u8017InP\u6fc0\u5149\u82af\u7247\u7ea6\u589e\u52a02.7-3\u500d\u3002",
+  "eml_cw":"<div class=\\\"kw-title\\\">EML / CW\u5149\u82af\u7247</div>EML\uff08\u7535\u5438\u6536\u8c03\u5236\u6fc0\u5149\u5668\uff09\u96c6\u6210\u6fc0\u5149\u4e0e\u8c03\u5236\u4e8e\u4e00\u4f53\uff1bCW\uff08\u8fde\u7eed\u6ce2\u6fc0\u5149\u5668\uff09\u63d0\u4f9b\u8fde\u7eed\u5149\u6e90\uff0c\u7528\u4e8e\u7845\u5149\u65b9\u6848\u3002\u5747\u7531InP\u6750\u6599\u5236\u9020\u3002",
+};
+  var tip=document.createElement('div');
+  tip.id='kw-tooltip';
+  document.body.appendChild(tip);
+  var active=null;
+
+  function place(kw){
+    var r=kw.getBoundingClientRect();
+    var W=window.innerWidth,H=window.innerHeight;
+    var tw=Math.min(280,W-16);
+    tip.style.width=tw+'px';
+    tip.style.left='-9999px';tip.style.top='-9999px';
+    tip.className='show';
+    var th=tip.offsetHeight||120;
+    var cx=r.left+r.width/2;
+    var left=Math.max(8,Math.min(cx-tw/2,W-tw-8));
+    var top,dir;
+    if(r.top-th-12>=8){top=r.top-th-12;dir='dir-up';}
+    else{top=r.bottom+10;dir='dir-dn';}
+    tip.style.left=left+'px';tip.style.top=top+'px';
+    tip.className='show '+dir;
+    var ax=Math.max(14,Math.min(cx-left,tw-14));
+    tip.style.setProperty('--arrow-x',ax+'px');
+  }
+
+  function show(kw){
+    var key=kw.getAttribute('data-tip');
+    if(!key||!TIPS[key])return;
+    tip.innerHTML=TIPS[key];
+    place(kw);active=kw;
+  }
+  function hide(){tip.className='';active=null;}
+
+  document.addEventListener('click',function(e){
+    var kw=e.target.closest('.kw');
+    if(kw){e.stopPropagation();active===kw?hide():show(kw);}
+    else hide();
+  });
+  window.addEventListener('scroll',hide,{passive:true});
+  window.addEventListener('resize',function(){if(active)place(active);});
+})();
 // ── Global fixed tooltip ──────────────────────────────────────────────────
 (function(){
   var tip = document.createElement('div');
@@ -786,9 +847,9 @@ footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border
   }
 
   function show(kw){
-    var box = kw.querySelector('.kw-box');
-    if(!box) return;
-    tip.innerHTML = box.innerHTML;
+    var key = kw.getAttribute('data-tip');
+    if(!key || !TIPS[key]) return;
+    tip.innerHTML = TIPS[key];
     place(kw);
     active = kw;
   }
