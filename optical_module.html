@@ -17,140 +17,153 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB',sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-
-/* 水印 */
 body::before{content:"reese";position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:clamp(60px,12vw,160px);font-weight:900;color:rgba(0,0,0,0.025);pointer-events:none;z-index:9999;transform:rotate(-30deg);white-space:nowrap}
-
-/* 返回按钮 */
 #back-btn-wrap{position:fixed;top:12px;left:12px;z-index:10000}
 #back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border:1px solid #d0d7de;border-radius:20px;padding:6px 14px 6px 10px;font-size:13px;font-weight:600;color:#0969da;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .15s}
 #back-btn:hover{box-shadow:0 4px 14px rgba(9,105,218,.18);border-color:#0969da}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,#0a0f1e 0%,#0f1f3a 50%,#0a0f1e 100%);padding:64px 24px 52px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 900px 400px at 50% 0%,rgba(37,99,235,0.15),transparent)}
-.hero-tag{display:inline-block;background:rgba(37,99,235,0.18);border:1px solid rgba(37,99,235,0.4);color:#93c5fd;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:18px}
-.hero h1{font-size:clamp(19px,3.8vw,34px);font-weight:800;color:#f8fafc;line-height:1.25;margin-bottom:10px}
+.hero{background:linear-gradient(135deg,#0a0f1e 0%,#0e1d38 55%,#0a0f1e 100%);padding:60px 24px 48px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 350px at 50% -10%,rgba(37,99,235,0.14),transparent);pointer-events:none}
+.hero-tag{display:inline-block;background:rgba(37,99,235,0.18);border:1px solid rgba(37,99,235,0.4);color:#93c5fd;font-size:11px;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-size:clamp(18px,3.6vw,32px);font-weight:800;color:#f8fafc;line-height:1.28;margin-bottom:8px}
 .hero h1 .up{color:#34d399}.hero h1 .dn{color:#f87171}
-.hero-sub{font-size:13px;color:#94a3b8;margin-bottom:34px;max-width:600px;margin-left:auto;margin-right:auto}
-.hero-kpis{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-.kpi{text-align:center;min-width:88px}
-.kpi-v{font-size:clamp(20px,3.5vw,32px);font-weight:900;line-height:1;color:#f8fafc}
+.hero-sub{font-size:13px;color:#94a3b8;max-width:560px;margin:0 auto 32px}
+.hero-kpis{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.kpi{text-align:center;min-width:82px}
+.kpi-v{font-size:clamp(19px,3.2vw,29px);font-weight:900;line-height:1}
 .kpi-v.g{color:#34d399}.kpi-v.r{color:#f87171}.kpi-v.y{color:#fbbf24}
-.kpi-l{font-size:10px;color:#94a3b8;margin-top:5px;text-transform:uppercase;letter-spacing:.7px}
+.kpi-l{font-size:9.5px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
 
 /* NAV */
 .nav-wrap{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.nav{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 16px}
+.nav{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
 .nav::-webkit-scrollbar{display:none}
-.nav a{display:block;padding:12px 14px;font-size:12.5px;font-weight:600;color:var(--sub);white-space:nowrap;text-decoration:none;border-bottom:2px solid transparent;transition:all .15s}
+.nav a{display:block;padding:11px 12px;font-size:12px;font-weight:600;color:var(--sub);white-space:nowrap;text-decoration:none;border-bottom:2px solid transparent;transition:all .15s}
 .nav a:hover,.nav a.act{color:var(--blue);border-bottom-color:var(--blue)}
 
-/* LAYOUT */
-.container{max-width:920px;margin:0 auto;padding:28px 16px 72px}
+.container{max-width:940px;margin:0 auto;padding:24px 16px 72px}
 .section{margin-bottom:40px}
-.sec-title{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:16px}
-.ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.sec-title{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:14px}
+.ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 
-/* CARD */
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
-.card-t{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:12px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:560px){.g2{grid-template-columns:1fr}}
-
-/* CALLOUT */
-.cl{border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.8;border-left:4px solid}
+.cl{border-radius:10px;padding:13px 15px;margin-bottom:14px;font-size:13.5px;line-height:1.8;border-left:4px solid}
 .cl.b{background:var(--blue-bg);border-color:var(--blue)}
 .cl.g{background:var(--green-bg);border-color:var(--green)}
 .cl.o{background:var(--orange-bg);border-color:var(--orange)}
 .cl.r{background:var(--red-bg);border-color:var(--red)}
 
-/* DEMAND SPLIT DIAGRAM */
-.demand-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:14px;overflow:hidden;border:2px solid var(--border);margin:16px 0}
-.demand-col{padding:20px 18px}
-.demand-col.up{background:linear-gradient(160deg,#ecfdf5,#d1fae5);border-right:2px solid var(--border)}
-.demand-col.dn{background:linear-gradient(160deg,#fef2f2,#fee2e2)}
-.demand-col h3{font-size:13px;font-weight:800;letter-spacing:.5px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.demand-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,0.08)}
-.demand-item:last-child{border-bottom:none}
-.di-icon{font-size:20px;flex-shrink:0;margin-top:1px}
-.di-body{}
-.di-name{font-size:13px;font-weight:700;margin-bottom:2px}
-.di-desc{font-size:11.5px;color:var(--sub);line-height:1.6}
-@media(max-width:560px){.demand-grid{grid-template-columns:1fr}.demand-col.up{border-right:none;border-bottom:2px solid var(--border)}}
-
-/* AI INFRA PYRAMID */
-.pyramid{display:flex;flex-direction:column;gap:6px;margin:16px 0}
-.pyr-row{display:flex;align-items:stretch;gap:10px}
-.pyr-bar{border-radius:8px;padding:12px 16px;flex:1;position:relative}
-.pyr-rank{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0;margin-top:4px}
-.pyr-label{font-size:12px;font-weight:800;margin-bottom:3px}
-.pyr-items{font-size:12px;color:var(--sub);line-height:1.7}
-.pyr-badge{position:absolute;top:10px;right:12px;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:800}
-
-/* DIVERGENCE TABLE */
-.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
-.tbl th{background:#f8fafc;padding:9px 12px;text-align:left;font-weight:700;color:var(--sub);font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--border)}
-.tbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
-.tbl tr:last-child td{border-bottom:none}
-.tbl tr:hover td{background:#fafbff}
-
-/* CHAIN */
-.chain-row{display:flex;align-items:stretch;gap:12px;margin-bottom:8px}
-.chain-line{width:3px;border-radius:2px;flex-shrink:0}
-.chain-body{flex:1;border-radius:10px;padding:14px 16px;border:1px solid}
-.chain-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
-.chain-name{font-size:14px;font-weight:700;margin-bottom:4px}
-.chain-desc{font-size:12.5px;color:var(--sub);line-height:1.65}
-.chain-tickers{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
-.tk{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:700;background:#fff;border:1.5px solid}
-.tk-r{color:var(--red);border-color:var(--red)}.tk-b{color:var(--blue);border-color:var(--blue)}
-
-/* VERDICT */
-.verdict{background:linear-gradient(135deg,#0a0f1e,#0f2040);border-radius:16px;padding:28px;color:#f8fafc}
-.verdict h3{font-size:17px;font-weight:800;margin-bottom:14px;color:#60a5fa}
-.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
-@media(max-width:560px){.vgrid{grid-template-columns:1fr}}
-.vc{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px}
-.vc h4{font-size:12.5px;font-weight:700;color:#93c5fd;margin-bottom:8px}
-.vc ul{list-style:none;font-size:12px;color:#cbd5e1;line-height:1.95}
-.vc ul li::before{content:'→ ';color:#60a5fa}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px}
+.card-t{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.g2{grid-template-columns:1fr}}
 
 .bd{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
 .bd-g{background:var(--green-bg);color:var(--green)}.bd-r{background:var(--red-bg);color:var(--red)}
 .bd-b{background:var(--blue-bg);color:var(--blue)}.bd-o{background:var(--orange-bg);color:var(--orange)}
 .bd-gr{background:#f1f5f9;color:#475569}
 
-footer{text-align:center;padding:32px 16px;color:#94a3b8;font-size:12px;border-top:1px solid var(--border);background:#fff}
-@media(max-width:640px){.hero{padding:52px 16px 36px}}
+/* ===== DEMAND FLOW DIAGRAM ===== */
+.flow-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-bottom:14px;overflow-x:auto}
+.flow-title{text-align:center;font-size:13px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:1px;margin-bottom:22px}
+
+/* capex source box */
+.capex-src{background:linear-gradient(135deg,#0f2040,#1e3a5f);border-radius:12px;padding:16px 20px;text-align:center;max-width:260px;margin:0 auto 20px}
+.capex-src h4{font-size:12px;font-weight:700;color:#93c5fd;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.capex-src .num{font-size:26px;font-weight:900;color:#f8fafc}
+.capex-src .sub{font-size:11px;color:#64748b;margin-top:3px}
+
+/* flow arrows row */
+.flow-arrows{display:flex;gap:10px;justify-content:center;align-items:stretch;flex-wrap:wrap;margin-bottom:4px}
+.flow-arrow{display:flex;flex-direction:column;align-items:center;gap:0;flex:1;min-width:90px;max-width:180px}
+.arrow-line{width:2px;height:28px;margin:0 auto}
+.arrow-head{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid}
+.flow-pct{font-size:11px;font-weight:800;padding:2px 8px;border-radius:10px;margin-top:-4px}
+
+/* flow destination boxes */
+.flow-dest{border-radius:11px;padding:14px 12px;text-align:center;border:2px solid}
+.fd-name{font-size:13px;font-weight:800;margin-bottom:4px;line-height:1.3}
+.fd-sub{font-size:11px;color:var(--sub);line-height:1.5;margin-bottom:8px}
+.fd-direct{font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px;display:inline-block}
+
+/* CAPEX BAR CHART */
+.bar-chart{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.bar-row{display:flex;align-items:center;gap:10px}
+.bar-label{font-size:12px;font-weight:600;color:var(--text);width:120px;flex-shrink:0;text-align:right}
+.bar-track{flex:1;height:26px;background:#f1f5f9;border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;transition:width .6s ease}
+.bar-fill span{font-size:11.5px;font-weight:800;color:#fff;white-space:nowrap}
+.bar-pct{font-size:12px;font-weight:800;width:36px;flex-shrink:0;text-align:right}
+@media(max-width:480px){.bar-label{width:80px;font-size:11px}}
+
+/* GPU CLUSTER VIS */
+.cluster-vis{background:#0f172a;border-radius:14px;padding:20px;margin:14px 0}
+.cluster-title{font-size:12px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;text-align:center}
+.cluster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:300px;margin:0 auto 14px}
+.gpu-box{background:#1e3a5f;border:1px solid #2563eb;border-radius:6px;padding:8px 4px;text-align:center;font-size:10px;color:#93c5fd;font-weight:700}
+.gpu-box.highlight{background:#1e4040;border-color:#34d399;color:#34d399}
+.cluster-legend{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cl-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#94a3b8}
+.cl-dot{width:10px;height:10px;border-radius:2px}
+.cluster-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.cs{text-align:center}
+.cs-v{font-size:18px;font-weight:900;color:#f8fafc}
+.cs-l{font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.5px}
+
+/* CHAIN */
+.chain-row{display:flex;align-items:stretch;gap:10px;margin-bottom:8px}
+.chain-line{width:3px;border-radius:2px;flex-shrink:0}
+.chain-body{flex:1;border-radius:10px;padding:13px 15px;border:1px solid}
+.chain-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.chain-name{font-size:13.5px;font-weight:700;margin-bottom:3px}
+.chain-desc{font-size:12px;color:var(--sub);line-height:1.65}
+.chain-tickers{margin-top:7px;display:flex;gap:5px;flex-wrap:wrap}
+.tk{display:inline-block;padding:2px 7px;border-radius:5px;font-size:10.5px;font-weight:700;background:#fff;border:1.5px solid}
+.tk-r{color:var(--red);border-color:var(--red)}.tk-b{color:var(--blue);border-color:var(--blue)}
+
+/* STOCK TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{background:#f8fafc;padding:8px 10px;text-align:left;font-weight:700;color:var(--sub);font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--border)}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#fafbff}
+
+/* VERDICT */
+.verdict{background:linear-gradient(135deg,#0a0f1e,#0f2040);border-radius:16px;padding:26px;color:#f8fafc;margin-bottom:0}
+.verdict h3{font-size:16px;font-weight:800;margin-bottom:12px;color:#60a5fa}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:540px){.vgrid{grid-template-columns:1fr}}
+.vc{background:rgba(255,255,255,0.07);border-radius:10px;padding:13px}
+.vc h4{font-size:12px;font-weight:700;color:#93c5fd;margin-bottom:7px}
+.vc ul{list-style:none;font-size:11.5px;color:#cbd5e1;line-height:2}
+.vc ul li::before{content:'→ ';color:#60a5fa}
+
+footer{text-align:center;padding:28px 16px;color:#94a3b8;font-size:11.5px;border-top:1px solid var(--border);background:#fff}
 </style>
 </head>
 <body>
-
 <div id="back-btn-wrap"><a href="stock_daily.html" id="back-btn">&#8592; 返回研报合集</a></div>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-tag">Serenity · AI需求拆解 · 2026年8月</div>
   <h1>同是 AI 受益股<br><span class="dn">存储为什么跌了</span>，<span class="up">光模块为什么涨了</span>？</h1>
-  <div class="hero-sub">AI 需求不是一个整体，是分层流向不同组件的。理解这个分层，才能看清楚谁是真受益、谁是伪受益。</div>
+  <div class="hero-sub">AI 资本开支不是"整体"流向产业链，是按组件类型定向分配的。理解这个分配逻辑，才能判断谁是真受益。</div>
   <div class="hero-kpis">
     <div class="kpi"><div class="kpi-v r">-20%</div><div class="kpi-l">SK海力士 近1月</div></div>
-    <div class="kpi"><div class="kpi-v r">-18%</div><div class="kpi-l">闪迪/西部数据</div></div>
+    <div class="kpi"><div class="kpi-v r">-18%</div><div class="kpi-l">闪迪/WD NAND</div></div>
     <div class="kpi"><div class="kpi-v g">+103%</div><div class="kpi-l">新易盛H1净利润</div></div>
-    <div class="kpi"><div class="kpi-v g">+109%</div><div class="kpi-l">Lumentum Q4营收</div></div>
-    <div class="kpi"><div class="kpi-v y">2028年</div><div class="kpi-l">光模块订单已排至</div></div>
+    <div class="kpi"><div class="kpi-v g">+109%</div><div class="kpi-l">Lumentum Q4营收YoY</div></div>
+    <div class="kpi"><div class="kpi-v y">2028</div><div class="kpi-l">光模块订单已排至</div></div>
   </div>
 </div>
 
-<!-- NAV -->
 <div class="nav-wrap">
   <nav class="nav" id="nav">
-    <a href="#split">AI需求拆分</a>
-    <a href="#optical-why">光模块为什么涨</a>
-    <a href="#storage-why">存储为什么跌</a>
-    <a href="#diverge">分歧的本质</a>
-    <a href="#chain">产业链卡点</a>
+    <a href="#demand-flow">AI资本开支流向</a>
+    <a href="#gpu-cluster">GPU集群需要什么</a>
+    <a href="#why-optical">光模块为什么涨</a>
+    <a href="#why-storage">存储为什么跌</a>
+    <a href="#bottleneck">供给卡点</a>
     <a href="#stocks">投资图谱</a>
     <a href="#risks">风险</a>
   </nav>
@@ -158,174 +171,234 @@ footer{text-align:center;padding:32px 16px;color:#94a3b8;font-size:12px;border-t
 
 <div class="container">
 
-<!-- SECTION 1: AI DEMAND SPLIT -->
-<div class="section" id="split">
-  <div class="sec-title"><div class="ico" style="background:#eff6ff">🔀</div>第一步：把 AI 需求拆开来看</div>
+<!-- ============ SECTION 1: AI CAPEX FLOW ============ -->
+<div class="section" id="demand-flow">
+  <div class="sec-title"><div class="ico" style="background:#eff6ff">💰</div>第一步：AI 资本开支流向哪里</div>
 
   <div class="cl b">
-    <strong>最常见的误区：把"AI受益"当成一个整体。</strong>事实上，AI 产业链的需求是分层流向不同组件的，有些组件直接受益于算力集群扩张，有些受益于AI应用端的普及，有些只是在AI叙事下被顺带定价。存储和光模块的分化，正是因为它们对接的是AI需求的不同层次。
+    <strong>根本误区：把"AI受益"当成一个整体。</strong>实际上，云厂商每投入 $100 的 AI 数据中心资本开支，各组件拿到的比例差异巨大——光模块是"必须买"，NAND存储几乎不在采购清单里。
   </div>
 
-  <!-- Demand split diagram -->
-  <div class="demand-grid">
-    <div class="demand-col up">
-      <h3 style="color:#065f46">📡 光模块 · 算力集群基础设施需求</h3>
-      <div class="demand-item">
-        <div class="di-icon">🖥️</div>
-        <div class="di-body">
-          <div class="di-name">需求来源：GPU集群组网</div>
-          <div class="di-desc">每台 H100/H200 服务器有 8 个 400G 光口；一个万卡集群需要约 8-10 万颗光模块。集群越大，光模块需求越多——且是乘法关系，不是加法关系。</div>
-        </div>
+  <!-- CAPEX BAR CHART -->
+  <div class="flow-wrap">
+    <div class="flow-title">AI 数据中心 $100 资本开支分配（估算）</div>
+
+    <div class="bar-chart" id="barChart">
+      <div class="bar-row">
+        <div class="bar-label">GPU / AI芯片</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#dc2626,#ef4444)"><span>GPU / XPU · 约55%</span></div></div>
+        <div class="bar-pct" style="color:#dc2626">55%</div>
       </div>
-      <div class="demand-item">
-        <div class="di-icon">⚡</div>
-        <div class="di-body">
-          <div class="di-name">速率升级 = 需求量级跃升</div>
-          <div class="di-desc">从 400G → 800G → 1.6T，每次速率翻倍都带来单模块材料消耗倍增。速率升级不是替换，是叠加，旧速率的模块也继续采购。</div>
-        </div>
+      <div class="bar-row">
+        <div class="bar-label">高速光互联</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#059669,#10b981)"><span>光模块 + 交换机 · 约12%</span></div></div>
+        <div class="bar-pct" style="color:#059669">12%</div>
       </div>
-      <div class="demand-item">
-        <div class="di-icon">🔌</div>
-        <div class="di-body">
-          <div class="di-name">铜缆 → 光缆替换（新增TAM）</div>
-          <div class="di-desc">机架内部的 GPU Scale-Up 连接正从铜 DAC 线缆迁移到光模块。这是现有数据中心互联之外的全新市场，还没有大规模启动。</div>
-        </div>
+      <div class="bar-row">
+        <div class="bar-label">HBM内存</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#d97706,#f59e0b)"><span>封装在GPU内 · 约10%</span></div></div>
+        <div class="bar-pct" style="color:#d97706">10%</div>
       </div>
-      <div class="demand-item">
-        <div class="di-icon">☁️</div>
-        <div class="di-body">
-          <div class="di-name">云厂商资本开支持续上修</div>
-          <div class="di-desc">亚马逊从 $2000亿→$2200亿、谷歌上修约 $150亿、Meta 继续加码。每一笔资本开支里，光互联是"必买清单"，没有可替代品。</div>
-        </div>
+      <div class="bar-row">
+        <div class="bar-label">电力/冷却</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#7c3aed,#8b5cf6)"><span>UPS + 液冷 + 配电 · 约10%</span></div></div>
+        <div class="bar-pct" style="color:#7c3aed">10%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">服务器机架</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#2563eb,#3b82f6)"><span>ODM厂商 · 约8%</span></div></div>
+        <div class="bar-pct" style="color:#2563eb">8%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">企业SSD</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#64748b,#94a3b8)"><span>数据集/检查点存储 · 约3%</span></div></div>
+        <div class="bar-pct" style="color:#64748b">3%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label" style="color:var(--red);font-weight:800">消费NAND</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:linear-gradient(90deg,#fca5a5,#fecaca)"><span style="color:#dc2626">手机/PC存储 · &lt;1%</span></div></div>
+        <div class="bar-pct" style="color:#dc2626">≈0%</div>
       </div>
     </div>
-    <div class="demand-col dn">
-      <h3 style="color:#991b1b">💾 存储 · 面向不同需求层的混合产品</h3>
-      <div class="demand-item">
-        <div class="di-icon">🧠</div>
-        <div class="di-body">
-          <div class="di-name">HBM（高带宽内存）：AI直接需求</div>
-          <div class="di-desc">封装在 GPU 内部，SK海力士垄断 50%+，是真正的 AI 受益品种。但市场已完全定价，并开始 forward-looking 担忧三星追赶 HBM4。</div>
-        </div>
+
+    <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+      <div style="flex:1;min-width:180px;background:#ecfdf5;border-radius:10px;padding:12px 14px;border-left:4px solid var(--green)">
+        <div style="font-size:12px;font-weight:800;color:var(--green);margin-bottom:4px">📡 光互联：必须采购，无可替代</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.7">GPU 组网的唯一方案。每新增一张 GPU，对应的光模块端口数量同步增加，需求刚性极强。占数据中心 capex 约 10-15%。</div>
       </div>
-      <div class="demand-item">
-        <div class="di-icon">💿</div>
-        <div class="di-body">
-          <div class="di-name">NAND 闪存：AI 需求极其间接</div>
-          <div class="di-desc">AI 训练消耗的是 HBM + DRAM，NAND 只用于数据集存储和检查点，占 AI 计算成本极低。NAND 主要市场仍是手机、PC、SSD —— 跟 AI 资本开支关系不大。</div>
-        </div>
-      </div>
-      <div class="demand-item">
-        <div class="di-icon">📱</div>
-        <div class="di-body">
-          <div class="di-name">消费端 NAND 需求疲软</div>
-          <div class="di-desc">智能手机换机周期延长、PC 需求未完全复苏。闪迪（SanDisk）、铠侠等 NAND 纯厂商，AI 叙事掩护了消费端软弱的事实，一旦市场回到基本面，估值修正。</div>
-        </div>
-      </div>
-      <div class="demand-item">
-        <div class="di-icon">📉</div>
-        <div class="di-body">
-          <div class="di-name">HBM 股票的"完美定价"陷阱</div>
-          <div class="di-desc">SK 海力士 Q1 净利润 +158%，但股价已提前 6-9 个月计入，当业绩"只是符合预期"时，市场开始卖出。这是典型的"买预期 卖事实"。</div>
-        </div>
+      <div style="flex:1;min-width:180px;background:#fef2f2;border-radius:10px;padding:12px 14px;border-left:4px solid var(--red)">
+        <div style="font-size:12px;font-weight:800;color:var(--red);margin-bottom:4px">💾 消费NAND：AI训练根本不用</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.7">AI 训练消耗的是 HBM + DRAM，NAND 只用于数据集存储，且占比极低。消费 NAND 的需求驱动力是手机/PC，与 AI capex 几乎脱钩。</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 2: WHY OPTICAL UP -->
-<div class="section" id="optical-why">
-  <div class="sec-title"><div class="ico" style="background:#ecfdf5">📡</div>光模块为什么涨：三重需求共振</div>
+<!-- ============ SECTION 2: GPU CLUSTER ============ -->
+<div class="section" id="gpu-cluster">
+  <div class="sec-title"><div class="ico" style="background:#ecfdf5">🖥️</div>第二步：一个 GPU 集群，到底需要什么</div>
 
-  <div class="card">
-    <div class="card-t">AI 算力集群的物理结构决定了光模块的刚需属性</div>
-    <div style="font-size:13.5px;line-height:1.9;margin-bottom:14px">
-      一个 <strong>10,000 卡 H100 集群</strong>的光模块用量：
-      <br>• 每台服务器 8 个 400G 光口（约 8 个模块）
-      <br>• 10,000 卡 ÷ 8 卡/服务器 = 1,250 台服务器
-      <br>• 1,250 台 × 8 个模块 × 2（收发双向）≈ <strong>约 8-10 万颗光模块</strong>
-      <br>• 若升级到 800G，同样集群模块数量减半但单价倍增；若集群规模扩大到 10 万卡，光模块需求直接 ×10
+  <div class="cluster-vis">
+    <div class="cluster-title">10,000 卡 H100 集群 · 组件需求对比</div>
+    <div class="cluster-grid" id="gpuGrid">
+      <!-- filled by JS -->
     </div>
-    <div style="background:#ecfdf5;border-radius:10px;padding:14px;font-size:13px;line-height:1.8;color:#065f46">
-      <strong>关键结论：光模块是 AI 集群的"神经系统"，缺一个集群就运转不了。</strong>这与 NAND 存储的"锦上添花"属性形成根本差异——没有光模块 GPU 就是一块砖，没有 NAND 仍然可以训练（只是慢一点）。
+    <div class="cluster-legend">
+      <div class="cl-item"><div class="cl-dot" style="background:#2563eb"></div>GPU 节点（每节点 8 卡）</div>
+      <div class="cl-item"><div class="cl-dot" style="background:#34d399"></div>光模块端口（必须）</div>
+      <div class="cl-item"><div class="cl-dot" style="background:#475569"></div>NAND存储（可选）</div>
+    </div>
+    <div class="cluster-stats">
+      <div class="cs"><div class="cs-v" style="color:#34d399">~80,000</div><div class="cs-l">颗光模块（必需）</div></div>
+      <div class="cs"><div class="cs-v" style="color:#f8fafc">1,250</div><div class="cs-l">台 GPU 服务器</div></div>
+      <div class="cs"><div class="cs-v" style="color:#64748b">可有可无</div><div class="cs-l">NAND 存储</div></div>
     </div>
   </div>
 
   <div class="g2">
     <div class="card" style="margin-bottom:0;border-left:4px solid var(--green)">
-      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px">800G→1.6T：单模块材料消耗翻3倍</div>
-      <div style="font-size:12.5px;color:var(--sub);line-height:1.8">
-        800G：每模块需 4 颗 InP 激光芯片<br>
-        1.6T：光通道数从 4→8 条，每条独立收发<br>
-        → <strong>每个模块消耗 InP 约 2.7-3 倍</strong><br>
-        这是"单位消耗倍增"而非总量增长，更猛，更难被替代
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:8px">光模块：集群的"神经系统"</div>
+      <div style="font-size:12px;color:var(--sub);line-height:1.85">
+        每台 H100 服务器有 <strong>8个 400G 光口</strong><br>
+        → 1,250 台 × 8口 × 2（收发）= <strong>~8-10 万颗模块</strong><br><br>
+        集群从 1 万卡扩到 10 万卡<br>
+        → 光模块需求直接 <strong>×10</strong><br><br>
+        缺光模块 → GPU 就是一块砖
       </div>
     </div>
-    <div class="card" style="margin-bottom:0;border-left:4px solid var(--blue)">
-      <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:10px">订单能见度清晰，2027-2028年已锁定</div>
-      <div style="font-size:12.5px;color:var(--sub);line-height:1.8">
-        中际旭创：订单覆盖至 2027，部分客户已给 2028 指引<br>
-        Coherent：CEO 表示"订单已排至 2028 年"<br>
-        AOI：在手 1.6T 订单超 $2 亿<br>
-        → 需求能见度是光模块板块定价最强的支撑
+    <div class="card" style="margin-bottom:0;border-left:4px solid var(--red)">
+      <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:8px">NAND：AI训练没有它也能跑</div>
+      <div style="font-size:12px;color:var(--sub);line-height:1.85">
+        AI 训练数据集：放在 <strong>NFS / 并行存储</strong>上，不是消费 NAND<br>
+        模型权重：加载进 <strong>HBM + DRAM</strong>，不占 NAND<br><br>
+        消费 NAND 真正的需求方：<br>
+        → 手机换机 / PC 升级 / 相机存储<br><br>
+        与 AI capex <strong>基本脱钩</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 800G→1.6T multiplier -->
+  <div class="card" style="margin-top:12px">
+    <div class="card-t">🔑 最被低估的变量：800G → 1.6T 速率升级 = 单模块 InP 耗量翻 3 倍</div>
+    <div style="display:flex;align-items:center;gap:0;background:#f8fafc;border-radius:10px;overflow:hidden;margin-bottom:10px">
+      <div style="flex:1;padding:14px;text-align:center;border-right:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:5px">400G 光模块</div>
+        <div style="font-size:22px;font-weight:900;color:var(--navy)">2</div>
+        <div style="font-size:11px;color:var(--sub)">颗 InP 芯片</div>
+      </div>
+      <div style="padding:0 10px;font-size:20px;color:var(--sub)">→</div>
+      <div style="flex:1;padding:14px;text-align:center;border-right:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:5px">800G 光模块</div>
+        <div style="font-size:22px;font-weight:900;color:var(--orange)">4-8</div>
+        <div style="font-size:11px;color:var(--sub)">颗 InP 芯片</div>
+      </div>
+      <div style="padding:0 10px;font-size:20px;color:var(--sub)">→</div>
+      <div style="flex:1;padding:14px;text-align:center;background:#fef9ec">
+        <div style="font-size:11px;font-weight:700;color:var(--orange);margin-bottom:5px">1.6T 光模块</div>
+        <div style="font-size:22px;font-weight:900;color:var(--red)">×2.7-3</div>
+        <div style="font-size:11px;color:var(--red)">比800G多耗 InP</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--sub);line-height:1.8">
+      1.6T 光通道数从 4条→8条，每条独立的 InP 收发器件。从 800G 切换到 1.6T，<strong>每个模块消耗磷化铟材料约是 800G 的 2.7-3 倍</strong>。这种"单位消耗倍增"比出货量增长更猛——是在需求本已爆炸的基础上再叠加材料消耗倍增。市场很容易只看出货量数字而忽视这个乘数。
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 3: WHY OPTICAL UP ============ -->
+<div class="section" id="why-optical">
+  <div class="sec-title"><div class="ico" style="background:#ecfdf5">📡</div>光模块为什么涨：需求 × 供给双重锁死</div>
+
+  <div class="g2">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-t" style="color:var(--green)">需求端：三重共振</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="padding:10px;background:#f0fdf4;border-radius:8px">
+          <div style="font-size:12.5px;font-weight:700;margin-bottom:3px">① 云厂商资本开支持续上修</div>
+          <div style="font-size:11.5px;color:var(--sub)">亚马逊 $2200亿、谷歌 $195-205亿、Meta $1300亿+。每笔 capex 里光模块是"必须项"，无替代品。</div>
+        </div>
+        <div style="padding:10px;background:#f0fdf4;border-radius:8px">
+          <div style="font-size:12.5px;font-weight:700;margin-bottom:3px">② 1.6T 放量 = 单模块材料消耗×3</div>
+          <div style="font-size:11.5px;color:var(--sub)">不是量增加，是每个单位消耗的材料翻倍。出货量×速率升级形成双重乘数。</div>
+        </div>
+        <div style="padding:10px;background:#f0fdf4;border-radius:8px">
+          <div style="font-size:12.5px;font-weight:700;margin-bottom:3px">③ 光进铜退：全新 TAM</div>
+          <div style="font-size:11.5px;color:var(--sub)">GPU Scale-Up 连接从铜 DAC 迁移到光模块，2027-28年大规模落地，是额外增量，还没算进当前订单。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-t" style="color:var(--red)">供给端：磷化铟（InP）卡死了</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="padding:10px;background:#fef2f2;border-radius:8px">
+          <div style="font-size:12.5px;font-weight:700;margin-bottom:3px">全球供需缺口 70%+</div>
+          <div style="font-size:11.5px;color:var(--sub)">2026年需求 260-300万片，有效产能仅 75 万片。缺口是结构性的，新建产线≥3-5年。</div>
+        </div>
+        <div style="padding:10px;background:#fef2f2;border-radius:8px">
+          <div style="font-size:12.5px;font-weight:700;margin-bottom:3px">三家垄断 + 中国出口管制</div>
+          <div style="font-size:11.5px;color:var(--sub)">住友电工、AXT、JX 金属合计占全球 90% 产能。中国对日出口管制后，日本申请拒绝率 >80%。</div>
+        </div>
+        <div style="padding:10px;background:#fef2f2;border-radius:8px">
+          <div style="font-size:12.5px;font-weight:700;margin-bottom:3px">衬底"第四连涨"即将到来</div>
+          <div style="font-size:11.5px;color:var(--sub)">4英寸今年已涨 50%，Q4 将迎来 >10% 涨幅，创历史最大单次涨幅。</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 3: WHY STORAGE DOWN -->
-<div class="section" id="storage-why">
-  <div class="sec-title"><div class="ico" style="background:#fef2f2">💾</div>存储为什么跌：三类不同跌法，逻辑各异</div>
+<!-- ============ SECTION 4: WHY STORAGE DOWN ============ -->
+<div class="section" id="why-storage">
+  <div class="sec-title"><div class="ico" style="background:#fef2f2">💾</div>存储为什么跌：三种资产，三种逻辑</div>
 
-  <div class="cl o">
-    <strong>"存储跌了"这个描述本身是模糊的。</strong>存储板块其实有三种截然不同的资产，跌的逻辑完全不同，不能混为一谈。
-  </div>
+  <div class="cl o"><strong>"存储跌了"是个模糊的说法。</strong>存储板块有三类完全不同的资产，AI需求对它们的传导程度差异巨大，跌的原因也截然不同。</div>
 
   <div class="card">
     <table class="tbl">
       <thead>
         <tr>
           <th>存储类型</th>
-          <th>代表公司</th>
-          <th>AI需求关联度</th>
-          <th>下跌真实原因</th>
+          <th>AI需求传导</th>
+          <th>主要需求驱动</th>
+          <th>跌的真正原因</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>HBM</strong><br><small>高带宽内存</small></td>
-          <td>SK 海力士<br>三星（HBM部门）</td>
-          <td><span class="bd bd-g">极高 · 直接嵌入GPU</span></td>
           <td>
-            <strong>不是需求下降，是估值修正</strong><br>
-            ① 股价提前 6-9 个月定价，业绩"符合预期"反而成卖出信号<br>
-            ② 三星 HBM4 即将通过 NVIDIA 认证 → 独家格局松动恐慌<br>
-            ③ TSMC 依赖（HBM4 需要 TSMC CoW 封装）→ 供应链风险<br>
-            <span style="color:var(--sub);font-size:11.5px">AI 需求没有减少，是"buy the rumor, sell the news"</span>
+            <strong>HBM 高带宽内存</strong><br>
+            <span style="font-size:11px;color:var(--sub)">SK海力士·三星HBM</span>
+          </td>
+          <td><span class="bd bd-g">极强·封装在GPU内</span></td>
+          <td>AI 训练直接需求</td>
+          <td>
+            <strong>不是需求减少，是估值修正</strong><br>
+            <span style="font-size:11px;color:var(--sub)">①股价提前 6-9 个月定价完毕，"符合预期"即卖出<br>②三星 HBM4 即将通过英伟达认证，独占格局松动<br>③"买预期 卖事实"的经典陷阱</span>
           </td>
         </tr>
         <tr style="background:#fef2f2">
-          <td><strong>NAND 闪存</strong><br><small>消费+企业存储</small></td>
-          <td>闪迪（SanDisk）<br>铠侠、美光NAND</td>
-          <td><span class="bd bd-r">极低 · 消费端为主</span></td>
           <td>
-            <strong>AI 叙事遮盖了消费端软弱</strong><br>
-            ① NAND 80%+ 市场是手机、PC、SSD —— 消费需求未复苏<br>
-            ② AI 训练实际不需要太多 NAND（用的是内存+HBM）<br>
-            ③ 跟光模块一起被贴"AI存储"标签是错误叙事<br>
-            <span style="color:var(--sub);font-size:11.5px">AI 需求从未实质性利好过 NAND，估值泡沫破裂而已</span>
+            <strong>消费 NAND 闪存</strong><br>
+            <span style="font-size:11px;color:var(--sub)">闪迪·铠侠·WD</span>
+          </td>
+          <td><span class="bd bd-r">几乎没有·AI不用</span></td>
+          <td>手机 / PC 换机周期</td>
+          <td>
+            <strong>AI 叙事从来就不成立</strong><br>
+            <span style="font-size:11px;color:var(--sub)">①AI 训练用 HBM+DRAM，不用 NAND<br>②消费需求仍在换机周期低谷<br>③AI 概念标签被市场强行贴上，现在被撕掉</span>
           </td>
         </tr>
         <tr>
-          <td><strong>企业 SSD / NVMe</strong><br><small>数据中心存储</small></td>
-          <td>美光 NVMe<br>三星企业SSD</td>
-          <td><span class="bd bd-o">中等 · 数据存储/检索</span></td>
           <td>
-            <strong>真实受益但被 NAND 板块情绪拖累</strong><br>
-            ① AI 推理端确实需要高速 NVMe 存模型权重<br>
-            ② 但体量有限，不足以撑起整个存储板块估值<br>
-            ③ 随 NAND 整体跌，属于错杀<br>
-            <span style="color:var(--sub);font-size:11.5px">这层是少数真的被低估的存储资产</span>
+            <strong>企业 NVMe SSD</strong><br>
+            <span style="font-size:11px;color:var(--sub)">三星企业SSD·美光</span>
+          </td>
+          <td><span class="bd bd-o">有限·推理存储权重</span></td>
+          <td>AI 推理 + 企业数据库</td>
+          <td>
+            <strong>有一定受益但被错杀</strong><br>
+            <span style="font-size:11px;color:var(--sub)">①AI 推理需要存储模型权重，有真实需求<br>②但体量不足以撑起整个存储板块<br>③随 NAND 板块整体下跌，属于错杀</span>
           </td>
         </tr>
       </tbody>
@@ -333,251 +406,161 @@ footer{text-align:center;padding:32px 16px;color:#94a3b8;font-size:12px;border-t
   </div>
 </div>
 
-<!-- SECTION 4: DIVERGENCE ESSENCE -->
-<div class="section" id="diverge">
-  <div class="sec-title"><div class="ico" style="background:#f5f3ff">⚖️</div>分歧的本质：AI需求流向的位置决定一切</div>
-
-  <div class="card">
-    <div class="card-t">AI 基础设施需求金字塔（按直接性和确定性排序）</div>
-    <div class="pyramid">
-      <div class="pyr-row">
-        <div class="pyr-rank" style="background:#dc2626;color:#fff">1</div>
-        <div class="pyr-bar" style="background:#fef2f2;border:1.5px solid #fca5a5">
-          <div class="pyr-label" style="color:#dc2626">GPU / 定制AI芯片（算力本体）</div>
-          <div class="pyr-items">NVIDIA H100/B200、AMD MI300X、Google TPU、AWS Trainium — 最直接受益，需求无弹性</div>
-          <div class="pyr-badge" style="background:#dc2626;color:#fff">直接 · 无替代</div>
-        </div>
-      </div>
-      <div class="pyr-row">
-        <div class="pyr-rank" style="background:#d97706;color:#fff">2</div>
-        <div class="pyr-bar" style="background:#fffbeb;border:1.5px solid #fdba74">
-          <div class="pyr-label" style="color:#d97706">高速光互联（光模块 · 光芯片）</div>
-          <div class="pyr-items">中际旭创、新易盛、Lumentum、Coherent — GPU 组网的唯一方案，集群扩大自动带动需求，供给严重紧缺</div>
-          <div class="pyr-badge" style="background:#d97706;color:#fff">直接 · 供给极紧</div>
-        </div>
-      </div>
-      <div class="pyr-row">
-        <div class="pyr-rank" style="background:#d97706;color:#fff">2</div>
-        <div class="pyr-bar" style="background:#fffbeb;border:1.5px solid #fdba74">
-          <div class="pyr-label" style="color:#d97706">HBM（高带宽内存）</div>
-          <div class="pyr-items">SK 海力士、三星 HBM 部门、Micron HBM — 封装在 GPU 内部，直接受益，但已过充分定价阶段，进入估值修正</div>
-          <div class="pyr-badge" style="background:#d97706;color:#fff">直接 · 已定价</div>
-        </div>
-      </div>
-      <div class="pyr-row">
-        <div class="pyr-rank" style="background:#2563eb;color:#fff">3</div>
-        <div class="pyr-bar" style="background:#eff6ff;border:1.5px solid #93c5fd">
-          <div class="pyr-label" style="color:#2563eb">电力基础设施 / 液冷 / 配电</div>
-          <div class="pyr-items">GE Vernova、Eaton、Vertiv、英维克 — 数据中心用电量剧增的受益方，长周期但确定性高</div>
-          <div class="pyr-badge" style="background:#2563eb;color:#fff">间接 · 高确定性</div>
-        </div>
-      </div>
-      <div class="pyr-row">
-        <div class="pyr-rank" style="background:#7c3aed;color:#fff">4</div>
-        <div class="pyr-bar" style="background:#f5f3ff;border:1.5px solid #c4b5fd">
-          <div class="pyr-label" style="color:#7c3aed">企业 NVMe SSD / 数据中心存储</div>
-          <div class="pyr-items">三星企业SSD、美光企业SSD — AI 推理需要存储模型权重，但体量有限，不足以驱动整板块</div>
-          <div class="pyr-badge" style="background:#7c3aed;color:#fff">间接 · 有限</div>
-        </div>
-      </div>
-      <div class="pyr-row">
-        <div class="pyr-rank" style="background:#64748b;color:#fff">5</div>
-        <div class="pyr-bar" style="background:#f8fafc;border:1.5px solid #e2e8f0">
-          <div class="pyr-label" style="color:#64748b">消费 NAND / 普通 DRAM</div>
-          <div class="pyr-items">闪迪、铠侠、西部数据 NAND — AI 需求几乎不流向这里；主要驱动力仍是手机 PC 换机周期，与 AI 资本开支基本脱钩</div>
-          <div class="pyr-badge" style="background:#64748b;color:#fff">脱钩 · 消费周期</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:#f0fdf4;border-radius:10px;padding:14px 16px;font-size:13.5px;line-height:1.85;margin-top:4px;border-left:4px solid var(--green)">
-      <strong>结论：光模块在金字塔第2层，NAND消费存储在第5层。</strong>同样被贴上"AI概念"标签，实际上离AI需求的距离相差了3个层级。市场纠偏的过程就是对这3层距离的重新定价。
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 5: SUPPLY CHAIN -->
-<div class="section" id="chain">
-  <div class="sec-title"><div class="ico" style="background:#fff7ed">🔴</div>光模块产业链：真正的卡点在磷化铟（InP）</div>
-
-  <div class="cl b">
-    光模块涨的表面是需求爆发，底层是供给卡死了。<strong>磷化铟衬底全球供需缺口超过 70%</strong>，三家日美企业垄断了 90% 的全球产能，中国出口管制又进一步收紧了对日本的供给。这是教科书级别的稀缺卡点。
-  </div>
+<!-- ============ SECTION 5: BOTTLENECK ============ -->
+<div class="section" id="bottleneck">
+  <div class="sec-title"><div class="ico" style="background:#fff7ed">🔴</div>光模块产业链卡点：真正的稀缺在磷化铟</div>
 
   <div class="chain-row">
     <div class="chain-line" style="background:#dc2626"></div>
     <div class="chain-body" style="background:#fef2f2;border-color:#fca5a5">
-      <div class="chain-label" style="color:#991b1b">第一卡点 · 最紧</div>
-      <div class="chain-name">磷化铟（InP）衬底 + 铟原料</div>
-      <div class="chain-desc">
-        2026年需求 260-300 万片，有效产能仅 75 万片，<strong>缺口 70%+</strong>。4英寸衬底年内涨价 50%（¥6,500/片），Q4将迎第四连涨（>10%）。中国对日出口管制使日本申请拒绝率超80%，全球寡头供给进一步收窄。
-      </div>
+      <div class="chain-label" style="color:#991b1b">第一层 · 最紧卡点</div>
+      <div class="chain-name">磷化铟（InP）衬底 — 缺口 70%+</div>
+      <div class="chain-desc">2026年需求 260-300万片，有效产能约 75万片。4英寸年内涨价50%，Q4将迎第四连涨（>10%）。住友电工+AXT+JX金属垄断全球90%。中国出口管制使日本申请拒绝率>80%，国产替代窗口打开。</div>
       <div class="chain-tickers">
-        <span class="tk tk-r">002428 云南锗业</span><span class="tk tk-r">600206 有研新材</span>
-        <span class="tk tk-r">000960 锡业股份</span><span class="tk tk-r">603065 宿迁联盛</span>
+        <span class="tk tk-r">002428 云南锗业</span><span class="tk tk-r">600206 有研新材</span><span class="tk tk-r">000960 锡业股份</span>
       </div>
     </div>
   </div>
-
   <div class="chain-row">
     <div class="chain-line" style="background:#d97706"></div>
     <div class="chain-body" style="background:#fffbeb;border-color:#fdba74">
-      <div class="chain-label" style="color:#92400e">第二卡点 · 高度紧缺</div>
-      <div class="chain-name">EML 激光芯片 + 高功率 CW 光源</div>
-      <div class="chain-desc">
-        每颗 1.6T 模块消耗 InP 是 800G 的 2.7-3 倍，供给极度偏紧。源杰科技 H1 净利润同比增长超 13 倍，是光芯片层的业绩实证。国产化从 15% 向 30% 推进，但仍严重依赖海外。
-      </div>
+      <div class="chain-label" style="color:#92400e">第二层 · 高度紧缺</div>
+      <div class="chain-name">EML 激光芯片 + CW 光源 — 供给极度偏紧</div>
+      <div class="chain-desc">每颗 1.6T 模块消耗 InP 是 800G 的 2.7-3 倍。源杰科技 H1 净利润同比+1300%（¥6亿），是光芯片层业绩的直接验证。国产化从 15% 推进至 30%+ 中。</div>
       <div class="chain-tickers">
-        <span class="tk tk-r">688498 源杰科技</span><span class="tk tk-r">600703 三安光电</span>
-        <span class="tk tk-r">002281 光迅科技</span>
-        <span class="tk tk-b">LITE.US Lumentum</span>
+        <span class="tk tk-r">688498 源杰科技</span><span class="tk tk-r">600703 三安光电</span><span class="tk tk-r">002281 光迅科技</span><span class="tk tk-b">LITE Lumentum</span>
       </div>
     </div>
   </div>
-
   <div class="chain-row">
     <div class="chain-line" style="background:#2563eb"></div>
     <div class="chain-body" style="background:#eff6ff;border-color:#93c5fd">
-      <div class="chain-label" style="color:#1e40af">第三层 · 订单饱满 扩产中</div>
+      <div class="chain-label" style="color:#1e40af">第三层 · 订单饱满 上游物料瓶颈中</div>
       <div class="chain-name">高速光模块封装（800G / 1.6T）</div>
-      <div class="chain-desc">
-        新易盛 H1 净利润 +103%（¥70-80亿），天孚通信 H1 净利润 +275%。中际旭创订单至 2027，客户已给 2028 指引。这层的瓶颈是上游物料（光芯片），H2 随供应链改善，交付量环比提升可期。
-      </div>
+      <div class="chain-desc">新易盛 H1 净利润+103%（¥70-80亿），天孚通信+275%。中际旭创订单至 2027，客户已给 2028 指引。这层的约束是上游光芯片供给，H2 随物料改善交付量环比提升。</div>
       <div class="chain-tickers">
-        <span class="tk tk-r">300502 新易盛</span><span class="tk tk-r">300308 中际旭创</span>
-        <span class="tk tk-r">300394 天孚通信</span><span class="tk tk-b">AAOI.US AOI</span>
+        <span class="tk tk-r">300502 新易盛</span><span class="tk tk-r">300308 中际旭创</span><span class="tk tk-r">300394 天孚通信</span><span class="tk tk-b">AAOI AOI</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 6: INVESTMENT MAP -->
+<!-- ============ SECTION 6: STOCKS ============ -->
 <div class="section" id="stocks">
-  <div class="sec-title"><div class="ico" style="background:#ecfdf5">📋</div>投资图谱：应该看哪里</div>
-
+  <div class="sec-title"><div class="ico" style="background:#ecfdf5">📋</div>投资图谱：按 AI 需求直接性 × 稀缺性排序</div>
   <div class="card">
-    <div class="card-t">按 AI 需求直接性 × 供给稀缺性 筛选</div>
     <table class="tbl">
       <thead>
-        <tr><th>公司</th><th>AI需求直接性</th><th>供给稀缺性</th><th>当前估值状态</th><th>核心看点</th></tr>
+        <tr><th>公司</th><th>AI需求直接性</th><th>供给稀缺性</th><th>估值状态</th><th>核心逻辑</th></tr>
       </thead>
       <tbody>
         <tr style="background:#fffbeb">
           <td><strong>源杰科技</strong> <span class="bd bd-r">688498</span></td>
-          <td><span class="bd bd-g">极高</span></td>
-          <td><span class="bd bd-r">极度稀缺</span></td>
+          <td><span class="bd bd-g">极高</span></td><td><span class="bd bd-r">极紧</span></td>
           <td><span class="bd bd-o">合理偏高</span></td>
-          <td>国内 EML 光芯片龙头，H1 净利润+13倍，离 InP 卡点最近，国产替代逻辑最纯粹</td>
+          <td>国内EML光芯片龙头，H1净利+13倍，离InP卡点最近</td>
         </tr>
         <tr>
           <td><strong>云南锗业</strong> <span class="bd bd-r">002428</span></td>
-          <td><span class="bd bd-g">极高</span></td>
-          <td><span class="bd bd-r">极度稀缺</span></td>
+          <td><span class="bd bd-g">极高</span></td><td><span class="bd bd-r">极紧</span></td>
           <td><span class="bd bd-o">部分反应</span></td>
-          <td>国内最大 InP 衬底厂，6英寸已量产，已签大单，铟资源上游</td>
+          <td>国内最大InP衬底厂，6英寸量产，已签大单</td>
         </tr>
         <tr style="background:#fffbeb">
           <td><strong>有研新材</strong> <span class="bd bd-r">600206</span></td>
-          <td><span class="bd bd-g">极高</span></td>
-          <td><span class="bd bd-r">极度稀缺</span></td>
+          <td><span class="bd bd-g">极高</span></td><td><span class="bd bd-r">极紧</span></td>
           <td><span class="bd bd-b">认知度低</span></td>
-          <td>国家 02 专项，InP 衬底国产替代政策背书，认知度最低</td>
+          <td>国家02专项背书，InP衬底国产替代最纯粹</td>
         </tr>
         <tr>
           <td><strong>三安光电</strong> <span class="bd bd-r">600703</span></td>
-          <td><span class="bd bd-g">高</span></td>
-          <td><span class="bd bd-o">高度紧缺</span></td>
+          <td><span class="bd bd-g">高</span></td><td><span class="bd bd-o">偏紧</span></td>
           <td><span class="bd bd-o">中等</span></td>
-          <td>6英寸 InP IDM，国内唯一规模化制造，化合物半导体全材料覆盖</td>
+          <td>6英寸InP IDM，国内唯一规模化制造</td>
         </tr>
         <tr style="background:#fffbeb">
           <td><strong>新易盛</strong> <span class="bd bd-r">300502</span></td>
-          <td><span class="bd bd-g">高</span></td>
-          <td><span class="bd bd-o">偏紧扩产</span></td>
+          <td><span class="bd bd-g">高</span></td><td><span class="bd bd-o">扩产中</span></td>
           <td><span class="bd bd-r">估值高位</span></td>
-          <td>光模块封装龙头，业绩确定性最强，但估值已充分反映，波动风险大</td>
+          <td>业绩确定性最强，但估值已充分反映</td>
         </tr>
         <tr>
           <td><strong>中际旭创</strong> <span class="bd bd-r">300308</span></td>
-          <td><span class="bd bd-g">高</span></td>
-          <td><span class="bd bd-o">偏紧扩产</span></td>
+          <td><span class="bd bd-g">高</span></td><td><span class="bd bd-o">扩产中</span></td>
           <td><span class="bd bd-r">估值高位</span></td>
-          <td>光模块封装市占最高，2028 客户指引可观，管理层回购彰显信心</td>
+          <td>订单至2028，管理层回购，龙头地位稳固</td>
         </tr>
         <tr style="background:#fef2f2">
-          <td><strong>SK 海力士</strong> <span class="bd bd-gr">KRX</span></td>
-          <td><span class="bd bd-o">高（HBM）</span></td>
-          <td><span class="bd bd-g">相对充足</span></td>
-          <td><span class="bd bd-r">已过度定价</span></td>
-          <td>HBM 需求真实，但估值已提前定价；三星 HBM4 追赶是主要隐患</td>
+          <td><strong>SK海力士</strong> <span class="bd bd-gr">KRX</span></td>
+          <td><span class="bd bd-o">高（HBM）</span></td><td><span class="bd bd-g">充足</span></td>
+          <td><span class="bd bd-r">估值修正中</span></td>
+          <td>HBM需求真实，但已过度定价，等三星HBM4风险落地后再评估</td>
         </tr>
         <tr style="background:#fef2f2">
-          <td><strong>闪迪 / 铠侠</strong> <span class="bd bd-gr">NAND</span></td>
-          <td><span class="bd bd-r">极低（NAND）</span></td>
-          <td><span class="bd bd-gr">不适用</span></td>
-          <td><span class="bd bd-r">AI叙事破裂</span></td>
-          <td>消费 NAND 为主，AI 需求几乎无法传导至此，AI 概念标签已被市场撕掉</td>
+          <td><strong>闪迪/铠侠</strong> <span class="bd bd-gr">NAND</span></td>
+          <td><span class="bd bd-r">极低</span></td><td><span class="bd bd-gr">-</span></td>
+          <td><span class="bd bd-r">叙事破裂</span></td>
+          <td>消费NAND，AI需求几乎无法传导，AI概念标签已被市场撕掉</td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- SECTION 7: RISKS -->
+<!-- ============ SECTION 7: RISKS ============ -->
 <div class="section" id="risks">
   <div class="sec-title"><div class="ico" style="background:#fef2f2">⚠️</div>什么情况说明这个判断错了</div>
   <div class="g2">
     <div style="background:#fef2f2;border-radius:10px;padding:14px;border-left:4px solid #dc2626">
-      <div style="font-size:13px;font-weight:700;color:#dc2626;margin-bottom:8px">光模块端的反方理由</div>
-      <ul style="font-size:12.5px;color:var(--sub);line-height:2;list-style:none">
-        <li>🔴 硅光方案加速替代 EML，减少 InP 需求</li>
-        <li>🔴 云厂商资本开支大幅下修（7月28日已预演过）</li>
-        <li>🔴 美国对中国光模块加征关税或实施禁令</li>
-        <li>🔴 InP 产能比预期更快扩张 → 价格回落</li>
-        <li>🟠 1.6T 规模化放量不及预期（被澄清但市场仍担忧）</li>
+      <div style="font-size:12.5px;font-weight:700;color:#dc2626;margin-bottom:8px">光模块的反方信号</div>
+      <ul style="font-size:12px;color:var(--sub);line-height:2;list-style:none">
+        <li>🔴 硅光方案加速替代 EML，InP 需求减少</li>
+        <li>🔴 云厂商 Q3 资本开支大幅下修</li>
+        <li>🔴 美国对中国光模块实施禁令或高关税</li>
+        <li>🔴 InP 产能扩张超预期 → 价格回落</li>
+        <li>🟠 1.6T 放量时间表推迟</li>
       </ul>
     </div>
     <div style="background:#eff6ff;border-radius:10px;padding:14px;border-left:4px solid #2563eb">
-      <div style="font-size:13px;font-weight:700;color:#2563eb;margin-bottom:8px">存储端的潜在反转信号</div>
-      <ul style="font-size:12.5px;color:var(--sub);line-height:2;list-style:none">
+      <div style="font-size:12.5px;font-weight:700;color:#2563eb;margin-bottom:8px">存储潜在反转信号</div>
+      <ul style="font-size:12px;color:var(--sub);line-height:2;list-style:none">
         <li>🟢 消费电子需求超预期复苏，NAND 涨价</li>
-        <li>🟢 三星 HBM4 量产被推迟 → 海力士独占格局延续</li>
-        <li>🟢 AI 推理端爆发带动 NVMe SSD 大规模采购</li>
-        <li>🟢 存储价格下跌触底反转，周期拐点到来</li>
-        <li>🟠 HBM 估值修正完毕后重新成为优质买点</li>
+        <li>🟢 三星 HBM4 量产推迟 → 海力士格局延续</li>
+        <li>🟢 AI 推理规模爆发带动 NVMe 大采购</li>
+        <li>🟢 存储周期触底反转，NAND 价格企稳</li>
+        <li>🟠 HBM 估值修正完毕后重新成为买点</li>
       </ul>
     </div>
   </div>
 </div>
 
 <!-- VERDICT -->
-<div class="verdict" style="margin-bottom:0">
+<div class="verdict">
   <h3>📋 一句话研判</h3>
-  <p style="font-size:14px;line-height:1.9;color:#cbd5e1;margin-bottom:20px">
-    光模块和存储的分化，本质是 AI 需求在产业链不同层级的<strong>流量分配问题</strong>。光模块处于"必需品"层——没有它 GPU 集群无法工作；消费 NAND 处于"无关品"层——AI 训练对它的需求微乎其微。<br><br>
-    HBM 是真 AI 受益品，但已经历了一轮完整的估值定价周期，现在进入的是"业绩兑现 vs 叙事重置"的博弈阶段。<br><br>
-    <strong>光模块的上游 InP 材料层（源杰科技、云南锗业、有研新材）才是当前认知度最低、距离真实稀缺约束最近的研究机会。</strong>市场在看"易中天"三兄弟的时候，这层还没有被充分定价。
+  <p style="font-size:13.5px;line-height:1.9;color:#cbd5e1;margin-bottom:18px">
+    光模块和存储分化的本质是 <strong>AI 资本开支在产业链的"流量分配"</strong>——光互联是 AI 集群的必需品，每一张 GPU 对应的光模块采购是刚性需求；消费 NAND 的需求驱动力是手机和 PC 换机，与 AI capex 几乎脱钩。<br><br>
+    HBM 是真正的 AI 直接需求，但已经过了一轮完整的估值定价周期，当前是"业绩兑现 vs 叙事重置"的博弈。<br><br>
+    <strong>光模块上游的 InP 材料层（源杰科技、云南锗业、有研新材）是当前认知度最低、距离真实稀缺约束最近的机会。</strong>市场在看光模块封装龙头的时候，这层还没有被充分定价。
   </p>
   <div class="vgrid">
     <div class="vc">
       <h4>🎯 优先研究顺序</h4>
       <ul>
         <li>源杰科技 — 光芯片国产龙头，业绩实证最强</li>
-        <li>云南锗业 — InP 衬底最上游，大单证据</li>
+        <li>云南锗业 — InP衬底最上游，已签大单</li>
         <li>有研新材 — 政策背书，认知度最低的机会</li>
-        <li>三安光电 — IDM 规模化，中游卡位</li>
-        <li>新易盛/旭创 — 业绩确定但估值已高，波段为主</li>
+        <li>三安光电 — IDM规模化，中游卡位</li>
+        <li>新易盛/旭创 — 业绩确定但估值高，波段操作</li>
       </ul>
     </div>
     <div class="vc">
-      <h4>🔍 需要持续跟踪的信号</h4>
+      <h4>🔍 关键跟踪信号</h4>
       <ul>
         <li>云厂商 Q3 资本开支数据（最关键）</li>
-        <li>InP 衬底 Q4 涨价幅度是否超 10%</li>
-        <li>云南锗业"大单"合同金额披露</li>
-        <li>三星 HBM4 进入 NVIDIA 量产时间表</li>
+        <li>InP 衬底 Q4 涨价幅度（>10%是验证）</li>
+        <li>云南锗业大单合同金额正式披露</li>
+        <li>三星 HBM4 量产时间表（海力士估值的定价锚）</li>
         <li>美国光模块贸易政策动向</li>
-        <li>NAND 消费端价格拐点（存储反转先行指标）</li>
       </ul>
     </div>
   </div>
@@ -587,22 +570,59 @@ footer{text-align:center;padding:32px 16px;color:#94a3b8;font-size:12px;border-t
 
 <footer>
   <p>reese · Serenity 供应链卡点研究 · 2026年8月18日</p>
-  <p style="margin-top:6px">数据来源：中信证券、东吴证券研报、Yole/Omdia、新易盛/天孚通信业绩预告、AOI 财报、Lumentum Q4 FY2026、Bloomberg、Converge Digest、东方财富</p>
+  <p style="margin-top:5px">数据来源：中信证券、东吴证券、Yole/Omdia、新易盛/天孚通信业绩预告、AOI Q2财报、Lumentum Q4 FY2026、Bloomberg、Converge Digest</p>
 </footer>
 
 <script>
+// GPU grid animation
+const grid = document.getElementById('gpuGrid');
+if(grid){
+  const items = [
+    {type:'gpu',label:'GPU×8'},{type:'gpu',label:'GPU×8'},
+    {type:'opt',label:'光模块×8'},{type:'opt',label:'光模块×8'},
+    {type:'gpu',label:'GPU×8'},{type:'gpu',label:'GPU×8'},
+    {type:'opt',label:'光模块×8'},{type:'opt',label:'光模块×8'},
+    {type:'nand',label:'NAND?'},{type:'nand',label:'NAND?'},
+    {type:'gpu',label:'GPU×8'},{type:'gpu',label:'GPU×8'},
+    {type:'opt',label:'光模块×8'},{type:'opt',label:'光模块×8'},
+    {type:'nand',label:'可选'},{type:'nand',label:'可选'},
+  ];
+  items.forEach(it=>{
+    const d=document.createElement('div');
+    d.className='gpu-box'+(it.type==='opt'?' highlight':'');
+    if(it.type==='nand') d.style.cssText='background:#1e293b;border:1px dashed #475569;border-radius:6px;padding:8px 4px;text-align:center;font-size:10px;color:#475569;font-weight:700';
+    d.textContent=it.label;
+    grid.appendChild(d);
+  });
+}
+
+// Bar chart animation
+function animateBars(){
+  const pcts = [55,12,10,10,8,3,1];
+  document.querySelectorAll('.bar-fill').forEach((bar,i)=>{
+    const target = pcts[i] || 1;
+    setTimeout(()=>{bar.style.width = target+'%';},i*80+200);
+  });
+}
+const barObs = new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){animateBars();barObs.disconnect();}
+},{threshold:0.3});
+const bc = document.getElementById('barChart');
+if(bc) barObs.observe(bc);
+
+// Nav active
 const sections = document.querySelectorAll('.section');
 const links = document.querySelectorAll('#nav a');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      links.forEach(l => l.classList.remove('act'));
-      const l = document.querySelector('#nav a[href="#' + e.target.id + '"]');
-      if (l) l.classList.add('act');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('act'));
+      const l=document.querySelector('#nav a[href="#'+e.target.id+'"]');
+      if(l)l.classList.add('act');
     }
   });
-}, { threshold: 0.2 });
-sections.forEach(s => obs.observe(s));
+},{threshold:0.2});
+sections.forEach(s=>obs.observe(s));
 </script>
 </body>
 </html>
